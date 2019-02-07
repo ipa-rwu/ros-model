@@ -10,7 +10,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.MissingResourceException;
 import java.util.StringTokenizer;
 import java.util.Scanner;
@@ -25,12 +27,14 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.CommonPlugin;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -66,9 +70,27 @@ import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.ISetSelectionTarget;
 
+import componentInterface.ComponentInterface;
 import componentInterface.ComponentInterfaceFactory;
 import componentInterface.ComponentInterfacePackage;
+import componentInterface.RosPublisher;
+import componentInterface.RosServiceClient;
+import componentInterface.RosServiceServer;
+import componentInterface.RosSubscriber;
+import componentInterface.impl.ComponentInterfaceImpl;
+import componentInterface.impl.RosPublisherImpl;
+import componentInterface.impl.RosServiceClientImpl;
+import componentInterface.impl.RosServiceServerImpl;
+import componentInterface.impl.RosSubscriberImpl;
 import componentInterface.provider.ComponentInterfaceEditPlugin;
+import ros.Artifact;
+import ros.Node;
+import ros.Package;
+import ros.PackageSet;
+import ros.Publisher;
+import ros.ServiceClient;
+import ros.ServiceServer;
+import ros.Subscriber;
 
 /**
  * This is a simple wizard for creating a new model file.
@@ -161,6 +183,8 @@ public class ComponentInterfaceModelWizard extends Wizard implements INewWizard 
 	protected List<String> initialObjectNames;
 
 	public FileDialog fDialog;
+	public IProject project;
+
 
 	public IFile modelFile;
 	/**
@@ -174,6 +198,7 @@ public class ComponentInterfaceModelWizard extends Wizard implements INewWizard 
 		this.selection = selection;
 		setWindowTitle(ComponentInterfaceEditorPlugin.INSTANCE.getString("_UI_Wizard_label"));
 		setDefaultPageImageDescriptor(ExtendedImageRegistry.INSTANCE.getImageDescriptor(ComponentInterfaceEditorPlugin.INSTANCE.getImage("full/wizban/NewComponentInterface")));
+
 	}
 
 	/**
@@ -206,8 +231,11 @@ public class ComponentInterfaceModelWizard extends Wizard implements INewWizard 
 	 * @generated
 	 */
 	protected EObject createInitialModel() {
+		System.out.println((EClass)componentInterfacePackage.getEClassifiers());
 		EClass eClass = (EClass)componentInterfacePackage.getEClassifier(initialObjectCreationPage.getInitialObjectName());
+		
 		EObject rootObject = componentInterfaceFactory.create(eClass);
+		
 		return rootObject;
 	}
 
@@ -227,10 +255,20 @@ public class ComponentInterfaceModelWizard extends Wizard implements INewWizard 
 			final String ComponentName = getNameandNamespaceCreationPage.getComponentInterfaceName();
 			final String ComponentNameSpace = getNameandNamespaceCreationPage.getComponentInterfaceNameSpace();
 			final String Inputpath = getInputFileCreationPage.getPath();
+			//TODO this only works if the selected file is in the same project as the new created file
+			String RelativePath = Inputpath.replace(project.getLocation().toString(), project.getName());
+			ResourceSet rs = new ResourceSetImpl();
+			Resource resource = rs.getResource(URI.createPlatformResourceURI(RelativePath,true),true);			
+			PackageSet packageSet_model = (PackageSet) resource.getContents().get(0);
+			EList<Package> package_model= (EList<Package>) packageSet_model.getPackage();
+			EList<Artifact> artifact = (EList<Artifact>) package_model.get(0).getArtifact();
+			Node rosnode = (Node) artifact.get(0).getNode();
+			
+			EList <Publisher> pubs = (EList<Publisher>) rosnode.getPublisher();
+			EList <Subscriber> subs = (EList<Subscriber>) rosnode.getSubscriber();
+			EList <ServiceClient> scls = (EList<ServiceClient>) rosnode.getServiceclient();
+			EList <ServiceServer> ssrs = (EList<ServiceServer>) rosnode.getServiceserver();
 
-			ResourceSet resourceSet = new ResourceSetImpl();
-			URI fileURI = URI.createPlatformResourceURI(modelFile.getFullPath().toString(), true);
-			Resource resource = resourceSet.createResource(fileURI);
 
 			// Do the work within an operation.
 			//
@@ -239,141 +277,49 @@ public class ComponentInterfaceModelWizard extends Wizard implements INewWizard 
 					@Override
 					protected void execute(IProgressMonitor progressMonitor) {
 						try {
-							
+							ResourceSet rs_output = new ResourceSetImpl();
+							URI fileURI = URI.createPlatformResourceURI(modelFile.getFullPath().toString(), true);
+							Resource resource_output = rs_output.createResource(fileURI);
+							ComponentInterface component = new ComponentInterfaceImpl();
+							component.setName(ComponentName);
+							component.setNameSpace(ComponentNameSpace);
 
-							
-							// Add the initial model object to the contents.
-							//
-							//EObject rootObject = createInitialModel();
-							//if (rootObject != null) {
-							//	resource.getContents().add(rootObject);
-							//}
-							StringBuilder model_output = new StringBuilder();
-							resource.getContents().clear();
-							if (ComponentNameSpace.isEmpty()) {
-								model_output.append("ComponentInterface { name '"+ComponentName+"' \n");
-							} else {
-								model_output.append("ComponentInterface { name '"+ComponentName+"' NameSpace '"+ComponentNameSpace+"' \n");
+							String NameSpaceInterfaces = "";
+							if (!(ComponentNameSpace.length()==0))
+								NameSpaceInterfaces = ComponentNameSpace + "/";
+							for (Publisher pub:pubs) {
+								RosPublisher rospub = new RosPublisherImpl();
+								rospub.setName(NameSpaceInterfaces+pub.getName());
+								rospub.setNs(ComponentNameSpace);
+								rospub.setPublisher(pub);
+								component.getRospublisher().add(rospub);
 							}
-							
-							
-							Scanner in = new Scanner(new FileReader(Inputpath));
-							StringBuilder sb = new StringBuilder();
-							
-							String pkg_name=null;
-							String artifact_name=null;
-							String node_name=null;
-							List<String> pubs = new ArrayList<String>();
-							List<String> subs = new ArrayList<String>();
-							List<String> srvser = new ArrayList<String>();
-							List<String> srvcl = new ArrayList<String>();
-
-							while(in.hasNext()) {
-								String next_st = in.next();
-								sb.append(next_st);
-								if (next_st.equals("CatkinPackage")) {
-									pkg_name = in.next().replace("{", "");
-								}if (next_st.equals("Artifact")) {
-									artifact_name = in.next();
-								}if (next_st.equals("Node")) {
-									in.next();
-									in.next();
-									node_name = in.next().replace("{", "");
-								}if (next_st.equals("Publisher")) {
-									in.next();
-									in.next();
-									String pub_name= in.next().replace("{", "");
-									pubs.add(pub_name.replace("\"",""));
-								}if (next_st.equals("Subscriber")) {
-									in.next();
-									in.next();
-									String sub_name= in.next().replace("{", "");
-									subs.add(sub_name.replace("\"",""));
-								}if (next_st.equals("ServiceServer")) {
-									in.next();
-									in.next();
-									String srv_name= in.next().replace("{", "");
-									srvser.add(srv_name.replace("\"",""));
-								}if (next_st.equals("ServiceClient")) {
-									in.next();
-									in.next();
-									String srv_name= in.next().replace("{", "");
-									srvcl.add(srv_name.replace("\"",""));
-								}
+							for (Subscriber sub:subs) {
+								RosSubscriber rossub = new RosSubscriberImpl();
+								rossub.setName(NameSpaceInterfaces+sub.getName());
+								rossub.setNs(ComponentNameSpace);
+								rossub.setSubscriber(sub);
+								component.getRossubscriber().add(rossub);
 							}
-							in.close();
-							String outString = sb.toString();
-
-							if (pubs.size() > 0) {
-								int cout_pub = pubs.size();
-								model_output.append("    RosPublishers{\n");
-								for(String pub:pubs) {
-									cout_pub--;
-									if (ComponentNameSpace.isEmpty()) {
-										model_output.append("        RosPublisher '"+pub.replaceFirst("/", "")+"' { RefPublisher '"+pkg_name+"."+artifact_name+"."+node_name+"."+pub+"'}");
-									} else {
-										model_output.append("        RosPublisher '"+ComponentNameSpace.replaceFirst("/", "")+"/"+pub.replaceFirst("/", "")+"' { RefPublisher '"+pkg_name+"."+artifact_name+"."+node_name+"."+pub+"'}");
-									}
-									if (cout_pub > 0) {
-										model_output.append(",\n");
-									}
-								}
-								model_output.append("}\n");
-							}if (subs.size() > 0) {
-								int cout_subs = subs.size();
-								model_output.append("    RosSubscribers{\n");
-								for(String sub:subs) {
-									cout_subs--;
-									if (ComponentNameSpace.isEmpty()) {
-										model_output.append("        RosSubscriber '"+sub.replaceFirst("/", "")+"' { RefSubscriber '"+pkg_name+"."+artifact_name+"."+node_name+"."+sub+"'}");
-									} else {
-										model_output.append("        RosSubscriber '"+ComponentNameSpace.replaceFirst("/", "")+"/"+sub.replaceFirst("/", "")+"' { RefSubscriber '"+pkg_name+"."+artifact_name+"."+node_name+"."+sub+"'}");
-									}
-									if (cout_subs > 0) {
-										model_output.append(",\n");
-									}
-								}
-								model_output.append("}\n");
-							}if (srvser.size() > 0) {
-								int cout_srvs = srvser.size();
-								model_output.append("    RosSrvServers{\n");
-								for(String srvsr:srvser) {
-									cout_srvs--;
-									if (ComponentNameSpace.isEmpty()) {
-										model_output.append("        RosServiceServer '"+srvsr.replaceFirst("/", "")+"' { RefServer '"+pkg_name+"."+artifact_name+"."+node_name+"."+srvsr+"'}");
-									} else {
-										model_output.append("        RosServiceServer '"+ComponentNameSpace.replaceFirst("/", "")+"/"+srvsr.replaceFirst("/", "")+"' { RefServer '"+pkg_name+"."+artifact_name+"."+node_name+"."+srvsr+"'}");
-									}
-									if (cout_srvs > 0) {
-										model_output.append(",\n");
-									}
-								}
-								model_output.append("}\n");
-							}if (srvcl.size() > 0) {
-								int cout_srvc = srvcl.size();
-								model_output.append("    RosSrvClients{\n");
-								for(String srvc:srvcl) {
-									cout_srvc--;
-									if (ComponentNameSpace.isEmpty()) {
-										model_output.append("        RosServiceClient '"+srvc.replaceFirst("/", "")+"' { RefClient '"+pkg_name+"."+artifact_name+"."+node_name+"."+srvc+"'}");
-									} else {
-										model_output.append("        RosServiceClient '"+ComponentNameSpace.replaceFirst("/", "")+"/"+srvc.replaceFirst("/", "")+"' { RefClient '"+pkg_name+"."+artifact_name+"."+node_name+"."+srvc+"'}");
-									}
-									if (cout_srvc > 0) {
-										model_output.append(",\n");
-									}
-								}
-								model_output.append("}\n");
+							for (ServiceClient scl:scls) {
+								RosServiceClient rosscl = new RosServiceClientImpl();
+								rosscl.setName(NameSpaceInterfaces+scl.getName());
+								rosscl.setNs(ComponentNameSpace);
+								rosscl.setSrvclient(scl);
+								component.getRosserviceclient().add(rosscl);
 							}
-							model_output.append("}");
-							byte[] bytes = model_output.toString().getBytes();
-							InputStream source = new ByteArrayInputStream(bytes);
-							modelFile.create(source, IResource.FILE, null);
+							for (ServiceServer ssr:ssrs) {
+								RosServiceServer rosssr = new RosServiceServerImpl();
+								rosssr.setName(NameSpaceInterfaces+ssr.getName());
+								rosssr.setNs(ComponentNameSpace);
+								rosssr.setSrvserver(ssr);
+								component.getRosserviceserver().add(rosssr);
+							}
 							// Save the contents of the resource to the file system.
 							//
-							//Map<Object, Object> options = new HashMap<Object, Object>();
-							//options.put(XMLResource.OPTION_ENCODING, initialObjectCreationPage.getEncoding());
-							//resource.save(options);
+							EObject rootObject = (EClass)componentInterfacePackage.getEClassifiers().get(0);
+							resource_output.getContents().add(rootObject);
+							resource_output.getContents().add(component);
 
 						}
 						catch (Exception exception) {
@@ -788,7 +734,9 @@ public class ComponentInterfaceModelWizard extends Wizard implements INewWizard 
 					dlg.setText("Open");
 					dlg.setFilterExtensions(new String[] { "*.ros" } );
 					IWorkspaceRoot ws = ResourcesPlugin.getWorkspace().getRoot();
-					String Workspace_path = ws.getProject("de.fraunhofer.ipa.ros.communication.objects").getLocation().toString();
+					modelFile = getModelFile();
+					project = modelFile.getProject();
+					String Workspace_path = ws.getProject(project.getName()).getLocation().toString();
 					if (ws.getLocation().toString().length() > 10) {
 						dlg.setFilterPath(ws.getLocation().toString());
 					} else if (Workspace_path.toString().length() > 20){
@@ -812,11 +760,12 @@ public class ComponentInterfaceModelWizard extends Wizard implements INewWizard 
 
 }
 
+
 	/**
 	 * The framework calls this to create the contents of the wizard.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 		@Override
 	public void addPages() {
@@ -827,7 +776,6 @@ public class ComponentInterfaceModelWizard extends Wizard implements INewWizard 
 		newFileCreationPage.setDescription(ComponentInterfaceEditorPlugin.INSTANCE.getString("_UI_ComponentInterfaceModelWizard_description"));
 		newFileCreationPage.setFileName(ComponentInterfaceEditorPlugin.INSTANCE.getString("_UI_ComponentInterfaceEditorFilenameDefaultBase") + "." + FILE_EXTENSIONS.get(0));
 		addPage(newFileCreationPage);
-
 		// Try and get the resource selection to determine a current directory for the file dialog.
 		//
 		if (selection != null && !selection.isEmpty()) {
@@ -861,10 +809,17 @@ public class ComponentInterfaceModelWizard extends Wizard implements INewWizard 
 				}
 			}
 		}
-		initialObjectCreationPage = new ComponentInterfaceModelWizardInitialObjectCreationPage("Whatever2");
-		initialObjectCreationPage.setTitle(ComponentInterfaceEditorPlugin.INSTANCE.getString("_UI_ComponentInterfaceModelWizard_label"));
-		initialObjectCreationPage.setDescription(ComponentInterfaceEditorPlugin.INSTANCE.getString("_UI_Wizard_initial_object_description"));
-		addPage(initialObjectCreationPage);
+		
+		getNameandNamespaceCreationPage = new ComponentInterfaceModelWizardNamNSCreationPage("Whatever3");
+		getNameandNamespaceCreationPage.setTitle("Set Name and Namespace to the ComponentInterface");
+		getNameandNamespaceCreationPage.setDescription("Set Name and Namespace to the ComponentInterface");
+		addPage(getNameandNamespaceCreationPage);
+
+		
+		getInputFileCreationPage = new SelectinputFile("Whatever4");
+		getInputFileCreationPage.setTitle("Select ROS model input");
+		getInputFileCreationPage.setDescription("Select ROS model input");
+		addPage(getInputFileCreationPage);
 	}
 
 	/**

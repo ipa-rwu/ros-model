@@ -4,6 +4,7 @@ grammar de.fraunhofer.ipa.componentInterface.ComponentInterface with org.eclipse
 import "http://www.ipa.fraunhofer.de/componentInterface" 
 import "http://www.ipa.fraunhofer.de/ros" as ros
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+import "http://www.eclipse.org/emf/2003/XMLType" as type
 
 ComponentInterface returns ComponentInterface:
 	'ComponentInterface'
@@ -81,6 +82,7 @@ RosParameter returns RosParameter:
 '{'
 	('ns' ns=EString)?
 	'RefParameter' parameter=[ros::Parameter|EString]
+	('value' value=ParameterValue)?
 '}';
 	
 EString returns ecore::EString:
@@ -89,4 +91,36 @@ EString returns ecore::EString:
 NS returns NS:
 	'NS' /* TODO: implement this rule and an appropriate IValueConverter */;
 
+// PARAMETERS!!
 
+ParameterValue returns ros::ParameterValue:
+	{ros::ParameterDouble} Double0|{ros::ParameterBoolean} boolean0|{ros::ParameterString} EString;
+
+
+//PARAMETRRS PRIMITIVES TYPES
+
+terminal BOOLEAN: 'true'|'false';
+terminal fragment DIGIT: '0'..'9';
+terminal DOUBLE returns ecore::EDouble: DECINT (('.' DIGIT*) | (('.' DIGIT*)? ('E'|'e') ('-'|'+')? DECINT)) | INT;  // Use terminal to avoid 'e' turning into a keyword
+terminal DECINT: '0' | ('1'..'9' DIGIT*);
+terminal fragment SIGN : '+' | '-' ;
+
+
+terminal SIGNED_INT:
+	'-'* INT*;
+
+terminal fragment HEX_DIGIT: (DIGIT|'a'..'f'|'A'..'F');
+
+terminal HEX returns ecore::EIntegerObject: 
+	'0x' HEX_DIGIT*;
+
+terminal fragment BINARY_DIGIT: ('0' | '1');
+
+terminal BINARY returns ecore::EIntegerObject:
+	'0b' (BINARY_DIGIT('_')*)*;
+
+boolean0 returns type::Boolean:
+	BOOLEAN;
+
+Double0 returns type::Double:
+	DOUBLE;

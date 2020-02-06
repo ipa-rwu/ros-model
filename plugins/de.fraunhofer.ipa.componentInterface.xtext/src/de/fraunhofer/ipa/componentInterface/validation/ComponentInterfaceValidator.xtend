@@ -3,6 +3,9 @@
  */
 package de.fraunhofer.ipa.componentInterface.validation
 
+import org.eclipse.xtext.validation.Check
+import componentInterface.RosParameter
+
 
 /**
  * This class contains custom validation rules. 
@@ -21,5 +24,20 @@ class ComponentInterfaceValidator extends AbstractComponentInterfaceValidator {
 //					INVALID_NAME)
 //		}
 //	}
+
+  String expected_type = null;
+  String value_type = null;
+  String TypeError = null;
+  public static val INVALID_TYPE = 'invalidType'
+  
+  @Check
+  def void CheckParameterValue (RosParameter rosparam){
+  	expected_type = rosparam.parameter.type.eClass.name;
+  	value_type = rosparam.value.eClass.name;
+  	if(!expected_type.contains(value_type)){
+  		TypeError="mismatched input "+value_type+ " expecting "+ expected_type
+  		error( TypeError, null, INVALID_TYPE)
+  	}
+  }
 	
 }

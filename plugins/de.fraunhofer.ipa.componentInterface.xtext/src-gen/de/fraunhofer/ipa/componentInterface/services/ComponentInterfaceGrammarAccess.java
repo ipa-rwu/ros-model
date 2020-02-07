@@ -940,13 +940,18 @@ public class ComponentInterfaceGrammarAccess extends AbstractGrammarElementFinde
 		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
 		private final Action cParameterStringAction_2_0 = (Action)cGroup_2.eContents().get(0);
 		private final RuleCall cEStringParserRuleCall_2_1 = (RuleCall)cGroup_2.eContents().get(1);
+		private final Group cGroup_3 = (Group)cAlternatives.eContents().get(3);
+		private final Action cParameterIntegerAction_3_0 = (Action)cGroup_3.eContents().get(0);
+		private final RuleCall cInteger0ParserRuleCall_3_1 = (RuleCall)cGroup_3.eContents().get(1);
 		
 		//// PARAMETERS!!
 		//ParameterValue ros::ParameterValue:
-		//	{ros::ParameterDouble} Double0 | {ros::ParameterBoolean} boolean0 | {ros::ParameterString} EString;
+		//	{ros::ParameterDouble} Double0 | {ros::ParameterBoolean} boolean0 | {ros::ParameterString} EString |
+		//	{ros::ParameterInteger} Integer0;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{ros::ParameterDouble} Double0 | {ros::ParameterBoolean} boolean0 | {ros::ParameterString} EString
+		//{ros::ParameterDouble} Double0 | {ros::ParameterBoolean} boolean0 | {ros::ParameterString} EString |
+		//{ros::ParameterInteger} Integer0
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//{ros::ParameterDouble} Double0
@@ -975,6 +980,15 @@ public class ComponentInterfaceGrammarAccess extends AbstractGrammarElementFinde
 		
 		//EString
 		public RuleCall getEStringParserRuleCall_2_1() { return cEStringParserRuleCall_2_1; }
+		
+		//{ros::ParameterInteger} Integer0
+		public Group getGroup_3() { return cGroup_3; }
+		
+		//{ros::ParameterInteger}
+		public Action getParameterIntegerAction_3_0() { return cParameterIntegerAction_3_0; }
+		
+		//Integer0
+		public RuleCall getInteger0ParserRuleCall_3_1() { return cInteger0ParserRuleCall_3_1; }
 	}
 	public class Boolean0Elements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.componentInterface.ComponentInterface.boolean0");
@@ -997,6 +1011,17 @@ public class ComponentInterfaceGrammarAccess extends AbstractGrammarElementFinde
 		
 		//DOUBLE
 		public RuleCall getDOUBLETerminalRuleCall() { return cDOUBLETerminalRuleCall; }
+	}
+	public class Integer0Elements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.componentInterface.ComponentInterface.Integer0");
+		private final RuleCall cDECINTTerminalRuleCall = (RuleCall)rule.eContents().get(1);
+		
+		//Integer0 type::Int:
+		//	DECINT;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//DECINT
+		public RuleCall getDECINTTerminalRuleCall() { return cDECINTTerminalRuleCall; }
 	}
 	
 	
@@ -1023,6 +1048,7 @@ public class ComponentInterfaceGrammarAccess extends AbstractGrammarElementFinde
 	private final TerminalRule tBINARY;
 	private final Boolean0Elements pBoolean0;
 	private final Double0Elements pDouble0;
+	private final Integer0Elements pInteger0;
 	
 	private final Grammar grammar;
 	
@@ -1056,6 +1082,7 @@ public class ComponentInterfaceGrammarAccess extends AbstractGrammarElementFinde
 		this.tBINARY = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.componentInterface.ComponentInterface.BINARY");
 		this.pBoolean0 = new Boolean0Elements();
 		this.pDouble0 = new Double0Elements();
+		this.pInteger0 = new Integer0Elements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -1232,7 +1259,8 @@ public class ComponentInterfaceGrammarAccess extends AbstractGrammarElementFinde
 	
 	//// PARAMETERS!!
 	//ParameterValue ros::ParameterValue:
-	//	{ros::ParameterDouble} Double0 | {ros::ParameterBoolean} boolean0 | {ros::ParameterString} EString;
+	//	{ros::ParameterDouble} Double0 | {ros::ParameterBoolean} boolean0 | {ros::ParameterString} EString |
+	//	{ros::ParameterInteger} Integer0;
 	public ParameterValueElements getParameterValueAccess() {
 		return pParameterValue;
 	}
@@ -1319,6 +1347,16 @@ public class ComponentInterfaceGrammarAccess extends AbstractGrammarElementFinde
 	
 	public ParserRule getDouble0Rule() {
 		return getDouble0Access().getRule();
+	}
+	
+	//Integer0 type::Int:
+	//	DECINT;
+	public Integer0Elements getInteger0Access() {
+		return pInteger0;
+	}
+	
+	public ParserRule getInteger0Rule() {
+		return getInteger0Access().getRule();
 	}
 	
 	//terminal ID:

@@ -2728,17 +2728,17 @@ public class RosGrammarAccess extends AbstractGrammarElementFinder {
 	public class ParameterIntegerElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.ros.Ros.ParameterInteger");
 		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cValueInt_testParserRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
+		private final RuleCall cValueInteger0ParserRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
 		
 		//ParameterInteger:
-		//	value=Int_test;
+		//	value=Integer0;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//value=Int_test
+		//value=Integer0
 		public Assignment getValueAssignment() { return cValueAssignment; }
 		
-		//Int_test
-		public RuleCall getValueInt_testParserRuleCall_0() { return cValueInt_testParserRuleCall_0; }
+		//Integer0
+		public RuleCall getValueInteger0ParserRuleCall_0() { return cValueInteger0ParserRuleCall_0; }
 	}
 	public class ParameterDoubleElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.ros.Ros.ParameterDouble");
@@ -3008,16 +3008,16 @@ public class RosGrammarAccess extends AbstractGrammarElementFinder {
 		//DOUBLE
 		public RuleCall getDOUBLETerminalRuleCall() { return cDOUBLETerminalRuleCall; }
 	}
-	public class Int_testElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.ros.Ros.Int_test");
-		private final RuleCall cINTTerminalRuleCall = (RuleCall)rule.eContents().get(1);
+	public class Integer0Elements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.ros.Ros.Integer0");
+		private final RuleCall cDECINTTerminalRuleCall = (RuleCall)rule.eContents().get(1);
 		
-		//Int_test type::Int:
-		//	INT;
+		//Integer0 type::Int:
+		//	DECINT;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//INT
-		public RuleCall getINTTerminalRuleCall() { return cINTTerminalRuleCall; }
+		//DECINT
+		public RuleCall getDECINTTerminalRuleCall() { return cDECINTTerminalRuleCall; }
 	}
 	public class DateTimeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.ros.Ros.DateTime");
@@ -3960,7 +3960,7 @@ public class RosGrammarAccess extends AbstractGrammarElementFinder {
 	private final Base64BinaryElements pBase64Binary;
 	private final Boolean0Elements pBoolean0;
 	private final Double0Elements pDouble0;
-	private final Int_testElements pInt_test;
+	private final Integer0Elements pInteger0;
 	private final DateTimeElements pDateTime;
 	private final MessagePartElements pMessagePart;
 	private final TerminalRule tMESSAGE_ASIGMENT;
@@ -4074,7 +4074,7 @@ public class RosGrammarAccess extends AbstractGrammarElementFinder {
 		this.pBase64Binary = new Base64BinaryElements();
 		this.pBoolean0 = new Boolean0Elements();
 		this.pDouble0 = new Double0Elements();
-		this.pInt_test = new Int_testElements();
+		this.pInteger0 = new Integer0Elements();
 		this.pDateTime = new DateTimeElements();
 		this.pMessagePart = new MessagePartElements();
 		this.tMESSAGE_ASIGMENT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.ros.Ros.MESSAGE_ASIGMENT");
@@ -4722,7 +4722,7 @@ public class RosGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//ParameterInteger:
-	//	value=Int_test;
+	//	value=Integer0;
 	public ParameterIntegerElements getParameterIntegerAccess() {
 		return pParameterInteger;
 	}
@@ -4893,14 +4893,14 @@ public class RosGrammarAccess extends AbstractGrammarElementFinder {
 		return getDouble0Access().getRule();
 	}
 	
-	//Int_test type::Int:
-	//	INT;
-	public Int_testElements getInt_testAccess() {
-		return pInt_test;
+	//Integer0 type::Int:
+	//	DECINT;
+	public Integer0Elements getInteger0Access() {
+		return pInteger0;
 	}
 	
-	public ParserRule getInt_testRule() {
-		return getInt_testAccess().getRule();
+	public ParserRule getInteger0Rule() {
+		return getInteger0Access().getRule();
 	}
 	
 	//DateTime type::DateTime:

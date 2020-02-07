@@ -14,6 +14,7 @@ import ros.ServiceClient
 import ros.ServiceServer
 import ros.Subscriber
 import ros.Parameter
+import ros.ParameterValue
 
 /**
  * This class contains custom validation rules. 
@@ -109,10 +110,7 @@ class RosValidator extends AbstractRosValidator {
   	}
   }
  
-  @Check
-  def void TestParameterInteger (Parameter param){
-	warning( "type expected "+param.type.class + " value type "+param.value.eClass , null, INVALID_SPEC)
-  	}
+
   
    //The RULE_ID impose the rest of the ROS naming convention rules : bin/de/fraunhofer/ipa/ros/parser/antlr/internal/InternalRos.g
   // allow the use only of the symbol: "_"

@@ -21,13 +21,13 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalComponentInterfaceParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_BOOLEAN", "RULE_DOUBLE", "RULE_DIGIT", "RULE_DECINT", "RULE_SIGN", "RULE_INT", "RULE_SIGNED_INT", "RULE_HEX_DIGIT", "RULE_HEX", "RULE_BINARY_DIGIT", "RULE_BINARY", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'ComponentInterface'", "'{'", "'name'", "'NameSpace'", "'RosPublishers'", "','", "'}'", "'RosSubscribers'", "'RosSrvServers'", "'RosSrvClients'", "'RosActionServers'", "'RosActionClients'", "'RosParameters'", "'RosPublisher'", "'ns'", "'RefPublisher'", "'RosSubscriber'", "'RefSubscriber'", "'RosServiceServer'", "'RefServer'", "'RosServiceClient'", "'RefClient'", "'RosActionServer'", "'RosActionClient'", "'RosParameter'", "'RefParameter'", "'value'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_BOOLEAN", "RULE_DOUBLE", "RULE_DECINT", "RULE_DIGIT", "RULE_SIGN", "RULE_INT", "RULE_SIGNED_INT", "RULE_HEX_DIGIT", "RULE_HEX", "RULE_BINARY_DIGIT", "RULE_BINARY", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'ComponentInterface'", "'{'", "'name'", "'NameSpace'", "'RosPublishers'", "','", "'}'", "'RosSubscribers'", "'RosSrvServers'", "'RosSrvClients'", "'RosActionServers'", "'RosActionClients'", "'RosParameters'", "'RosPublisher'", "'ns'", "'RefPublisher'", "'RosSubscriber'", "'RefSubscriber'", "'RosServiceServer'", "'RefServer'", "'RosServiceClient'", "'RefClient'", "'RosActionServer'", "'RosActionClient'", "'RosParameter'", "'RefParameter'", "'value'"
     };
     public static final int RULE_HEX=14;
     public static final int RULE_SIGN=10;
     public static final int RULE_BOOLEAN=6;
     public static final int RULE_ID=5;
-    public static final int RULE_DIGIT=8;
+    public static final int RULE_DIGIT=9;
     public static final int T__26=26;
     public static final int T__27=27;
     public static final int T__28=28;
@@ -49,7 +49,7 @@ public class InternalComponentInterfaceParser extends AbstractInternalAntlrParse
     public static final int T__34=34;
     public static final int T__35=35;
     public static final int T__36=36;
-    public static final int RULE_DECINT=9;
+    public static final int RULE_DECINT=8;
     public static final int EOF=-1;
     public static final int T__30=30;
     public static final int T__31=31;
@@ -3011,7 +3011,7 @@ public class InternalComponentInterfaceParser extends AbstractInternalAntlrParse
 
 
     // $ANTLR start "ruleParameterValue"
-    // InternalComponentInterface.g:1329:1: ruleParameterValue returns [EObject current=null] : ( ( () ruleDouble0 ) | ( () ruleboolean0 ) | ( () ruleEString ) ) ;
+    // InternalComponentInterface.g:1329:1: ruleParameterValue returns [EObject current=null] : ( ( () ruleDouble0 ) | ( () ruleboolean0 ) | ( () ruleEString ) | ( () ruleInteger0 ) ) ;
     public final EObject ruleParameterValue() throws RecognitionException {
         EObject current = null;
 
@@ -3019,11 +3019,11 @@ public class InternalComponentInterfaceParser extends AbstractInternalAntlrParse
         	enterRule();
 
         try {
-            // InternalComponentInterface.g:1335:2: ( ( ( () ruleDouble0 ) | ( () ruleboolean0 ) | ( () ruleEString ) ) )
-            // InternalComponentInterface.g:1336:2: ( ( () ruleDouble0 ) | ( () ruleboolean0 ) | ( () ruleEString ) )
+            // InternalComponentInterface.g:1335:2: ( ( ( () ruleDouble0 ) | ( () ruleboolean0 ) | ( () ruleEString ) | ( () ruleInteger0 ) ) )
+            // InternalComponentInterface.g:1336:2: ( ( () ruleDouble0 ) | ( () ruleboolean0 ) | ( () ruleEString ) | ( () ruleInteger0 ) )
             {
-            // InternalComponentInterface.g:1336:2: ( ( () ruleDouble0 ) | ( () ruleboolean0 ) | ( () ruleEString ) )
-            int alt32=3;
+            // InternalComponentInterface.g:1336:2: ( ( () ruleDouble0 ) | ( () ruleboolean0 ) | ( () ruleEString ) | ( () ruleInteger0 ) )
+            int alt32=4;
             switch ( input.LA(1) ) {
             case RULE_DOUBLE:
                 {
@@ -3039,6 +3039,11 @@ public class InternalComponentInterfaceParser extends AbstractInternalAntlrParse
             case RULE_ID:
                 {
                 alt32=3;
+                }
+                break;
+            case RULE_DECINT:
+                {
+                alt32=4;
                 }
                 break;
             default:
@@ -3151,6 +3156,40 @@ public class InternalComponentInterfaceParser extends AbstractInternalAntlrParse
 
                     }
                     break;
+                case 4 :
+                    // InternalComponentInterface.g:1388:3: ( () ruleInteger0 )
+                    {
+                    // InternalComponentInterface.g:1388:3: ( () ruleInteger0 )
+                    // InternalComponentInterface.g:1389:4: () ruleInteger0
+                    {
+                    // InternalComponentInterface.g:1389:4: ()
+                    // InternalComponentInterface.g:1390:5: 
+                    {
+
+                    					current = forceCreateModelElement(
+                    						grammarAccess.getParameterValueAccess().getParameterIntegerAction_3_0(),
+                    						current);
+                    				
+
+                    }
+
+
+                    				newCompositeNode(grammarAccess.getParameterValueAccess().getInteger0ParserRuleCall_3_1());
+                    			
+                    pushFollow(FOLLOW_2);
+                    ruleInteger0();
+
+                    state._fsp--;
+
+
+                    				afterParserOrEnumRuleCall();
+                    			
+
+                    }
+
+
+                    }
+                    break;
 
             }
 
@@ -3174,7 +3213,7 @@ public class InternalComponentInterfaceParser extends AbstractInternalAntlrParse
 
 
     // $ANTLR start "entryRuleboolean0"
-    // InternalComponentInterface.g:1391:1: entryRuleboolean0 returns [String current=null] : iv_ruleboolean0= ruleboolean0 EOF ;
+    // InternalComponentInterface.g:1408:1: entryRuleboolean0 returns [String current=null] : iv_ruleboolean0= ruleboolean0 EOF ;
     public final String entryRuleboolean0() throws RecognitionException {
         String current = null;
 
@@ -3182,8 +3221,8 @@ public class InternalComponentInterfaceParser extends AbstractInternalAntlrParse
 
 
         try {
-            // InternalComponentInterface.g:1391:48: (iv_ruleboolean0= ruleboolean0 EOF )
-            // InternalComponentInterface.g:1392:2: iv_ruleboolean0= ruleboolean0 EOF
+            // InternalComponentInterface.g:1408:48: (iv_ruleboolean0= ruleboolean0 EOF )
+            // InternalComponentInterface.g:1409:2: iv_ruleboolean0= ruleboolean0 EOF
             {
              newCompositeNode(grammarAccess.getBoolean0Rule()); 
             pushFollow(FOLLOW_1);
@@ -3210,7 +3249,7 @@ public class InternalComponentInterfaceParser extends AbstractInternalAntlrParse
 
 
     // $ANTLR start "ruleboolean0"
-    // InternalComponentInterface.g:1398:1: ruleboolean0 returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_BOOLEAN_0= RULE_BOOLEAN ;
+    // InternalComponentInterface.g:1415:1: ruleboolean0 returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_BOOLEAN_0= RULE_BOOLEAN ;
     public final AntlrDatatypeRuleToken ruleboolean0() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -3220,8 +3259,8 @@ public class InternalComponentInterfaceParser extends AbstractInternalAntlrParse
         	enterRule();
 
         try {
-            // InternalComponentInterface.g:1404:2: (this_BOOLEAN_0= RULE_BOOLEAN )
-            // InternalComponentInterface.g:1405:2: this_BOOLEAN_0= RULE_BOOLEAN
+            // InternalComponentInterface.g:1421:2: (this_BOOLEAN_0= RULE_BOOLEAN )
+            // InternalComponentInterface.g:1422:2: this_BOOLEAN_0= RULE_BOOLEAN
             {
             this_BOOLEAN_0=(Token)match(input,RULE_BOOLEAN,FOLLOW_2); 
 
@@ -3250,7 +3289,7 @@ public class InternalComponentInterfaceParser extends AbstractInternalAntlrParse
 
 
     // $ANTLR start "entryRuleDouble0"
-    // InternalComponentInterface.g:1415:1: entryRuleDouble0 returns [String current=null] : iv_ruleDouble0= ruleDouble0 EOF ;
+    // InternalComponentInterface.g:1432:1: entryRuleDouble0 returns [String current=null] : iv_ruleDouble0= ruleDouble0 EOF ;
     public final String entryRuleDouble0() throws RecognitionException {
         String current = null;
 
@@ -3258,8 +3297,8 @@ public class InternalComponentInterfaceParser extends AbstractInternalAntlrParse
 
 
         try {
-            // InternalComponentInterface.g:1415:47: (iv_ruleDouble0= ruleDouble0 EOF )
-            // InternalComponentInterface.g:1416:2: iv_ruleDouble0= ruleDouble0 EOF
+            // InternalComponentInterface.g:1432:47: (iv_ruleDouble0= ruleDouble0 EOF )
+            // InternalComponentInterface.g:1433:2: iv_ruleDouble0= ruleDouble0 EOF
             {
              newCompositeNode(grammarAccess.getDouble0Rule()); 
             pushFollow(FOLLOW_1);
@@ -3286,7 +3325,7 @@ public class InternalComponentInterfaceParser extends AbstractInternalAntlrParse
 
 
     // $ANTLR start "ruleDouble0"
-    // InternalComponentInterface.g:1422:1: ruleDouble0 returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_DOUBLE_0= RULE_DOUBLE ;
+    // InternalComponentInterface.g:1439:1: ruleDouble0 returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_DOUBLE_0= RULE_DOUBLE ;
     public final AntlrDatatypeRuleToken ruleDouble0() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -3296,8 +3335,8 @@ public class InternalComponentInterfaceParser extends AbstractInternalAntlrParse
         	enterRule();
 
         try {
-            // InternalComponentInterface.g:1428:2: (this_DOUBLE_0= RULE_DOUBLE )
-            // InternalComponentInterface.g:1429:2: this_DOUBLE_0= RULE_DOUBLE
+            // InternalComponentInterface.g:1445:2: (this_DOUBLE_0= RULE_DOUBLE )
+            // InternalComponentInterface.g:1446:2: this_DOUBLE_0= RULE_DOUBLE
             {
             this_DOUBLE_0=(Token)match(input,RULE_DOUBLE,FOLLOW_2); 
 
@@ -3323,6 +3362,82 @@ public class InternalComponentInterfaceParser extends AbstractInternalAntlrParse
         return current;
     }
     // $ANTLR end "ruleDouble0"
+
+
+    // $ANTLR start "entryRuleInteger0"
+    // InternalComponentInterface.g:1456:1: entryRuleInteger0 returns [String current=null] : iv_ruleInteger0= ruleInteger0 EOF ;
+    public final String entryRuleInteger0() throws RecognitionException {
+        String current = null;
+
+        AntlrDatatypeRuleToken iv_ruleInteger0 = null;
+
+
+        try {
+            // InternalComponentInterface.g:1456:48: (iv_ruleInteger0= ruleInteger0 EOF )
+            // InternalComponentInterface.g:1457:2: iv_ruleInteger0= ruleInteger0 EOF
+            {
+             newCompositeNode(grammarAccess.getInteger0Rule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleInteger0=ruleInteger0();
+
+            state._fsp--;
+
+             current =iv_ruleInteger0.getText(); 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleInteger0"
+
+
+    // $ANTLR start "ruleInteger0"
+    // InternalComponentInterface.g:1463:1: ruleInteger0 returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_DECINT_0= RULE_DECINT ;
+    public final AntlrDatatypeRuleToken ruleInteger0() throws RecognitionException {
+        AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
+
+        Token this_DECINT_0=null;
+
+
+        	enterRule();
+
+        try {
+            // InternalComponentInterface.g:1469:2: (this_DECINT_0= RULE_DECINT )
+            // InternalComponentInterface.g:1470:2: this_DECINT_0= RULE_DECINT
+            {
+            this_DECINT_0=(Token)match(input,RULE_DECINT,FOLLOW_2); 
+
+            		current.merge(this_DECINT_0);
+            	
+
+            		newLeafNode(this_DECINT_0, grammarAccess.getInteger0Access().getDECINTTerminalRuleCall());
+            	
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleInteger0"
 
     // Delegated rules
 
@@ -3363,6 +3478,6 @@ public class InternalComponentInterfaceParser extends AbstractInternalAntlrParse
     public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0000400800000000L});
     public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x0000400000000000L});
     public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x0000800008000000L});
-    public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x00000000000000F0L});
+    public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x00000000000001F0L});
 
 }

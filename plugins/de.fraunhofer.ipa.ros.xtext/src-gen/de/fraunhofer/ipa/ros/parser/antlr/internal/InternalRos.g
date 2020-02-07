@@ -4068,9 +4068,9 @@ ruleParameterInteger returns [EObject current=null]
 	(
 		(
 			{
-				newCompositeNode(grammarAccess.getParameterIntegerAccess().getValueInt_testParserRuleCall_0());
+				newCompositeNode(grammarAccess.getParameterIntegerAccess().getValueInteger0ParserRuleCall_0());
 			}
-			lv_value_0_0=ruleInt_test
+			lv_value_0_0=ruleInteger0
 			{
 				if ($current==null) {
 					$current = createModelElementForParent(grammarAccess.getParameterIntegerRule());
@@ -4079,7 +4079,7 @@ ruleParameterInteger returns [EObject current=null]
 					$current,
 					"value",
 					lv_value_0_0,
-					"de.fraunhofer.ipa.ros.Ros.Int_test");
+					"de.fraunhofer.ipa.ros.Ros.Integer0");
 				afterParserOrEnumRuleCall();
 			}
 		)
@@ -4539,27 +4539,27 @@ ruleDouble0 returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()
 	}
 ;
 
-// Entry rule entryRuleInt_test
-entryRuleInt_test returns [String current=null]:
-	{ newCompositeNode(grammarAccess.getInt_testRule()); }
-	iv_ruleInt_test=ruleInt_test
-	{ $current=$iv_ruleInt_test.current.getText(); }
+// Entry rule entryRuleInteger0
+entryRuleInteger0 returns [String current=null]:
+	{ newCompositeNode(grammarAccess.getInteger0Rule()); }
+	iv_ruleInteger0=ruleInteger0
+	{ $current=$iv_ruleInteger0.current.getText(); }
 	EOF;
 
-// Rule Int_test
-ruleInt_test returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+// Rule Integer0
+ruleInteger0 returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
 @init {
 	enterRule();
 }
 @after {
 	leaveRule();
 }:
-	this_INT_0=RULE_INT
+	this_DECINT_0=RULE_DECINT
 	{
-		$current.merge(this_INT_0);
+		$current.merge(this_DECINT_0);
 	}
 	{
-		newLeafNode(this_INT_0, grammarAccess.getInt_testAccess().getINTTerminalRuleCall());
+		newLeafNode(this_DECINT_0, grammarAccess.getInteger0Access().getDECINTTerminalRuleCall());
 	}
 ;
 
@@ -6008,7 +6008,7 @@ fragment RULE_DIGIT : '0'..'9';
 
 RULE_DOUBLE : RULE_DECINT ('.' RULE_DIGIT*|('.' RULE_DIGIT*)? ('E'|'e') ('-'|'+')? RULE_DECINT);
 
-fragment RULE_DECINT : ('0'|'1'..'9' RULE_DIGIT*);
+RULE_DECINT : ('0'|'1'..'9' RULE_DIGIT*);
 
 fragment RULE_SIGN : ('+'|'-');
 
@@ -6026,7 +6026,7 @@ RULE_MESSAGE_ASIGMENT : (RULE_ID|RULE_STRING) '=' (RULE_ID|RULE_STRING|RULE_INT|
 
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 
-RULE_INT : ('0'..'9')+;
+fragment RULE_INT : ('0'..'9')+;
 
 RULE_STRING : ('"' ('\\' .|~(('\\'|'"')))* '"'|'\'' ('\\' .|~(('\\'|'\'')))* '\'');
 

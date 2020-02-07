@@ -94,7 +94,7 @@ NS returns NS:
 // PARAMETERS!!
 
 ParameterValue returns ros::ParameterValue:
-	{ros::ParameterDouble} Double0|{ros::ParameterBoolean} boolean0|{ros::ParameterString} EString;
+	{ros::ParameterDouble} Double0|{ros::ParameterBoolean} boolean0|{ros::ParameterString} EString | {ros::ParameterInteger} Integer0;
 
 
 //PARAMETRRS PRIMITIVES TYPES
@@ -124,3 +124,7 @@ boolean0 returns type::Boolean:
 
 Double0 returns type::Double:
 	DOUBLE;
+
+Integer0 returns type::Int:
+	DECINT
+;

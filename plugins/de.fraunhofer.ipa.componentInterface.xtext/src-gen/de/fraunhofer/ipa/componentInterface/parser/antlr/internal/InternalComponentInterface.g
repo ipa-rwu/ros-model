@@ -1384,6 +1384,23 @@ ruleParameterValue returns [EObject current=null]
 				afterParserOrEnumRuleCall();
 			}
 		)
+		    |
+		(
+			(
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getParameterValueAccess().getParameterIntegerAction_3_0(),
+						$current);
+				}
+			)
+			{
+				newCompositeNode(grammarAccess.getParameterValueAccess().getInteger0ParserRuleCall_3_1());
+			}
+			ruleInteger0
+			{
+				afterParserOrEnumRuleCall();
+			}
+		)
 	)
 ;
 
@@ -1435,13 +1452,37 @@ ruleDouble0 returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()
 	}
 ;
 
+// Entry rule entryRuleInteger0
+entryRuleInteger0 returns [String current=null]:
+	{ newCompositeNode(grammarAccess.getInteger0Rule()); }
+	iv_ruleInteger0=ruleInteger0
+	{ $current=$iv_ruleInteger0.current.getText(); }
+	EOF;
+
+// Rule Integer0
+ruleInteger0 returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	this_DECINT_0=RULE_DECINT
+	{
+		$current.merge(this_DECINT_0);
+	}
+	{
+		newLeafNode(this_DECINT_0, grammarAccess.getInteger0Access().getDECINTTerminalRuleCall());
+	}
+;
+
 RULE_BOOLEAN : ('true'|'false');
 
 fragment RULE_DIGIT : '0'..'9';
 
 RULE_DOUBLE : RULE_DECINT ('.' RULE_DIGIT*|('.' RULE_DIGIT*)? ('E'|'e') ('-'|'+')? RULE_DECINT);
 
-fragment RULE_DECINT : ('0'|'1'..'9' RULE_DIGIT*);
+RULE_DECINT : ('0'|'1'..'9' RULE_DIGIT*);
 
 fragment RULE_SIGN : ('+'|'-');
 

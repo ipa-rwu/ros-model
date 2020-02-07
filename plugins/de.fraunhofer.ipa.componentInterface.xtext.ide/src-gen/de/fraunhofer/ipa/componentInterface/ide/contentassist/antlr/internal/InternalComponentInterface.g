@@ -349,6 +349,31 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+// Entry rule entryRuleInteger0
+entryRuleInteger0
+:
+{ before(grammarAccess.getInteger0Rule()); }
+	 ruleInteger0
+{ after(grammarAccess.getInteger0Rule()); } 
+	 EOF 
+;
+
+// Rule Integer0
+ruleInteger0 
+	@init {
+		int stackSize = keepStackSize();
+	}
+	:
+	(
+		{ before(grammarAccess.getInteger0Access().getDECINTTerminalRuleCall()); }
+		RULE_DECINT
+		{ after(grammarAccess.getInteger0Access().getDECINTTerminalRuleCall()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 rule__EString__Alternatives
 	@init {
 		int stackSize = keepStackSize();
@@ -391,6 +416,12 @@ rule__ParameterValue__Alternatives
 		{ before(grammarAccess.getParameterValueAccess().getGroup_2()); }
 		(rule__ParameterValue__Group_2__0)
 		{ after(grammarAccess.getParameterValueAccess().getGroup_2()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getParameterValueAccess().getGroup_3()); }
+		(rule__ParameterValue__Group_3__0)
+		{ after(grammarAccess.getParameterValueAccess().getGroup_3()); }
 	)
 ;
 finally {
@@ -4258,6 +4289,60 @@ finally {
 }
 
 
+rule__ParameterValue__Group_3__0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__ParameterValue__Group_3__0__Impl
+	rule__ParameterValue__Group_3__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ParameterValue__Group_3__0__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getParameterValueAccess().getParameterIntegerAction_3_0()); }
+	()
+	{ after(grammarAccess.getParameterValueAccess().getParameterIntegerAction_3_0()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ParameterValue__Group_3__1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__ParameterValue__Group_3__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ParameterValue__Group_3__1__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getParameterValueAccess().getInteger0ParserRuleCall_3_1()); }
+	ruleInteger0
+	{ after(grammarAccess.getParameterValueAccess().getInteger0ParserRuleCall_3_1()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
 rule__ComponentInterface__NameAssignment_3
 	@init {
 		int stackSize = keepStackSize();
@@ -4862,7 +4947,7 @@ fragment RULE_DIGIT : '0'..'9';
 
 RULE_DOUBLE : RULE_DECINT ('.' RULE_DIGIT*|('.' RULE_DIGIT*)? ('E'|'e') ('-'|'+')? RULE_DECINT);
 
-fragment RULE_DECINT : ('0'|'1'..'9' RULE_DIGIT*);
+RULE_DECINT : ('0'|'1'..'9' RULE_DIGIT*);
 
 fragment RULE_SIGN : ('+'|'-');
 

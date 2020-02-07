@@ -24,6 +24,7 @@ import org.eclipse.xtext.serializer.ISerializationContext;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
 import ros.ParameterBoolean;
 import ros.ParameterDouble;
+import ros.ParameterInteger;
 import ros.ParameterString;
 import ros.RosPackage;
 
@@ -73,6 +74,9 @@ public class ComponentInterfaceSemanticSequencer extends AbstractDelegatingSeman
 				return; 
 			case RosPackage.PARAMETER_DOUBLE:
 				sequence_ParameterValue(context, (ParameterDouble) semanticObject); 
+				return; 
+			case RosPackage.PARAMETER_INTEGER:
+				sequence_ParameterValue(context, (ParameterInteger) semanticObject); 
 				return; 
 			case RosPackage.PARAMETER_STRING:
 				sequence_ParameterValue(context, (ParameterString) semanticObject); 
@@ -124,6 +128,18 @@ public class ComponentInterfaceSemanticSequencer extends AbstractDelegatingSeman
 	 *     {ParameterDouble}
 	 */
 	protected void sequence_ParameterValue(ISerializationContext context, ParameterDouble semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ParameterValue returns ParameterInteger
+	 *
+	 * Constraint:
+	 *     {ParameterInteger}
+	 */
+	protected void sequence_ParameterValue(ISerializationContext context, ParameterInteger semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

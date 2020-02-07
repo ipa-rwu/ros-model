@@ -310,7 +310,7 @@ ParameterBase64 returns ParameterBase64:
 ;
 
 ParameterInteger returns ParameterInteger:
-	value=Int_test
+	value=Integer0
 ;
 
 ParameterDouble returns ParameterDouble:
@@ -384,8 +384,8 @@ boolean0 returns type::Boolean:
 Double0 returns type::Double:
 	DOUBLE;
 
-Int_test returns type::Int:
-	INT
+Integer0 returns type::Int:
+	DECINT
 ;
 
 DateTime returns type::DateTime:

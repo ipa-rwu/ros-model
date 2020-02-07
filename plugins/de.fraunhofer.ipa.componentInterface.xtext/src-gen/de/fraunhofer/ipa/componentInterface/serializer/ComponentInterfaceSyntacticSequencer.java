@@ -30,6 +30,8 @@ public class ComponentInterfaceSyntacticSequencer extends AbstractSyntacticSeque
 			return getDouble0Token(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getEStringRule())
 			return getEStringToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getInteger0Rule())
+			return getInteger0Token(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getBoolean0Rule())
 			return getboolean0Token(semanticObject, ruleCall, node);
 		return "";
@@ -53,6 +55,17 @@ public class ComponentInterfaceSyntacticSequencer extends AbstractSyntacticSeque
 		if (node != null)
 			return getTokenText(node);
 		return "\"\"";
+	}
+	
+	/**
+	 * Integer0 returns type::Int:
+	 * 	DECINT
+	 * ;
+	 */
+	protected String getInteger0Token(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "0";
 	}
 	
 	/**

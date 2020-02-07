@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class InternalRosLexer extends Lexer {
     public static final int RULE_HEX=18;
     public static final int T__50=50;
-    public static final int RULE_SIGN=15;
+    public static final int RULE_SIGN=14;
     public static final int T__59=59;
     public static final int T__55=55;
     public static final int T__56=56;
@@ -28,7 +28,7 @@ public class InternalRosLexer extends Lexer {
     public static final int T__61=61;
     public static final int RULE_ID=5;
     public static final int RULE_DIGIT=13;
-    public static final int RULE_INT=11;
+    public static final int RULE_INT=15;
     public static final int T__66=66;
     public static final int RULE_ML_COMMENT=20;
     public static final int T__67=67;
@@ -46,7 +46,7 @@ public class InternalRosLexer extends Lexer {
     public static final int T__34=34;
     public static final int T__35=35;
     public static final int T__36=36;
-    public static final int RULE_DECINT=14;
+    public static final int RULE_DECINT=11;
     public static final int T__30=30;
     public static final int T__31=31;
     public static final int T__32=32;
@@ -2578,10 +2578,12 @@ public class InternalRosLexer extends Lexer {
     // $ANTLR start "RULE_DECINT"
     public final void mRULE_DECINT() throws RecognitionException {
         try {
-            // InternalRos.g:6011:22: ( ( '0' | '1' .. '9' ( RULE_DIGIT )* ) )
-            // InternalRos.g:6011:24: ( '0' | '1' .. '9' ( RULE_DIGIT )* )
+            int _type = RULE_DECINT;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // InternalRos.g:6011:13: ( ( '0' | '1' .. '9' ( RULE_DIGIT )* ) )
+            // InternalRos.g:6011:15: ( '0' | '1' .. '9' ( RULE_DIGIT )* )
             {
-            // InternalRos.g:6011:24: ( '0' | '1' .. '9' ( RULE_DIGIT )* )
+            // InternalRos.g:6011:15: ( '0' | '1' .. '9' ( RULE_DIGIT )* )
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -2599,17 +2601,17 @@ public class InternalRosLexer extends Lexer {
             }
             switch (alt10) {
                 case 1 :
-                    // InternalRos.g:6011:25: '0'
+                    // InternalRos.g:6011:16: '0'
                     {
                     match('0'); 
 
                     }
                     break;
                 case 2 :
-                    // InternalRos.g:6011:29: '1' .. '9' ( RULE_DIGIT )*
+                    // InternalRos.g:6011:20: '1' .. '9' ( RULE_DIGIT )*
                     {
                     matchRange('1','9'); 
-                    // InternalRos.g:6011:38: ( RULE_DIGIT )*
+                    // InternalRos.g:6011:29: ( RULE_DIGIT )*
                     loop9:
                     do {
                         int alt9=2;
@@ -2622,7 +2624,7 @@ public class InternalRosLexer extends Lexer {
 
                         switch (alt9) {
                     	case 1 :
-                    	    // InternalRos.g:6011:38: RULE_DIGIT
+                    	    // InternalRos.g:6011:29: RULE_DIGIT
                     	    {
                     	    mRULE_DIGIT(); 
 
@@ -2643,6 +2645,8 @@ public class InternalRosLexer extends Lexer {
 
             }
 
+            state.type = _type;
+            state.channel = _channel;
         }
         finally {
         }
@@ -3169,12 +3173,10 @@ public class InternalRosLexer extends Lexer {
     // $ANTLR start "RULE_INT"
     public final void mRULE_INT() throws RecognitionException {
         try {
-            int _type = RULE_INT;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalRos.g:6029:10: ( ( '0' .. '9' )+ )
-            // InternalRos.g:6029:12: ( '0' .. '9' )+
+            // InternalRos.g:6029:19: ( ( '0' .. '9' )+ )
+            // InternalRos.g:6029:21: ( '0' .. '9' )+
             {
-            // InternalRos.g:6029:12: ( '0' .. '9' )+
+            // InternalRos.g:6029:21: ( '0' .. '9' )+
             int cnt20=0;
             loop20:
             do {
@@ -3188,7 +3190,7 @@ public class InternalRosLexer extends Lexer {
 
                 switch (alt20) {
             	case 1 :
-            	    // InternalRos.g:6029:13: '0' .. '9'
+            	    // InternalRos.g:6029:22: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -3207,8 +3209,6 @@ public class InternalRosLexer extends Lexer {
 
             }
 
-            state.type = _type;
-            state.channel = _channel;
         }
         finally {
         }
@@ -3586,7 +3586,7 @@ public class InternalRosLexer extends Lexer {
     // $ANTLR end "RULE_ANY_OTHER"
 
     public void mTokens() throws RecognitionException {
-        // InternalRos.g:1:8: ( T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | T__81 | T__82 | T__83 | T__84 | T__85 | T__86 | T__87 | T__88 | T__89 | T__90 | T__91 | T__92 | T__93 | T__94 | T__95 | T__96 | T__97 | T__98 | T__99 | T__100 | T__101 | T__102 | T__103 | T__104 | T__105 | T__106 | T__107 | T__108 | T__109 | T__110 | T__111 | T__112 | T__113 | T__114 | T__115 | T__116 | T__117 | T__118 | T__119 | T__120 | RULE_ROS_CONVENTION_A | RULE_ROS_CONVENTION_PARAM | RULE_BOOLEAN | RULE_DOUBLE | RULE_SIGNED_INT | RULE_HEX | RULE_BINARY | RULE_MESSAGE_ASIGMENT | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
+        // InternalRos.g:1:8: ( T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | T__81 | T__82 | T__83 | T__84 | T__85 | T__86 | T__87 | T__88 | T__89 | T__90 | T__91 | T__92 | T__93 | T__94 | T__95 | T__96 | T__97 | T__98 | T__99 | T__100 | T__101 | T__102 | T__103 | T__104 | T__105 | T__106 | T__107 | T__108 | T__109 | T__110 | T__111 | T__112 | T__113 | T__114 | T__115 | T__116 | T__117 | T__118 | T__119 | T__120 | RULE_ROS_CONVENTION_A | RULE_ROS_CONVENTION_PARAM | RULE_BOOLEAN | RULE_DOUBLE | RULE_DECINT | RULE_SIGNED_INT | RULE_HEX | RULE_BINARY | RULE_MESSAGE_ASIGMENT | RULE_ID | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
         int alt29=112;
         alt29 = dfa29.predict(input);
         switch (alt29) {
@@ -4298,77 +4298,77 @@ public class InternalRosLexer extends Lexer {
                 }
                 break;
             case 102 :
-                // InternalRos.g:1:686: RULE_SIGNED_INT
+                // InternalRos.g:1:686: RULE_DECINT
+                {
+                mRULE_DECINT(); 
+
+                }
+                break;
+            case 103 :
+                // InternalRos.g:1:698: RULE_SIGNED_INT
                 {
                 mRULE_SIGNED_INT(); 
 
                 }
                 break;
-            case 103 :
-                // InternalRos.g:1:702: RULE_HEX
+            case 104 :
+                // InternalRos.g:1:714: RULE_HEX
                 {
                 mRULE_HEX(); 
 
                 }
                 break;
-            case 104 :
-                // InternalRos.g:1:711: RULE_BINARY
+            case 105 :
+                // InternalRos.g:1:723: RULE_BINARY
                 {
                 mRULE_BINARY(); 
 
                 }
                 break;
-            case 105 :
-                // InternalRos.g:1:723: RULE_MESSAGE_ASIGMENT
+            case 106 :
+                // InternalRos.g:1:735: RULE_MESSAGE_ASIGMENT
                 {
                 mRULE_MESSAGE_ASIGMENT(); 
 
                 }
                 break;
-            case 106 :
-                // InternalRos.g:1:745: RULE_ID
+            case 107 :
+                // InternalRos.g:1:757: RULE_ID
                 {
                 mRULE_ID(); 
 
                 }
                 break;
-            case 107 :
-                // InternalRos.g:1:753: RULE_INT
-                {
-                mRULE_INT(); 
-
-                }
-                break;
             case 108 :
-                // InternalRos.g:1:762: RULE_STRING
+                // InternalRos.g:1:765: RULE_STRING
                 {
                 mRULE_STRING(); 
 
                 }
                 break;
             case 109 :
-                // InternalRos.g:1:774: RULE_ML_COMMENT
+                // InternalRos.g:1:777: RULE_ML_COMMENT
                 {
                 mRULE_ML_COMMENT(); 
 
                 }
                 break;
             case 110 :
-                // InternalRos.g:1:790: RULE_SL_COMMENT
+                // InternalRos.g:1:793: RULE_SL_COMMENT
                 {
                 mRULE_SL_COMMENT(); 
 
                 }
                 break;
             case 111 :
-                // InternalRos.g:1:806: RULE_WS
+                // InternalRos.g:1:809: RULE_WS
                 {
                 mRULE_WS(); 
 
                 }
                 break;
             case 112 :
-                // InternalRos.g:1:814: RULE_ANY_OTHER
+                // InternalRos.g:1:817: RULE_ANY_OTHER
                 {
                 mRULE_ANY_OTHER(); 
 
@@ -4436,17 +4436,17 @@ public class InternalRosLexer extends Lexer {
         }
     }
     static final String DFA29_eotS =
-        "\1\44\1\61\1\uffff\1\61\2\uffff\32\61\3\54\1\61\1\uffff\1\54\2\156\1\uffff\2\54\2\uffff\4\61\2\uffff\1\44\1\uffff\2\61\2\uffff\54\61\4\uffff\1\44\1\61\4\uffff\1\156\1\uffff\1\156\2\uffff\1\u00b6\2\uffff\1\u00b6\1\uffff\4\61\3\uffff\15\61\1\u00cb\45\61\2\44\3\uffff\4\61\1\uffff\4\61\1\u0101\11\61\1\uffff\1\u010b\1\u010d\16\61\1\u011c\3\61\1\u0120\4\61\1\u0125\1\u0126\1\u0127\1\u0128\2\61\1\u012c\3\61\1\u0131\1\u0133\1\u0135\4\61\3\44\6\61\1\u0145\1\61\1\uffff\7\61\1\u014e\1\61\1\uffff\1\61\1\uffff\16\61\1\uffff\2\61\1\u0127\1\uffff\4\61\4\uffff\3\61\1\uffff\2\61\1\u016b\6\uffff\1\u016d\1\u016f\1\u0171\1\u0173\3\61\1\uffff\1\44\6\61\1\uffff\4\61\1\u0182\1\61\1\u0186\1\61\1\uffff\7\61\1\u0190\1\u0191\3\61\1\u0195\1\61\1\u0197\11\61\1\u01a1\2\61\1\u01a4\11\uffff\1\u01a6\1\u01a8\1\u01aa\1\u01ad\3\61\1\u01b1\2\61\1\u01b6\2\61\2\uffff\3\61\1\uffff\6\61\1\u01c3\2\61\2\uffff\1\61\1\u01c8\1\61\1\uffff\1\61\1\uffff\1\u01cb\1\61\1\u01ce\1\u01d0\4\61\1\u01d5\1\uffff\1\61\1\u01d7\7\uffff\2\61\1\uffff\3\61\1\uffff\4\61\1\uffff\1\u01e1\1\61\1\u01e3\2\61\1\u01e6\6\61\1\uffff\1\u01ed\3\61\1\uffff\1\u01f2\1\61\1\uffff\1\u01f4\4\uffff\4\61\1\uffff\1\u01f9\1\uffff\2\61\1\u01fe\1\u01ff\1\61\1\u0202\1\u0203\2\61\1\uffff\1\61\1\uffff\2\61\1\uffff\3\61\1\u020c\2\61\1\uffff\4\61\1\uffff\1\u0213\1\uffff\1\u0214\3\61\1\uffff\1\u0218\3\61\2\uffff\2\61\2\uffff\2\61\1\u0220\2\61\1\u0223\2\61\1\uffff\1\61\1\u0227\3\61\1\u022b\2\uffff\3\61\1\uffff\7\61\1\uffff\2\61\1\uffff\3\61\1\uffff\1\u023b\2\61\1\uffff\4\61\1\u0242\5\61\1\u0248\1\u0249\1\u024a\1\u024b\1\61\1\uffff\6\61\1\uffff\3\61\1\u0256\1\u0257\4\uffff\1\u0258\1\u0259\1\u025a\7\61\5\uffff\4\61\1\u0268\2\61\1\u026b\5\61\1\uffff\1\u0271\1\61\1\uffff\2\61\1\u0275\2\61\1\uffff\2\61\1\u027a\1\uffff\3\61\1\u027e\1\uffff\3\61\1\uffff\3\61\1\u0285\2\61\1\uffff\6\61\1\u028e\1\u028f\2\uffff";
+        "\1\44\1\61\1\uffff\1\61\2\uffff\32\61\3\54\1\61\1\uffff\1\54\2\156\1\uffff\2\54\2\uffff\4\61\2\uffff\1\44\1\uffff\2\61\2\uffff\54\61\4\uffff\1\44\1\61\6\uffff\1\156\2\uffff\1\u00b6\2\uffff\1\u00b6\1\uffff\4\61\3\uffff\15\61\1\u00cb\45\61\2\44\3\uffff\4\61\1\uffff\4\61\1\u0101\11\61\1\uffff\1\u010b\1\u010d\16\61\1\u011c\3\61\1\u0120\4\61\1\u0125\1\u0126\1\u0127\1\u0128\2\61\1\u012c\3\61\1\u0131\1\u0133\1\u0135\4\61\3\44\6\61\1\u0145\1\61\1\uffff\7\61\1\u014e\1\61\1\uffff\1\61\1\uffff\16\61\1\uffff\2\61\1\u0127\1\uffff\4\61\4\uffff\3\61\1\uffff\2\61\1\u016b\6\uffff\1\u016d\1\u016f\1\u0171\1\u0173\3\61\1\uffff\1\44\6\61\1\uffff\4\61\1\u0182\1\61\1\u0186\1\61\1\uffff\7\61\1\u0190\1\u0191\3\61\1\u0195\1\61\1\u0197\11\61\1\u01a1\2\61\1\u01a4\11\uffff\1\u01a6\1\u01a8\1\u01aa\1\u01ad\3\61\1\u01b1\2\61\1\u01b6\2\61\2\uffff\3\61\1\uffff\6\61\1\u01c3\2\61\2\uffff\1\61\1\u01c8\1\61\1\uffff\1\61\1\uffff\1\u01cb\1\61\1\u01ce\1\u01d0\4\61\1\u01d5\1\uffff\1\61\1\u01d7\7\uffff\2\61\1\uffff\3\61\1\uffff\4\61\1\uffff\1\u01e1\1\61\1\u01e3\2\61\1\u01e6\6\61\1\uffff\1\u01ed\3\61\1\uffff\1\u01f2\1\61\1\uffff\1\u01f4\4\uffff\4\61\1\uffff\1\u01f9\1\uffff\2\61\1\u01fe\1\u01ff\1\61\1\u0202\1\u0203\2\61\1\uffff\1\61\1\uffff\2\61\1\uffff\3\61\1\u020c\2\61\1\uffff\4\61\1\uffff\1\u0213\1\uffff\1\u0214\3\61\1\uffff\1\u0218\3\61\2\uffff\2\61\2\uffff\2\61\1\u0220\2\61\1\u0223\2\61\1\uffff\1\61\1\u0227\3\61\1\u022b\2\uffff\3\61\1\uffff\7\61\1\uffff\2\61\1\uffff\3\61\1\uffff\1\u023b\2\61\1\uffff\4\61\1\u0242\5\61\1\u0248\1\u0249\1\u024a\1\u024b\1\61\1\uffff\6\61\1\uffff\3\61\1\u0256\1\u0257\4\uffff\1\u0258\1\u0259\1\u025a\7\61\5\uffff\4\61\1\u0268\2\61\1\u026b\5\61\1\uffff\1\u0271\1\61\1\uffff\2\61\1\u0275\2\61\1\uffff\2\61\1\u027a\1\uffff\3\61\1\u027e\1\uffff\3\61\1\uffff\3\61\1\u0285\2\61\1\uffff\6\61\1\u028e\1\u028f\2\uffff";
     static final String DFA29_eofS =
         "\u0290\uffff";
     static final String DFA29_minS =
-        "\1\0\1\57\1\uffff\1\57\2\uffff\32\57\1\135\1\52\1\101\1\57\1\uffff\1\101\2\56\1\uffff\2\0\2\uffff\4\57\2\uffff\1\57\1\uffff\2\57\2\uffff\54\57\3\uffff\1\101\2\57\4\uffff\1\60\1\uffff\1\56\2\0\1\75\2\0\1\75\1\uffff\4\57\2\101\66\57\1\0\1\uffff\1\0\23\57\1\uffff\65\57\1\uffff\11\57\1\uffff\1\57\1\uffff\16\57\1\uffff\3\57\1\uffff\4\57\4\uffff\3\57\1\uffff\3\57\6\uffff\7\57\1\101\7\57\1\uffff\10\57\1\uffff\34\57\11\uffff\15\57\2\uffff\3\57\1\uffff\11\57\2\uffff\3\57\1\uffff\1\57\1\uffff\11\57\1\uffff\2\57\7\uffff\2\57\1\uffff\3\57\1\uffff\4\57\1\uffff\14\57\1\uffff\4\57\1\uffff\2\57\1\uffff\1\57\4\uffff\4\57\1\uffff\1\57\1\uffff\11\57\1\uffff\1\57\1\uffff\2\57\1\uffff\6\57\1\uffff\4\57\1\uffff\1\57\1\uffff\4\57\1\uffff\4\57\2\uffff\2\57\2\uffff\10\57\1\uffff\6\57\2\uffff\3\57\1\uffff\7\57\1\uffff\2\57\1\uffff\3\57\1\uffff\3\57\1\uffff\17\57\1\uffff\6\57\1\uffff\5\57\4\uffff\12\57\5\uffff\15\57\1\uffff\2\57\1\uffff\5\57\1\uffff\3\57\1\uffff\4\57\1\uffff\3\57\1\uffff\6\57\1\uffff\10\57\2\uffff";
+        "\1\0\1\57\1\uffff\1\57\2\uffff\32\57\1\135\1\52\1\101\1\57\1\uffff\1\101\2\56\1\uffff\2\0\2\uffff\4\57\2\uffff\1\57\1\uffff\2\57\2\uffff\54\57\3\uffff\1\101\2\57\6\uffff\1\56\2\0\1\75\2\0\1\75\1\uffff\4\57\2\101\66\57\1\0\1\uffff\1\0\23\57\1\uffff\65\57\1\uffff\11\57\1\uffff\1\57\1\uffff\16\57\1\uffff\3\57\1\uffff\4\57\4\uffff\3\57\1\uffff\3\57\6\uffff\7\57\1\101\7\57\1\uffff\10\57\1\uffff\34\57\11\uffff\15\57\2\uffff\3\57\1\uffff\11\57\2\uffff\3\57\1\uffff\1\57\1\uffff\11\57\1\uffff\2\57\7\uffff\2\57\1\uffff\3\57\1\uffff\4\57\1\uffff\14\57\1\uffff\4\57\1\uffff\2\57\1\uffff\1\57\4\uffff\4\57\1\uffff\1\57\1\uffff\11\57\1\uffff\1\57\1\uffff\2\57\1\uffff\6\57\1\uffff\4\57\1\uffff\1\57\1\uffff\4\57\1\uffff\4\57\2\uffff\2\57\2\uffff\10\57\1\uffff\6\57\2\uffff\3\57\1\uffff\7\57\1\uffff\2\57\1\uffff\3\57\1\uffff\3\57\1\uffff\17\57\1\uffff\6\57\1\uffff\5\57\4\uffff\12\57\5\uffff\15\57\1\uffff\2\57\1\uffff\5\57\1\uffff\3\57\1\uffff\4\57\1\uffff\3\57\1\uffff\6\57\1\uffff\10\57\2\uffff";
     static final String DFA29_maxS =
-        "\1\uffff\1\172\1\uffff\1\172\2\uffff\32\172\1\135\3\172\1\uffff\1\172\1\170\1\145\1\uffff\2\uffff\2\uffff\4\172\2\uffff\1\176\1\uffff\2\172\2\uffff\54\172\3\uffff\1\172\1\176\1\172\4\uffff\1\71\1\uffff\1\145\2\uffff\1\75\2\uffff\1\75\1\uffff\72\172\2\176\1\uffff\1\uffff\1\uffff\23\172\1\uffff\52\172\3\176\10\172\1\uffff\11\172\1\uffff\1\172\1\uffff\16\172\1\uffff\3\172\1\uffff\4\172\4\uffff\3\172\1\uffff\3\172\6\uffff\10\172\1\176\6\172\1\uffff\10\172\1\uffff\34\172\11\uffff\15\172\2\uffff\3\172\1\uffff\11\172\2\uffff\3\172\1\uffff\1\172\1\uffff\11\172\1\uffff\2\172\7\uffff\2\172\1\uffff\3\172\1\uffff\4\172\1\uffff\14\172\1\uffff\4\172\1\uffff\2\172\1\uffff\1\172\4\uffff\4\172\1\uffff\1\172\1\uffff\11\172\1\uffff\1\172\1\uffff\2\172\1\uffff\6\172\1\uffff\4\172\1\uffff\1\172\1\uffff\4\172\1\uffff\4\172\2\uffff\2\172\2\uffff\10\172\1\uffff\6\172\2\uffff\3\172\1\uffff\7\172\1\uffff\2\172\1\uffff\3\172\1\uffff\3\172\1\uffff\17\172\1\uffff\6\172\1\uffff\5\172\4\uffff\12\172\5\uffff\15\172\1\uffff\2\172\1\uffff\5\172\1\uffff\3\172\1\uffff\4\172\1\uffff\3\172\1\uffff\6\172\1\uffff\10\172\2\uffff";
+        "\1\uffff\1\172\1\uffff\1\172\2\uffff\32\172\1\135\3\172\1\uffff\1\172\1\170\1\145\1\uffff\2\uffff\2\uffff\4\172\2\uffff\1\176\1\uffff\2\172\2\uffff\54\172\3\uffff\1\172\1\176\1\172\6\uffff\1\145\2\uffff\1\75\2\uffff\1\75\1\uffff\72\172\2\176\1\uffff\1\uffff\1\uffff\23\172\1\uffff\52\172\3\176\10\172\1\uffff\11\172\1\uffff\1\172\1\uffff\16\172\1\uffff\3\172\1\uffff\4\172\4\uffff\3\172\1\uffff\3\172\6\uffff\10\172\1\176\6\172\1\uffff\10\172\1\uffff\34\172\11\uffff\15\172\2\uffff\3\172\1\uffff\11\172\2\uffff\3\172\1\uffff\1\172\1\uffff\11\172\1\uffff\2\172\7\uffff\2\172\1\uffff\3\172\1\uffff\4\172\1\uffff\14\172\1\uffff\4\172\1\uffff\2\172\1\uffff\1\172\4\uffff\4\172\1\uffff\1\172\1\uffff\11\172\1\uffff\1\172\1\uffff\2\172\1\uffff\6\172\1\uffff\4\172\1\uffff\1\172\1\uffff\4\172\1\uffff\4\172\2\uffff\2\172\2\uffff\10\172\1\uffff\6\172\2\uffff\3\172\1\uffff\7\172\1\uffff\2\172\1\uffff\3\172\1\uffff\3\172\1\uffff\17\172\1\uffff\6\172\1\uffff\5\172\4\uffff\12\172\5\uffff\15\172\1\uffff\2\172\1\uffff\5\172\1\uffff\3\172\1\uffff\4\172\1\uffff\3\172\1\uffff\6\172\1\uffff\10\172\2\uffff";
     static final String DFA29_acceptS =
-        "\2\uffff\1\2\1\uffff\1\4\1\5\36\uffff\1\142\3\uffff\1\146\2\uffff\1\157\1\160\4\uffff\1\152\1\151\1\uffff\1\2\2\uffff\1\4\1\5\54\uffff\1\141\1\155\1\156\3\uffff\1\143\1\147\1\150\1\146\1\uffff\1\145\7\uffff\1\157\75\uffff\1\154\24\uffff\1\75\65\uffff\1\7\11\uffff\1\12\1\uffff\1\31\16\uffff\1\25\3\uffff\1\30\4\uffff\1\62\1\122\1\144\1\63\3\uffff\1\72\3\uffff\1\124\1\105\1\140\1\121\1\125\1\106\17\uffff\1\56\10\uffff\1\76\34\uffff\1\100\1\127\1\110\1\131\1\112\1\133\1\114\1\126\1\107\15\uffff\1\137\1\120\3\uffff\1\50\11\uffff\1\22\1\66\3\uffff\1\26\1\uffff\1\21\11\uffff\1\71\2\uffff\1\74\1\130\1\111\1\132\1\113\1\134\1\115\2\uffff\1\6\3\uffff\1\3\4\uffff\1\42\14\uffff\1\65\4\uffff\1\16\2\uffff\1\23\1\uffff\1\135\1\116\1\136\1\117\4\uffff\1\70\1\uffff\1\73\11\uffff\1\64\1\uffff\1\10\2\uffff\1\11\6\uffff\1\123\4\uffff\1\17\1\uffff\1\27\4\uffff\1\104\4\uffff\1\61\1\44\2\uffff\1\40\1\33\10\uffff\1\43\6\uffff\1\20\1\52\3\uffff\1\1\7\uffff\1\34\2\uffff\1\24\3\uffff\1\14\3\uffff\1\45\17\uffff\1\15\6\uffff\1\77\5\uffff\1\36\1\37\1\47\1\51\12\uffff\1\32\1\35\1\13\1\41\1\46\15\uffff\1\101\2\uffff\1\55\5\uffff\1\60\3\uffff\1\53\4\uffff\1\57\3\uffff\1\54\6\uffff\1\102\10\uffff\1\103\1\67";
+        "\2\uffff\1\2\1\uffff\1\4\1\5\36\uffff\1\142\3\uffff\1\147\2\uffff\1\157\1\160\4\uffff\1\153\1\152\1\uffff\1\2\2\uffff\1\4\1\5\54\uffff\1\141\1\155\1\156\3\uffff\1\143\1\150\1\151\1\146\1\145\1\147\7\uffff\1\157\75\uffff\1\154\24\uffff\1\75\65\uffff\1\7\11\uffff\1\12\1\uffff\1\31\16\uffff\1\25\3\uffff\1\30\4\uffff\1\62\1\122\1\144\1\63\3\uffff\1\72\3\uffff\1\124\1\105\1\140\1\121\1\125\1\106\17\uffff\1\56\10\uffff\1\76\34\uffff\1\100\1\127\1\110\1\131\1\112\1\133\1\114\1\126\1\107\15\uffff\1\137\1\120\3\uffff\1\50\11\uffff\1\22\1\66\3\uffff\1\26\1\uffff\1\21\11\uffff\1\71\2\uffff\1\74\1\130\1\111\1\132\1\113\1\134\1\115\2\uffff\1\6\3\uffff\1\3\4\uffff\1\42\14\uffff\1\65\4\uffff\1\16\2\uffff\1\23\1\uffff\1\135\1\116\1\136\1\117\4\uffff\1\70\1\uffff\1\73\11\uffff\1\64\1\uffff\1\10\2\uffff\1\11\6\uffff\1\123\4\uffff\1\17\1\uffff\1\27\4\uffff\1\104\4\uffff\1\61\1\44\2\uffff\1\40\1\33\10\uffff\1\43\6\uffff\1\20\1\52\3\uffff\1\1\7\uffff\1\34\2\uffff\1\24\3\uffff\1\14\3\uffff\1\45\17\uffff\1\15\6\uffff\1\77\5\uffff\1\36\1\37\1\47\1\51\12\uffff\1\32\1\35\1\13\1\41\1\46\15\uffff\1\101\2\uffff\1\55\5\uffff\1\60\3\uffff\1\53\4\uffff\1\57\3\uffff\1\54\6\uffff\1\102\10\uffff\1\103\1\67";
     static final String DFA29_specialS =
-        "\1\1\50\uffff\1\7\1\4\107\uffff\1\10\1\3\1\uffff\1\0\1\6\76\uffff\1\2\1\uffff\1\5\u01d8\uffff}>";
+        "\1\2\50\uffff\1\7\1\4\107\uffff\1\10\1\3\1\uffff\1\0\1\6\76\uffff\1\1\1\uffff\1\5\u01d8\uffff}>";
     static final String[] DFA29_transitionS = {
             "\11\54\2\53\2\54\1\53\22\54\1\53\1\54\1\51\4\54\1\52\4\54\1\4\1\50\1\54\1\41\1\46\11\47\7\54\1\10\1\33\1\12\1\32\1\25\1\43\1\24\1\17\1\31\2\43\1\30\1\43\1\23\1\43\1\1\1\43\1\26\1\14\1\16\6\43\1\40\2\54\1\42\1\43\1\54\1\7\1\35\1\43\1\13\1\43\1\22\1\21\1\43\1\36\3\43\1\20\1\11\1\43\1\3\1\43\1\15\1\6\1\27\1\37\1\34\4\43\1\2\1\54\1\5\1\45\uff81\54",
             "\1\63\12\60\3\uffff\1\62\3\uffff\32\60\4\uffff\1\60\1\uffff\1\55\20\60\1\57\2\60\1\56\5\60",
@@ -4486,8 +4486,8 @@ public class InternalRosLexer extends Lexer {
             "\1\63\12\60\3\uffff\1\62\3\uffff\32\60\4\uffff\1\60\1\uffff\32\60",
             "",
             "\32\153\3\uffff\2\153\1\uffff\32\153",
-            "\1\160\1\uffff\12\157\13\uffff\1\160\34\uffff\1\155\2\uffff\1\160\22\uffff\1\154",
-            "\1\160\1\uffff\12\161\13\uffff\1\160\37\uffff\1\160",
+            "\1\157\1\uffff\12\160\13\uffff\1\157\34\uffff\1\155\2\uffff\1\157\22\uffff\1\154",
+            "\1\157\1\uffff\12\161\13\uffff\1\157\37\uffff\1\157",
             "",
             "\42\163\1\164\71\163\1\162\uffa3\163",
             "\47\166\1\167\64\166\1\165\uffa3\166",
@@ -4559,9 +4559,9 @@ public class InternalRosLexer extends Lexer {
             "",
             "",
             "",
-            "\12\157",
             "",
-            "\1\160\1\uffff\12\161\13\uffff\1\160\37\uffff\1\160",
+            "",
+            "\1\157\1\uffff\12\161\13\uffff\1\157\37\uffff\1\157",
             "\0\u00b5",
             "\42\163\1\164\71\163\1\162\uffa3\163",
             "\1\62",
@@ -5136,7 +5136,7 @@ public class InternalRosLexer extends Lexer {
             this.transition = DFA29_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | T__81 | T__82 | T__83 | T__84 | T__85 | T__86 | T__87 | T__88 | T__89 | T__90 | T__91 | T__92 | T__93 | T__94 | T__95 | T__96 | T__97 | T__98 | T__99 | T__100 | T__101 | T__102 | T__103 | T__104 | T__105 | T__106 | T__107 | T__108 | T__109 | T__110 | T__111 | T__112 | T__113 | T__114 | T__115 | T__116 | T__117 | T__118 | T__119 | T__120 | RULE_ROS_CONVENTION_A | RULE_ROS_CONVENTION_PARAM | RULE_BOOLEAN | RULE_DOUBLE | RULE_SIGNED_INT | RULE_HEX | RULE_BINARY | RULE_MESSAGE_ASIGMENT | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
+            return "1:1: Tokens : ( T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | T__81 | T__82 | T__83 | T__84 | T__85 | T__86 | T__87 | T__88 | T__89 | T__90 | T__91 | T__92 | T__93 | T__94 | T__95 | T__96 | T__97 | T__98 | T__99 | T__100 | T__101 | T__102 | T__103 | T__104 | T__105 | T__106 | T__107 | T__108 | T__109 | T__110 | T__111 | T__112 | T__113 | T__114 | T__115 | T__116 | T__117 | T__118 | T__119 | T__120 | RULE_ROS_CONVENTION_A | RULE_ROS_CONVENTION_PARAM | RULE_BOOLEAN | RULE_DOUBLE | RULE_DECINT | RULE_SIGNED_INT | RULE_HEX | RULE_BINARY | RULE_MESSAGE_ASIGMENT | RULE_ID | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             IntStream input = _input;
@@ -5151,6 +5151,18 @@ public class InternalRosLexer extends Lexer {
                         if ( s>=0 ) return s;
                         break;
                     case 1 : 
+                        int LA29_181 = input.LA(1);
+
+                        s = -1;
+                        if ( (LA29_181=='\"') ) {s = 116;}
+
+                        else if ( (LA29_181=='\\') ) {s = 114;}
+
+                        else if ( ((LA29_181>='\u0000' && LA29_181<='!')||(LA29_181>='#' && LA29_181<='[')||(LA29_181>=']' && LA29_181<='\uFFFF')) ) {s = 115;}
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 2 : 
                         int LA29_0 = input.LA(1);
 
                         s = -1;
@@ -5241,18 +5253,6 @@ public class InternalRosLexer extends Lexer {
                         else if ( ((LA29_0>='\u0000' && LA29_0<='\b')||(LA29_0>='\u000B' && LA29_0<='\f')||(LA29_0>='\u000E' && LA29_0<='\u001F')||LA29_0=='!'||(LA29_0>='#' && LA29_0<='&')||(LA29_0>='(' && LA29_0<='+')||LA29_0=='.'||(LA29_0>=':' && LA29_0<='@')||(LA29_0>='\\' && LA29_0<=']')||LA29_0=='`'||LA29_0=='|'||(LA29_0>='\u007F' && LA29_0<='\uFFFF')) ) {s = 44;}
 
                         else s = 36;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 2 : 
-                        int LA29_181 = input.LA(1);
-
-                        s = -1;
-                        if ( (LA29_181=='\"') ) {s = 116;}
-
-                        else if ( (LA29_181=='\\') ) {s = 114;}
-
-                        else if ( ((LA29_181>='\u0000' && LA29_181<='!')||(LA29_181>='#' && LA29_181<='[')||(LA29_181>=']' && LA29_181<='\uFFFF')) ) {s = 115;}
 
                         if ( s>=0 ) return s;
                         break;

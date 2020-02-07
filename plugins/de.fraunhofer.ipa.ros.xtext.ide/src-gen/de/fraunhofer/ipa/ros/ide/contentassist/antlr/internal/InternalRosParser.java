@@ -22,11 +22,11 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalRosParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_BINARY", "RULE_BOOLEAN", "RULE_DOUBLE", "RULE_INT", "RULE_STRING", "RULE_ID", "RULE_ROS_CONVENTION_A", "RULE_ROS_CONVENTION_PARAM", "RULE_MESSAGE_ASIGMENT", "RULE_DIGIT", "RULE_DECINT", "RULE_SIGN", "RULE_SIGNED_INT", "RULE_HEX_DIGIT", "RULE_HEX", "RULE_BINARY_DIGIT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'GraphName'", "'DateTime'", "'Header'", "'String'", "'goal'", "'message'", "'result'", "'feedback'", "'name'", "'value'", "'service'", "'type'", "'action'", "'duration'", "'time'", "'PackageSet'", "'{'", "'}'", "'package'", "','", "'Package'", "'spec'", "'artifact'", "'Artifact'", "'node'", "'CatkinPackage'", "'dependency'", "'ServiceSpec'", "'request'", "'response'", "'TopicSpec'", "'ActionSpec'", "'Node'", "'serviceserver'", "'publisher'", "'subscriber'", "'serviceclient'", "'actionserver'", "'actionclient'", "'parameter'", "'ServiceServer'", "'namespace'", "'Publisher'", "'Subscriber'", "'ServiceClient'", "'ActionServer'", "'ActionClient'", "'PackageDependency'", "'ExternalDependency'", "'GlobalNamespace'", "'parts'", "'RelativeNamespace'", "'PrivateNamespace'", "'Parameter'", "'List'", "'sequence'", "'default'", "'Struct'", "'parameterstructypetmember'", "'Integer'", "'Double'", "'Date'", "'Boolean'", "'Base64'", "'Any'", "'Array'", "'ParameterAny'", "'ParameterStruct'", "'ParameterStructMember'", "'ParameterStructTypeMember'", "'bool'", "'int8'", "'uint8'", "'int16'", "'uint16'", "'int32'", "'uint32'", "'int64'", "'uint64'", "'float32'", "'float64'", "'string'", "'byte'", "'bool[]'", "'int8[]'", "'uint8[]'", "'int16[]'", "'uint16[]'", "'int32[]'", "'uint32[]'", "'int64[]'", "'uint64[]'", "'float32[]'", "'float64[]'", "'string[]'", "'byte[]'", "'[]'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_BINARY", "RULE_BOOLEAN", "RULE_DOUBLE", "RULE_DECINT", "RULE_STRING", "RULE_ID", "RULE_ROS_CONVENTION_A", "RULE_ROS_CONVENTION_PARAM", "RULE_MESSAGE_ASIGMENT", "RULE_DIGIT", "RULE_SIGN", "RULE_INT", "RULE_SIGNED_INT", "RULE_HEX_DIGIT", "RULE_HEX", "RULE_BINARY_DIGIT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'GraphName'", "'DateTime'", "'Header'", "'String'", "'goal'", "'message'", "'result'", "'feedback'", "'name'", "'value'", "'service'", "'type'", "'action'", "'duration'", "'time'", "'PackageSet'", "'{'", "'}'", "'package'", "','", "'Package'", "'spec'", "'artifact'", "'Artifact'", "'node'", "'CatkinPackage'", "'dependency'", "'ServiceSpec'", "'request'", "'response'", "'TopicSpec'", "'ActionSpec'", "'Node'", "'serviceserver'", "'publisher'", "'subscriber'", "'serviceclient'", "'actionserver'", "'actionclient'", "'parameter'", "'ServiceServer'", "'namespace'", "'Publisher'", "'Subscriber'", "'ServiceClient'", "'ActionServer'", "'ActionClient'", "'PackageDependency'", "'ExternalDependency'", "'GlobalNamespace'", "'parts'", "'RelativeNamespace'", "'PrivateNamespace'", "'Parameter'", "'List'", "'sequence'", "'default'", "'Struct'", "'parameterstructypetmember'", "'Integer'", "'Double'", "'Date'", "'Boolean'", "'Base64'", "'Any'", "'Array'", "'ParameterAny'", "'ParameterStruct'", "'ParameterStructMember'", "'ParameterStructTypeMember'", "'bool'", "'int8'", "'uint8'", "'int16'", "'uint16'", "'int32'", "'uint32'", "'int64'", "'uint64'", "'float32'", "'float64'", "'string'", "'byte'", "'bool[]'", "'int8[]'", "'uint8[]'", "'int16[]'", "'uint16[]'", "'int32[]'", "'uint32[]'", "'int64[]'", "'uint64[]'", "'float32[]'", "'float64[]'", "'string[]'", "'byte[]'", "'[]'"
     };
     public static final int RULE_HEX=18;
     public static final int T__50=50;
-    public static final int RULE_SIGN=15;
+    public static final int RULE_SIGN=14;
     public static final int T__59=59;
     public static final int T__55=55;
     public static final int T__56=56;
@@ -40,7 +40,7 @@ public class InternalRosParser extends AbstractInternalContentAssistParser {
     public static final int T__61=61;
     public static final int RULE_ID=9;
     public static final int RULE_DIGIT=13;
-    public static final int RULE_INT=7;
+    public static final int RULE_INT=15;
     public static final int T__66=66;
     public static final int RULE_ML_COMMENT=20;
     public static final int T__67=67;
@@ -58,7 +58,7 @@ public class InternalRosParser extends AbstractInternalContentAssistParser {
     public static final int T__34=34;
     public static final int T__35=35;
     public static final int T__36=36;
-    public static final int RULE_DECINT=14;
+    public static final int RULE_DECINT=7;
     public static final int T__30=30;
     public static final int T__31=31;
     public static final int T__32=32;
@@ -4373,20 +4373,20 @@ public class InternalRosParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "ruleDouble0"
 
 
-    // $ANTLR start "entryRuleInt_test"
-    // InternalRos.g:1428:1: entryRuleInt_test : ruleInt_test EOF ;
-    public final void entryRuleInt_test() throws RecognitionException {
+    // $ANTLR start "entryRuleInteger0"
+    // InternalRos.g:1428:1: entryRuleInteger0 : ruleInteger0 EOF ;
+    public final void entryRuleInteger0() throws RecognitionException {
         try {
-            // InternalRos.g:1429:1: ( ruleInt_test EOF )
-            // InternalRos.g:1430:1: ruleInt_test EOF
+            // InternalRos.g:1429:1: ( ruleInteger0 EOF )
+            // InternalRos.g:1430:1: ruleInteger0 EOF
             {
-             before(grammarAccess.getInt_testRule()); 
+             before(grammarAccess.getInteger0Rule()); 
             pushFollow(FOLLOW_1);
-            ruleInt_test();
+            ruleInteger0();
 
             state._fsp--;
 
-             after(grammarAccess.getInt_testRule()); 
+             after(grammarAccess.getInteger0Rule()); 
             match(input,EOF,FOLLOW_2); 
 
             }
@@ -4400,25 +4400,25 @@ public class InternalRosParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "entryRuleInt_test"
+    // $ANTLR end "entryRuleInteger0"
 
 
-    // $ANTLR start "ruleInt_test"
-    // InternalRos.g:1437:1: ruleInt_test : ( RULE_INT ) ;
-    public final void ruleInt_test() throws RecognitionException {
+    // $ANTLR start "ruleInteger0"
+    // InternalRos.g:1437:1: ruleInteger0 : ( RULE_DECINT ) ;
+    public final void ruleInteger0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalRos.g:1441:2: ( ( RULE_INT ) )
-            // InternalRos.g:1442:2: ( RULE_INT )
+            // InternalRos.g:1441:2: ( ( RULE_DECINT ) )
+            // InternalRos.g:1442:2: ( RULE_DECINT )
             {
-            // InternalRos.g:1442:2: ( RULE_INT )
-            // InternalRos.g:1443:3: RULE_INT
+            // InternalRos.g:1442:2: ( RULE_DECINT )
+            // InternalRos.g:1443:3: RULE_DECINT
             {
-             before(grammarAccess.getInt_testAccess().getINTTerminalRuleCall()); 
-            match(input,RULE_INT,FOLLOW_2); 
-             after(grammarAccess.getInt_testAccess().getINTTerminalRuleCall()); 
+             before(grammarAccess.getInteger0Access().getDECINTTerminalRuleCall()); 
+            match(input,RULE_DECINT,FOLLOW_2); 
+             after(grammarAccess.getInteger0Access().getDECINTTerminalRuleCall()); 
 
             }
 
@@ -4437,7 +4437,7 @@ public class InternalRosParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "ruleInt_test"
+    // $ANTLR end "ruleInteger0"
 
 
     // $ANTLR start "entryRuleDateTime"
@@ -8111,7 +8111,7 @@ public class InternalRosParser extends AbstractInternalContentAssistParser {
                 alt10=3;
                 }
                 break;
-            case RULE_INT:
+            case RULE_DECINT:
                 {
                 alt10=4;
                 }
@@ -50493,25 +50493,25 @@ public class InternalRosParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ParameterInteger__ValueAssignment"
-    // InternalRos.g:17118:1: rule__ParameterInteger__ValueAssignment : ( ruleInt_test ) ;
+    // InternalRos.g:17118:1: rule__ParameterInteger__ValueAssignment : ( ruleInteger0 ) ;
     public final void rule__ParameterInteger__ValueAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalRos.g:17122:1: ( ( ruleInt_test ) )
-            // InternalRos.g:17123:2: ( ruleInt_test )
+            // InternalRos.g:17122:1: ( ( ruleInteger0 ) )
+            // InternalRos.g:17123:2: ( ruleInteger0 )
             {
-            // InternalRos.g:17123:2: ( ruleInt_test )
-            // InternalRos.g:17124:3: ruleInt_test
+            // InternalRos.g:17123:2: ( ruleInteger0 )
+            // InternalRos.g:17124:3: ruleInteger0
             {
-             before(grammarAccess.getParameterIntegerAccess().getValueInt_testParserRuleCall_0()); 
+             before(grammarAccess.getParameterIntegerAccess().getValueInteger0ParserRuleCall_0()); 
             pushFollow(FOLLOW_2);
-            ruleInt_test();
+            ruleInteger0();
 
             state._fsp--;
 
-             after(grammarAccess.getParameterIntegerAccess().getValueInt_testParserRuleCall_0()); 
+             after(grammarAccess.getParameterIntegerAccess().getValueInteger0ParserRuleCall_0()); 
 
             }
 

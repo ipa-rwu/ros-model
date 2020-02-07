@@ -1424,25 +1424,25 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-// Entry rule entryRuleInt_test
-entryRuleInt_test
+// Entry rule entryRuleInteger0
+entryRuleInteger0
 :
-{ before(grammarAccess.getInt_testRule()); }
-	 ruleInt_test
-{ after(grammarAccess.getInt_testRule()); } 
+{ before(grammarAccess.getInteger0Rule()); }
+	 ruleInteger0
+{ after(grammarAccess.getInteger0Rule()); } 
 	 EOF 
 ;
 
-// Rule Int_test
-ruleInt_test 
+// Rule Integer0
+ruleInteger0 
 	@init {
 		int stackSize = keepStackSize();
 	}
 	:
 	(
-		{ before(grammarAccess.getInt_testAccess().getINTTerminalRuleCall()); }
-		RULE_INT
-		{ after(grammarAccess.getInt_testAccess().getINTTerminalRuleCall()); }
+		{ before(grammarAccess.getInteger0Access().getDECINTTerminalRuleCall()); }
+		RULE_DECINT
+		{ after(grammarAccess.getInteger0Access().getDECINTTerminalRuleCall()); }
 	)
 ;
 finally {
@@ -17121,9 +17121,9 @@ rule__ParameterInteger__ValueAssignment
 	}
 :
 	(
-		{ before(grammarAccess.getParameterIntegerAccess().getValueInt_testParserRuleCall_0()); }
-		ruleInt_test
-		{ after(grammarAccess.getParameterIntegerAccess().getValueInt_testParserRuleCall_0()); }
+		{ before(grammarAccess.getParameterIntegerAccess().getValueInteger0ParserRuleCall_0()); }
+		ruleInteger0
+		{ after(grammarAccess.getParameterIntegerAccess().getValueInteger0ParserRuleCall_0()); }
 	)
 ;
 finally {
@@ -17358,7 +17358,7 @@ fragment RULE_DIGIT : '0'..'9';
 
 RULE_DOUBLE : RULE_DECINT ('.' RULE_DIGIT*|('.' RULE_DIGIT*)? ('E'|'e') ('-'|'+')? RULE_DECINT);
 
-fragment RULE_DECINT : ('0'|'1'..'9' RULE_DIGIT*);
+RULE_DECINT : ('0'|'1'..'9' RULE_DIGIT*);
 
 fragment RULE_SIGN : ('+'|'-');
 
@@ -17376,7 +17376,7 @@ RULE_MESSAGE_ASIGMENT : (RULE_ID|RULE_STRING) '=' (RULE_ID|RULE_STRING|RULE_INT|
 
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 
-RULE_INT : ('0'..'9')+;
+fragment RULE_INT : ('0'..'9')+;
 
 RULE_STRING : ('"' ('\\' .|~(('\\'|'"')))* '"'|'\'' ('\\' .|~(('\\'|'\'')))* '\'');
 

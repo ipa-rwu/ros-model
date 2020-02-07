@@ -67,6 +67,7 @@ public class ComponentInterfaceParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getParameterValueAccess().getGroup_0(), "rule__ParameterValue__Group_0__0");
 			builder.put(grammarAccess.getParameterValueAccess().getGroup_1(), "rule__ParameterValue__Group_1__0");
 			builder.put(grammarAccess.getParameterValueAccess().getGroup_2(), "rule__ParameterValue__Group_2__0");
+			builder.put(grammarAccess.getParameterValueAccess().getGroup_3(), "rule__ParameterValue__Group_3__0");
 			builder.put(grammarAccess.getComponentInterfaceAccess().getNameAssignment_3(), "rule__ComponentInterface__NameAssignment_3");
 			builder.put(grammarAccess.getComponentInterfaceAccess().getNameSpaceAssignment_4_1(), "rule__ComponentInterface__NameSpaceAssignment_4_1");
 			builder.put(grammarAccess.getComponentInterfaceAccess().getRospublisherAssignment_5_2(), "rule__ComponentInterface__RospublisherAssignment_5_2");

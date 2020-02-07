@@ -337,6 +337,25 @@ public class RosGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getIDTerminalRuleCall_1() { return cIDTerminalRuleCall_1; }
 	}
+	public class RosParamNamesElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.ros.Ros.RosParamNames");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cROS_CONVENTION_PARAMTerminalRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cIDTerminalRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//RosParamNames:
+		//	ROS_CONVENTION_PARAM | ID;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//ROS_CONVENTION_PARAM | ID
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//ROS_CONVENTION_PARAM
+		public RuleCall getROS_CONVENTION_PARAMTerminalRuleCall_0() { return cROS_CONVENTION_PARAMTerminalRuleCall_0; }
+		
+		//ID
+		public RuleCall getIDTerminalRuleCall_1() { return cIDTerminalRuleCall_1; }
+	}
 	public class ArtifactElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.ros.Ros.Artifact");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -1879,7 +1898,7 @@ public class RosGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Keyword cNameKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cNameEStringParserRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
+		private final RuleCall cNameRosParamNamesParserRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
 		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
 		private final Keyword cNamespaceKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
 		private final Assignment cNamespaceAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
@@ -1893,12 +1912,12 @@ public class RosGrammarAccess extends AbstractGrammarElementFinder {
 		//Parameter:
 		//	'Parameter'
 		//	'{'
-		//	'name' name=EString ('namespace' namespace=Namespace)?
+		//	'name' name=RosParamNames ('namespace' namespace=Namespace)?
 		//	'type' type=ParameterType
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'Parameter' '{' 'name' name=EString ('namespace' namespace=Namespace)? 'type' type=ParameterType '}'
+		//'Parameter' '{' 'name' name=RosParamNames ('namespace' namespace=Namespace)? 'type' type=ParameterType '}'
 		public Group getGroup() { return cGroup; }
 		
 		//'Parameter'
@@ -1910,11 +1929,11 @@ public class RosGrammarAccess extends AbstractGrammarElementFinder {
 		//'name'
 		public Keyword getNameKeyword_2() { return cNameKeyword_2; }
 		
-		//name=EString
+		//name=RosParamNames
 		public Assignment getNameAssignment_3() { return cNameAssignment_3; }
 		
-		//EString
-		public RuleCall getNameEStringParserRuleCall_3_0() { return cNameEStringParserRuleCall_3_0; }
+		//RosParamNames
+		public RuleCall getNameRosParamNamesParserRuleCall_3_0() { return cNameRosParamNamesParserRuleCall_3_0; }
 		
 		//('namespace' namespace=Namespace)?
 		public Group getGroup_4() { return cGroup_4; }
@@ -3882,7 +3901,9 @@ public class RosGrammarAccess extends AbstractGrammarElementFinder {
 	private final Package_ImplElements pPackage_Impl;
 	private final EStringElements pEString;
 	private final RosNamesElements pRosNames;
+	private final RosParamNamesElements pRosParamNames;
 	private final TerminalRule tROS_CONVENTION_A;
+	private final TerminalRule tROS_CONVENTION_PARAM;
 	private final ArtifactElements pArtifact;
 	private final CatkinPackageElements pCatkinPackage;
 	private final ServiceSpecElements pServiceSpec;
@@ -3994,7 +4015,9 @@ public class RosGrammarAccess extends AbstractGrammarElementFinder {
 		this.pPackage_Impl = new Package_ImplElements();
 		this.pEString = new EStringElements();
 		this.pRosNames = new RosNamesElements();
+		this.pRosParamNames = new RosParamNamesElements();
 		this.tROS_CONVENTION_A = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.ros.Ros.ROS_CONVENTION_A");
+		this.tROS_CONVENTION_PARAM = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.ros.Ros.ROS_CONVENTION_PARAM");
 		this.pArtifact = new ArtifactElements();
 		this.pCatkinPackage = new CatkinPackageElements();
 		this.pServiceSpec = new ServiceSpecElements();
@@ -4205,10 +4228,26 @@ public class RosGrammarAccess extends AbstractGrammarElementFinder {
 		return getRosNamesAccess().getRule();
 	}
 	
+	//RosParamNames:
+	//	ROS_CONVENTION_PARAM | ID;
+	public RosParamNamesElements getRosParamNamesAccess() {
+		return pRosParamNames;
+	}
+	
+	public ParserRule getRosParamNamesRule() {
+		return getRosParamNamesAccess().getRule();
+	}
+	
 	//terminal ROS_CONVENTION_A:
 	//	'/' ID | ID '/'*;
 	public TerminalRule getROS_CONVENTION_ARule() {
 		return tROS_CONVENTION_A;
+	}
+	
+	//terminal ROS_CONVENTION_PARAM:
+	//	'/' ID | ID '/' | '~' ID*;
+	public TerminalRule getROS_CONVENTION_PARAMRule() {
+		return tROS_CONVENTION_PARAM;
 	}
 	
 	//Artifact:
@@ -4474,7 +4513,7 @@ public class RosGrammarAccess extends AbstractGrammarElementFinder {
 	//Parameter:
 	//	'Parameter'
 	//	'{'
-	//	'name' name=EString ('namespace' namespace=Namespace)?
+	//	'name' name=RosParamNames ('namespace' namespace=Namespace)?
 	//	'type' type=ParameterType
 	//	'}';
 	public ParameterElements getParameterAccess() {

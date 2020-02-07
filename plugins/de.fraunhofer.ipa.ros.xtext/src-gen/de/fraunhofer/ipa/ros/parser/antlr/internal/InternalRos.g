@@ -559,6 +559,40 @@ ruleRosNames returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken(
 	)
 ;
 
+// Entry rule entryRuleRosParamNames
+entryRuleRosParamNames returns [String current=null]:
+	{ newCompositeNode(grammarAccess.getRosParamNamesRule()); }
+	iv_ruleRosParamNames=ruleRosParamNames
+	{ $current=$iv_ruleRosParamNames.current.getText(); }
+	EOF;
+
+// Rule RosParamNames
+ruleRosParamNames returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		this_ROS_CONVENTION_PARAM_0=RULE_ROS_CONVENTION_PARAM
+		{
+			$current.merge(this_ROS_CONVENTION_PARAM_0);
+		}
+		{
+			newLeafNode(this_ROS_CONVENTION_PARAM_0, grammarAccess.getRosParamNamesAccess().getROS_CONVENTION_PARAMTerminalRuleCall_0());
+		}
+		    |
+		this_ID_1=RULE_ID
+		{
+			$current.merge(this_ID_1);
+		}
+		{
+			newLeafNode(this_ID_1, grammarAccess.getRosParamNamesAccess().getIDTerminalRuleCall_1());
+		}
+	)
+;
+
 // Entry rule entryRuleArtifact
 entryRuleArtifact returns [EObject current=null]:
 	{ newCompositeNode(grammarAccess.getArtifactRule()); }
@@ -2786,9 +2820,9 @@ ruleParameter returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getParameterAccess().getNameEStringParserRuleCall_3_0());
+					newCompositeNode(grammarAccess.getParameterAccess().getNameRosParamNamesParserRuleCall_3_0());
 				}
-				lv_name_3_0=ruleEString
+				lv_name_3_0=ruleRosParamNames
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getParameterRule());
@@ -2797,7 +2831,7 @@ ruleParameter returns [EObject current=null]
 						$current,
 						"name",
 						lv_name_3_0,
-						"de.fraunhofer.ipa.ros.Ros.EString");
+						"de.fraunhofer.ipa.ros.Ros.RosParamNames");
 					afterParserOrEnumRuleCall();
 				}
 			)
@@ -5965,6 +5999,8 @@ ruleKEYWORD returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()
 ;
 
 RULE_ROS_CONVENTION_A : ('/' RULE_ID|RULE_ID '/')*;
+
+RULE_ROS_CONVENTION_PARAM : ('/' RULE_ID|RULE_ID '/'|'~' RULE_ID)*;
 
 RULE_BOOLEAN : ('true'|'false');
 

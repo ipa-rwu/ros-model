@@ -42,11 +42,16 @@ RosNames returns ecore::EString:
 	ROS_CONVENTION_A | ID
 ;
 
+RosParamNames returns ecore::EString:
+	ROS_CONVENTION_PARAM | ID 
+;
 
 terminal ROS_CONVENTION_A:
 	( ('/' ID ) | ( ID '/' ) )* ;
 
-
+terminal ROS_CONVENTION_PARAM:
+	( ('/' ID ) | ( ID '/' ) | ('~' ID ) )* ;
+	
 Artifact returns Artifact:
 	{Artifact}
 	'Artifact'
@@ -200,7 +205,7 @@ PrivateNamespace returns PrivateNamespace:
 Parameter returns Parameter:
 	'Parameter'
 	'{'
-		'name' name=EString
+		'name' name=RosParamNames
 		('namespace' namespace=Namespace)?
 		'type' type=ParameterType
 	'}';

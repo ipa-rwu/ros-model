@@ -230,7 +230,7 @@ ParameterStructType returns ParameterStructType:
 	{ParameterStructType}
 	'Struct'
 	'{'
-		('parameterstructypetmember' '{' parameterstructypetmember+=ParameterStructTypeMember ( "," parameterstructypetmember+=ParameterStructTypeMember)* '}' )?
+		('parameterstruct' '{' parameterstructypetmember+=ParameterStructTypeMember ( "," parameterstructypetmember+=ParameterStructTypeMember)* '}' )?
 	'}';
 
 ParameterIntegerType returns ParameterIntegerType:
@@ -306,7 +306,7 @@ ParameterString returns ParameterString:
 ;
 
 ParameterBase64 returns ParameterBase64:
-	value=Base64Binary
+	value=Base640
 ;
 
 ParameterInteger returns ParameterInteger:
@@ -355,13 +355,9 @@ ParameterStructTypeMember returns ParameterStructTypeMember:
 terminal BOOLEAN: 'true'|'false';
 terminal fragment DIGIT: '0'..'9';
 terminal DOUBLE returns ecore::EDouble: DECINT (('.' DIGIT*) | (('.' DIGIT*)? ('E'|'e') ('-'|'+')? DECINT));  // Use terminal to avoid 'e' turning into a keyword
-terminal DECINT: '0' | ('1'..'9' DIGIT*);
-terminal fragment SIGN :   '+' | '-' ;
-
-
-terminal SIGNED_INT:
-	'-'* INT*;
-
+terminal DECINT: '0' | ('1'..'9' DIGIT*) | ('-''1'..'9' DIGIT*) ;
+terminal EXT_INT: INT ('e'|'E')('-'|'+') INT;
+terminal BYTEARRAY64:  (ID | INT | HEX | EXT_INT | '+' | '/' | '=' | '-')* ;
 terminal fragment HEX_DIGIT: (DIGIT|'a'..'f'|'A'..'F');
 
 terminal HEX returns ecore::EIntegerObject: 
@@ -388,7 +384,12 @@ Integer0 returns type::Int:
 	DECINT
 ;
 
-DateTime returns type::DateTime:
+Base640 returns ecore::EByteArray:
+	BYTEARRAY64
+;
+
+
+DateTime returns type::Date:
 	'DateTime' ;
 	
 //MESSAGE PRIMITIVES DEFINITION

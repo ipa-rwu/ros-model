@@ -2436,39 +2436,75 @@ public class InternalRosLexer extends Lexer {
         try {
             int _type = RULE_DOUBLE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalRos.g:17359:13: ( ( RULE_DECINT ( '.' ( RULE_DIGIT )* | ( '.' ( RULE_DIGIT )* )? ( 'E' | 'e' ) ( '-' | '+' )? RULE_DECINT ) | RULE_INT ) )
-            // InternalRos.g:17359:15: ( RULE_DECINT ( '.' ( RULE_DIGIT )* | ( '.' ( RULE_DIGIT )* )? ( 'E' | 'e' ) ( '-' | '+' )? RULE_DECINT ) | RULE_INT )
+            // InternalRos.g:17359:13: ( RULE_DECINT ( '.' ( RULE_DIGIT )* | ( '.' ( RULE_DIGIT )* )? ( 'E' | 'e' ) ( '-' | '+' )? RULE_DECINT ) )
+            // InternalRos.g:17359:15: RULE_DECINT ( '.' ( RULE_DIGIT )* | ( '.' ( RULE_DIGIT )* )? ( 'E' | 'e' ) ( '-' | '+' )? RULE_DECINT )
             {
-            // InternalRos.g:17359:15: ( RULE_DECINT ( '.' ( RULE_DIGIT )* | ( '.' ( RULE_DIGIT )* )? ( 'E' | 'e' ) ( '-' | '+' )? RULE_DECINT ) | RULE_INT )
-            int alt9=2;
-            alt9 = dfa9.predict(input);
-            switch (alt9) {
+            mRULE_DECINT(); 
+            // InternalRos.g:17359:27: ( '.' ( RULE_DIGIT )* | ( '.' ( RULE_DIGIT )* )? ( 'E' | 'e' ) ( '-' | '+' )? RULE_DECINT )
+            int alt8=2;
+            alt8 = dfa8.predict(input);
+            switch (alt8) {
                 case 1 :
-                    // InternalRos.g:17359:16: RULE_DECINT ( '.' ( RULE_DIGIT )* | ( '.' ( RULE_DIGIT )* )? ( 'E' | 'e' ) ( '-' | '+' )? RULE_DECINT )
+                    // InternalRos.g:17359:28: '.' ( RULE_DIGIT )*
                     {
-                    mRULE_DECINT(); 
-                    // InternalRos.g:17359:28: ( '.' ( RULE_DIGIT )* | ( '.' ( RULE_DIGIT )* )? ( 'E' | 'e' ) ( '-' | '+' )? RULE_DECINT )
-                    int alt8=2;
-                    alt8 = dfa8.predict(input);
-                    switch (alt8) {
+                    match('.'); 
+                    // InternalRos.g:17359:32: ( RULE_DIGIT )*
+                    loop4:
+                    do {
+                        int alt4=2;
+                        int LA4_0 = input.LA(1);
+
+                        if ( ((LA4_0>='0' && LA4_0<='9')) ) {
+                            alt4=1;
+                        }
+
+
+                        switch (alt4) {
+                    	case 1 :
+                    	    // InternalRos.g:17359:32: RULE_DIGIT
+                    	    {
+                    	    mRULE_DIGIT(); 
+
+                    	    }
+                    	    break;
+
+                    	default :
+                    	    break loop4;
+                        }
+                    } while (true);
+
+
+                    }
+                    break;
+                case 2 :
+                    // InternalRos.g:17359:44: ( '.' ( RULE_DIGIT )* )? ( 'E' | 'e' ) ( '-' | '+' )? RULE_DECINT
+                    {
+                    // InternalRos.g:17359:44: ( '.' ( RULE_DIGIT )* )?
+                    int alt6=2;
+                    int LA6_0 = input.LA(1);
+
+                    if ( (LA6_0=='.') ) {
+                        alt6=1;
+                    }
+                    switch (alt6) {
                         case 1 :
-                            // InternalRos.g:17359:29: '.' ( RULE_DIGIT )*
+                            // InternalRos.g:17359:45: '.' ( RULE_DIGIT )*
                             {
                             match('.'); 
-                            // InternalRos.g:17359:33: ( RULE_DIGIT )*
-                            loop4:
+                            // InternalRos.g:17359:49: ( RULE_DIGIT )*
+                            loop5:
                             do {
-                                int alt4=2;
-                                int LA4_0 = input.LA(1);
+                                int alt5=2;
+                                int LA5_0 = input.LA(1);
 
-                                if ( ((LA4_0>='0' && LA4_0<='9')) ) {
-                                    alt4=1;
+                                if ( ((LA5_0>='0' && LA5_0<='9')) ) {
+                                    alt5=1;
                                 }
 
 
-                                switch (alt4) {
+                                switch (alt5) {
                             	case 1 :
-                            	    // InternalRos.g:17359:33: RULE_DIGIT
+                            	    // InternalRos.g:17359:49: RULE_DIGIT
                             	    {
                             	    mRULE_DIGIT(); 
 
@@ -2476,60 +2512,37 @@ public class InternalRosLexer extends Lexer {
                             	    break;
 
                             	default :
-                            	    break loop4;
+                            	    break loop5;
                                 }
                             } while (true);
 
 
                             }
                             break;
-                        case 2 :
-                            // InternalRos.g:17359:45: ( '.' ( RULE_DIGIT )* )? ( 'E' | 'e' ) ( '-' | '+' )? RULE_DECINT
+
+                    }
+
+                    if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
+                        input.consume();
+
+                    }
+                    else {
+                        MismatchedSetException mse = new MismatchedSetException(null,input);
+                        recover(mse);
+                        throw mse;}
+
+                    // InternalRos.g:17359:73: ( '-' | '+' )?
+                    int alt7=2;
+                    int LA7_0 = input.LA(1);
+
+                    if ( (LA7_0=='+'||LA7_0=='-') ) {
+                        alt7=1;
+                    }
+                    switch (alt7) {
+                        case 1 :
+                            // InternalRos.g:
                             {
-                            // InternalRos.g:17359:45: ( '.' ( RULE_DIGIT )* )?
-                            int alt6=2;
-                            int LA6_0 = input.LA(1);
-
-                            if ( (LA6_0=='.') ) {
-                                alt6=1;
-                            }
-                            switch (alt6) {
-                                case 1 :
-                                    // InternalRos.g:17359:46: '.' ( RULE_DIGIT )*
-                                    {
-                                    match('.'); 
-                                    // InternalRos.g:17359:50: ( RULE_DIGIT )*
-                                    loop5:
-                                    do {
-                                        int alt5=2;
-                                        int LA5_0 = input.LA(1);
-
-                                        if ( ((LA5_0>='0' && LA5_0<='9')) ) {
-                                            alt5=1;
-                                        }
-
-
-                                        switch (alt5) {
-                                    	case 1 :
-                                    	    // InternalRos.g:17359:50: RULE_DIGIT
-                                    	    {
-                                    	    mRULE_DIGIT(); 
-
-                                    	    }
-                                    	    break;
-
-                                    	default :
-                                    	    break loop5;
-                                        }
-                                    } while (true);
-
-
-                                    }
-                                    break;
-
-                            }
-
-                            if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
+                            if ( input.LA(1)=='+'||input.LA(1)=='-' ) {
                                 input.consume();
 
                             }
@@ -2538,46 +2551,13 @@ public class InternalRosLexer extends Lexer {
                                 recover(mse);
                                 throw mse;}
 
-                            // InternalRos.g:17359:74: ( '-' | '+' )?
-                            int alt7=2;
-                            int LA7_0 = input.LA(1);
-
-                            if ( (LA7_0=='+'||LA7_0=='-') ) {
-                                alt7=1;
-                            }
-                            switch (alt7) {
-                                case 1 :
-                                    // InternalRos.g:
-                                    {
-                                    if ( input.LA(1)=='+'||input.LA(1)=='-' ) {
-                                        input.consume();
-
-                                    }
-                                    else {
-                                        MismatchedSetException mse = new MismatchedSetException(null,input);
-                                        recover(mse);
-                                        throw mse;}
-
-
-                                    }
-                                    break;
-
-                            }
-
-                            mRULE_DECINT(); 
 
                             }
                             break;
 
                     }
 
-
-                    }
-                    break;
-                case 2 :
-                    // InternalRos.g:17359:98: RULE_INT
-                    {
-                    mRULE_INT(); 
+                    mRULE_DECINT(); 
 
                     }
                     break;
@@ -2602,22 +2582,22 @@ public class InternalRosLexer extends Lexer {
             // InternalRos.g:17361:24: ( '0' | '1' .. '9' ( RULE_DIGIT )* )
             {
             // InternalRos.g:17361:24: ( '0' | '1' .. '9' ( RULE_DIGIT )* )
-            int alt11=2;
-            int LA11_0 = input.LA(1);
+            int alt10=2;
+            int LA10_0 = input.LA(1);
 
-            if ( (LA11_0=='0') ) {
-                alt11=1;
+            if ( (LA10_0=='0') ) {
+                alt10=1;
             }
-            else if ( ((LA11_0>='1' && LA11_0<='9')) ) {
-                alt11=2;
+            else if ( ((LA10_0>='1' && LA10_0<='9')) ) {
+                alt10=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 11, 0, input);
+                    new NoViableAltException("", 10, 0, input);
 
                 throw nvae;
             }
-            switch (alt11) {
+            switch (alt10) {
                 case 1 :
                     // InternalRos.g:17361:25: '0'
                     {
@@ -2630,17 +2610,17 @@ public class InternalRosLexer extends Lexer {
                     {
                     matchRange('1','9'); 
                     // InternalRos.g:17361:38: ( RULE_DIGIT )*
-                    loop10:
+                    loop9:
                     do {
-                        int alt10=2;
-                        int LA10_0 = input.LA(1);
+                        int alt9=2;
+                        int LA9_0 = input.LA(1);
 
-                        if ( ((LA10_0>='0' && LA10_0<='9')) ) {
-                            alt10=1;
+                        if ( ((LA9_0>='0' && LA9_0<='9')) ) {
+                            alt9=1;
                         }
 
 
-                        switch (alt10) {
+                        switch (alt9) {
                     	case 1 :
                     	    // InternalRos.g:17361:38: RULE_DIGIT
                     	    {
@@ -2650,7 +2630,7 @@ public class InternalRosLexer extends Lexer {
                     	    break;
 
                     	default :
-                    	    break loop10;
+                    	    break loop9;
                         }
                     } while (true);
 
@@ -2702,17 +2682,17 @@ public class InternalRosLexer extends Lexer {
             // InternalRos.g:17365:19: ( '-' )* ( RULE_INT )*
             {
             // InternalRos.g:17365:19: ( '-' )*
-            loop12:
+            loop11:
             do {
-                int alt12=2;
-                int LA12_0 = input.LA(1);
+                int alt11=2;
+                int LA11_0 = input.LA(1);
 
-                if ( (LA12_0=='-') ) {
-                    alt12=1;
+                if ( (LA11_0=='-') ) {
+                    alt11=1;
                 }
 
 
-                switch (alt12) {
+                switch (alt11) {
             	case 1 :
             	    // InternalRos.g:17365:19: '-'
             	    {
@@ -2722,22 +2702,22 @@ public class InternalRosLexer extends Lexer {
             	    break;
 
             	default :
-            	    break loop12;
+            	    break loop11;
                 }
             } while (true);
 
             // InternalRos.g:17365:24: ( RULE_INT )*
-            loop13:
+            loop12:
             do {
-                int alt13=2;
-                int LA13_0 = input.LA(1);
+                int alt12=2;
+                int LA12_0 = input.LA(1);
 
-                if ( ((LA13_0>='0' && LA13_0<='9')) ) {
-                    alt13=1;
+                if ( ((LA12_0>='0' && LA12_0<='9')) ) {
+                    alt12=1;
                 }
 
 
-                switch (alt13) {
+                switch (alt12) {
             	case 1 :
             	    // InternalRos.g:17365:24: RULE_INT
             	    {
@@ -2747,7 +2727,7 @@ public class InternalRosLexer extends Lexer {
             	    break;
 
             	default :
-            	    break loop13;
+            	    break loop12;
                 }
             } while (true);
 
@@ -2797,17 +2777,17 @@ public class InternalRosLexer extends Lexer {
             match("0x"); 
 
             // InternalRos.g:17369:17: ( RULE_HEX_DIGIT )*
-            loop14:
+            loop13:
             do {
-                int alt14=2;
-                int LA14_0 = input.LA(1);
+                int alt13=2;
+                int LA13_0 = input.LA(1);
 
-                if ( ((LA14_0>='0' && LA14_0<='9')||(LA14_0>='A' && LA14_0<='F')||(LA14_0>='a' && LA14_0<='f')) ) {
-                    alt14=1;
+                if ( ((LA13_0>='0' && LA13_0<='9')||(LA13_0>='A' && LA13_0<='F')||(LA13_0>='a' && LA13_0<='f')) ) {
+                    alt13=1;
                 }
 
 
-                switch (alt14) {
+                switch (alt13) {
             	case 1 :
             	    // InternalRos.g:17369:17: RULE_HEX_DIGIT
             	    {
@@ -2817,7 +2797,7 @@ public class InternalRosLexer extends Lexer {
             	    break;
 
             	default :
-            	    break loop14;
+            	    break loop13;
                 }
             } while (true);
 
@@ -2867,33 +2847,33 @@ public class InternalRosLexer extends Lexer {
             match("0b"); 
 
             // InternalRos.g:17373:20: ( RULE_BINARY_DIGIT ( '_' )* )*
-            loop16:
+            loop15:
             do {
-                int alt16=2;
-                int LA16_0 = input.LA(1);
+                int alt15=2;
+                int LA15_0 = input.LA(1);
 
-                if ( ((LA16_0>='0' && LA16_0<='1')) ) {
-                    alt16=1;
+                if ( ((LA15_0>='0' && LA15_0<='1')) ) {
+                    alt15=1;
                 }
 
 
-                switch (alt16) {
+                switch (alt15) {
             	case 1 :
             	    // InternalRos.g:17373:21: RULE_BINARY_DIGIT ( '_' )*
             	    {
             	    mRULE_BINARY_DIGIT(); 
             	    // InternalRos.g:17373:39: ( '_' )*
-            	    loop15:
+            	    loop14:
             	    do {
-            	        int alt15=2;
-            	        int LA15_0 = input.LA(1);
+            	        int alt14=2;
+            	        int LA14_0 = input.LA(1);
 
-            	        if ( (LA15_0=='_') ) {
-            	            alt15=1;
+            	        if ( (LA14_0=='_') ) {
+            	            alt14=1;
             	        }
 
 
-            	        switch (alt15) {
+            	        switch (alt14) {
             	    	case 1 :
             	    	    // InternalRos.g:17373:39: '_'
             	    	    {
@@ -2903,7 +2883,7 @@ public class InternalRosLexer extends Lexer {
             	    	    break;
 
             	    	default :
-            	    	    break loop15;
+            	    	    break loop14;
             	        }
             	    } while (true);
 
@@ -2912,7 +2892,7 @@ public class InternalRosLexer extends Lexer {
             	    break;
 
             	default :
-            	    break loop16;
+            	    break loop15;
                 }
             } while (true);
 
@@ -2936,22 +2916,22 @@ public class InternalRosLexer extends Lexer {
             // InternalRos.g:17375:25: ( RULE_ID | RULE_STRING ) '=' ( RULE_ID | RULE_STRING | RULE_INT | '-' RULE_INT )
             {
             // InternalRos.g:17375:25: ( RULE_ID | RULE_STRING )
-            int alt17=2;
-            int LA17_0 = input.LA(1);
+            int alt16=2;
+            int LA16_0 = input.LA(1);
 
-            if ( ((LA17_0>='A' && LA17_0<='Z')||(LA17_0>='^' && LA17_0<='_')||(LA17_0>='a' && LA17_0<='z')) ) {
-                alt17=1;
+            if ( ((LA16_0>='A' && LA16_0<='Z')||(LA16_0>='^' && LA16_0<='_')||(LA16_0>='a' && LA16_0<='z')) ) {
+                alt16=1;
             }
-            else if ( (LA17_0=='\"'||LA17_0=='\'') ) {
-                alt17=2;
+            else if ( (LA16_0=='\"'||LA16_0=='\'') ) {
+                alt16=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 17, 0, input);
+                    new NoViableAltException("", 16, 0, input);
 
                 throw nvae;
             }
-            switch (alt17) {
+            switch (alt16) {
                 case 1 :
                     // InternalRos.g:17375:26: RULE_ID
                     {
@@ -2971,7 +2951,7 @@ public class InternalRosLexer extends Lexer {
 
             match('='); 
             // InternalRos.g:17375:51: ( RULE_ID | RULE_STRING | RULE_INT | '-' RULE_INT )
-            int alt18=4;
+            int alt17=4;
             switch ( input.LA(1) ) {
             case 'A':
             case 'B':
@@ -3028,13 +3008,13 @@ public class InternalRosLexer extends Lexer {
             case 'y':
             case 'z':
                 {
-                alt18=1;
+                alt17=1;
                 }
                 break;
             case '\"':
             case '\'':
                 {
-                alt18=2;
+                alt17=2;
                 }
                 break;
             case '0':
@@ -3048,22 +3028,22 @@ public class InternalRosLexer extends Lexer {
             case '8':
             case '9':
                 {
-                alt18=3;
+                alt17=3;
                 }
                 break;
             case '-':
                 {
-                alt18=4;
+                alt17=4;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 18, 0, input);
+                    new NoViableAltException("", 17, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt18) {
+            switch (alt17) {
                 case 1 :
                     // InternalRos.g:17375:52: RULE_ID
                     {
@@ -3116,13 +3096,13 @@ public class InternalRosLexer extends Lexer {
             // InternalRos.g:17377:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
             // InternalRos.g:17377:11: ( '^' )?
-            int alt19=2;
-            int LA19_0 = input.LA(1);
+            int alt18=2;
+            int LA18_0 = input.LA(1);
 
-            if ( (LA19_0=='^') ) {
-                alt19=1;
+            if ( (LA18_0=='^') ) {
+                alt18=1;
             }
-            switch (alt19) {
+            switch (alt18) {
                 case 1 :
                     // InternalRos.g:17377:11: '^'
                     {
@@ -3143,17 +3123,17 @@ public class InternalRosLexer extends Lexer {
                 throw mse;}
 
             // InternalRos.g:17377:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
-            loop20:
+            loop19:
             do {
-                int alt20=2;
-                int LA20_0 = input.LA(1);
+                int alt19=2;
+                int LA19_0 = input.LA(1);
 
-                if ( ((LA20_0>='0' && LA20_0<='9')||(LA20_0>='A' && LA20_0<='Z')||LA20_0=='_'||(LA20_0>='a' && LA20_0<='z')) ) {
-                    alt20=1;
+                if ( ((LA19_0>='0' && LA19_0<='9')||(LA19_0>='A' && LA19_0<='Z')||LA19_0=='_'||(LA19_0>='a' && LA19_0<='z')) ) {
+                    alt19=1;
                 }
 
 
-                switch (alt20) {
+                switch (alt19) {
             	case 1 :
             	    // InternalRos.g:
             	    {
@@ -3171,7 +3151,7 @@ public class InternalRosLexer extends Lexer {
             	    break;
 
             	default :
-            	    break loop20;
+            	    break loop19;
                 }
             } while (true);
 
@@ -3195,18 +3175,18 @@ public class InternalRosLexer extends Lexer {
             // InternalRos.g:17379:12: ( '0' .. '9' )+
             {
             // InternalRos.g:17379:12: ( '0' .. '9' )+
-            int cnt21=0;
-            loop21:
+            int cnt20=0;
+            loop20:
             do {
-                int alt21=2;
-                int LA21_0 = input.LA(1);
+                int alt20=2;
+                int LA20_0 = input.LA(1);
 
-                if ( ((LA21_0>='0' && LA21_0<='9')) ) {
-                    alt21=1;
+                if ( ((LA20_0>='0' && LA20_0<='9')) ) {
+                    alt20=1;
                 }
 
 
-                switch (alt21) {
+                switch (alt20) {
             	case 1 :
             	    // InternalRos.g:17379:13: '0' .. '9'
             	    {
@@ -3216,12 +3196,12 @@ public class InternalRosLexer extends Lexer {
             	    break;
 
             	default :
-            	    if ( cnt21 >= 1 ) break loop21;
+            	    if ( cnt20 >= 1 ) break loop20;
                         EarlyExitException eee =
-                            new EarlyExitException(21, input);
+                            new EarlyExitException(20, input);
                         throw eee;
                 }
-                cnt21++;
+                cnt20++;
             } while (true);
 
 
@@ -3244,41 +3224,41 @@ public class InternalRosLexer extends Lexer {
             // InternalRos.g:17381:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
             // InternalRos.g:17381:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
-            int alt24=2;
-            int LA24_0 = input.LA(1);
+            int alt23=2;
+            int LA23_0 = input.LA(1);
 
-            if ( (LA24_0=='\"') ) {
-                alt24=1;
+            if ( (LA23_0=='\"') ) {
+                alt23=1;
             }
-            else if ( (LA24_0=='\'') ) {
-                alt24=2;
+            else if ( (LA23_0=='\'') ) {
+                alt23=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 24, 0, input);
+                    new NoViableAltException("", 23, 0, input);
 
                 throw nvae;
             }
-            switch (alt24) {
+            switch (alt23) {
                 case 1 :
                     // InternalRos.g:17381:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
                     // InternalRos.g:17381:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
-                    loop22:
+                    loop21:
                     do {
-                        int alt22=3;
-                        int LA22_0 = input.LA(1);
+                        int alt21=3;
+                        int LA21_0 = input.LA(1);
 
-                        if ( (LA22_0=='\\') ) {
-                            alt22=1;
+                        if ( (LA21_0=='\\') ) {
+                            alt21=1;
                         }
-                        else if ( ((LA22_0>='\u0000' && LA22_0<='!')||(LA22_0>='#' && LA22_0<='[')||(LA22_0>=']' && LA22_0<='\uFFFF')) ) {
-                            alt22=2;
+                        else if ( ((LA21_0>='\u0000' && LA21_0<='!')||(LA21_0>='#' && LA21_0<='[')||(LA21_0>=']' && LA21_0<='\uFFFF')) ) {
+                            alt21=2;
                         }
 
 
-                        switch (alt22) {
+                        switch (alt21) {
                     	case 1 :
                     	    // InternalRos.g:17381:21: '\\\\' .
                     	    {
@@ -3304,7 +3284,7 @@ public class InternalRosLexer extends Lexer {
                     	    break;
 
                     	default :
-                    	    break loop22;
+                    	    break loop21;
                         }
                     } while (true);
 
@@ -3317,20 +3297,20 @@ public class InternalRosLexer extends Lexer {
                     {
                     match('\''); 
                     // InternalRos.g:17381:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
-                    loop23:
+                    loop22:
                     do {
-                        int alt23=3;
-                        int LA23_0 = input.LA(1);
+                        int alt22=3;
+                        int LA22_0 = input.LA(1);
 
-                        if ( (LA23_0=='\\') ) {
-                            alt23=1;
+                        if ( (LA22_0=='\\') ) {
+                            alt22=1;
                         }
-                        else if ( ((LA23_0>='\u0000' && LA23_0<='&')||(LA23_0>='(' && LA23_0<='[')||(LA23_0>=']' && LA23_0<='\uFFFF')) ) {
-                            alt23=2;
+                        else if ( ((LA22_0>='\u0000' && LA22_0<='&')||(LA22_0>='(' && LA22_0<='[')||(LA22_0>=']' && LA22_0<='\uFFFF')) ) {
+                            alt22=2;
                         }
 
 
-                        switch (alt23) {
+                        switch (alt22) {
                     	case 1 :
                     	    // InternalRos.g:17381:54: '\\\\' .
                     	    {
@@ -3356,7 +3336,7 @@ public class InternalRosLexer extends Lexer {
                     	    break;
 
                     	default :
-                    	    break loop23;
+                    	    break loop22;
                         }
                     } while (true);
 
@@ -3389,29 +3369,29 @@ public class InternalRosLexer extends Lexer {
             match("/*"); 
 
             // InternalRos.g:17383:24: ( options {greedy=false; } : . )*
-            loop25:
+            loop24:
             do {
-                int alt25=2;
-                int LA25_0 = input.LA(1);
+                int alt24=2;
+                int LA24_0 = input.LA(1);
 
-                if ( (LA25_0=='*') ) {
-                    int LA25_1 = input.LA(2);
+                if ( (LA24_0=='*') ) {
+                    int LA24_1 = input.LA(2);
 
-                    if ( (LA25_1=='/') ) {
-                        alt25=2;
+                    if ( (LA24_1=='/') ) {
+                        alt24=2;
                     }
-                    else if ( ((LA25_1>='\u0000' && LA25_1<='.')||(LA25_1>='0' && LA25_1<='\uFFFF')) ) {
-                        alt25=1;
+                    else if ( ((LA24_1>='\u0000' && LA24_1<='.')||(LA24_1>='0' && LA24_1<='\uFFFF')) ) {
+                        alt24=1;
                     }
 
 
                 }
-                else if ( ((LA25_0>='\u0000' && LA25_0<=')')||(LA25_0>='+' && LA25_0<='\uFFFF')) ) {
-                    alt25=1;
+                else if ( ((LA24_0>='\u0000' && LA24_0<=')')||(LA24_0>='+' && LA24_0<='\uFFFF')) ) {
+                    alt24=1;
                 }
 
 
-                switch (alt25) {
+                switch (alt24) {
             	case 1 :
             	    // InternalRos.g:17383:52: .
             	    {
@@ -3421,7 +3401,7 @@ public class InternalRosLexer extends Lexer {
             	    break;
 
             	default :
-            	    break loop25;
+            	    break loop24;
                 }
             } while (true);
 
@@ -3449,17 +3429,17 @@ public class InternalRosLexer extends Lexer {
             match("//"); 
 
             // InternalRos.g:17385:24: (~ ( ( '\\n' | '\\r' ) ) )*
-            loop26:
+            loop25:
             do {
-                int alt26=2;
-                int LA26_0 = input.LA(1);
+                int alt25=2;
+                int LA25_0 = input.LA(1);
 
-                if ( ((LA26_0>='\u0000' && LA26_0<='\t')||(LA26_0>='\u000B' && LA26_0<='\f')||(LA26_0>='\u000E' && LA26_0<='\uFFFF')) ) {
-                    alt26=1;
+                if ( ((LA25_0>='\u0000' && LA25_0<='\t')||(LA25_0>='\u000B' && LA25_0<='\f')||(LA25_0>='\u000E' && LA25_0<='\uFFFF')) ) {
+                    alt25=1;
                 }
 
 
-                switch (alt26) {
+                switch (alt25) {
             	case 1 :
             	    // InternalRos.g:17385:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
@@ -3477,29 +3457,29 @@ public class InternalRosLexer extends Lexer {
             	    break;
 
             	default :
-            	    break loop26;
+            	    break loop25;
                 }
             } while (true);
 
             // InternalRos.g:17385:40: ( ( '\\r' )? '\\n' )?
-            int alt28=2;
-            int LA28_0 = input.LA(1);
+            int alt27=2;
+            int LA27_0 = input.LA(1);
 
-            if ( (LA28_0=='\n'||LA28_0=='\r') ) {
-                alt28=1;
+            if ( (LA27_0=='\n'||LA27_0=='\r') ) {
+                alt27=1;
             }
-            switch (alt28) {
+            switch (alt27) {
                 case 1 :
                     // InternalRos.g:17385:41: ( '\\r' )? '\\n'
                     {
                     // InternalRos.g:17385:41: ( '\\r' )?
-                    int alt27=2;
-                    int LA27_0 = input.LA(1);
+                    int alt26=2;
+                    int LA26_0 = input.LA(1);
 
-                    if ( (LA27_0=='\r') ) {
-                        alt27=1;
+                    if ( (LA26_0=='\r') ) {
+                        alt26=1;
                     }
-                    switch (alt27) {
+                    switch (alt26) {
                         case 1 :
                             // InternalRos.g:17385:41: '\\r'
                             {
@@ -3537,18 +3517,18 @@ public class InternalRosLexer extends Lexer {
             // InternalRos.g:17387:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
             // InternalRos.g:17387:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
-            int cnt29=0;
-            loop29:
+            int cnt28=0;
+            loop28:
             do {
-                int alt29=2;
-                int LA29_0 = input.LA(1);
+                int alt28=2;
+                int LA28_0 = input.LA(1);
 
-                if ( ((LA29_0>='\t' && LA29_0<='\n')||LA29_0=='\r'||LA29_0==' ') ) {
-                    alt29=1;
+                if ( ((LA28_0>='\t' && LA28_0<='\n')||LA28_0=='\r'||LA28_0==' ') ) {
+                    alt28=1;
                 }
 
 
-                switch (alt29) {
+                switch (alt28) {
             	case 1 :
             	    // InternalRos.g:
             	    {
@@ -3566,12 +3546,12 @@ public class InternalRosLexer extends Lexer {
             	    break;
 
             	default :
-            	    if ( cnt29 >= 1 ) break loop29;
+            	    if ( cnt28 >= 1 ) break loop28;
                         EarlyExitException eee =
-                            new EarlyExitException(29, input);
+                            new EarlyExitException(28, input);
                         throw eee;
                 }
-                cnt29++;
+                cnt28++;
             } while (true);
 
 
@@ -3607,9 +3587,9 @@ public class InternalRosLexer extends Lexer {
 
     public void mTokens() throws RecognitionException {
         // InternalRos.g:1:8: ( T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | T__81 | T__82 | T__83 | T__84 | T__85 | T__86 | T__87 | T__88 | T__89 | T__90 | T__91 | T__92 | T__93 | T__94 | T__95 | T__96 | T__97 | T__98 | T__99 | T__100 | T__101 | T__102 | T__103 | T__104 | T__105 | T__106 | T__107 | T__108 | T__109 | T__110 | T__111 | T__112 | T__113 | T__114 | T__115 | T__116 | T__117 | T__118 | T__119 | T__120 | RULE_ROS_CONVENTION_A | RULE_ROS_CONVENTION_PARAM | RULE_BOOLEAN | RULE_DOUBLE | RULE_SIGNED_INT | RULE_HEX | RULE_BINARY | RULE_MESSAGE_ASIGMENT | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
-        int alt30=112;
-        alt30 = dfa30.predict(input);
-        switch (alt30) {
+        int alt29=112;
+        alt29 = dfa29.predict(input);
+        switch (alt29) {
             case 1 :
                 // InternalRos.g:1:10: T__24
                 {
@@ -4400,63 +4380,8 @@ public class InternalRosLexer extends Lexer {
     }
 
 
-    protected DFA9 dfa9 = new DFA9(this);
     protected DFA8 dfa8 = new DFA8(this);
-    protected DFA30 dfa30 = new DFA30(this);
-    static final String DFA9_eotS =
-        "\1\uffff\2\3\2\uffff\1\3";
-    static final String DFA9_eofS =
-        "\6\uffff";
-    static final String DFA9_minS =
-        "\1\60\2\56\2\uffff\1\56";
-    static final String DFA9_maxS =
-        "\1\71\2\145\2\uffff\1\145";
-    static final String DFA9_acceptS =
-        "\3\uffff\1\2\1\1\1\uffff";
-    static final String DFA9_specialS =
-        "\6\uffff}>";
-    static final String[] DFA9_transitionS = {
-            "\1\1\11\2",
-            "\1\4\26\uffff\1\4\37\uffff\1\4",
-            "\1\4\1\uffff\12\5\13\uffff\1\4\37\uffff\1\4",
-            "",
-            "",
-            "\1\4\1\uffff\12\5\13\uffff\1\4\37\uffff\1\4"
-    };
-
-    static final short[] DFA9_eot = DFA.unpackEncodedString(DFA9_eotS);
-    static final short[] DFA9_eof = DFA.unpackEncodedString(DFA9_eofS);
-    static final char[] DFA9_min = DFA.unpackEncodedStringToUnsignedChars(DFA9_minS);
-    static final char[] DFA9_max = DFA.unpackEncodedStringToUnsignedChars(DFA9_maxS);
-    static final short[] DFA9_accept = DFA.unpackEncodedString(DFA9_acceptS);
-    static final short[] DFA9_special = DFA.unpackEncodedString(DFA9_specialS);
-    static final short[][] DFA9_transition;
-
-    static {
-        int numStates = DFA9_transitionS.length;
-        DFA9_transition = new short[numStates][];
-        for (int i=0; i<numStates; i++) {
-            DFA9_transition[i] = DFA.unpackEncodedString(DFA9_transitionS[i]);
-        }
-    }
-
-    class DFA9 extends DFA {
-
-        public DFA9(BaseRecognizer recognizer) {
-            this.recognizer = recognizer;
-            this.decisionNumber = 9;
-            this.eot = DFA9_eot;
-            this.eof = DFA9_eof;
-            this.min = DFA9_min;
-            this.max = DFA9_max;
-            this.accept = DFA9_accept;
-            this.special = DFA9_special;
-            this.transition = DFA9_transition;
-        }
-        public String getDescription() {
-            return "17359:15: ( RULE_DECINT ( '.' ( RULE_DIGIT )* | ( '.' ( RULE_DIGIT )* )? ( 'E' | 'e' ) ( '-' | '+' )? RULE_DECINT ) | RULE_INT )";
-        }
-    }
+    protected DFA29 dfa29 = new DFA29(this);
     static final String DFA8_eotS =
         "\1\uffff\1\4\1\uffff\1\4\1\uffff";
     static final String DFA8_eofS =
@@ -4507,22 +4432,22 @@ public class InternalRosLexer extends Lexer {
             this.transition = DFA8_transition;
         }
         public String getDescription() {
-            return "17359:28: ( '.' ( RULE_DIGIT )* | ( '.' ( RULE_DIGIT )* )? ( 'E' | 'e' ) ( '-' | '+' )? RULE_DECINT )";
+            return "17359:27: ( '.' ( RULE_DIGIT )* | ( '.' ( RULE_DIGIT )* )? ( 'E' | 'e' ) ( '-' | '+' )? RULE_DECINT )";
         }
     }
-    static final String DFA30_eotS =
-        "\1\44\17\60\2\uffff\1\60\1\uffff\14\60\3\54\1\60\1\uffff\1\54\2\156\1\uffff\2\54\2\uffff\3\60\2\uffff\1\44\35\60\2\uffff\2\60\1\uffff\20\60\4\uffff\1\44\1\60\4\uffff\2\156\3\uffff\1\u00b6\2\uffff\1\u00b6\1\uffff\2\60\3\uffff\47\60\1\u00e5\15\60\2\44\3\uffff\2\60\1\uffff\1\u00fc\6\60\1\u0103\7\60\1\u010c\1\u010d\3\60\1\u0111\2\60\1\u0114\1\u0115\1\u0116\20\60\1\uffff\2\60\1\u0129\2\60\1\u012c\3\60\1\u0131\1\u0133\1\u0135\4\60\3\44\3\60\1\uffff\6\60\1\uffff\6\60\1\u0116\1\60\2\uffff\1\u0150\2\60\1\uffff\2\60\3\uffff\13\60\1\u0160\2\60\1\u0163\3\60\1\uffff\2\60\1\uffff\3\60\6\uffff\1\u016d\1\u016f\1\u0171\1\u0173\3\60\1\uffff\1\44\3\60\1\u017a\1\u017b\1\u017c\1\u017d\3\60\1\u0181\6\60\1\uffff\3\60\1\u018c\1\u018f\12\60\1\uffff\2\60\1\uffff\7\60\1\u01a4\10\uffff\1\u01a6\1\u01a8\1\u01aa\3\60\4\uffff\2\60\1\u01b1\1\uffff\1\60\1\u01b3\1\60\1\u01b6\1\u01b8\1\60\1\u01bc\2\60\2\uffff\2\60\1\uffff\3\60\1\u01c4\1\u01c7\3\60\1\u01cb\11\60\1\u01d6\1\u01d7\7\uffff\2\60\1\u01da\3\60\1\uffff\1\u01df\1\uffff\1\u01e0\4\uffff\3\60\1\uffff\1\u01e4\3\60\1\u01e8\1\u01e9\1\60\1\uffff\2\60\1\uffff\3\60\1\uffff\2\60\1\u01f2\7\60\2\uffff\1\u01fa\1\60\1\uffff\4\60\2\uffff\1\u0200\2\60\1\uffff\3\60\2\uffff\3\60\1\u020b\1\u020c\1\60\1\u020f\1\u0210\1\uffff\4\60\1\u0215\2\60\1\uffff\4\60\1\u021c\1\uffff\2\60\1\u021f\2\60\1\u0222\1\u0223\3\60\2\uffff\2\60\2\uffff\1\u0229\3\60\1\uffff\3\60\1\u0230\2\60\1\uffff\2\60\1\uffff\2\60\2\uffff\5\60\1\uffff\6\60\1\uffff\4\60\1\u0246\1\u0247\1\60\1\u0249\3\60\1\u024d\1\u024e\4\60\1\u0253\1\u0254\1\u0255\1\u0256\2\uffff\1\60\1\uffff\3\60\2\uffff\1\u025b\3\60\4\uffff\4\60\1\uffff\2\60\1\u0265\1\60\1\u0269\4\60\1\uffff\3\60\1\uffff\1\u0271\3\60\1\u0275\2\60\1\uffff\2\60\1\u027a\1\uffff\3\60\1\u027e\1\uffff\3\60\1\uffff\3\60\1\u0285\2\60\1\uffff\6\60\1\u028e\1\u028f\2\uffff";
-    static final String DFA30_eofS =
+    static final String DFA29_eotS =
+        "\1\44\17\60\2\uffff\1\60\1\uffff\14\60\3\54\1\60\1\uffff\1\54\2\156\1\uffff\2\54\2\uffff\3\60\2\uffff\1\44\35\60\2\uffff\2\60\1\uffff\20\60\4\uffff\1\44\1\60\4\uffff\1\156\1\uffff\1\156\2\uffff\1\u00b6\2\uffff\1\u00b6\1\uffff\2\60\3\uffff\47\60\1\u00e5\15\60\2\44\3\uffff\2\60\1\uffff\1\u00fc\6\60\1\u0103\7\60\1\u010c\1\u010d\3\60\1\u0111\2\60\1\u0114\1\u0115\1\u0116\20\60\1\uffff\2\60\1\u0129\2\60\1\u012c\3\60\1\u0131\1\u0133\1\u0135\4\60\3\44\3\60\1\uffff\6\60\1\uffff\6\60\1\u0116\1\60\2\uffff\1\u0150\2\60\1\uffff\2\60\3\uffff\13\60\1\u0160\2\60\1\u0163\3\60\1\uffff\2\60\1\uffff\3\60\6\uffff\1\u016d\1\u016f\1\u0171\1\u0173\3\60\1\uffff\1\44\3\60\1\u017a\1\u017b\1\u017c\1\u017d\3\60\1\u0181\6\60\1\uffff\3\60\1\u018c\1\u018f\12\60\1\uffff\2\60\1\uffff\7\60\1\u01a4\10\uffff\1\u01a6\1\u01a8\1\u01aa\3\60\4\uffff\2\60\1\u01b1\1\uffff\1\60\1\u01b3\1\60\1\u01b6\1\u01b8\1\60\1\u01bc\2\60\2\uffff\2\60\1\uffff\3\60\1\u01c4\1\u01c7\3\60\1\u01cb\11\60\1\u01d6\1\u01d7\7\uffff\2\60\1\u01da\3\60\1\uffff\1\u01df\1\uffff\1\u01e0\4\uffff\3\60\1\uffff\1\u01e4\3\60\1\u01e8\1\u01e9\1\60\1\uffff\2\60\1\uffff\3\60\1\uffff\2\60\1\u01f2\7\60\2\uffff\1\u01fa\1\60\1\uffff\4\60\2\uffff\1\u0200\2\60\1\uffff\3\60\2\uffff\3\60\1\u020b\1\u020c\1\60\1\u020f\1\u0210\1\uffff\4\60\1\u0215\2\60\1\uffff\4\60\1\u021c\1\uffff\2\60\1\u021f\2\60\1\u0222\1\u0223\3\60\2\uffff\2\60\2\uffff\1\u0229\3\60\1\uffff\3\60\1\u0230\2\60\1\uffff\2\60\1\uffff\2\60\2\uffff\5\60\1\uffff\6\60\1\uffff\4\60\1\u0246\1\u0247\1\60\1\u0249\3\60\1\u024d\1\u024e\4\60\1\u0253\1\u0254\1\u0255\1\u0256\2\uffff\1\60\1\uffff\3\60\2\uffff\1\u025b\3\60\4\uffff\4\60\1\uffff\2\60\1\u0265\1\60\1\u0269\4\60\1\uffff\3\60\1\uffff\1\u0271\3\60\1\u0275\2\60\1\uffff\2\60\1\u027a\1\uffff\3\60\1\u027e\1\uffff\3\60\1\uffff\3\60\1\u0285\2\60\1\uffff\6\60\1\u028e\1\u028f\2\uffff";
+    static final String DFA29_eofS =
         "\u0290\uffff";
-    static final String DFA30_minS =
-        "\1\0\17\57\2\uffff\1\57\1\uffff\14\57\1\135\1\52\1\101\1\57\1\uffff\1\101\2\60\1\uffff\2\0\2\uffff\3\57\2\uffff\36\57\2\uffff\2\57\1\uffff\20\57\3\uffff\1\101\2\57\4\uffff\2\60\1\uffff\2\0\1\75\2\0\1\75\1\uffff\2\57\2\101\70\57\1\0\1\uffff\1\0\55\57\1\uffff\26\57\1\uffff\6\57\1\uffff\10\57\2\uffff\3\57\1\uffff\2\57\3\uffff\22\57\1\uffff\2\57\1\uffff\3\57\6\uffff\7\57\1\101\22\57\1\uffff\17\57\1\uffff\2\57\1\uffff\10\57\10\uffff\6\57\4\uffff\3\57\1\uffff\11\57\2\uffff\2\57\1\uffff\24\57\7\uffff\6\57\1\uffff\1\57\1\uffff\1\57\4\uffff\3\57\1\uffff\7\57\1\uffff\2\57\1\uffff\3\57\1\uffff\12\57\2\uffff\2\57\1\uffff\4\57\2\uffff\3\57\1\uffff\3\57\2\uffff\10\57\1\uffff\7\57\1\uffff\5\57\1\uffff\12\57\2\uffff\2\57\2\uffff\4\57\1\uffff\6\57\1\uffff\2\57\1\uffff\2\57\2\uffff\5\57\1\uffff\6\57\1\uffff\25\57\2\uffff\1\57\1\uffff\3\57\2\uffff\4\57\4\uffff\4\57\1\uffff\11\57\1\uffff\3\57\1\uffff\7\57\1\uffff\3\57\1\uffff\4\57\1\uffff\3\57\1\uffff\6\57\1\uffff\10\57\2\uffff";
-    static final String DFA30_maxS =
-        "\1\uffff\17\172\2\uffff\1\172\1\uffff\14\172\1\135\3\172\1\uffff\1\172\1\170\1\71\1\uffff\2\uffff\2\uffff\3\172\2\uffff\1\176\35\172\2\uffff\2\172\1\uffff\20\172\3\uffff\1\172\1\176\1\172\4\uffff\2\71\1\uffff\2\uffff\1\75\2\uffff\1\75\1\uffff\72\172\2\176\1\uffff\1\uffff\1\uffff\55\172\1\uffff\20\172\3\176\3\172\1\uffff\6\172\1\uffff\10\172\2\uffff\3\172\1\uffff\2\172\3\uffff\22\172\1\uffff\2\172\1\uffff\3\172\6\uffff\10\172\1\176\21\172\1\uffff\17\172\1\uffff\2\172\1\uffff\10\172\10\uffff\6\172\4\uffff\3\172\1\uffff\11\172\2\uffff\2\172\1\uffff\24\172\7\uffff\6\172\1\uffff\1\172\1\uffff\1\172\4\uffff\3\172\1\uffff\7\172\1\uffff\2\172\1\uffff\3\172\1\uffff\12\172\2\uffff\2\172\1\uffff\4\172\2\uffff\3\172\1\uffff\3\172\2\uffff\10\172\1\uffff\7\172\1\uffff\5\172\1\uffff\12\172\2\uffff\2\172\2\uffff\4\172\1\uffff\6\172\1\uffff\2\172\1\uffff\2\172\2\uffff\5\172\1\uffff\6\172\1\uffff\25\172\2\uffff\1\172\1\uffff\3\172\2\uffff\4\172\4\uffff\4\172\1\uffff\11\172\1\uffff\3\172\1\uffff\7\172\1\uffff\3\172\1\uffff\4\172\1\uffff\3\172\1\uffff\6\172\1\uffff\10\172\2\uffff";
-    static final String DFA30_acceptS =
-        "\20\uffff\1\21\1\22\1\uffff\1\24\20\uffff\1\142\3\uffff\1\146\2\uffff\1\157\1\160\3\uffff\1\152\1\151\36\uffff\1\21\1\22\2\uffff\1\24\20\uffff\1\141\1\155\1\156\3\uffff\1\143\1\147\1\150\1\145\2\uffff\1\146\6\uffff\1\157\75\uffff\1\154\56\uffff\1\101\26\uffff\1\76\6\uffff\1\5\10\uffff\1\11\1\31\3\uffff\1\26\2\uffff\1\14\1\17\1\144\22\uffff\1\41\2\uffff\1\67\3\uffff\1\124\1\107\1\140\1\123\1\125\1\110\32\uffff\1\12\17\uffff\1\63\2\uffff\1\102\10\uffff\1\127\1\112\1\131\1\114\1\133\1\116\1\126\1\111\6\uffff\1\75\1\3\1\4\1\72\3\uffff\1\7\11\uffff\1\137\1\122\2\uffff\1\15\24\uffff\1\100\1\130\1\113\1\132\1\115\1\134\1\117\6\uffff\1\6\1\uffff\1\35\1\uffff\1\135\1\120\1\136\1\121\3\uffff\1\13\7\uffff\1\71\2\uffff\1\25\3\uffff\1\23\12\uffff\1\74\1\77\2\uffff\1\2\4\uffff\1\36\1\10\3\uffff\1\70\3\uffff\1\27\1\16\10\uffff\1\30\7\uffff\1\1\5\uffff\1\52\12\uffff\1\66\1\53\2\uffff\1\50\1\43\4\uffff\1\37\6\uffff\1\54\2\uffff\1\44\2\uffff\1\33\1\20\5\uffff\1\40\6\uffff\1\34\25\uffff\1\46\1\47\1\uffff\1\103\3\uffff\1\56\1\57\4\uffff\1\51\1\55\1\42\1\45\4\uffff\1\32\11\uffff\1\62\3\uffff\1\104\7\uffff\1\65\3\uffff\1\60\4\uffff\1\64\3\uffff\1\61\6\uffff\1\105\10\uffff\1\106\1\73";
-    static final String DFA30_specialS =
-        "\1\5\50\uffff\1\1\1\6\107\uffff\1\0\1\4\1\uffff\1\2\1\10\76\uffff\1\3\1\uffff\1\7\u01d8\uffff}>";
-    static final String[] DFA30_transitionS = {
+    static final String DFA29_minS =
+        "\1\0\17\57\2\uffff\1\57\1\uffff\14\57\1\135\1\52\1\101\1\57\1\uffff\1\101\2\56\1\uffff\2\0\2\uffff\3\57\2\uffff\36\57\2\uffff\2\57\1\uffff\20\57\3\uffff\1\101\2\57\4\uffff\1\60\1\uffff\1\56\2\0\1\75\2\0\1\75\1\uffff\2\57\2\101\70\57\1\0\1\uffff\1\0\55\57\1\uffff\26\57\1\uffff\6\57\1\uffff\10\57\2\uffff\3\57\1\uffff\2\57\3\uffff\22\57\1\uffff\2\57\1\uffff\3\57\6\uffff\7\57\1\101\22\57\1\uffff\17\57\1\uffff\2\57\1\uffff\10\57\10\uffff\6\57\4\uffff\3\57\1\uffff\11\57\2\uffff\2\57\1\uffff\24\57\7\uffff\6\57\1\uffff\1\57\1\uffff\1\57\4\uffff\3\57\1\uffff\7\57\1\uffff\2\57\1\uffff\3\57\1\uffff\12\57\2\uffff\2\57\1\uffff\4\57\2\uffff\3\57\1\uffff\3\57\2\uffff\10\57\1\uffff\7\57\1\uffff\5\57\1\uffff\12\57\2\uffff\2\57\2\uffff\4\57\1\uffff\6\57\1\uffff\2\57\1\uffff\2\57\2\uffff\5\57\1\uffff\6\57\1\uffff\25\57\2\uffff\1\57\1\uffff\3\57\2\uffff\4\57\4\uffff\4\57\1\uffff\11\57\1\uffff\3\57\1\uffff\7\57\1\uffff\3\57\1\uffff\4\57\1\uffff\3\57\1\uffff\6\57\1\uffff\10\57\2\uffff";
+    static final String DFA29_maxS =
+        "\1\uffff\17\172\2\uffff\1\172\1\uffff\14\172\1\135\3\172\1\uffff\1\172\1\170\1\145\1\uffff\2\uffff\2\uffff\3\172\2\uffff\1\176\35\172\2\uffff\2\172\1\uffff\20\172\3\uffff\1\172\1\176\1\172\4\uffff\1\71\1\uffff\1\145\2\uffff\1\75\2\uffff\1\75\1\uffff\72\172\2\176\1\uffff\1\uffff\1\uffff\55\172\1\uffff\20\172\3\176\3\172\1\uffff\6\172\1\uffff\10\172\2\uffff\3\172\1\uffff\2\172\3\uffff\22\172\1\uffff\2\172\1\uffff\3\172\6\uffff\10\172\1\176\21\172\1\uffff\17\172\1\uffff\2\172\1\uffff\10\172\10\uffff\6\172\4\uffff\3\172\1\uffff\11\172\2\uffff\2\172\1\uffff\24\172\7\uffff\6\172\1\uffff\1\172\1\uffff\1\172\4\uffff\3\172\1\uffff\7\172\1\uffff\2\172\1\uffff\3\172\1\uffff\12\172\2\uffff\2\172\1\uffff\4\172\2\uffff\3\172\1\uffff\3\172\2\uffff\10\172\1\uffff\7\172\1\uffff\5\172\1\uffff\12\172\2\uffff\2\172\2\uffff\4\172\1\uffff\6\172\1\uffff\2\172\1\uffff\2\172\2\uffff\5\172\1\uffff\6\172\1\uffff\25\172\2\uffff\1\172\1\uffff\3\172\2\uffff\4\172\4\uffff\4\172\1\uffff\11\172\1\uffff\3\172\1\uffff\7\172\1\uffff\3\172\1\uffff\4\172\1\uffff\3\172\1\uffff\6\172\1\uffff\10\172\2\uffff";
+    static final String DFA29_acceptS =
+        "\20\uffff\1\21\1\22\1\uffff\1\24\20\uffff\1\142\3\uffff\1\146\2\uffff\1\157\1\160\3\uffff\1\152\1\151\36\uffff\1\21\1\22\2\uffff\1\24\20\uffff\1\141\1\155\1\156\3\uffff\1\143\1\147\1\150\1\146\1\uffff\1\145\7\uffff\1\157\75\uffff\1\154\56\uffff\1\101\26\uffff\1\76\6\uffff\1\5\10\uffff\1\11\1\31\3\uffff\1\26\2\uffff\1\14\1\17\1\144\22\uffff\1\41\2\uffff\1\67\3\uffff\1\124\1\107\1\140\1\123\1\125\1\110\32\uffff\1\12\17\uffff\1\63\2\uffff\1\102\10\uffff\1\127\1\112\1\131\1\114\1\133\1\116\1\126\1\111\6\uffff\1\75\1\3\1\4\1\72\3\uffff\1\7\11\uffff\1\137\1\122\2\uffff\1\15\24\uffff\1\100\1\130\1\113\1\132\1\115\1\134\1\117\6\uffff\1\6\1\uffff\1\35\1\uffff\1\135\1\120\1\136\1\121\3\uffff\1\13\7\uffff\1\71\2\uffff\1\25\3\uffff\1\23\12\uffff\1\74\1\77\2\uffff\1\2\4\uffff\1\36\1\10\3\uffff\1\70\3\uffff\1\27\1\16\10\uffff\1\30\7\uffff\1\1\5\uffff\1\52\12\uffff\1\66\1\53\2\uffff\1\50\1\43\4\uffff\1\37\6\uffff\1\54\2\uffff\1\44\2\uffff\1\33\1\20\5\uffff\1\40\6\uffff\1\34\25\uffff\1\46\1\47\1\uffff\1\103\3\uffff\1\56\1\57\4\uffff\1\51\1\55\1\42\1\45\4\uffff\1\32\11\uffff\1\62\3\uffff\1\104\7\uffff\1\65\3\uffff\1\60\4\uffff\1\64\3\uffff\1\61\6\uffff\1\105\10\uffff\1\106\1\73";
+    static final String DFA29_specialS =
+        "\1\6\50\uffff\1\7\1\3\107\uffff\1\10\1\2\1\uffff\1\0\1\5\76\uffff\1\1\1\uffff\1\4\u01d8\uffff}>";
+    static final String[] DFA29_transitionS = {
             "\11\54\2\53\2\54\1\53\22\54\1\53\1\54\1\51\4\54\1\52\4\54\1\23\1\50\1\54\1\41\1\46\11\47\7\54\1\24\1\34\1\25\1\2\1\30\1\43\1\1\1\3\1\33\2\43\1\32\1\43\1\27\1\43\1\17\1\43\1\31\1\4\1\26\6\43\1\40\2\54\1\42\1\43\1\54\1\15\1\35\1\43\1\16\1\43\1\10\1\5\1\43\1\36\3\43\1\6\1\11\1\43\1\22\1\43\1\7\1\13\1\14\1\37\1\12\4\43\1\20\1\54\1\21\1\45\uff81\54",
             "\1\62\12\57\3\uffff\1\61\3\uffff\32\57\4\uffff\1\57\1\uffff\13\57\1\56\5\57\1\55\10\57",
             "\1\62\12\57\3\uffff\1\61\3\uffff\32\57\4\uffff\1\57\1\uffff\1\63\15\57\1\64\13\57",
@@ -4561,8 +4486,8 @@ public class InternalRosLexer extends Lexer {
             "\1\62\12\57\3\uffff\1\61\3\uffff\32\57\4\uffff\1\57\1\uffff\32\57",
             "",
             "\32\153\3\uffff\2\153\1\uffff\32\153",
-            "\12\157\50\uffff\1\155\25\uffff\1\154",
-            "\12\160",
+            "\1\160\1\uffff\12\157\13\uffff\1\160\34\uffff\1\155\2\uffff\1\160\22\uffff\1\154",
+            "\1\160\1\uffff\12\161\13\uffff\1\160\37\uffff\1\160",
             "",
             "\42\163\1\164\71\163\1\162\uffa3\163",
             "\47\166\1\167\64\166\1\165\uffa3\166",
@@ -4635,8 +4560,8 @@ public class InternalRosLexer extends Lexer {
             "",
             "",
             "\12\157",
-            "\12\160",
             "",
+            "\1\160\1\uffff\12\161\13\uffff\1\160\37\uffff\1\160",
             "\0\u00b5",
             "\42\163\1\164\71\163\1\162\uffa3\163",
             "\1\61",
@@ -5181,34 +5106,34 @@ public class InternalRosLexer extends Lexer {
             ""
     };
 
-    static final short[] DFA30_eot = DFA.unpackEncodedString(DFA30_eotS);
-    static final short[] DFA30_eof = DFA.unpackEncodedString(DFA30_eofS);
-    static final char[] DFA30_min = DFA.unpackEncodedStringToUnsignedChars(DFA30_minS);
-    static final char[] DFA30_max = DFA.unpackEncodedStringToUnsignedChars(DFA30_maxS);
-    static final short[] DFA30_accept = DFA.unpackEncodedString(DFA30_acceptS);
-    static final short[] DFA30_special = DFA.unpackEncodedString(DFA30_specialS);
-    static final short[][] DFA30_transition;
+    static final short[] DFA29_eot = DFA.unpackEncodedString(DFA29_eotS);
+    static final short[] DFA29_eof = DFA.unpackEncodedString(DFA29_eofS);
+    static final char[] DFA29_min = DFA.unpackEncodedStringToUnsignedChars(DFA29_minS);
+    static final char[] DFA29_max = DFA.unpackEncodedStringToUnsignedChars(DFA29_maxS);
+    static final short[] DFA29_accept = DFA.unpackEncodedString(DFA29_acceptS);
+    static final short[] DFA29_special = DFA.unpackEncodedString(DFA29_specialS);
+    static final short[][] DFA29_transition;
 
     static {
-        int numStates = DFA30_transitionS.length;
-        DFA30_transition = new short[numStates][];
+        int numStates = DFA29_transitionS.length;
+        DFA29_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA30_transition[i] = DFA.unpackEncodedString(DFA30_transitionS[i]);
+            DFA29_transition[i] = DFA.unpackEncodedString(DFA29_transitionS[i]);
         }
     }
 
-    class DFA30 extends DFA {
+    class DFA29 extends DFA {
 
-        public DFA30(BaseRecognizer recognizer) {
+        public DFA29(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 30;
-            this.eot = DFA30_eot;
-            this.eof = DFA30_eof;
-            this.min = DFA30_min;
-            this.max = DFA30_max;
-            this.accept = DFA30_accept;
-            this.special = DFA30_special;
-            this.transition = DFA30_transition;
+            this.decisionNumber = 29;
+            this.eot = DFA29_eot;
+            this.eof = DFA29_eof;
+            this.min = DFA29_min;
+            this.max = DFA29_max;
+            this.accept = DFA29_accept;
+            this.special = DFA29_special;
+            this.transition = DFA29_transition;
         }
         public String getDescription() {
             return "1:1: Tokens : ( T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | T__81 | T__82 | T__83 | T__84 | T__85 | T__86 | T__87 | T__88 | T__89 | T__90 | T__91 | T__92 | T__93 | T__94 | T__95 | T__96 | T__97 | T__98 | T__99 | T__100 | T__101 | T__102 | T__103 | T__104 | T__105 | T__106 | T__107 | T__108 | T__109 | T__110 | T__111 | T__112 | T__113 | T__114 | T__115 | T__116 | T__117 | T__118 | T__119 | T__120 | RULE_ROS_CONVENTION_A | RULE_ROS_CONVENTION_PARAM | RULE_BOOLEAN | RULE_DOUBLE | RULE_SIGNED_INT | RULE_HEX | RULE_BINARY | RULE_MESSAGE_ASIGMENT | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
@@ -5218,194 +5143,194 @@ public class InternalRosLexer extends Lexer {
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA30_114 = input.LA(1);
+                        int LA29_117 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA30_114>='\u0000' && LA30_114<='\uFFFF')) ) {s = 181;}
+                        if ( ((LA29_117>='\u0000' && LA29_117<='\uFFFF')) ) {s = 183;}
 
                         if ( s>=0 ) return s;
                         break;
                     case 1 : 
-                        int LA30_41 = input.LA(1);
+                        int LA29_181 = input.LA(1);
 
                         s = -1;
-                        if ( (LA30_41=='\\') ) {s = 114;}
+                        if ( (LA29_181=='\"') ) {s = 116;}
 
-                        else if ( ((LA30_41>='\u0000' && LA30_41<='!')||(LA30_41>='#' && LA30_41<='[')||(LA30_41>=']' && LA30_41<='\uFFFF')) ) {s = 115;}
+                        else if ( (LA29_181=='\\') ) {s = 114;}
 
-                        else if ( (LA30_41=='\"') ) {s = 116;}
+                        else if ( ((LA29_181>='\u0000' && LA29_181<='!')||(LA29_181>='#' && LA29_181<='[')||(LA29_181>=']' && LA29_181<='\uFFFF')) ) {s = 115;}
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 2 : 
+                        int LA29_115 = input.LA(1);
+
+                        s = -1;
+                        if ( (LA29_115=='\"') ) {s = 116;}
+
+                        else if ( (LA29_115=='\\') ) {s = 114;}
+
+                        else if ( ((LA29_115>='\u0000' && LA29_115<='!')||(LA29_115>='#' && LA29_115<='[')||(LA29_115>=']' && LA29_115<='\uFFFF')) ) {s = 115;}
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 3 : 
+                        int LA29_42 = input.LA(1);
+
+                        s = -1;
+                        if ( (LA29_42=='\\') ) {s = 117;}
+
+                        else if ( ((LA29_42>='\u0000' && LA29_42<='&')||(LA29_42>='(' && LA29_42<='[')||(LA29_42>=']' && LA29_42<='\uFFFF')) ) {s = 118;}
+
+                        else if ( (LA29_42=='\'') ) {s = 119;}
 
                         else s = 44;
 
                         if ( s>=0 ) return s;
                         break;
-                    case 2 : 
-                        int LA30_117 = input.LA(1);
-
-                        s = -1;
-                        if ( ((LA30_117>='\u0000' && LA30_117<='\uFFFF')) ) {s = 183;}
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 3 : 
-                        int LA30_181 = input.LA(1);
-
-                        s = -1;
-                        if ( (LA30_181=='\"') ) {s = 116;}
-
-                        else if ( (LA30_181=='\\') ) {s = 114;}
-
-                        else if ( ((LA30_181>='\u0000' && LA30_181<='!')||(LA30_181>='#' && LA30_181<='[')||(LA30_181>=']' && LA30_181<='\uFFFF')) ) {s = 115;}
-
-                        if ( s>=0 ) return s;
-                        break;
                     case 4 : 
-                        int LA30_115 = input.LA(1);
+                        int LA29_183 = input.LA(1);
 
                         s = -1;
-                        if ( (LA30_115=='\"') ) {s = 116;}
+                        if ( (LA29_183=='\'') ) {s = 119;}
 
-                        else if ( (LA30_115=='\\') ) {s = 114;}
+                        else if ( (LA29_183=='\\') ) {s = 117;}
 
-                        else if ( ((LA30_115>='\u0000' && LA30_115<='!')||(LA30_115>='#' && LA30_115<='[')||(LA30_115>=']' && LA30_115<='\uFFFF')) ) {s = 115;}
+                        else if ( ((LA29_183>='\u0000' && LA29_183<='&')||(LA29_183>='(' && LA29_183<='[')||(LA29_183>=']' && LA29_183<='\uFFFF')) ) {s = 118;}
 
                         if ( s>=0 ) return s;
                         break;
                     case 5 : 
-                        int LA30_0 = input.LA(1);
+                        int LA29_118 = input.LA(1);
 
                         s = -1;
-                        if ( (LA30_0=='G') ) {s = 1;}
+                        if ( (LA29_118=='\'') ) {s = 119;}
 
-                        else if ( (LA30_0=='D') ) {s = 2;}
+                        else if ( (LA29_118=='\\') ) {s = 117;}
 
-                        else if ( (LA30_0=='H') ) {s = 3;}
+                        else if ( ((LA29_118>='\u0000' && LA29_118<='&')||(LA29_118>='(' && LA29_118<='[')||(LA29_118>=']' && LA29_118<='\uFFFF')) ) {s = 118;}
 
-                        else if ( (LA30_0=='S') ) {s = 4;}
+                        if ( s>=0 ) return s;
+                        break;
+                    case 6 : 
+                        int LA29_0 = input.LA(1);
 
-                        else if ( (LA30_0=='g') ) {s = 5;}
+                        s = -1;
+                        if ( (LA29_0=='G') ) {s = 1;}
 
-                        else if ( (LA30_0=='m') ) {s = 6;}
+                        else if ( (LA29_0=='D') ) {s = 2;}
 
-                        else if ( (LA30_0=='r') ) {s = 7;}
+                        else if ( (LA29_0=='H') ) {s = 3;}
 
-                        else if ( (LA30_0=='f') ) {s = 8;}
+                        else if ( (LA29_0=='S') ) {s = 4;}
 
-                        else if ( (LA30_0=='n') ) {s = 9;}
+                        else if ( (LA29_0=='g') ) {s = 5;}
 
-                        else if ( (LA30_0=='v') ) {s = 10;}
+                        else if ( (LA29_0=='m') ) {s = 6;}
 
-                        else if ( (LA30_0=='s') ) {s = 11;}
+                        else if ( (LA29_0=='r') ) {s = 7;}
 
-                        else if ( (LA30_0=='t') ) {s = 12;}
+                        else if ( (LA29_0=='f') ) {s = 8;}
 
-                        else if ( (LA30_0=='a') ) {s = 13;}
+                        else if ( (LA29_0=='n') ) {s = 9;}
 
-                        else if ( (LA30_0=='d') ) {s = 14;}
+                        else if ( (LA29_0=='v') ) {s = 10;}
 
-                        else if ( (LA30_0=='P') ) {s = 15;}
+                        else if ( (LA29_0=='s') ) {s = 11;}
 
-                        else if ( (LA30_0=='{') ) {s = 16;}
+                        else if ( (LA29_0=='t') ) {s = 12;}
 
-                        else if ( (LA30_0=='}') ) {s = 17;}
+                        else if ( (LA29_0=='a') ) {s = 13;}
 
-                        else if ( (LA30_0=='p') ) {s = 18;}
+                        else if ( (LA29_0=='d') ) {s = 14;}
 
-                        else if ( (LA30_0==',') ) {s = 19;}
+                        else if ( (LA29_0=='P') ) {s = 15;}
 
-                        else if ( (LA30_0=='A') ) {s = 20;}
+                        else if ( (LA29_0=='{') ) {s = 16;}
 
-                        else if ( (LA30_0=='C') ) {s = 21;}
+                        else if ( (LA29_0=='}') ) {s = 17;}
 
-                        else if ( (LA30_0=='T') ) {s = 22;}
+                        else if ( (LA29_0=='p') ) {s = 18;}
 
-                        else if ( (LA30_0=='N') ) {s = 23;}
+                        else if ( (LA29_0==',') ) {s = 19;}
 
-                        else if ( (LA30_0=='E') ) {s = 24;}
+                        else if ( (LA29_0=='A') ) {s = 20;}
 
-                        else if ( (LA30_0=='R') ) {s = 25;}
+                        else if ( (LA29_0=='C') ) {s = 21;}
 
-                        else if ( (LA30_0=='L') ) {s = 26;}
+                        else if ( (LA29_0=='T') ) {s = 22;}
 
-                        else if ( (LA30_0=='I') ) {s = 27;}
+                        else if ( (LA29_0=='N') ) {s = 23;}
 
-                        else if ( (LA30_0=='B') ) {s = 28;}
+                        else if ( (LA29_0=='E') ) {s = 24;}
 
-                        else if ( (LA30_0=='b') ) {s = 29;}
+                        else if ( (LA29_0=='R') ) {s = 25;}
 
-                        else if ( (LA30_0=='i') ) {s = 30;}
+                        else if ( (LA29_0=='L') ) {s = 26;}
 
-                        else if ( (LA30_0=='u') ) {s = 31;}
+                        else if ( (LA29_0=='I') ) {s = 27;}
 
-                        else if ( (LA30_0=='[') ) {s = 32;}
+                        else if ( (LA29_0=='B') ) {s = 28;}
 
-                        else if ( (LA30_0=='/') ) {s = 33;}
+                        else if ( (LA29_0=='b') ) {s = 29;}
 
-                        else if ( (LA30_0=='^') ) {s = 34;}
+                        else if ( (LA29_0=='i') ) {s = 30;}
 
-                        else if ( (LA30_0=='F'||(LA30_0>='J' && LA30_0<='K')||LA30_0=='M'||LA30_0=='O'||LA30_0=='Q'||(LA30_0>='U' && LA30_0<='Z')||LA30_0=='_'||LA30_0=='c'||LA30_0=='e'||LA30_0=='h'||(LA30_0>='j' && LA30_0<='l')||LA30_0=='o'||LA30_0=='q'||(LA30_0>='w' && LA30_0<='z')) ) {s = 35;}
+                        else if ( (LA29_0=='u') ) {s = 31;}
 
-                        else if ( (LA30_0=='~') ) {s = 37;}
+                        else if ( (LA29_0=='[') ) {s = 32;}
 
-                        else if ( (LA30_0=='0') ) {s = 38;}
+                        else if ( (LA29_0=='/') ) {s = 33;}
 
-                        else if ( ((LA30_0>='1' && LA30_0<='9')) ) {s = 39;}
+                        else if ( (LA29_0=='^') ) {s = 34;}
 
-                        else if ( (LA30_0=='-') ) {s = 40;}
+                        else if ( (LA29_0=='F'||(LA29_0>='J' && LA29_0<='K')||LA29_0=='M'||LA29_0=='O'||LA29_0=='Q'||(LA29_0>='U' && LA29_0<='Z')||LA29_0=='_'||LA29_0=='c'||LA29_0=='e'||LA29_0=='h'||(LA29_0>='j' && LA29_0<='l')||LA29_0=='o'||LA29_0=='q'||(LA29_0>='w' && LA29_0<='z')) ) {s = 35;}
 
-                        else if ( (LA30_0=='\"') ) {s = 41;}
+                        else if ( (LA29_0=='~') ) {s = 37;}
 
-                        else if ( (LA30_0=='\'') ) {s = 42;}
+                        else if ( (LA29_0=='0') ) {s = 38;}
 
-                        else if ( ((LA30_0>='\t' && LA30_0<='\n')||LA30_0=='\r'||LA30_0==' ') ) {s = 43;}
+                        else if ( ((LA29_0>='1' && LA29_0<='9')) ) {s = 39;}
 
-                        else if ( ((LA30_0>='\u0000' && LA30_0<='\b')||(LA30_0>='\u000B' && LA30_0<='\f')||(LA30_0>='\u000E' && LA30_0<='\u001F')||LA30_0=='!'||(LA30_0>='#' && LA30_0<='&')||(LA30_0>='(' && LA30_0<='+')||LA30_0=='.'||(LA30_0>=':' && LA30_0<='@')||(LA30_0>='\\' && LA30_0<=']')||LA30_0=='`'||LA30_0=='|'||(LA30_0>='\u007F' && LA30_0<='\uFFFF')) ) {s = 44;}
+                        else if ( (LA29_0=='-') ) {s = 40;}
+
+                        else if ( (LA29_0=='\"') ) {s = 41;}
+
+                        else if ( (LA29_0=='\'') ) {s = 42;}
+
+                        else if ( ((LA29_0>='\t' && LA29_0<='\n')||LA29_0=='\r'||LA29_0==' ') ) {s = 43;}
+
+                        else if ( ((LA29_0>='\u0000' && LA29_0<='\b')||(LA29_0>='\u000B' && LA29_0<='\f')||(LA29_0>='\u000E' && LA29_0<='\u001F')||LA29_0=='!'||(LA29_0>='#' && LA29_0<='&')||(LA29_0>='(' && LA29_0<='+')||LA29_0=='.'||(LA29_0>=':' && LA29_0<='@')||(LA29_0>='\\' && LA29_0<=']')||LA29_0=='`'||LA29_0=='|'||(LA29_0>='\u007F' && LA29_0<='\uFFFF')) ) {s = 44;}
 
                         else s = 36;
 
                         if ( s>=0 ) return s;
                         break;
-                    case 6 : 
-                        int LA30_42 = input.LA(1);
+                    case 7 : 
+                        int LA29_41 = input.LA(1);
 
                         s = -1;
-                        if ( (LA30_42=='\\') ) {s = 117;}
+                        if ( (LA29_41=='\\') ) {s = 114;}
 
-                        else if ( ((LA30_42>='\u0000' && LA30_42<='&')||(LA30_42>='(' && LA30_42<='[')||(LA30_42>=']' && LA30_42<='\uFFFF')) ) {s = 118;}
+                        else if ( ((LA29_41>='\u0000' && LA29_41<='!')||(LA29_41>='#' && LA29_41<='[')||(LA29_41>=']' && LA29_41<='\uFFFF')) ) {s = 115;}
 
-                        else if ( (LA30_42=='\'') ) {s = 119;}
+                        else if ( (LA29_41=='\"') ) {s = 116;}
 
                         else s = 44;
 
                         if ( s>=0 ) return s;
                         break;
-                    case 7 : 
-                        int LA30_183 = input.LA(1);
-
-                        s = -1;
-                        if ( (LA30_183=='\'') ) {s = 119;}
-
-                        else if ( (LA30_183=='\\') ) {s = 117;}
-
-                        else if ( ((LA30_183>='\u0000' && LA30_183<='&')||(LA30_183>='(' && LA30_183<='[')||(LA30_183>=']' && LA30_183<='\uFFFF')) ) {s = 118;}
-
-                        if ( s>=0 ) return s;
-                        break;
                     case 8 : 
-                        int LA30_118 = input.LA(1);
+                        int LA29_114 = input.LA(1);
 
                         s = -1;
-                        if ( (LA30_118=='\'') ) {s = 119;}
-
-                        else if ( (LA30_118=='\\') ) {s = 117;}
-
-                        else if ( ((LA30_118>='\u0000' && LA30_118<='&')||(LA30_118>='(' && LA30_118<='[')||(LA30_118>=']' && LA30_118<='\uFFFF')) ) {s = 118;}
+                        if ( ((LA29_114>='\u0000' && LA29_114<='\uFFFF')) ) {s = 181;}
 
                         if ( s>=0 ) return s;
                         break;
             }
             NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 30, _s, input);
+                new NoViableAltException(getDescription(), 29, _s, input);
             error(nvae);
             throw nvae;
         }

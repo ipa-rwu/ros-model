@@ -734,7 +734,7 @@ public class RosSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     ParameterInteger returns ParameterInteger
 	 *
 	 * Constraint:
-	 *     value=Eint
+	 *     value=Int_test
 	 */
 	protected void sequence_ParameterInteger(ISerializationContext context, ParameterInteger semanticObject) {
 		if (errorAcceptor != null) {
@@ -742,7 +742,7 @@ public class RosSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RosPackage.Literals.PARAMETER_INTEGER__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getParameterIntegerAccess().getValueEintParserRuleCall_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getParameterIntegerAccess().getValueInt_testParserRuleCall_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	

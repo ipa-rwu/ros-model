@@ -33,7 +33,6 @@ public class ComponentInterfaceParser extends AbstractContentAssistParser {
 		private static void init(ImmutableMap.Builder<AbstractElement, String> builder, ComponentInterfaceGrammarAccess grammarAccess) {
 			builder.put(grammarAccess.getEStringAccess().getAlternatives(), "rule__EString__Alternatives");
 			builder.put(grammarAccess.getParameterValueAccess().getAlternatives(), "rule__ParameterValue__Alternatives");
-			builder.put(grammarAccess.getParameterAnyAccess().getAlternatives(), "rule__ParameterAny__Alternatives");
 			builder.put(grammarAccess.getComponentInterfaceAccess().getGroup(), "rule__ComponentInterface__Group__0");
 			builder.put(grammarAccess.getComponentInterfaceAccess().getGroup_4(), "rule__ComponentInterface__Group_4__0");
 			builder.put(grammarAccess.getComponentInterfaceAccess().getGroup_5(), "rule__ComponentInterface__Group_5__0");
@@ -68,9 +67,6 @@ public class ComponentInterfaceParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getParameterValueAccess().getGroup_0(), "rule__ParameterValue__Group_0__0");
 			builder.put(grammarAccess.getParameterValueAccess().getGroup_1(), "rule__ParameterValue__Group_1__0");
 			builder.put(grammarAccess.getParameterValueAccess().getGroup_2(), "rule__ParameterValue__Group_2__0");
-			builder.put(grammarAccess.getParameterAnyAccess().getGroup_0(), "rule__ParameterAny__Group_0__0");
-			builder.put(grammarAccess.getParameterAnyAccess().getGroup_1(), "rule__ParameterAny__Group_1__0");
-			builder.put(grammarAccess.getParameterAnyAccess().getGroup_2(), "rule__ParameterAny__Group_2__0");
 			builder.put(grammarAccess.getComponentInterfaceAccess().getNameAssignment_3(), "rule__ComponentInterface__NameAssignment_3");
 			builder.put(grammarAccess.getComponentInterfaceAccess().getNameSpaceAssignment_4_1(), "rule__ComponentInterface__NameSpaceAssignment_4_1");
 			builder.put(grammarAccess.getComponentInterfaceAccess().getRospublisherAssignment_5_2(), "rule__ComponentInterface__RospublisherAssignment_5_2");

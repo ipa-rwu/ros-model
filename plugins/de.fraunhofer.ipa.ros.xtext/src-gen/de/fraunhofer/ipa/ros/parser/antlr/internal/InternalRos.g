@@ -4068,9 +4068,9 @@ ruleParameterInteger returns [EObject current=null]
 	(
 		(
 			{
-				newCompositeNode(grammarAccess.getParameterIntegerAccess().getValueEintParserRuleCall_0());
+				newCompositeNode(grammarAccess.getParameterIntegerAccess().getValueInt_testParserRuleCall_0());
 			}
-			lv_value_0_0=ruleEint
+			lv_value_0_0=ruleInt_test
 			{
 				if ($current==null) {
 					$current = createModelElementForParent(grammarAccess.getParameterIntegerRule());
@@ -4079,7 +4079,7 @@ ruleParameterInteger returns [EObject current=null]
 					$current,
 					"value",
 					lv_value_0_0,
-					"de.fraunhofer.ipa.ros.Ros.Eint");
+					"de.fraunhofer.ipa.ros.Ros.Int_test");
 				afterParserOrEnumRuleCall();
 			}
 		)
@@ -4539,15 +4539,15 @@ ruleDouble0 returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()
 	}
 ;
 
-// Entry rule entryRuleEint
-entryRuleEint returns [String current=null]:
-	{ newCompositeNode(grammarAccess.getEintRule()); }
-	iv_ruleEint=ruleEint
-	{ $current=$iv_ruleEint.current.getText(); }
+// Entry rule entryRuleInt_test
+entryRuleInt_test returns [String current=null]:
+	{ newCompositeNode(grammarAccess.getInt_testRule()); }
+	iv_ruleInt_test=ruleInt_test
+	{ $current=$iv_ruleInt_test.current.getText(); }
 	EOF;
 
-// Rule Eint
-ruleEint returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+// Rule Int_test
+ruleInt_test returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
 @init {
 	enterRule();
 }
@@ -4559,7 +4559,7 @@ ruleEint returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
 		$current.merge(this_INT_0);
 	}
 	{
-		newLeafNode(this_INT_0, grammarAccess.getEintAccess().getINTTerminalRuleCall());
+		newLeafNode(this_INT_0, grammarAccess.getInt_testAccess().getINTTerminalRuleCall());
 	}
 ;
 
@@ -6006,7 +6006,7 @@ RULE_BOOLEAN : ('true'|'false');
 
 fragment RULE_DIGIT : '0'..'9';
 
-RULE_DOUBLE : (RULE_DECINT ('.' RULE_DIGIT*|('.' RULE_DIGIT*)? ('E'|'e') ('-'|'+')? RULE_DECINT)|RULE_INT);
+RULE_DOUBLE : RULE_DECINT ('.' RULE_DIGIT*|('.' RULE_DIGIT*)? ('E'|'e') ('-'|'+')? RULE_DECINT);
 
 fragment RULE_DECINT : ('0'|'1'..'9' RULE_DIGIT*);
 

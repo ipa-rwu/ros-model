@@ -101,7 +101,7 @@ ParameterValue returns ros::ParameterValue:
 
 terminal BOOLEAN: 'true'|'false';
 terminal fragment DIGIT: '0'..'9';
-terminal DOUBLE returns ecore::EDouble: DECINT (('.' DIGIT*) | (('.' DIGIT*)? ('E'|'e') ('-'|'+')? DECINT)) | INT;  // Use terminal to avoid 'e' turning into a keyword
+terminal DOUBLE returns ecore::EDouble: DECINT (('.' DIGIT*) | (('.' DIGIT*)? ('E'|'e') ('-'|'+')? DECINT));  // Use terminal to avoid 'e' turning into a keyword
 terminal DECINT: '0' | ('1'..'9' DIGIT*);
 terminal fragment SIGN : '+' | '-' ;
 

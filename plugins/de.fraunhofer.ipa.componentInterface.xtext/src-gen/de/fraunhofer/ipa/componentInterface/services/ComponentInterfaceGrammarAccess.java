@@ -976,53 +976,6 @@ public class ComponentInterfaceGrammarAccess extends AbstractGrammarElementFinde
 		//EString
 		public RuleCall getEStringParserRuleCall_2_1() { return cEStringParserRuleCall_2_1; }
 	}
-	public class ParameterAnyElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.componentInterface.ComponentInterface.ParameterAny");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
-		private final Action cParameterDoubleAction_0_0 = (Action)cGroup_0.eContents().get(0);
-		private final RuleCall cDouble0ParserRuleCall_0_1 = (RuleCall)cGroup_0.eContents().get(1);
-		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Action cParameterBooleanAction_1_0 = (Action)cGroup_1.eContents().get(0);
-		private final RuleCall cBoolean0ParserRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
-		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
-		private final Action cParameterStringAction_2_0 = (Action)cGroup_2.eContents().get(0);
-		private final RuleCall cEStringParserRuleCall_2_1 = (RuleCall)cGroup_2.eContents().get(1);
-		
-		//ParameterAny ros::ParameterValue:
-		//	{ros::ParameterDouble} Double0 | {ros::ParameterBoolean} boolean0 | {ros::ParameterString} EString;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//{ros::ParameterDouble} Double0 | {ros::ParameterBoolean} boolean0 | {ros::ParameterString} EString
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//{ros::ParameterDouble} Double0
-		public Group getGroup_0() { return cGroup_0; }
-		
-		//{ros::ParameterDouble}
-		public Action getParameterDoubleAction_0_0() { return cParameterDoubleAction_0_0; }
-		
-		//Double0
-		public RuleCall getDouble0ParserRuleCall_0_1() { return cDouble0ParserRuleCall_0_1; }
-		
-		//{ros::ParameterBoolean} boolean0
-		public Group getGroup_1() { return cGroup_1; }
-		
-		//{ros::ParameterBoolean}
-		public Action getParameterBooleanAction_1_0() { return cParameterBooleanAction_1_0; }
-		
-		//boolean0
-		public RuleCall getBoolean0ParserRuleCall_1_1() { return cBoolean0ParserRuleCall_1_1; }
-		
-		//{ros::ParameterString} EString
-		public Group getGroup_2() { return cGroup_2; }
-		
-		//{ros::ParameterString}
-		public Action getParameterStringAction_2_0() { return cParameterStringAction_2_0; }
-		
-		//EString
-		public RuleCall getEStringParserRuleCall_2_1() { return cEStringParserRuleCall_2_1; }
-	}
 	public class Boolean0Elements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.componentInterface.ComponentInterface.boolean0");
 		private final RuleCall cBOOLEANTerminalRuleCall = (RuleCall)rule.eContents().get(1);
@@ -1058,7 +1011,6 @@ public class ComponentInterfaceGrammarAccess extends AbstractGrammarElementFinde
 	private final EStringElements pEString;
 	private final NSElements pNS;
 	private final ParameterValueElements pParameterValue;
-	private final ParameterAnyElements pParameterAny;
 	private final TerminalRule tBOOLEAN;
 	private final TerminalRule tDIGIT;
 	private final TerminalRule tDOUBLE;
@@ -1092,7 +1044,6 @@ public class ComponentInterfaceGrammarAccess extends AbstractGrammarElementFinde
 		this.pEString = new EStringElements();
 		this.pNS = new NSElements();
 		this.pParameterValue = new ParameterValueElements();
-		this.pParameterAny = new ParameterAnyElements();
 		this.tBOOLEAN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.componentInterface.ComponentInterface.BOOLEAN");
 		this.tDIGIT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.componentInterface.ComponentInterface.DIGIT");
 		this.tDOUBLE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.componentInterface.ComponentInterface.DOUBLE");
@@ -1290,16 +1241,6 @@ public class ComponentInterfaceGrammarAccess extends AbstractGrammarElementFinde
 		return getParameterValueAccess().getRule();
 	}
 	
-	//ParameterAny ros::ParameterValue:
-	//	{ros::ParameterDouble} Double0 | {ros::ParameterBoolean} boolean0 | {ros::ParameterString} EString;
-	public ParameterAnyElements getParameterAnyAccess() {
-		return pParameterAny;
-	}
-	
-	public ParserRule getParameterAnyRule() {
-		return getParameterAnyAccess().getRule();
-	}
-	
 	//terminal BOOLEAN:
 	//	'true' | 'false';
 	public TerminalRule getBOOLEANRule() {
@@ -1313,7 +1254,7 @@ public class ComponentInterfaceGrammarAccess extends AbstractGrammarElementFinde
 	}
 	
 	//terminal DOUBLE returns ecore::EDouble:
-	//	DECINT ('.' DIGIT* | ('.' DIGIT*)? ('E' | 'e') ('-' | '+')? DECINT) | INT;
+	//	DECINT ('.' DIGIT* | ('.' DIGIT*)? ('E' | 'e') ('-' | '+')? DECINT);
 	public TerminalRule getDOUBLERule() {
 		return tDOUBLE;
 	}

@@ -109,6 +109,11 @@ class RosValidator extends AbstractRosValidator {
   	}
   }
  
+  @Check
+  def void TestParameterInteger (Parameter param){
+	warning( "type expected "+param.type.class + " value type "+param.value.eClass , null, INVALID_SPEC)
+  	}
+  
    //The RULE_ID impose the rest of the ROS naming convention rules : bin/de/fraunhofer/ipa/ros/parser/antlr/internal/InternalRos.g
   // allow the use only of the symbol: "_"
   // allow the use of numbers

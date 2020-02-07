@@ -69,13 +69,13 @@ public class ComponentInterfaceSemanticSequencer extends AbstractDelegatingSeman
 		else if (epackage == RosPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
 			case RosPackage.PARAMETER_BOOLEAN:
-				sequence_ParameterAny_ParameterValue(context, (ParameterBoolean) semanticObject); 
+				sequence_ParameterValue(context, (ParameterBoolean) semanticObject); 
 				return; 
 			case RosPackage.PARAMETER_DOUBLE:
-				sequence_ParameterAny_ParameterValue(context, (ParameterDouble) semanticObject); 
+				sequence_ParameterValue(context, (ParameterDouble) semanticObject); 
 				return; 
 			case RosPackage.PARAMETER_STRING:
-				sequence_ParameterAny_ParameterValue(context, (ParameterString) semanticObject); 
+				sequence_ParameterValue(context, (ParameterString) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
@@ -107,12 +107,11 @@ public class ComponentInterfaceSemanticSequencer extends AbstractDelegatingSeman
 	/**
 	 * Contexts:
 	 *     ParameterValue returns ParameterBoolean
-	 *     ParameterAny returns ParameterBoolean
 	 *
 	 * Constraint:
 	 *     {ParameterBoolean}
 	 */
-	protected void sequence_ParameterAny_ParameterValue(ISerializationContext context, ParameterBoolean semanticObject) {
+	protected void sequence_ParameterValue(ISerializationContext context, ParameterBoolean semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -120,12 +119,11 @@ public class ComponentInterfaceSemanticSequencer extends AbstractDelegatingSeman
 	/**
 	 * Contexts:
 	 *     ParameterValue returns ParameterDouble
-	 *     ParameterAny returns ParameterDouble
 	 *
 	 * Constraint:
 	 *     {ParameterDouble}
 	 */
-	protected void sequence_ParameterAny_ParameterValue(ISerializationContext context, ParameterDouble semanticObject) {
+	protected void sequence_ParameterValue(ISerializationContext context, ParameterDouble semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -133,12 +131,11 @@ public class ComponentInterfaceSemanticSequencer extends AbstractDelegatingSeman
 	/**
 	 * Contexts:
 	 *     ParameterValue returns ParameterString
-	 *     ParameterAny returns ParameterString
 	 *
 	 * Constraint:
 	 *     {ParameterString}
 	 */
-	protected void sequence_ParameterAny_ParameterValue(ISerializationContext context, ParameterString semanticObject) {
+	protected void sequence_ParameterValue(ISerializationContext context, ParameterString semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

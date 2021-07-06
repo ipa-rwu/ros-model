@@ -115,9 +115,9 @@ public class PackageImpl extends MinimalEObjectImpl.Container implements ros.Pac
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	public PackageImpl() {
+	protected PackageImpl() {
 		super();
 	}
 

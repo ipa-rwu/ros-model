@@ -50,9 +50,7 @@ import org.eclipse.xtext.ui.resource.IResourceSetProvider;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
+import com.google.gson.Gson;
 
 import componentInterface.ComponentInterface;
 import componentInterface.RosPublisher;
@@ -269,55 +267,54 @@ public class GenerationHandler extends AbstractHandler implements IHandler {
 	
 	private static List<TestCase> parseManifest(String manifest_path) {
 		List<TestCase> tmp_list = new ArrayList<TestCase>();
-		JSONObject manifest = new JSONObject();
+		Gson gson = new Gson();
+		
 		try {
 			FileReader reader;
 			reader = new FileReader(manifest_path);
-			JSONParser jsonParser = new JSONParser();	        
-			manifest = (JSONObject) jsonParser.parse(reader);
+			
+			TestCase staff = gson.fromJson(reader, TestCase.class);
+			System.out.println(staff);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (org.json.simple.parser.ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}	
+		}
         
-        for (Object test_name : manifest.keySet())
-        {
-        	tmp_list.add(parseTestCaseObject(test_name.toString(), (JSONObject) manifest.get(test_name.toString())));
-        }
+//        for (Object test_name : manifest.keySet())
+//        {
+//        	tmp_list.add(parseTestCaseObject(test_name.toString(), (JSONObject) manifest.get(test_name.toString())));
+//        }
         
         return tmp_list;
 	}
 	
-    private static TestCase parseTestCaseObject(String name, JSONObject test_case) 
-    {
-    	TestCase tmp = new TestCase();
-    	tmp.name = name;
-    	tmp.description = (String) test_case.get("description");
-		tmp.publishers = parsePorts((JSONArray) test_case.get("publishers") );
-		tmp.subscribers = parsePorts((JSONArray) test_case.get("subscribers") );
-		tmp.action_sever = parsePorts((JSONArray) test_case.get("subscribers") );
-		return tmp;
-    }
+//    private static TestCase parseTestCaseObject(String name, JSONObject test_case) 
+//    {
+//    	TestCase tmp = new TestCase();
+//    	tmp.name = name;
+//    	tmp.description = (String) test_case.get("description");
+//		tmp.publishers = parsePorts((JSONArray) test_case.get("publishers") );
+//		tmp.subscribers = parsePorts((JSONArray) test_case.get("subscribers") );
+//		tmp.action_sever = parsePorts((JSONArray) test_case.get("subscribers") );
+//		return tmp;
+//    }
     
-    private static List<Port> parsePorts(JSONArray array) {
-
-        List<Port> list = new ArrayList<Port>();
-
-        for (Object item : array) {
-        	JSONArray port_raw = (JSONArray) item;
-            Port port = new Port();
-            port.topic = (String) port_raw.get(0);
-            port.msg_type = (String) port_raw.get(1);
-            list.add(port);
-        }
-        return list;
-    }
-    
+//    private static List<Port> parsePorts(JSONArray array) {
+//
+//        List<Port> list = new ArrayList<Port>();
+//
+//        for (Object item : array) {
+//        	JSONArray port_raw = (JSONArray) item;
+//            Port port = new Port();
+//            port.topic = (String) port_raw.get(0);
+//            port.msg_type = (String) port_raw.get(1);
+//            list.add(port);
+//        }
+//        return list;
+//    }
+//    
 	@Override
 	  public boolean isEnabled() {
 		return true;

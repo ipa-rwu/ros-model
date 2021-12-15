@@ -25,6 +25,7 @@ class CustomOutputProvider implements IOutputConfigurationProvider {
 	}
 }
 
+
 abstract class CalculatorLogic extends AbstractGenerator{
 	def void createXtextGenerationFolder(IFileSystemAccess2 fsa, IGeneratorContext context) {
 		fsa.generateFile("lock",CustomOutputProvider::CALCULATOR_OUTPUT,'''''');
@@ -40,7 +41,7 @@ class CompareParam extends CalculatorLogic{
 				fsa.generateFile(node.getName()+".py",CustomOutputProvider::CALCULATOR_OUTPUT,node.compile)
 				}
 			}
-
+	
 def compile(Node node) {
 	count_sub = node.subscriber.size
 '''
@@ -97,4 +98,42 @@ Publisher:
 «ENDFOR»
 '''
 }
+}
+
+class CalculatorPyCodeGenerator extends AbstractGenerator {
+
+	int count_sub
+	
+	def void createXtextGenerationFolder (IFileSystemAccess2 fsa, IGeneratorContext context) {
+		fsa.generateFile("lock",CustomOutputProvider::CALCULATOR_OUTPUT,'''''');
+		fsa.deleteFile("lock",CustomOutputProvider::CALCULATOR_OUTPUT);
+	}
+
+	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
+			for (node : resource.allContents.toIterable.filter(Node)){
+				fsa.generateFile(node.getName()+".py",CustomOutputProvider::CALCULATOR_OUTPUT,node.compile)
+				}
+			}
+
+def compile(Node node) {
+	count_sub = node.subscriber.size
+'''
+
+Node name: «node.name»
+
+«FOR sub:node.subscriber»
+Subscriber:
+  name: «sub.name»
+  type: «sub.message.fullname»
+«ENDFOR»
+
+
+«FOR pub:node.publisher»
+Publisher:
+  name: «pub.name»
+  type: «pub.message.fullname»
+«ENDFOR»
+'''
+}
+
 }

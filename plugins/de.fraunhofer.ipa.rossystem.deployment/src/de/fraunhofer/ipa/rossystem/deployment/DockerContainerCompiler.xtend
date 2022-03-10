@@ -21,13 +21,13 @@ def compile_toDockerContainer(RosSystem system, ComponentStack stack, Deployment
     «IF generator_helper.listOfRepos(system).isEmpty()»
 FROM ros:«deploymentInfo.get_ros_distro()»-ros-core as base
     «ELSE»
-FROM ${PREFIX}extra_layer_«generator_helper.get_uniqe_name(system.name.toLowerCase, deploymentInfo.get_ros_distro())»${SUFFIX} as base
+FROM ${PREFIX}«generator_helper.set_extra_image_name(generator_helper.set_image_name(system.name, deploymentInfo.get_ros_distro()))»${SUFFIX} as base
     «ENDIF»
 «ELSE»
     «IF generator_helper.listOfRepos(stack).isEmpty()»
 FROM ros:«deploymentInfo.get_ros_distro()»-ros-core as base
     «ELSE»
-FROM ${PREFIX}extra_layer_«generator_helper.get_uniqe_name(system.name.toLowerCase, deploymentInfo.get_ros_distro())»_«stack.name.toLowerCase»${SUFFIX} as base
+FROM ${PREFIX}«generator_helper.set_extra_image_name(generator_helper.set_image_name(system.name, stack.name, deploymentInfo.get_ros_distro()))»${SUFFIX} as base
     «ENDIF»
 «ENDIF»
 FROM ${PREFIX}builder${BUILDER_SUFFIX} as builder

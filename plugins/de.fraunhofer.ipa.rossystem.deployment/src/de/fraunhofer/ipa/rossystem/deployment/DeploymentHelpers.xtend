@@ -57,15 +57,6 @@ class DeploymentHelpers extends GeneratorHelpers {
 	 	return prefix + "_" + ros_distro
 	 }	
 	
-	def get_folder_name(String prefix, String ros_distro) {
-	 	if(ros_distro=="foxy") {
-	 		return prefix + "_ros2"
-	 	}
-	 	else{
-	 		return prefix
-	 	}
-	 }
-
 	 def Set<String> listOfRepos(Object subsystem) {
 		new ArrayList()
 		ComponentsList = new ArrayList<ComponentInterface>();
@@ -94,5 +85,48 @@ class DeploymentHelpers extends GeneratorHelpers {
 		}}}
 		return Repos;
 	}
+
+	def set_image_name(String system_name, String ros_distro) {
+		var image_name = String.format("%s_%s", system_name, ros_distro)
+		return image_name
+	}
 	
+	def set_extra_image_name(String image_name) {
+		return String.format("extra_layer_%s", image_name)
+	}
+		
+	def set_push_image_name( String registry, String image_name, String image_version) {
+		return String.format("%s/%s:%s", registry, image_name, image_version)
+	}
+	
+	def set_image_name(String system_name, String stack_name, String ros_distro) {
+		var image_name = String.format("%s_%s_%s", system_name, stack_name, ros_distro)
+		return image_name
+	}
+	
+	def set_extra_folder_path(String prefix) {
+		return String.format("%s/%s",prefix, "extra_layer")
+	 }
+	 
+	 	
+	def set_stack_folder_name(String system_name, String stack_name) {
+		return String.format("%s_%s", system_name, stack_name)
+	 }
+	 
+	def set_stack_folder_name(String system_name, String stack_name, String ros_distro) {
+		return String.format("%s/%s", set_system_folder_name(system_name, ros_distro), set_stack_folder_name(system_name, stack_name))
+	 }
+	 
+	def set_system_folder_name(String system_name, String ros_distro) {
+	 	if(ros_distro=="foxy") {
+	 		return system_name + "_ros2"
+	 	}
+	 	else{
+	 		return system_name
+	 	}
+	 }
+	 
+	def set_system_folder_name() {
+		return "./"
+	 }
 }

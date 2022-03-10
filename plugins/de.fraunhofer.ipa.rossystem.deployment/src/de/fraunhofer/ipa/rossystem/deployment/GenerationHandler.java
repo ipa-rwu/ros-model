@@ -83,17 +83,25 @@ public class GenerationHandler extends AbstractHandler implements IHandler {
 
 	        Display display = Display.getDefault();
 	        Shell shell = display.getActiveShell();
-
+	        
+	        // choose ros distro	        
 	        Map<String, Integer> result = select_ros_distro(shell, project);
 
 	        DeploymentArtifactsGenerator generator = new DeploymentArtifactsGenerator();
 	        String distro = result.keySet().stream().findFirst().get();
-	        generator.get_ros_distro(distro);
-	        generator.get_ros_version(result.get(distro));
-
+	        
+	        // set export port 
         	Map<String, Map<RosParameter, String>> sys_param_port = set_ports_from_parameters(shell, system);
-        	generator.get_portt_list(sys_param_port);
+        	generator.get_port_list(sys_param_port);
+        	
+        	// set registry         	
+        	// set image version
+
 	        // Todo: check if package type maps to the select version
+	        generator.set_deployment_info(distro, 
+	        								result.get(distro), 
+	        								set_registry(shell, project), 
+	        								set_image_version(shell, project));
 			generator.doGenerate(r, fsa, new GeneratorContext());
 	      }
 	    }
@@ -199,6 +207,20 @@ public class GenerationHandler extends AbstractHandler implements IHandler {
 		  }
 		  return ros_component_params;
 	   }
+	  
+	  private String set_registry(Shell shell, IProject project) {
+			InputDialog dialogInput = new InputDialog(shell,"Set a repository for images", "Repository name ", null, null);
+			dialogInput.open();
+			String name = dialogInput.getValue();
+			return name;
+	  }
+	  
+	  private String set_image_version(Shell shell, IProject project) {
+			InputDialog dialogInput = new InputDialog(shell,"Set the version for new images", "image version ", null, null);
+			dialogInput.open();
+			String name = dialogInput.getValue();
+			return name;
+	  }
 
 	  @Override
 	  public boolean isEnabled() {

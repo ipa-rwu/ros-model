@@ -18,6 +18,7 @@ import java.util.HashMap
 import java.util.Map
 import java.util.List
 import componentInterface.RosParameter
+import java.util.ArrayList
 
 class CustomOutputProvider implements IOutputConfigurationProvider {
 	public final static String DEFAULT_OUTPUT = "DEFAULT_OUTPUT"
@@ -45,6 +46,10 @@ class DeploymentArtifactsGenerator extends AbstractGenerator {
 	RosInstallCompiler rosintall_compiler = new RosInstallCompiler()
 	DockerComposeCompiler dockercompose_compiler = new DockerComposeCompiler()
 	GitActionCompiler gitaction_compiler = new GitActionCompiler()
+	K8sDeploymentCompiler k8s_compiler = new K8sDeploymentCompiler()
+	K8sDeploymentHelpers k8s_helper = new K8sDeploymentHelpers()
+	K8sMetaInfo k8s_info = new K8sMetaInfo()
+	
 	DeploymentHelpers generator_helper = new DeploymentHelpers()	
 	DeploymentInfo deploymentInfo = new DeploymentInfo()
 
@@ -53,16 +58,33 @@ class DeploymentArtifactsGenerator extends AbstractGenerator {
 	Map<String, List<String>> device_map = new HashMap<String, List<String>>
 		
 	def set_deployment_info(String rosDistro,
-		Integer rosVersion,
-		String registryName,
-		String imageVersion){
+							Integer rosVersion,
+							String registryName,
+							String imageVersion,
+							Integer rosDomainID){
 		deploymentInfo.set_image_version(imageVersion)
 		deploymentInfo.set_ros_distro(rosDistro)
 		deploymentInfo.set_ros_version(rosVersion)
 		deploymentInfo.set_registry(registryName)
+		deploymentInfo.set_rosDomainID(rosDomainID)
 		return deploymentInfo
 	}
 
+	def update_deployment_info(DeploymentInfo new_deploymentInfo){
+		deploymentInfo.update(new_deploymentInfo)
+	}
+
+	def set_k8s_config(Boolean ifUseMacvlan,
+					Boolean ifConnectWeb,
+					String bridgeName,
+					DeploymentType deploymentType){
+		k8s_info = new K8sMetaInfo(ifUseMacvlan, ifConnectWeb, bridgeName, deploymentType)	
+	}		
+
+	def set_k8s_config(K8sMetaInfo info){
+		k8s_info = info
+	}	
+		
 	def create_system_prefix(RosSystem system){
 		//system name + _ros2 or system name		
 		if (deploymentInfo.get_ros_version() == 2) {
@@ -76,7 +98,7 @@ class DeploymentArtifactsGenerator extends AbstractGenerator {
 		for (key: ports_map.keySet()){
 			val values = newArrayList()
 			for (k: ports_map.get(key).keySet()){
-				val v = ports_map.get(key).get(k);
+				val v = ports_map.get(key).get(k)
 				values.add(ports_map.get(key).get(k))
 			}
 			device_map.put(key, values);
@@ -105,7 +127,22 @@ class DeploymentArtifactsGenerator extends AbstractGenerator {
 				}
 			}
 
-			fsa.generateFile(String.join("/", system_folder_prefix, "docker-compose.yml"),dockercompose_compiler.compile_toDockerCompose(system, deploymentInfo, device_map))
+			if (deploymentInfo.get_platform !== null){
+				if (deploymentInfo.get_platform == DeploymentPlatform.K8s.toString()){
+					fsa.generateFile(String.join("/", system_folder_prefix, 
+									String.format("%s-%s.yml", DeploymentPlatform.K8s.toString(), k8s_helper.convert_name_to_k8s(system.name))),
+									k8s_compiler.compile_toK8s(system,
+															deploymentInfo,
+															k8s_info
+									))
+				}
+				if (deploymentInfo.get_platform == DeploymentPlatform.DockerCompose.toString()){
+					fsa.generateFile(String.join("/", system_folder_prefix, "docker-compose.yml"),
+									dockercompose_compiler.compile_toDockerCompose(system, deploymentInfo, device_map)
+					)
+					
+				}
+			}
 		}
 
 		// git action workflow

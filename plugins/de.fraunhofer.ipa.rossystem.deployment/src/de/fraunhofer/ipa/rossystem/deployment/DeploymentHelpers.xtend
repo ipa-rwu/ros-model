@@ -12,11 +12,36 @@ import ros.impl.PackageImpl
 import rossystem.ComponentStack
 import rossystem.RosSystem
 
+enum DeploymentPlatform {
+    K8s,
+    DockerCompose
+}
+
+enum ROSDistro {
+    melodic,
+    noetic,
+    foxy
+}
+
 class DeploymentInfo {
 	String rosDistro
 	Integer rosVersion	
 	String registryName
 	String imageVersion
+	String platform
+	Integer rosDomainID
+	
+	def DeploymentInfo(String rosDistro,
+					Integer rosVersion,
+					String registryName,
+					String imageVersion,
+					String platform){
+		this.rosDistro = rosDistro
+		this.rosVersion = rosVersion
+		this.registryName = registryName
+		this.imageVersion = imageVersion
+		this.platform = platform
+	}
 
 	def set_ros_distro(String distro) {
 		this.rosDistro = distro
@@ -30,6 +55,13 @@ class DeploymentInfo {
 	def set_image_version(String imageVersion){
 		this.imageVersion = imageVersion
 	}
+	def set_platform(String platform){
+		this.platform = platform
+	}
+	def set_rosDomainID(Integer rosDomainID){
+		this.rosDomainID = rosDomainID
+	}
+	
 	def get_ros_distro() {
 		return this.rosDistro
 	}
@@ -42,9 +74,23 @@ class DeploymentInfo {
 	def get_image_version(){
 		return this.imageVersion
 	}
-	
+	def get_rosDomainID(){
+		return this.rosDomainID
+	}
+	def get_platform(){
+		return this.platform
+	}		
 	def print_info(){
-		System.out.format("rosDistro: %s, rosVersion: %s, registryName: %s, imageVersion: %s", this.rosDistro, this.rosVersion, this.registryName, this.imageVersion)
+		System.out.format("rosDistro: %s, rosVersion: %s, registryName: %s, imageVersion: %s, platform: %s", 
+							this.rosDistro, this.rosVersion, this.registryName, this.imageVersion, this.platform
+		)
+	}
+	def update(DeploymentInfo new_deploymentInfo){
+		this.rosDistro = new_deploymentInfo.rosDistro
+		this.rosVersion = new_deploymentInfo.rosVersion
+		this.registryName = new_deploymentInfo.registryName
+		this.imageVersion = new_deploymentInfo.imageVersion
+		this.platform = new_deploymentInfo.platform
 	}
 }
 
@@ -129,4 +175,22 @@ class DeploymentHelpers extends GeneratorHelpers {
 	def set_system_folder_name() {
 		return "./"
 	 }
+	
+	def set_start_command(String sys_name, String stack_name, Integer rosVersion){
+		if (rosVersion === 1){
+			return String.format("roslaunch %s_%s %s.launch", sys_name.toLowerCase, stack_name.toLowerCase, stack_name.toLowerCase)
+		}
+		if (rosVersion === 2){
+			return String.format("ros2 launch %s_%s %s.launch.py", sys_name.toLowerCase, stack_name.toLowerCase, stack_name.toLowerCase)
+		}
+	}
+	
+	def set_start_command(String sys_name, Integer rosVersion){
+		if (rosVersion === 1){
+			return String.format("roslaunch %s %s.launch", sys_name.toLowerCase, sys_name.toLowerCase)
+		}
+		if (rosVersion === 2){
+			return String.format("ros2 launch %s %s.launch.py", sys_name.toLowerCase, sys_name.toLowerCase)
+		}
+	}
 }

@@ -128,9 +128,9 @@ def system_layer(String sys_name,
       - «network_name(sys_name)»
     «create_devices(device_map.get(sys_name))»
 «IF ros_version===1»
-«"    "»command: stdbuf -o L roslaunch «sys_name.toLowerCase» «sys_name.toLowerCase».launch --wait
+«"    "»command: stdbuf -o L «generator_helper.set_start_command(sys_name, ros_version)» --wait
 «ELSEIF ros_version===2»
-«"    "»command: stdbuf -o L ros2 launch «sys_name.toLowerCase» «sys_name.toLowerCase».launch.py
+«"    "»command: stdbuf -o L «generator_helper.set_start_command(sys_name, ros_version)»
 «ENDIF»
 
 '''
@@ -155,9 +155,9 @@ def stack_layer(String sys_name,
       - «network_name(sys_name)»
     «create_devices(device_map.get(stack_name))»
 «IF ros_version===1»
-«"    "»command: stdbuf -o L roslaunch «sys_name.toLowerCase»_«stack_name.toLowerCase» «stack_name.toLowerCase».launch --wait
+«"    "»command: stdbuf -o L «generator_helper.set_start_command(sys_name, stack_name, ros_version)» --wait
 «ELSEIF ros_version===2»
-«"    "»command: stdbuf -o L ros2 launch «sys_name.toLowerCase»_«stack_name.toLowerCase» «stack_name.toLowerCase».launch.py
+«"    "»command: stdbuf -o L «generator_helper.set_start_command(sys_name, stack_name, ros_version)»
 «ENDIF»
 
 '''

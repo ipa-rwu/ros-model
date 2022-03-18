@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Stream;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -95,9 +96,9 @@ public class GenerationHandler extends AbstractHandler implements IHandler {
 																		commonSetting.getRosDomainID());
 
   	      	ArrayList<DeploymentPlatform> selectPlatforms = commonSetting.getSelectPlatforms();
+  	      	deploymentInfo.set_platforms(Stream.of(selectPlatforms.toArray()).toArray(DeploymentPlatform[]::new));
+  	      	deploymentInfo.print_info();
   	      	for (DeploymentPlatform p : selectPlatforms) {
-	  	      	deploymentInfo.set_platform(p.toString());
-	        	deploymentInfo.print_info();
 	        	generator.update_deployment_info(deploymentInfo);
         		if (p.toString() == DeploymentPlatform.K8s.toString()){
 	        		K8sMetaInfo k8s_config = configK8s(shell);
@@ -130,7 +131,6 @@ public class GenerationHandler extends AbstractHandler implements IHandler {
 		DeploymentType deploy_type = dialog.getDeploymentType();
 		String bridgename = dialog.getBridgeName();
 		K8sMetaInfo k8s_info = new K8sMetaInfo(ifmacvlan, ifConnectWeb, bridgename, deploy_type);
-		k8s_info.print();
 		return k8s_info;
 	}
 

@@ -127,20 +127,22 @@ class DeploymentArtifactsGenerator extends AbstractGenerator {
 				}
 			}
 
-			if (deploymentInfo.get_platform !== null){
-				if (deploymentInfo.get_platform == DeploymentPlatform.K8s.toString()){
-					fsa.generateFile(String.join("/", system_folder_prefix, 
-									String.format("%s-%s.yml", DeploymentPlatform.K8s.toString(), k8s_helper.convert_name_to_k8s(system.name))),
-									k8s_compiler.compile_toK8s(system,
-															deploymentInfo,
-															k8s_info
-									))
-				}
-				if (deploymentInfo.get_platform == DeploymentPlatform.DockerCompose.toString()){
-					fsa.generateFile(String.join("/", system_folder_prefix, "docker-compose.yml"),
-									dockercompose_compiler.compile_toDockerCompose(system, deploymentInfo, device_map)
-					)
-					
+			if (deploymentInfo.get_platforms.length !== 0){
+				for (platform : deploymentInfo.get_platforms){
+					if (platform == DeploymentPlatform.K8s){
+						fsa.generateFile(String.join("/", system_folder_prefix, 
+										String.format("%s-%s.yml", DeploymentPlatform.K8s.toString(), k8s_helper.convert_name_to_k8s(system.name))),
+										k8s_compiler.compile_toK8s(system,
+																deploymentInfo,
+																k8s_info
+										))
+					}
+					if (platform == DeploymentPlatform.DockerCompose){
+						fsa.generateFile(String.join("/", system_folder_prefix, "docker-compose.yml"),
+										dockercompose_compiler.compile_toDockerCompose(system, deploymentInfo, device_map)
+						)
+						
+					}					
 				}
 			}
 		}

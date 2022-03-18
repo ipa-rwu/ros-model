@@ -11,6 +11,7 @@ import ros.PackageDependency
 import ros.impl.PackageImpl
 import rossystem.ComponentStack
 import rossystem.RosSystem
+import java.util.Arrays
 
 enum DeploymentPlatform {
     K8s,
@@ -28,19 +29,19 @@ class DeploymentInfo {
 	Integer rosVersion	
 	String registryName
 	String imageVersion
-	String platform
+	DeploymentPlatform[] platforms
 	Integer rosDomainID
 	
 	def DeploymentInfo(String rosDistro,
 					Integer rosVersion,
 					String registryName,
 					String imageVersion,
-					String platform){
+					DeploymentPlatform[] platform){
 		this.rosDistro = rosDistro
 		this.rosVersion = rosVersion
 		this.registryName = registryName
 		this.imageVersion = imageVersion
-		this.platform = platform
+		this.platforms = platform
 	}
 
 	def set_ros_distro(String distro) {
@@ -55,8 +56,8 @@ class DeploymentInfo {
 	def set_image_version(String imageVersion){
 		this.imageVersion = imageVersion
 	}
-	def set_platform(String platform){
-		this.platform = platform
+	def set_platforms(DeploymentPlatform[] platform){
+		this.platforms = platform
 	}
 	def set_rosDomainID(Integer rosDomainID){
 		this.rosDomainID = rosDomainID
@@ -77,20 +78,19 @@ class DeploymentInfo {
 	def get_rosDomainID(){
 		return this.rosDomainID
 	}
-	def get_platform(){
-		return this.platform
+	def get_platforms(){
+		return this.platforms
 	}		
 	def print_info(){
-		System.out.format("rosDistro: %s, rosVersion: %s, registryName: %s, imageVersion: %s, platform: %s", 
-							this.rosDistro, this.rosVersion, this.registryName, this.imageVersion, this.platform
-		)
+		System.out.format("rosDistro: %s, rosVersion: %s, registryName: %s, imageVersion: %s, platform: %s\n", 
+							this.rosDistro, this.rosVersion, this.registryName, this.imageVersion, Arrays.toString(this.platforms))
 	}
 	def update(DeploymentInfo new_deploymentInfo){
 		this.rosDistro = new_deploymentInfo.rosDistro
 		this.rosVersion = new_deploymentInfo.rosVersion
 		this.registryName = new_deploymentInfo.registryName
 		this.imageVersion = new_deploymentInfo.imageVersion
-		this.platform = new_deploymentInfo.platform
+		this.platforms = new_deploymentInfo.platforms
 	}
 }
 

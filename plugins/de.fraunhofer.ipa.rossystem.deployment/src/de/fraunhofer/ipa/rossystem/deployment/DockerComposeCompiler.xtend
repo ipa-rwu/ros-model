@@ -5,6 +5,12 @@ import de.fraunhofer.ipa.rossystem.deployment.DeploymentHelpers
 import java.util.Map
 import java.util.List
 
+class DockerComposeHelpers extends DeploymentHelpers {
+	 def set_deployment_file(String sys_name){
+		return set_deployment_file_name(sys_name, DeploymentPlatform.DockerCompose, "yml")
+	}
+}
+
 class DockerComposeCompiler {
 
  DeploymentHelpers generator_helper = new DeploymentHelpers()

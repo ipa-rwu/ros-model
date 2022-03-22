@@ -87,6 +87,10 @@ class K8sDeploymentHelpers extends DeploymentHelpers {
 	def get_web_server_port(){
 		return "4000"
 	}
+	
+	 def set_deployment_file(String sys_name){
+		return set_deployment_file_name(convert_name_to_k8s(sys_name), DeploymentPlatform.K8s, "yml")
+	}
 }
 
 class PortInfo {

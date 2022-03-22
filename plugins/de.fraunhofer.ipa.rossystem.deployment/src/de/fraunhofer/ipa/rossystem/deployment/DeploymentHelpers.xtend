@@ -110,6 +110,8 @@ class DeploymentHelpers extends GeneratorHelpers {
 			ComponentsList = (subsystem as RosSystem).rosComponent
 		} else if (subsystem.class.toString.contains("ComponentStackImpl")) {
 			ComponentsList = (subsystem as ComponentStack).rosComponent
+		} else if (subsystem.class.toString.contains("ArrayList")) {
+			ComponentsList = subsystem as ArrayList<ComponentInterface>
 		}
 
 		Repos = new HashSet<String>();
@@ -192,5 +194,9 @@ class DeploymentHelpers extends GeneratorHelpers {
 		if (rosVersion === 2){
 			return String.format("ros2 launch %s %s.launch.py", sys_name.toLowerCase, sys_name.toLowerCase)
 		}
+	}
+	
+	def set_deployment_file_name(String sys_name, DeploymentPlatform platform, String ext){
+		return String.format("%s-%s.%s", DeploymentPlatform.K8s.toString(), sys_name, ext)
 	}
 }

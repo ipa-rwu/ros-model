@@ -30,13 +30,9 @@ def get_repo_info(String repo){
 - git: {local-name: «repo_info.get('local_name')», uri: «repo_info.get('uri')»«IF repo_info.get('branch')!==null», version: «repo_info.get('branch')»«ENDIF»}
  '''
  
- def compile_toRosInstall (RosSystem system,ComponentStack stack) '''«generator_helper.init_pkg()»
-«IF stack===null»«FOR repo: generator_helper.listOfRepos(system)»
+ def compile_toRosInstall (Object subsys) '''«generator_helper.init_pkg()»
+«FOR repo: generator_helper.listOfRepos(subsys)»
 «create_repo_link(repo)»
 «ENDFOR»
-«ELSE»«FOR repo: generator_helper.listOfRepos(stack)»
-«create_repo_link(repo)»
-«ENDFOR»
-«ENDIF»
 '''
 }

@@ -82,6 +82,12 @@ public class GenerationHandler extends AbstractHandler implements IHandler {
 
 	        CommonDialog commonSetting = configCommon(shell, system);
 	        DeploymentArtifactsGenerator generator = new DeploymentArtifactsGenerator();
+	        Boolean ifCompileForCompoenet = commonSetting.checkIfCompileCompoenet();
+	        generator.getDeploymentTargetType(ifCompileForCompoenet);
+
+	        if (ifCompileForCompoenet) {
+		        generator.getTargetComponents(commonSetting.getTargetComponents());
+	        }
 
 	        String distro = commonSetting.getRosDistro();
 

@@ -19,6 +19,7 @@ import java.util.Map
 import java.util.List
 import componentInterface.RosParameter
 import java.util.ArrayList
+import componentInterface.ComponentInterface
 
 class CustomOutputProvider implements IOutputConfigurationProvider {
 	public final static String DEFAULT_OUTPUT = "DEFAULT_OUTPUT"
@@ -45,6 +46,7 @@ class DeploymentArtifactsGenerator extends AbstractGenerator {
 	DockerContainerCompiler docker_compiler = new DockerContainerCompiler()
 	RosInstallCompiler rosintall_compiler = new RosInstallCompiler()
 	DockerComposeCompiler dockercompose_compiler = new DockerComposeCompiler()
+	DockerComposeHelpers compose_helper = new DockerComposeHelpers()
 	GitActionCompiler gitaction_compiler = new GitActionCompiler()
 	K8sDeploymentCompiler k8s_compiler = new K8sDeploymentCompiler()
 	K8sDeploymentHelpers k8s_helper = new K8sDeploymentHelpers()
@@ -54,7 +56,9 @@ class DeploymentArtifactsGenerator extends AbstractGenerator {
 	DeploymentInfo deploymentInfo = new DeploymentInfo()
 
 	String system_folder_prefix
-
+	Boolean ifCompileForComponents;
+	ArrayList<ComponentInterface> targetComponents
+	
 	Map<String, List<String>> device_map = new HashMap<String, List<String>>
 		
 	def set_deployment_info(String rosDistro,
@@ -101,58 +105,77 @@ class DeploymentArtifactsGenerator extends AbstractGenerator {
 				val v = ports_map.get(key).get(k)
 				values.add(ports_map.get(key).get(k))
 			}
-			device_map.put(key, values);
+			device_map.put(key, values)
 		}
+		
+	}
+	
+	def getDeploymentTargetType(Boolean deplyomentType){
+		ifCompileForComponents = deplyomentType
+	}
+	
+	def getTargetComponents(ArrayList<ComponentInterface> list){
+		targetComponents = list
 	}
 	
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		// ROS1 package
 		device_map.keySet().forEach[String key|
 	    	if (device_map.get(key).contains(null)) {
 	    			throw new IllegalArgumentException("Values of some device ports are not defined.")
 	        	}
 		]
-		for (system : resource.allContents.toIterable.filter(RosSystem)){
-			system_folder_prefix = create_system_prefix(system)
-			if (system.componentStack.size==0){
-				fsa.generateFile(system_folder_prefix +"/Dockerfile",docker_compiler.compile_toDockerContainer(system, null, deploymentInfo))
- 				fsa.generateFile(system_folder_prefix +"/extra_layer/" + system.getName().toLowerCase + ".rosinstall",rosintall_compiler.compile_toRosInstall(system,null))
-				fsa.generateFile(system_folder_prefix +"/extra_layer/Dockerfile",docker_compiler.compile_toDockerImageExtraLayer(system, null,deploymentInfo))
-			} else {
-				for (stack : system.componentStack){
-					val stack_folder_prefix = String.join("/", system_folder_prefix, system.name.toLowerCase+'_'+stack.name.toLowerCase)
-					fsa.generateFile(String.join("/", stack_folder_prefix, "Dockerfile"),docker_compiler.compile_toDockerContainer(system, stack, deploymentInfo))
-			 		fsa.generateFile(String.join("/", stack_folder_prefix, "extra_layer", stack.name.toLowerCase+".rosinstall"),rosintall_compiler.compile_toRosInstall(system,stack))
-			 		fsa.generateFile(String.join("/", stack_folder_prefix, "extra_layer", "Dockerfile"),docker_compiler.compile_toDockerImageExtraLayer(system,stack, deploymentInfo))
-				}
-			}
-
-			if (deploymentInfo.get_platforms.length !== 0){
-				for (platform : deploymentInfo.get_platforms){
-					if (platform == DeploymentPlatform.K8s){
-						fsa.generateFile(String.join("/", system_folder_prefix, 
-										String.format("%s-%s.yml", DeploymentPlatform.K8s.toString(), k8s_helper.convert_name_to_k8s(system.name))),
-										k8s_compiler.compile_toK8s(system,
-																deploymentInfo,
-																k8s_info
-										))
+		if (ifCompileForComponents == false){
+			for (system : resource.allContents.toIterable.filter(RosSystem)){
+				system_folder_prefix = create_system_prefix(system)
+				if (system.componentStack.size==0){
+					fsa.generateFile(system_folder_prefix +"/Dockerfile",docker_compiler.compile_toDockerContainer(system, null, deploymentInfo))
+					fsa.generateFile(system_folder_prefix +"/.dockerignore",docker_compiler.compile_toDockerignore(system))
+	 				fsa.generateFile(system_folder_prefix +"/extra_layer/" + system.getName().toLowerCase + ".rosinstall",rosintall_compiler.compile_toRosInstall(system))
+					fsa.generateFile(system_folder_prefix +"/extra_layer/Dockerfile",docker_compiler.compile_toDockerImageExtraLayer(system, null,deploymentInfo))
+					fsa.generateFile(system_folder_prefix +"/extra_layer/.dockerignore",docker_compiler.compile_toDockerignore(system))
+				} else {
+					for (stack : system.componentStack){
+						val stack_folder_prefix = String.join("/", system_folder_prefix, system.name.toLowerCase+'_'+stack.name.toLowerCase)
+						fsa.generateFile(String.join("/", stack_folder_prefix, "Dockerfile"),docker_compiler.compile_toDockerContainer(system, stack, deploymentInfo))
+				 		fsa.generateFile(String.join("/", stack_folder_prefix, "extra_layer", stack.name.toLowerCase+".rosinstall"),rosintall_compiler.compile_toRosInstall(stack))
+				 		fsa.generateFile(String.join("/", stack_folder_prefix, "extra_layer", "Dockerfile"),docker_compiler.compile_toDockerImageExtraLayer(system,stack, deploymentInfo))
 					}
-					if (platform == DeploymentPlatform.DockerCompose){
-						fsa.generateFile(String.join("/", system_folder_prefix, "docker-compose.yml"),
-										dockercompose_compiler.compile_toDockerCompose(system, deploymentInfo, device_map)
-						)
-						
-					}					
+				}
+	
+				if (deploymentInfo.get_platforms.length !== 0){
+					for (platform : deploymentInfo.get_platforms){
+						if (platform == DeploymentPlatform.K8s){
+							fsa.generateFile(String.join("/", system_folder_prefix, 
+											k8s_helper.set_deployment_file(system.name)),
+											k8s_compiler.compile_toK8s(system,
+																	deploymentInfo,
+																	k8s_info
+											))
+						}
+						if (platform == DeploymentPlatform.DockerCompose){
+							fsa.generateFile(String.join("/", system_folder_prefix, compose_helper.set_deployment_file(system.name)),
+											dockercompose_compiler.compile_toDockerCompose(system, deploymentInfo, device_map)
+							)
+							
+						}					
+					}
 				}
 			}
+		
+			// git action workflow
+	 		for (system : resource.allContents.toIterable.filter(RosSystem)){
+				fsa.generateFile(String.join("/", system_folder_prefix, generator_helper.get_uniqe_name(system.name.toLowerCase, deploymentInfo.get_ros_distro()) + "_workflow.yml"),
+											gitaction_compiler.compile_toGitAction(system, deploymentInfo)
+				)
+				}
 		}
-
-		// git action workflow
- 		for (system : resource.allContents.toIterable.filter(RosSystem)){
-			fsa.generateFile(String.join("/", system_folder_prefix, generator_helper.get_uniqe_name(system.name.toLowerCase, deploymentInfo.get_ros_distro()) + "_workflow.yml"),
-										gitaction_compiler.compile_toGitAction(system, deploymentInfo)
-			)
+		else {
+			for (system : resource.allContents.toIterable.filter(RosSystem)){
+				system_folder_prefix = create_system_prefix(system)
+	 			fsa.generateFile(String.format("%s_components/extra_layer/%s", system_folder_prefix, system.getName().toLowerCase + ".rosinstall"),
+	 							rosintall_compiler.compile_toRosInstall(targetComponents)
+	 			)
 			}
 		}
-
+	}
 }

@@ -5,7 +5,10 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Stack;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
@@ -13,6 +16,7 @@ import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.layout.GridData;
@@ -21,6 +25,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
@@ -31,7 +36,7 @@ import rossystem.ComponentStack;
 import rossystem.RosSystem;
 
 public class CommonDialog extends TitleAreaDialog {
-	private RosSystem rossystem;
+	private static RosSystem rossystem;
 	private GenerationHandlerHelper generationHelper = new GenerationHandlerHelper();
 	
 	private Map<String, Integer> rosDistroMap = new HashMap<String, Integer>() {{
@@ -39,13 +44,18 @@ public class CommonDialog extends TitleAreaDialog {
         put(ROSDistro.noetic.toString(), 1);
         put(ROSDistro.foxy.toString(), 2);
 	}};
+	private Map<Integer, ComponentInterface> indexComponentMap=new HashMap<Integer, ComponentInterface>();
+
 	
 	private Text rosDomainIDText;
 	private static int sizeDeploymentPlatform = DeploymentPlatform.values().length;
 	private static int  colum = sizeDeploymentPlatform+1;
 	private Button[] setDeloymentPlatformBox = new Button[sizeDeploymentPlatform];
+	private Button[] setDeloymentObjectBox = new Button[2];
+	int sizeComponents = indexComponentMap.keySet().size();
+    Button[] chooseComponentsBox = new Button[sizeComponents];    
     private Combo rosDistroCombo;
- 
+
     private String rosDistro;
     private Integer rosVersion;
 	private int rosDomainID;
@@ -53,15 +63,41 @@ public class CommonDialog extends TitleAreaDialog {
 	private ArrayList<DeploymentPlatform> seletPlatforms = new ArrayList<DeploymentPlatform>(); 
 	private Text registryText;
 	private Text imageVersionText;
+	private Label lbtBridgeNameIfCompileCompoenet;
+
 	private String registryName;
 	private String imageVersion;
-    
+	private Boolean ifCompileCompoenet=false;
+	private ArrayList<ComponentInterface> targetComponents = new ArrayList<ComponentInterface>();
+
 	public CommonDialog(Shell parentShell, RosSystem sys) {
 		super(parentShell);
 		rossystem = sys;
+		indexComponentMap = getComponentIndexMap(rossystem);
+		sizeComponents = indexComponentMap.keySet().size();
+		System.out.println(String.format("Size: %s", sizeComponents));
+		indexComponentMap.forEach((key, value) -> System.out.println(key + ":" + value));
+	    chooseComponentsBox = new Button[sizeComponents];
 	}
 
-    @Override
+    private Map<Integer, ComponentInterface> getComponentIndexMap(RosSystem sys) {
+    	Map<Integer, ComponentInterface> mapComponents = new HashMap<Integer, ComponentInterface>();
+    	int _lastend = 0;
+    	if (sys.getComponentStack().isEmpty()) {
+    		mapComponents = IntStream.range(0, sys.getRosComponent().size()).boxed()
+    		        .collect(Collectors.toMap(i -> i, sys.getRosComponent()::get));
+    	} else {
+    		for (ComponentStack stack : sys.getComponentStack()) {
+    			for (int i = _lastend; i < _lastend + stack.getRosComponent().size(); i++) {
+    				mapComponents.put(i, stack.getRosComponent().get(i - _lastend));
+    			}
+    			_lastend += stack.getRosComponent().size();
+    		}
+    	}
+		return mapComponents;
+	}
+
+	@Override
     public void create() {
         super.create();
         setTitle("Configure for deployment");
@@ -75,12 +111,14 @@ public class CommonDialog extends TitleAreaDialog {
         container.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
         GridLayout layout = new GridLayout(colum, false);
         container.setLayout(layout);
-
+        
+        chooseDeploymentObject(container);
         chooseRosDistro(container);
         createRegistry(container);
         createImageVersion(container);
         chooseDevicePorts(container, rossystem);
         chooseDeploymentPlatform(container);
+	    lbtBridgeNameIfCompileCompoenet=new Label(container, SWT.NONE);
 
         return area;
     }
@@ -167,6 +205,93 @@ public class CommonDialog extends TitleAreaDialog {
       });
     }
     
+	private void chooseDeploymentObject(Composite container) {
+		Label lbtBridgeName = new Label(container, SWT.NONE);
+        lbtBridgeName.setText("Select deployment Object:");
+        
+        setDeloymentObjectBox[0] = new Button(container, SWT.CHECK);
+        setDeloymentObjectBox[0].setSelection(true);
+        setDeloymentObjectBox[0].setText("System");
+        setDeloymentObjectBox[0].pack();
+        setDeloymentObjectBox[0].setEnabled(true);
+        
+        setDeloymentObjectBox[1] = new Button(container, SWT.CHECK);
+        setDeloymentObjectBox[1].setSelection(false);
+        setDeloymentObjectBox[1].setText("Components");
+        setDeloymentObjectBox[1].pack();
+        setDeloymentObjectBox[1].setEnabled(false);
+		
+        setDeloymentObjectBox[0].addSelectionListener(new SelectionListener() {
+            public void widgetSelected(SelectionEvent event) {
+            	if (setDeloymentObjectBox[0].getSelection()) {
+            		setDeloymentObjectBox[0].setEnabled(true);
+            		setDeloymentObjectBox[1].setEnabled(false);
+            		setDeloymentObjectBox[1].setSelection(false);
+            		ifCompileCompoenet = false;
+            		chooseComponents(container, ifCompileCompoenet);
+            	}
+            	else {
+            		ifCompileCompoenet = true;
+            		setDeloymentObjectBox[0].setEnabled(false);
+            		setDeloymentObjectBox[1].setEnabled(true);
+            		setDeloymentObjectBox[1].setSelection(true);
+            		setDeloymentObjectBox[0].setSelection(false);
+            		chooseComponents(container, ifCompileCompoenet);
+            	}
+            }
+            public void widgetDefaultSelected(SelectionEvent event)
+            {                    
+            }
+		});
+		
+        setDeloymentObjectBox[1].addSelectionListener(new SelectionListener() {
+            public void widgetSelected(SelectionEvent event) {
+            	if (setDeloymentObjectBox[1].getSelection()) {
+            		setDeloymentObjectBox[1].setEnabled(true);
+            		setDeloymentObjectBox[0].setEnabled(false);
+            		setDeloymentObjectBox[0].setSelection(false);
+            		ifCompileCompoenet = true;
+            		chooseComponents(container, ifCompileCompoenet);
+            	}
+            	else {
+            		ifCompileCompoenet = false;
+            		setDeloymentObjectBox[1].setEnabled(false);
+            		setDeloymentObjectBox[0].setEnabled(true);
+            		setDeloymentObjectBox[0].setSelection(true);
+            		setDeloymentObjectBox[1].setSelection(false);
+            		chooseComponents(container, ifCompileCompoenet);
+            	}
+            }
+            public void widgetDefaultSelected(SelectionEvent event)
+            {                    
+            }
+		});
+	}
+	
+	private void chooseComponents(Composite container, Boolean ifVisible) {
+		if (ifVisible == false) {
+			lbtBridgeNameIfCompileCompoenet.setVisible(false);
+		}else {
+			lbtBridgeNameIfCompileCompoenet.setVisible(true);
+			lbtBridgeNameIfCompileCompoenet.setText("Choose target components:");
+			lbtBridgeNameIfCompileCompoenet.setLayoutData(new GridData(SWT.LEAD, SWT.CENTER, false, false, sizeDeploymentPlatform, 1));
+		}
+        
+		for(int i = 0; i < sizeComponents; i++) {
+			if (ifVisible == false) {
+				chooseComponentsBox[i].dispose();
+			}else {
+				chooseComponentsBox[i] = new Button(container, SWT.CHECK);
+				chooseComponentsBox[i].setSelection(false);
+				chooseComponentsBox[i].setText(indexComponentMap.get(i).getName());
+				chooseComponentsBox[i].pack();
+				chooseComponentsBox[i].setEnabled(true);
+				chooseComponentsBox[i].setLayoutData(new GridData(SWT.LEAD, SWT.CENTER, false, false, sizeDeploymentPlatform, 1));
+			}
+		}
+		container.layout(true);
+	}
+	
     // choose device port    
     private void chooseDevicePorts(Composite container, RosSystem system) {
     	EList<ComponentInterface> roscomponents = new BasicEList<ComponentInterface>();
@@ -270,6 +395,18 @@ public class CommonDialog extends TitleAreaDialog {
     	else {
     		imageVersion = "latest";
     	}
+    	
+    	if (ifCompileCompoenet) {
+    		for(int i = 0; i < indexComponentMap.keySet().size(); i++) {
+    			if (chooseComponentsBox[i].getSelection()) {
+    				targetComponents.add(indexComponentMap.get(i));
+    			}			
+    		}
+    	}else {
+			targetComponents = new ArrayList<>();
+    	}
+
+    	
 
     }
 
@@ -321,4 +458,10 @@ public class CommonDialog extends TitleAreaDialog {
 		return imageVersion;
 	}
 	
+	public Boolean checkIfCompileCompoenet() {
+		return ifCompileCompoenet;
+	}
+	public ArrayList<ComponentInterface> getTargetComponents() {
+		return targetComponents;
+	}
 }

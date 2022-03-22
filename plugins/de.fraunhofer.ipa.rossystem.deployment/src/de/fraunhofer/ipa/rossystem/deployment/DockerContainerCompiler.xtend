@@ -7,6 +7,8 @@ import de.fraunhofer.ipa.rossystem.deployment.DeploymentInfo
 
 class DockerContainerCompiler {
 	DeploymentHelpers generator_helper = new DeploymentHelpers() 
+	K8sDeploymentHelpers k8s_helper = new K8sDeploymentHelpers()
+	DockerComposeHelpers compose_helper = new DockerComposeHelpers()
 	
 def dockerfile_header(Integer ros_version) '''
 # syntax=docker/dockerfile:experimental
@@ -119,6 +121,24 @@ RUN --mount=type=bind,from=builder,target=/builder \
     rm -rf /var/lib/apt/lists/*
 COPY --from=install /opt/ros/$ROS_DISTRO /opt/ros/$ROS_DISTRO
  «ENDIF»
+'''
+	
+def compile_toDockerignore(rossystem.RosSystem system) '''
+.dockerignore
+Dockerfile
+'''
+
+def compile_toDockerignore(rossystem.RosSystem system, DeploymentInfo deploymentInfo) '''
+.dockerignore
+Dockerfile
+«FOR platform : deploymentInfo.get_platforms»
+«IF platform == DeploymentPlatform.K8s»
+«k8s_helper.set_deployment_file(system.name)»
+«ENDIF»
+«IF platform == DeploymentPlatform.DockerCompose»
+«compose_helper.set_deployment_file(system.name)»
+«ENDIF»
+«ENDFOR»
 '''
 
 }

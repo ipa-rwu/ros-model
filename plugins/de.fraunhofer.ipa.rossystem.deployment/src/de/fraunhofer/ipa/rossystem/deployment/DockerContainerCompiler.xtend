@@ -14,7 +14,7 @@ ARG BUILDER_SUFFIX=:ros«ros_version»
 ARG PREFIX=
 '''
 
-def compile_toDockerContainer(RosSystem system, ComponentStack stack, ImageInfo imageInfo) '''«generator_helper.init_pkg()»
+def compile_toDockerContainer(RosSystem system, ComponentStack stack, ImageInfo imageInfo, MetaHardwareInfo metaHardwareInfo) '''«generator_helper.init_pkg()»
 «dockerfile_header(imageInfo.get_ros_version())»
 «IF stack===null»
     «IF generator_helper.listOfRepos(system).isEmpty()»
@@ -24,7 +24,11 @@ FROM ${PREFIX}«generator_helper.set_extra_image_name(generator_helper.set_image
     «ENDIF»
 «ELSE»
     «IF generator_helper.listOfRepos(stack).isEmpty()»
+    	«IF metaHardwareInfo.getProcessorArchitecture == ProcessorArchitecture.X86»
 FROM ros:«imageInfo.get_ros_distro()»-ros-core as base
+		«ELSEIF metaHardwareInfo.getProcessorArchitecture == ProcessorArchitecture.Arm64»
+FROM arm64v8/ros:«imageInfo.get_ros_distro()»-ros-core as base		
+		«ENDIF»
     «ELSE»
 FROM ${PREFIX}«generator_helper.set_extra_image_name(generator_helper.set_image_name(system.name, stack.name, imageInfo.get_ros_distro().toString))»${SUFFIX} as base
     «ENDIF»
@@ -72,10 +76,14 @@ FROM deploy as launch
 «ENDIF»
 '''
 
-def compile_toDockerImageExtraLayer(RosSystem system, ComponentStack stack, ImageInfo imageInfo) '''«generator_helper.init_pkg()»
+def compile_toDockerImageExtraLayer(RosSystem system, ComponentStack stack, ImageInfo imageInfo, MetaHardwareInfo metaHardwareInfo) '''«generator_helper.init_pkg()»
 «IF (stack===null && !generator_helper.listOfRepos(system).isEmpty()) || (stack !==null && !generator_helper.listOfRepos(stack).isEmpty()) »
 «dockerfile_header(imageInfo.get_ros_version())»
+    	«IF metaHardwareInfo.getProcessorArchitecture == ProcessorArchitecture.X86»
 FROM ros:«imageInfo.get_ros_distro()»-ros-core as base
+		«ELSEIF metaHardwareInfo.getProcessorArchitecture == ProcessorArchitecture.Arm64»
+FROM arm64v8/ros:«imageInfo.get_ros_distro()»-ros-core as base		
+		«ENDIF»
 FROM ${PREFIX}builder${BUILDER_SUFFIX} as builder
 
 FROM base as pre_build

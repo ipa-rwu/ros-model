@@ -43,6 +43,7 @@ class DeploymentArtifactsGenerator extends AbstractGenerator {
 	K8sDeploymentCompiler k8s_compiler = new K8sDeploymentCompiler()
 	K8sDeploymentHelpers k8s_helper = new K8sDeploymentHelpers()
 	K8sMetaInfo k8s_info = new K8sMetaInfo()
+	MetaHardwareInfo metaHardwareInfo = new MetaHardwareInfo()
 
 	ContainerImageHelpers generator_helper = new ContainerImageHelpers()
 	ImageInfo ImageInfo = new ImageInfo()
@@ -96,6 +97,10 @@ class DeploymentArtifactsGenerator extends AbstractGenerator {
 
 	}
 
+	def setMetaHardwareInfo(ProcessorArchitecture processorArchitecture){
+		metaHardwareInfo.setProcessorArchitecture(processorArchitecture)
+	}
+
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		device_map.keySet().forEach[String key|
 	    	if (device_map.get(key).contains(null)) {
@@ -105,15 +110,27 @@ class DeploymentArtifactsGenerator extends AbstractGenerator {
 		for (system : resource.allContents.toIterable.filter(RosSystem)){
 			system_folder_prefix = create_system_prefix(system)
 			if (system.componentStack.size==0){
-				fsa.generateFile(system_folder_prefix +"/Dockerfile",docker_compiler.compile_toDockerContainer(system, null, ImageInfo))
-				fsa.generateFile(system_folder_prefix +"/extra_layer/" + system.getName().toLowerCase + ".rosinstall",rosintall_compiler.compile_toRosInstall(system))
-				fsa.generateFile(system_folder_prefix +"/extra_layer/Dockerfile",docker_compiler.compile_toDockerImageExtraLayer(system, null,ImageInfo))
+				fsa.generateFile(String.format("%s/Dockerfile", system_folder_prefix),
+					docker_compiler.compile_toDockerContainer(system, null, ImageInfo, metaHardwareInfo)
+				)
+				fsa.generateFile(String.format("%s/extra_layer/%s.rosinstall", system_folder_prefix, system.getName().toLowerCase),
+					rosintall_compiler.compile_toRosInstall(system)
+				)
+				fsa.generateFile(String.format("%s/extra_layer/Dockerfile", system_folder_prefix),
+					docker_compiler.compile_toDockerImageExtraLayer(system, null,ImageInfo, metaHardwareInfo)
+				)
 			} else {
 				for (stack : system.componentStack){
 					val stack_folder_prefix = String.join("/", system_folder_prefix, system.name.toLowerCase+'_'+stack.name.toLowerCase)
-					fsa.generateFile(String.join("/", stack_folder_prefix, "Dockerfile"),docker_compiler.compile_toDockerContainer(system, stack, ImageInfo))
-					fsa.generateFile(String.join("/", stack_folder_prefix, "extra_layer", stack.name.toLowerCase+".rosinstall"),rosintall_compiler.compile_toRosInstall(stack))
-					fsa.generateFile(String.join("/", stack_folder_prefix, "extra_layer", "Dockerfile"),docker_compiler.compile_toDockerImageExtraLayer(system,stack, ImageInfo))
+					fsa.generateFile(String.format("%s/Dockerfile", stack_folder_prefix),
+						docker_compiler.compile_toDockerContainer(system, stack, ImageInfo, metaHardwareInfo)
+					)
+					fsa.generateFile(String.format("%s/extra_layer/%s.rosinstall", stack_folder_prefix, stack.name.toLowerCase),
+						rosintall_compiler.compile_toRosInstall(stack)
+					)
+					fsa.generateFile(String.format("%s/extra_layer/Dockerfile", stack_folder_prefix),
+						docker_compiler.compile_toDockerImageExtraLayer(system,stack, ImageInfo, metaHardwareInfo)
+					)
 				}
 			}
 

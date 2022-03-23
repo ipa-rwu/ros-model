@@ -86,6 +86,7 @@ public class GenerationHandler extends AbstractHandler implements IHandler {
 	        // set export port
         	Map<String, Map<RosParameter, String>> sys_param_port = set_ports_from_parameters(imageParamConfig, system);
         	generator.get_port_list(sys_param_port);
+        	generator.setMetaHardwareInfo(imageParamConfig.getProcessorArchitecture());
 
   	        ImageInfo imageInfo = generator.setImageInfo(distro,
   														imageParamConfig.getRegistryNmae(),

@@ -52,6 +52,9 @@ public class ImageParamConfigDialog extends TitleAreaDialog {
 	private Text imageVersionText;
 	private String registryName;
 	private String imageVersion;
+	private Combo processorArchitectureCombo;
+	private ProcessorArchitecture processorArchitecture;
+
 	public ImageParamConfigDialog(Shell parentShell, RosSystem sys) {
 		super(parentShell);
 		rossystem = sys;
@@ -76,6 +79,7 @@ public class ImageParamConfigDialog extends TitleAreaDialog {
         container.setLayout(layout);
 
         chooseRosDistro(container);
+        chooseProcessorArchitecture(container);
         createRegistry(container);
         createImageVersion(container);
         chooseDevicePorts(container, rossystem);
@@ -98,6 +102,19 @@ public class ImageParamConfigDialog extends TitleAreaDialog {
 			setDeloymentPlatformBox[i].setEnabled(true);
 		}
 	}
+
+	// choose Processor Architecture
+	private void chooseProcessorArchitecture(Composite container) {
+		Label lbtRosDistroCombo= new Label(container, SWT.NONE);
+		lbtRosDistroCombo.setText("Select Processor Architecture:");
+		processorArchitectureCombo = new Combo(container, SWT.READ_ONLY | SWT.BORDER);
+
+		processorArchitectureCombo.setLayoutData(new GridData(GridData.BEGINNING, SWT.CENTER, false, false, sizeDeploymentPlatform, 1));
+
+    	String [] choices = Stream.of(ProcessorArchitecture.values()).map(ProcessorArchitecture::name).toArray(String[]::new);
+    	processorArchitectureCombo.setItems(choices);
+    	processorArchitectureCombo.select(Arrays.asList(choices).indexOf(ProcessorArchitecture.X86.toString()));
+    }
 
 	// define registry
 	private void createRegistry(Composite container) {
@@ -230,15 +247,14 @@ public class ImageParamConfigDialog extends TitleAreaDialog {
     	else {
     		imageVersion = "latest";
     	}
+    	processorArchitecture = ProcessorArchitecture.valueOf(processorArchitectureCombo.getText());
     }
 
     private ArrayList<DeploymentPlatform> getPlatforms() {
-    	int index = 0;
     	ArrayList<DeploymentPlatform> _seletPlatforms = new ArrayList<DeploymentPlatform>();
     	for(int i = 0; i < sizeDeploymentPlatform; i++) {
     		if (setDeloymentPlatformBox[i].getSelection()) {
     			_seletPlatforms.add(DeploymentPlatform.values()[i]);
-    			index ++;
     		}
 
     	}
@@ -277,5 +293,9 @@ public class ImageParamConfigDialog extends TitleAreaDialog {
 
 	public String getImageVersion() {
 		return imageVersion;
+	}
+
+	public ProcessorArchitecture getProcessorArchitecture() {
+		return processorArchitecture;
 	}
 }

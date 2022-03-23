@@ -1,8 +1,9 @@
 package de.fraunhofer.ipa.rossystem.deployment;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Stream;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -80,11 +81,27 @@ public class GenerationHandler extends AbstractHandler implements IHandler {
 	        ImageParamConfigDialog imageParamConfig = configImageDialog(shell, system);
 	        DeploymentArtifactsGenerator generator = new DeploymentArtifactsGenerator();
 
-	        String distro = imageParamConfig.getRosDistro();
+	        ROSDistro distro = imageParamConfig.getRosDistro();
 
 	        // set export port
         	Map<String, Map<RosParameter, String>> sys_param_port = set_ports_from_parameters(imageParamConfig, system);
         	generator.get_port_list(sys_param_port);
+
+  	        ImageInfo imageInfo = generator.setImageInfo(distro,
+  														imageParamConfig.getRegistryNmae(),
+  														imageParamConfig.getImageVersion());
+
+  	      	ArrayList<DeploymentPlatform> selectPlatforms = imageParamConfig.getSelectPlatforms();
+  	      	imageInfo.set_platforms(Stream.of(selectPlatforms.toArray()).toArray(DeploymentPlatform[]::new));
+  	      	imageInfo.print_info();
+  	      	for (DeploymentPlatform p : selectPlatforms) {
+	        	generator.updateImageInfo(imageInfo);
+        		if (p.toString() == DeploymentPlatform.K8s.toString()){
+	        		K8sMetaInfo k8s_config = configK8s(shell, distro, imageInfo.get_ros_version());
+	        		k8s_config.print();
+	        		generator.set_k8s_config(k8s_config);
+        		}
+  	      	}
 
 			generator.doGenerate(r, fsa, new GeneratorContext());
 	      }
@@ -92,14 +109,22 @@ public class GenerationHandler extends AbstractHandler implements IHandler {
 	    return null;
 	  }
 
-	  private static String[] getNames(Class<? extends Enum<?>> e) {
-		    return Arrays.stream(e.getEnumConstants()).map(Enum::name).toArray(String[]::new);
-		}
-
 	private ImageParamConfigDialog configImageDialog(Shell shell, RosSystem system) {
 		ImageParamConfigDialog dialog = new ImageParamConfigDialog(shell, system);
 		dialog.open();
 		return dialog;
+	}
+
+	private K8sMetaInfo configK8s(Shell shell, ROSDistro distro, Integer version) {
+		K8sConfigDialog dialog = new K8sConfigDialog(shell, distro, version);
+		dialog.open();
+		Boolean ifmacvlan = dialog.getIfMacVlan();
+		Boolean ifConnectWeb = dialog.getIfConnectWeb();
+		DeploymentType deploy_type = dialog.getDeploymentType();
+		String bridgename = dialog.getBridgeName();
+		K8sMetaInfo k8s_info = new K8sMetaInfo(ifmacvlan, ifConnectWeb, bridgename, deploy_type);
+		k8s_info.setRosDomainID(dialog.getRosDomainID(), version);
+		return k8s_info;
 	}
 
 	private Map<String, Map<RosParameter, String>> set_ports_from_parameters(ImageParamConfigDialog imageParamConfig, RosSystem system) {

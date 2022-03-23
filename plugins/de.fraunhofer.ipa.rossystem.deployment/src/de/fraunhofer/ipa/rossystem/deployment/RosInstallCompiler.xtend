@@ -2,10 +2,9 @@ package de.fraunhofer.ipa.rossystem.deployment
 
 import rossystem.ComponentStack
 import rossystem.RosSystem
-import de.fraunhofer.ipa.rossystem.deployment.DeploymentHelpers
 
 class RosInstallCompiler {
-	DeploymentHelpers generator_helper = new DeploymentHelpers()
+	ContainerImageHelpers generator_helper = new ContainerImageHelpers()
 	val repo_info = newLinkedHashMap('local_name' -> null, 'branch' -> null, 'uri' -> null)
 
 def get_repo_info(String repo){

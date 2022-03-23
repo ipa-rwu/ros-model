@@ -12,11 +12,47 @@ import ros.impl.PackageImpl
 import rossystem.ComponentStack
 import rossystem.RosSystem
 
-class DeploymentHelpers extends GeneratorHelpers {
+class ImageInfo {
+	String rosDistro
+	Integer rosVersion	
+	String registryName
+	String imageVersion
+
+	def set_ros_distro(String distro) {
+		this.rosDistro = distro
+	}
+	def set_ros_version(Integer version){
+		this.rosVersion = version
+	}
+	def set_registry(String registryName){
+		this.registryName = registryName
+	}
+	def set_image_version(String imageVersion){
+		this.imageVersion = imageVersion
+	}
+	def get_ros_distro() {
+		return this.rosDistro
+	}
+	def get_ros_version(){
+		return this.rosVersion  
+	}
+	def get_registry(){
+		return this.registryName  
+	}
+	def get_image_version(){
+		return this.imageVersion
+	}
+	
+	def print_info(){
+		System.out.format("rosDistro: %s, rosVersion: %s, registryName: %s, imageVersion: %s", this.rosDistro, this.rosVersion, this.registryName, this.imageVersion)
+	}
+}
+
+class ContainerImageHelpers extends GeneratorHelpers {
 	List<ComponentInterface> ComponentsList
 	PackageImpl component_package
 	Set<String> Repos
-
+	
  	def get_uniqe_name(String prefix, String ros_distro) {
 	 	return prefix + "_" + ros_distro
 	 }	
@@ -58,4 +94,5 @@ class DeploymentHelpers extends GeneratorHelpers {
 		}}}
 		return Repos;
 	}
+	
 }

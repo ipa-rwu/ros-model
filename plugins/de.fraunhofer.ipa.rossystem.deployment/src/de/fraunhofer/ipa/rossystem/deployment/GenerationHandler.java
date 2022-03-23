@@ -91,9 +91,13 @@ public class GenerationHandler extends AbstractHandler implements IHandler {
 	        String distro = result.keySet().stream().findFirst().get();
 	        
 	        // set export port 
-        	Map<String, Map<RosParameter, String>> sys_param_port = set_ports_from_parameters(shell, system);
-        	generator.get_port_list(sys_param_port);
-        	
+  	        try {
+  	        	Map<String, Map<RosParameter, String>> sys_param_port = set_ports_from_parameters(shell, system);
+  	        	generator.get_port_list(sys_param_port);
+  	        } catch (RuntimeException e) {
+  	        	return null;
+  	        }
+
         	// set registry         	
         	// set image version
 
@@ -181,6 +185,7 @@ public class GenerationHandler extends AbstractHandler implements IHandler {
 									  	value, MessageDialog.ERROR, new String[] { "Cancel" }, 0);
 							  error_dialog.open();
 							  param_portvalue_map.put(tmp_value, null);
+							  throw new RuntimeException(value);
 						  }
 					  }
 				  }
@@ -221,7 +226,7 @@ public class GenerationHandler extends AbstractHandler implements IHandler {
 			String name = dialogInput.getValue();
 			return name;
 	  }
-
+	  
 	  @Override
 	  public boolean isEnabled() {
 	    return true;

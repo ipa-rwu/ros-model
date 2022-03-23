@@ -16,64 +16,196 @@ devices:
 «ENDFOR»
 «ENDIF»
 '''
- def compile_toDockerCompose(RosSystem system, ImageInfo imageInfo, Map<String, List<String>> device_map) '''«generator_helper.init_pkg()»
-«IF imageInfo.get_ros_version() == 1»
-version: "3.3"
+
+def build_args(String registry, String image_version)'''
+«"      "»args:
+«"        "»- PREFIX=«registry»/
+«"        "»- SUFFIX=:«image_version»
+'''
+
+def extra_layer(String sys_name, String ros_distro, String registry, String image_version)'''
+«"  "»«generator_helper.set_extra_image_name(generator_helper.set_image_name(sys_name, ros_distro))»:
+    image: "«generator_helper.set_push_image_name(registry,
+    												generator_helper.set_extra_image_name(generator_helper.set_image_name(sys_name, ros_distro)),
+    												image_version
+    												)»"
+    build:
+      context: «generator_helper.set_extra_folder_path(".")»
+      dockerfile: Dockerfile
+«build_args(registry, image_version)»
+    profiles:
+      - dependencies
+
+'''
+
+def network_name(String sys_name)'''
+«sys_name.toLowerCase.replaceAll("[^a-zA-Z-0-9-]", "-")»-network'''
+
+def network(String sys_name)'''
 networks:
-  ros:
-    driver: bridge
+«"  "»«network_name(sys_name)»:
+«"    "»external: false
+«"    "»driver: "bridge"
+'''
+
+def extra_layer(String sys_name,
+				String stack_name,
+				String ros_distro,
+				String registry,
+				String image_version
+)'''
+«"  "»«generator_helper.set_extra_image_name(generator_helper.set_image_name(sys_name, stack_name, ros_distro))»:
+    image: «generator_helper.set_push_image_name(registry,
+    												generator_helper.set_extra_image_name(generator_helper.set_image_name(sys_name, stack_name, ros_distro)),
+    												image_version
+    												)»
+    build:
+      context: «generator_helper.set_extra_folder_path(generator_helper.set_stack_folder_name(sys_name, stack_name))»
+      dockerfile: Dockerfile
+«build_args(registry, image_version)»
+    profiles:
+      - dependencies
+
+'''
+
+def execute_layer(String image_name,
+					String folder,
+					String ros_distro,
+					Integer ros_version,
+					String registry,
+					String image_version,
+					Boolean if_need_extra
+)'''
+«"  "»«image_name»:
+    image: «generator_helper.set_push_image_name(registry,
+    												image_name,
+    												image_version
+    												)»
+    build:
+      context: «folder»
+      dockerfile: Dockerfile
+«build_args(registry, image_version)»
+«IF ros_version===1»
+«"    "»depends_on:
+      - ros-master
+«IF if_need_extra»
+«"      "»- «generator_helper.set_extra_image_name(image_name)»
+«ENDIF»
+«ELSEIF ros_version===2»
+«IF if_need_extra»
+«"    "»depends_on:
+«"      "»- «generator_helper.set_extra_image_name(image_name)»
+«ENDIF»
+«ENDIF»
+    environment:
+«IF ros_version===1»
+«"      "»- ROS_MASTER_URI=http://ros-master:11311
+«"      "»- ROS_HOSTNAME=«image_name»
+«ELSEIF ros_version===2»
+«"      "»- ROS_DOMAIN_ID=1
+«ENDIF»
+    profiles:
+      - execute
+'''
+
+def system_layer(String sys_name,
+					String ros_distro,
+					Integer ros_version,
+					String registry,
+					String image_version,
+					Map<String, List<String>> device_map,
+					Boolean if_need_extra)'''
+«execute_layer(generator_helper.set_image_name(sys_name, ros_distro),
+				generator_helper.set_system_folder_name(),
+				ros_distro,
+				ros_version,
+				registry,
+				image_version,
+				if_need_extra
+)»
+    networks:
+      - «network_name(sys_name)»
+    «create_devices(device_map.get(sys_name))»
+«IF ros_version===1»
+«"    "»command: stdbuf -o L roslaunch «sys_name.toLowerCase» «sys_name.toLowerCase».launch --wait
+«ELSEIF ros_version===2»
+«"    "»command: stdbuf -o L ros2 launch «sys_name.toLowerCase» «sys_name.toLowerCase».launch.py
+«ENDIF»
+
+'''
+
+def stack_layer(String sys_name,
+					String stack_name,
+					String ros_distro,
+					Integer ros_version,
+					String registry,
+					String image_version,
+					Map<String, List<String>> device_map,
+					Boolean if_need_extra)'''
+«execute_layer(generator_helper.set_image_name(sys_name, stack_name, ros_distro),
+				generator_helper.set_stack_folder_name(sys_name, stack_name),
+				ros_distro,
+				ros_version,
+				registry,
+				image_version,
+				if_need_extra
+)»
+    networks:
+      - «network_name(sys_name)»
+    «create_devices(device_map.get(stack_name))»
+«IF ros_version===1»
+«"    "»command: stdbuf -o L roslaunch «sys_name.toLowerCase»_«stack_name.toLowerCase» «stack_name.toLowerCase».launch --wait
+«ELSEIF ros_version===2»
+«"    "»command: stdbuf -o L ros2 launch «sys_name.toLowerCase»_«stack_name.toLowerCase» «stack_name.toLowerCase».launch.py
+«ENDIF»
+
+'''
+
+def compile_toDockerCompose(RosSystem system, ImageInfo imageInfo, Map<String, List<String>> device_map) '''«generator_helper.init_pkg()»
+version: "3.3"
+«network(system.name)»
 services:
-  ros-master:
+«IF imageInfo.get_ros_version() == 1»
+«"  "»ros-master:
     image: ros:«imageInfo.get_ros_distro()»-ros-core
     command: stdbuf -o L roscore
     networks:
-      - ros
-
+      - «network_name(system.name)»
+«ENDIF»
 «IF system.getComponentStack().isEmpty()»
-«"  "»«generator_helper.get_uniqe_name(system.name.toLowerCase, imageInfo.get_ros_distro())»:
-    image: "«generator_helper.get_uniqe_name(system.name.toLowerCase, imageInfo.get_ros_distro())»:latest"
-    depends_on:
-      - ros-master
-    environment:
-      - "ROS_MASTER_URI=http://ros-master:11311"
-      - "ROS_HOSTNAME=«generator_helper.get_uniqe_name(system.name.toLowerCase, imageInfo.get_ros_distro())»"
-    networks:
-      - ros
-    «create_devices(device_map.get(system.name))»
-    command: stdbuf -o L roslaunch «system.name.toLowerCase» «system.name.toLowerCase».launch --wait
+«IF !generator_helper.listOfRepos(system).isEmpty()»
+«extra_layer(system.name,
+				imageInfo.get_ros_distro,
+				imageInfo.get_registry,
+				imageInfo.get_image_version)»
+«ENDIF»
+«system_layer(system.name,
+				imageInfo.get_ros_distro,
+				imageInfo.get_ros_version,
+				imageInfo.get_registry,
+				imageInfo.get_image_version,
+				device_map,
+				!generator_helper.listOfRepos(system).isEmpty()
+)»
 «ELSE»
 «FOR stack:system.componentStack»
-«"  "»«generator_helper.get_uniqe_name(system.name.toLowerCase, imageInfo.get_ros_distro())»_«stack.name.toLowerCase»:
-    image: "«generator_helper.get_uniqe_name(system.name.toLowerCase, imageInfo.get_ros_distro())»_«stack.name.toLowerCase»:latest"
-    depends_on:
-      - ros-master
-    environment:
-      - "ROS_MASTER_URI=http://ros-master:11311"
-      - "ROS_HOSTNAME=«generator_helper.get_uniqe_name(system.name.toLowerCase, imageInfo.get_ros_distro())»_«stack.name.toLowerCase»"
-    networks:
-      - ros
-    «create_devices(device_map.get(stack.name))»
-    command: stdbuf -o L roslaunch «system.name.toLowerCase»_«stack.name.toLowerCase» «stack.name.toLowerCase».launch --wait
-
-«ENDFOR»
+«IF !generator_helper.listOfRepos(stack).isEmpty()»
+«extra_layer(system.name,
+				stack.name,
+				imageInfo.get_ros_distro,
+				imageInfo.get_registry,
+				imageInfo.get_image_version)»
 «ENDIF»
-«ELSE»
-version: "3.3"
-services:
-«IF system.getComponentStack().isEmpty()»
-«"  "»«generator_helper.get_uniqe_name(system.name.toLowerCase, imageInfo.get_ros_distro())»:
-    image: "«generator_helper.get_uniqe_name(system.name.toLowerCase, imageInfo.get_ros_distro())»:latest"
-    «create_devices(device_map.get(system.name))»
-    command: stdbuf -o L ros2 launch «system.name.toLowerCase» «system.name.toLowerCase».launch.py
-«ELSE»
-«FOR stack:system.componentStack»
-«"  "»«generator_helper.get_uniqe_name(system.name.toLowerCase, imageInfo.get_ros_distro())»_«stack.name.toLowerCase»:
-    image: "«generator_helper.get_uniqe_name(system.name.toLowerCase, imageInfo.get_ros_distro())»_«stack.name.toLowerCase»:latest"
-    «create_devices(device_map.get(stack.name))»
-    command: stdbuf -o L ros2 launch «system.name.toLowerCase»_«stack.name.toLowerCase» «stack.name.toLowerCase».launch.py
-
+«stack_layer(system.name,
+				stack.name,
+				imageInfo.get_ros_distro,
+				imageInfo.get_ros_version,
+				imageInfo.get_registry,
+				imageInfo.get_image_version,
+				device_map,
+				!generator_helper.listOfRepos(stack).isEmpty()
+)»
 «ENDFOR»
-«ENDIF»
 «ENDIF»
 '''
 }

@@ -1,12 +1,12 @@
 package de.fraunhofer.ipa.rossystem.deployment
 
-import rossystem.RosSystem
 import rossystem.ComponentStack
 import de.fraunhofer.ipa.rossystem.deployment.ImageInfo
+import rossystem.RosSystem
 
 class DockerContainerCompiler {
-	ContainerImageHelpers generator_helper = new ContainerImageHelpers() 
-	
+	ContainerImageHelpers generator_helper = new ContainerImageHelpers()
+
 def dockerfile_header(Integer ros_version) '''
 # syntax=docker/dockerfile:experimental
 ARG SUFFIX=
@@ -20,13 +20,13 @@ def compile_toDockerContainer(RosSystem system, ComponentStack stack, ImageInfo 
     «IF generator_helper.listOfRepos(system).isEmpty()»
 FROM ros:«imageInfo.get_ros_distro()»-ros-core as base
     «ELSE»
-FROM ${PREFIX}extra_layer_«generator_helper.get_uniqe_name(system.name.toLowerCase, imageInfo.get_ros_distro())»${SUFFIX} as base
+FROM ${PREFIX}«generator_helper.set_extra_image_name(generator_helper.set_image_name(system.name, imageInfo.get_ros_distro().toString))»${SUFFIX} as base
     «ENDIF»
 «ELSE»
     «IF generator_helper.listOfRepos(stack).isEmpty()»
 FROM ros:«imageInfo.get_ros_distro()»-ros-core as base
     «ELSE»
-FROM ${PREFIX}extra_layer_«generator_helper.get_uniqe_name(system.name.toLowerCase, imageInfo.get_ros_distro())»_«stack.name.toLowerCase»${SUFFIX} as base
+FROM ${PREFIX}«generator_helper.set_extra_image_name(generator_helper.set_image_name(system.name, stack.name, imageInfo.get_ros_distro().toString))»${SUFFIX} as base
     «ENDIF»
 «ENDIF»
 FROM ${PREFIX}builder${BUILDER_SUFFIX} as builder
@@ -119,5 +119,4 @@ RUN --mount=type=bind,from=builder,target=/builder \
 COPY --from=install /opt/ros/$ROS_DISTRO /opt/ros/$ROS_DISTRO
  «ENDIF»
 '''
-
 }

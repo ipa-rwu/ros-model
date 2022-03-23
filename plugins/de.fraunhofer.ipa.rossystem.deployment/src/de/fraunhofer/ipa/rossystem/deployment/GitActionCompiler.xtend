@@ -3,9 +3,9 @@ package de.fraunhofer.ipa.rossystem.deployment
 import rossystem.RosSystem
 
 class GitActionCompiler {
-	
+
 	ContainerImageHelpers generator_helper = new ContainerImageHelpers()
- 
+
  def default_part(String layer, String context_path, String needed_layer, String tag)'''
 «layer»:
   runs-on: ubuntu-latest
@@ -69,55 +69,64 @@ class GitActionCompiler {
         rm -rf /tmp/.buildx-cache
         mv /tmp/.buildx-cache-new /tmp/.buildx-cache
  '''
- def build_layer()'''
-	«default_part("builder", "./builder", null, "type=raw,value=${{ env.BUILDER_SUFFIX }}")» 
+
+def build_layer()'''
+	«default_part("builder", "./builder", null, "type=raw,value=${{ env.BUILDER_SUFFIX }}")»
 '''
- def extra_layer(String sys_name, String ros_distro)
+
+def extra_layer(String sys_name, String ros_distro, String image_version)
 '''
-	«default_part("extra_layer_"+ generator_helper.get_uniqe_name(sys_name, ros_distro), String.join("/", ".",generator_helper.get_folder_name(sys_name, ros_distro),"extra_layer"), null, "type=raw,value=${{ steps.extract_branch.outputs.branch }}")»
+	«default_part(generator_helper.set_extra_image_name(generator_helper.set_image_name(sys_name, ros_distro)),
+					generator_helper.set_extra_folder_path(generator_helper.set_system_folder_name(sys_name, ros_distro)),
+					null,
+					String.format("type=raw,value=${{ steps.extract_branch.outputs.branch }}\ntype=raw,value=%s", image_version)
+	)»
+
 '''
  def extra_layer(String sys_name, String stack_name, String ros_distro, String image_version)
 '''
-	«default_part(String.join("_", "extra_layer", generator_helper.get_uniqe_name(sys_name, ros_distro), stack_name), 
-					String.join("/", ".",generator_helper.get_folder_name(sys_name, ros_distro), 
-					String.join("_", sys_name, stack_name),"extra_layer"), 
-					null, 
+	«default_part(generator_helper.set_extra_image_name(generator_helper.set_image_name(sys_name, stack_name, ros_distro)),
+					generator_helper.set_extra_folder_path(generator_helper.set_stack_folder_name(sys_name, stack_name, ros_distro)),
+					null,
 					String.format("type=raw,value=${{ steps.extract_branch.outputs.branch }}\ntype=raw,value=%s", image_version)
 	)»
-''' 
+
+'''
  def system_layer(String sys_name, Boolean need_extra, String ros_distro, String image_version)'''
-	«IF need_extra» 
-	«default_part(generator_helper.get_uniqe_name(sys_name, ros_distro), 
-					"./"+ generator_helper.get_folder_name(sys_name, ros_distro), 
-					"extra_layer_"+ generator_helper.get_uniqe_name(sys_name, ros_distro), 
+	«IF need_extra»
+	«default_part(generator_helper.set_image_name(sys_name, ros_distro),
+					generator_helper.set_system_folder_name(sys_name, ros_distro),
+					generator_helper.set_extra_image_name(generator_helper.set_image_name(sys_name, ros_distro)),
 					String.format("type=raw,value=${{ steps.extract_branch.outputs.branch }}\ntype=raw,value=%s", image_version))»
 	«ELSE»
-	«default_part(generator_helper.get_uniqe_name(sys_name, ros_distro), 
-					"./"+ generator_helper.get_folder_name(sys_name, ros_distro), 
-					null, 
+	«default_part(generator_helper.set_image_name(sys_name, ros_distro),
+					generator_helper.set_system_folder_name(sys_name, ros_distro),
+					null,
 					String.format("type=raw,value=${{ steps.extract_branch.outputs.branch }}\ntype=raw,value=%s", image_version))»
 	«ENDIF»
-	''' 	
+'''
+
  def stack_layer(String sys_name, String stack_name, String ros_distro, String image_version, Boolean need_extra)'''
-	«IF need_extra» 
-	«default_part(generator_helper.get_uniqe_name(sys_name, ros_distro)+"_"+stack_name, 
-					String.join("/", ".",generator_helper.get_folder_name(sys_name, ros_distro), sys_name+"_"+stack_name), 
-					String.join("_", "extra_layer", generator_helper.get_uniqe_name(sys_name, ros_distro), stack_name), 
-					String.format("type=raw,value=${{ steps.extract_branch.outputs.branch }}\n
-					 				type=raw,value=%s", image_version))»
+	«IF need_extra»
+	«default_part(generator_helper.set_image_name(sys_name, stack_name, ros_distro),
+					generator_helper.set_stack_folder_name(sys_name, stack_name, ros_distro),
+					generator_helper.set_extra_image_name(generator_helper.set_image_name(sys_name, stack_name, ros_distro)),
+					String.format("type=raw,value=${{ steps.extract_branch.outputs.branch }}\ntype=raw,value=%s", image_version))»
 	«ELSE»
-	«default_part(generator_helper.get_uniqe_name(sys_name, ros_distro)+"_"+stack_name, 
-					String.join("/", ".",generator_helper.get_folder_name(sys_name, ros_distro), sys_name+"_"+stack_name), 
-					null, 
+	«default_part(generator_helper.set_image_name(sys_name, stack_name, ros_distro),
+					generator_helper.set_stack_folder_name(sys_name, stack_name, ros_distro),
+					null,
 					String.format("type=raw,value=${{ steps.extract_branch.outputs.branch }}\ntype=raw,value=%s", image_version))»
 	«ENDIF»
-''' 	
- def compile_toGitAction(RosSystem system, ImageInfo imageInfo) '''«generator_helper.init_pkg()»
-name: «generator_helper.get_uniqe_name(system.name.toLowerCase, imageInfo.get_ros_distro())»
+
+'''
+
+def compile_toGitAction(RosSystem system, ImageInfo imageInfo) '''«generator_helper.init_pkg()»
+name: «generator_helper.get_uniqe_name(system.name.toLowerCase, imageInfo.get_ros_distro().toString)»
 on:
   push:
     paths:
-      - '«generator_helper.get_folder_name(system.name.toLowerCase, imageInfo.get_ros_distro())»/**'
+      - '«generator_helper.set_system_folder_name(system.name.toLowerCase, imageInfo.get_ros_distro().toString)»/**'
 env:
   PREFIX: "${{ secrets.DOCKER_USERNAME }}/"
   SUFFIX: ""
@@ -126,18 +135,18 @@ env:
 jobs:
   «IF system.getComponentStack().isEmpty()»
   «IF !generator_helper.listOfRepos(system).isEmpty()»
-  «extra_layer(system.name.toLowerCase, imageInfo.get_ros_distro())»
-  «system_layer(system.name.toLowerCase, true, imageInfo.get_ros_distro(), imageInfo.get_image_version())»
+  «extra_layer(system.name.toLowerCase, imageInfo.get_ros_distro().toString,imageInfo.get_image_version())»
+  «system_layer(system.name.toLowerCase, true, imageInfo.get_ros_distro().toString, imageInfo.get_image_version())»
 	«ELSE»
-  «system_layer(system.name.toLowerCase, false, imageInfo.get_ros_distro(), imageInfo.get_image_version())»
+  «system_layer(system.name.toLowerCase, false, imageInfo.get_ros_distro().toString, imageInfo.get_image_version())»
 «ENDIF»
 «ELSE»«FOR stack : system.getComponentStack()»«IF !generator_helper.listOfRepos(stack).isEmpty()»
-  «extra_layer(system.name.toLowerCase, stack.name.toLowerCase, imageInfo.get_ros_distro(), imageInfo.get_image_version())»
-  «stack_layer(system.name.toLowerCase, stack.name.toLowerCase, imageInfo.get_ros_distro(), imageInfo.get_image_version(), true)»
+  «extra_layer(system.name.toLowerCase, stack.name.toLowerCase, imageInfo.get_ros_distro().toString, imageInfo.get_image_version())»
+  «stack_layer(system.name.toLowerCase, stack.name.toLowerCase, imageInfo.get_ros_distro().toString, imageInfo.get_image_version(), true)»
  «ELSE»
-  «stack_layer(system.name.toLowerCase, stack.name.toLowerCase, imageInfo.get_ros_distro(), imageInfo.get_image_version(), false)»
+  «stack_layer(system.name.toLowerCase, stack.name.toLowerCase, imageInfo.get_ros_distro().toString, imageInfo.get_image_version(), false)»
 «ENDIF»
  «ENDFOR»
-«ENDIF»           
+«ENDIF»
 '''
 }

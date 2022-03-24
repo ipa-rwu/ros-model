@@ -4,6 +4,10 @@ import rossystem.RosSystem
 import java.util.Map
 import java.util.List
 
+class DockerComposeInfo extends DeplopymentCommonInfo{
+
+}
+
 class DockerComposeHelpers extends DeploymentHelpers {
 	 def set_deployment_file(String sys_name){
 		return set_deployment_file_name(sys_name, DeploymentPlatform.DockerCompose, "yml")
@@ -168,7 +172,7 @@ def stack_layer(String sys_name,
 
 '''
 
-def compile_toDockerCompose(RosSystem system, ImageInfo imageInfo, Map<String, List<String>> device_map) '''«generator_helper.init_pkg()»
+def compile_toDockerCompose(RosSystem system, ImageInfo imageInfo, DockerComposeInfo dockerComposeInfo) '''«generator_helper.init_pkg()»
 version: "3.3"
 «network(system.name)»
 services:
@@ -191,7 +195,7 @@ services:
 				imageInfo.get_ros_version,
 				imageInfo.get_registry,
 				imageInfo.get_image_version,
-				device_map,
+				dockerComposeInfo.getPorts,
 				!imageHelper.listOfRepos(system).isEmpty()
 )»
 «ELSE»
@@ -209,10 +213,11 @@ services:
 				imageInfo.get_ros_version,
 				imageInfo.get_registry,
 				imageInfo.get_image_version,
-				device_map,
+				dockerComposeInfo.getPorts,
 				!imageHelper.listOfRepos(stack).isEmpty()
 )»
 «ENDFOR»
 «ENDIF»
+«dockerComposeInfo.getRosDomainID()»
 '''
 }

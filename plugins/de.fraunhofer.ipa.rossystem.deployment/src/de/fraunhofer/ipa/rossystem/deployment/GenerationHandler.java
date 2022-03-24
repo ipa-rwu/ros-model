@@ -77,15 +77,13 @@ public class GenerationHandler extends AbstractHandler implements IHandler {
 
 	        Display display = Display.getDefault();
 	        Shell shell = display.getActiveShell();
-
+	        
 	        ImageParamConfigDialog imageParamConfig = configImageDialog(shell, system);
 	        DeploymentArtifactsGenerator generator = new DeploymentArtifactsGenerator();
+	        DeploymentProcess deploymentProcess= new DeploymentProcess();
 
 	        ROSDistro distro = imageParamConfig.getRosDistro();
 
-	        // set export port
-        	Map<String, Map<RosParameter, String>> sys_param_port = set_ports_from_parameters(imageParamConfig, system);
-        	generator.get_port_list(sys_param_port);
         	generator.setMetaHardwareInfo(imageParamConfig.getProcessorArchitecture());
 
   	        ImageInfo imageInfo = generator.setImageInfo(distro,
@@ -95,12 +93,33 @@ public class GenerationHandler extends AbstractHandler implements IHandler {
   	      	ArrayList<DeploymentPlatform> selectPlatforms = imageParamConfig.getSelectPlatforms();
   	      	imageInfo.set_platforms(Stream.of(selectPlatforms.toArray()).toArray(DeploymentPlatform[]::new));
   	      	imageInfo.print_info();
+  	      	deploymentProcess.setImageInfo(imageInfo);
+  	      	        	
   	      	for (DeploymentPlatform p : selectPlatforms) {
 	        	generator.updateImageInfo(imageInfo);
         		if (p.toString() == DeploymentPlatform.K8s.toString()){
-	        		K8sMetaInfo k8s_config = configK8s(shell, distro, imageInfo.get_ros_version());
-	        		k8s_config.print();
+        			K8sConfigDialog k8sConfigDialog = Openk8sConfigDialog(shell, 
+	        				distro, 
+	        				imageInfo.get_ros_version(),
+	        				system);
+	        		K8sMetaInfo k8s_config = configK8s(k8sConfigDialog,imageInfo.get_ros_version());	        		
+	        		 // set export port
+	            	Map<String, Map<RosParameter, String>> sys_param_port = set_ports_from_parameters(k8sConfigDialog.getPortMap(), system);
+	            	k8s_config.setPorts(generator.get_port_list(sys_param_port));
+	            	k8s_config.print();
 	        		generator.set_k8s_config(k8s_config);
+        		}
+        		if (p == DeploymentPlatform.DockerCompose){
+        			DockerComposeConfigDialog dockerComposeDialog = new DockerComposeConfigDialog(shell, 
+	        				distro, 
+	        				imageInfo.get_ros_version(),
+	        				system);
+        			dockerComposeDialog.open();
+;	        		DockerComposeInfo dockerComposeConfig = new DockerComposeInfo();
+	            	Map<String, Map<RosParameter, String>> sys_param_port = set_ports_from_parameters(dockerComposeDialog.getPortMap(), system);
+	            	dockerComposeConfig.setPorts(generator.get_port_list(sys_param_port));
+	            	dockerComposeConfig.setRosDomainID(dockerComposeDialog.getRosDomainID(), imageInfo.get_ros_version());
+	            	generator.setDockerComposeConfig(dockerComposeConfig);
         		}
   	      	}
 
@@ -116,26 +135,34 @@ public class GenerationHandler extends AbstractHandler implements IHandler {
 		return dialog;
 	}
 
-	private K8sMetaInfo configK8s(Shell shell, ROSDistro distro, Integer version) {
-		K8sConfigDialog dialog = new K8sConfigDialog(shell, distro, version);
+	private K8sConfigDialog Openk8sConfigDialog(Shell shell, 
+			ROSDistro distro, 
+			Integer version, 
+			RosSystem system) {
+		K8sConfigDialog dialog = new K8sConfigDialog(shell, distro, version, system);
 		dialog.open();
-		Boolean ifmacvlan = dialog.getIfMacVlan();
-		Boolean ifConnectWeb = dialog.getIfConnectWeb();
-		DeploymentType deploy_type = dialog.getDeploymentType();
-		String bridgename = dialog.getBridgeName();
+		return dialog;
+	}
+	
+	private K8sMetaInfo configK8s(K8sConfigDialog k8sConfigDialog,
+			Integer version) {
+		Boolean ifmacvlan = k8sConfigDialog.getIfMacVlan();
+		Boolean ifConnectWeb = k8sConfigDialog.getIfConnectWeb();
+		DeploymentType deploy_type = k8sConfigDialog.getDeploymentType();
+		String bridgename = k8sConfigDialog.getBridgeName();
 		K8sMetaInfo k8s_info = new K8sMetaInfo(ifmacvlan, ifConnectWeb, bridgename, deploy_type);
-		k8s_info.setRosDomainID(dialog.getRosDomainID(), version);
+		k8s_info.setRosDomainID(k8sConfigDialog.getRosDomainID(), version);
 		return k8s_info;
 	}
 
-	private Map<String, Map<RosParameter, String>> set_ports_from_parameters(ImageParamConfigDialog imageParamConfig, RosSystem system) {
+	private Map<String, Map<RosParameter, String>> set_ports_from_parameters(Map<RosParameter, String> selectPortMap, RosSystem system) {
   		  Map<String, Map<RosParameter, String>> sys_param_portvalue_map=new HashMap<>();
 		  EList<ComponentStack> stacks = system.getComponentStack();
 		  if (stacks.size() == 0) {
-			  sys_param_portvalue_map.put(system.getName(), imageParamConfig.getPortMap());
+			  sys_param_portvalue_map.put(system.getName(), selectPortMap);
 		  }else {
 			  for (ComponentStack stack: stacks) {
-				  sys_param_portvalue_map.put(stack.getName(), imageParamConfig.getPortMap());
+				  sys_param_portvalue_map.put(stack.getName(), selectPortMap);
 			  }
 		  }
 

@@ -49,8 +49,8 @@ class DeploymentArtifactsGenerator extends AbstractGenerator {
 	ImageInfo ImageInfo = new ImageInfo()
 
 	String system_folder_prefix
-
-	Map<String, List<String>> device_map = new HashMap<String, List<String>>
+		
+	DockerComposeInfo dockerComposeInfo = new DockerComposeInfo()
 
 	def setImageInfo(ROSDistro rosDistro,
 							String registryName,
@@ -77,6 +77,10 @@ class DeploymentArtifactsGenerator extends AbstractGenerator {
 		k8s_info = info
 	}
 
+	def setDockerComposeConfig(DockerComposeInfo info){
+		dockerComposeInfo = info
+	}
+
 	def create_system_prefix(RosSystem system){
 		//system name + _ros2 or system name
 		if (ImageInfo.get_ros_version() == 2) {
@@ -87,14 +91,15 @@ class DeploymentArtifactsGenerator extends AbstractGenerator {
 	}
 
 	def get_port_list(Map<String, Map<RosParameter, String>> ports_map){
+		val map = new HashMap<String, List<String>>
 		for (key: ports_map.keySet()){
 			val values = newArrayList()
 			for (k: ports_map.get(key).keySet()){
 				values.add(ports_map.get(key).get(k))
 			}
-			device_map.put(key, values)
+			map.put(key, values)
 		}
-
+		return map
 	}
 
 	def setMetaHardwareInfo(ProcessorArchitecture processorArchitecture){
@@ -102,11 +107,6 @@ class DeploymentArtifactsGenerator extends AbstractGenerator {
 	}
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		device_map.keySet().forEach[String key|
-	    	if (device_map.get(key).contains(null)) {
-	    			throw new IllegalArgumentException("Values of some device ports are not defined.")
-	        	}
-		]
 		for (system : resource.allContents.toIterable.filter(RosSystem)){
 			system_folder_prefix = create_system_prefix(system)
 			if (system.componentStack.size==0){
@@ -146,7 +146,10 @@ class DeploymentArtifactsGenerator extends AbstractGenerator {
 					}
 					if (platform == DeploymentPlatform.DockerCompose){
 						fsa.generateFile(String.join("/", system_folder_prefix, compose_helper.set_deployment_file(system.name)),
-										dockercompose_compiler.compile_toDockerCompose(system, ImageInfo, device_map)
+										dockercompose_compiler.compile_toDockerCompose(system,
+											ImageInfo,
+											dockerComposeInfo
+										)
 						)
 
 					}

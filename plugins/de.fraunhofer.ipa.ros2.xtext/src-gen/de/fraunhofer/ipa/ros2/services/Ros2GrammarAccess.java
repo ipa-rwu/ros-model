@@ -945,32 +945,36 @@ public class Ros2GrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		private final Assignment cNamespaceAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
 		private final RuleCall cNamespaceNamespaceParserRuleCall_6_1_0 = (RuleCall)cNamespaceAssignment_6_1.eContents().get(0);
 		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
-		private final Keyword cQosKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
-		private final Assignment cQosAssignment_7_1 = (Assignment)cGroup_7.eContents().get(1);
-		private final RuleCall cQosQualityOfServiceParserRuleCall_7_1_0 = (RuleCall)cQosAssignment_7_1.eContents().get(0);
-		private final RuleCall cENDTerminalRuleCall_8 = (RuleCall)cGroup.eContents().get(8);
-		private final Keyword cRightCurlyBracketKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Keyword cValueKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
+		private final Assignment cValueAssignment_7_1 = (Assignment)cGroup_7.eContents().get(1);
+		private final RuleCall cValueParameterValueParserRuleCall_7_1_0 = (RuleCall)cValueAssignment_7_1.eContents().get(0);
+		private final Group cGroup_8 = (Group)cGroup.eContents().get(8);
+		private final Keyword cQosKeyword_8_0 = (Keyword)cGroup_8.eContents().get(0);
+		private final Assignment cQosAssignment_8_1 = (Assignment)cGroup_8.eContents().get(1);
+		private final RuleCall cQosQualityOfServiceParserRuleCall_8_1_0 = (RuleCall)cQosAssignment_8_1.eContents().get(0);
+		private final RuleCall cENDTerminalRuleCall_9 = (RuleCall)cGroup.eContents().get(9);
 		
 		//@Override
 		//Parameter returns Parameter:
 		//    {Parameter}
 		//        name=EString':'
 		//        BEGIN
-		//        'type' type=ParameterType
+		//        'type:' type=ParameterType
 		//        ('ns:' namespace=Namespace)?
+		//        ('value:' value=ParameterValue)?
 		//        ('qos:' qos=QualityOfService)?
 		//        END
-		//    '}';
+		//        ;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//{Parameter}
 		//    name=EString':'
 		//    BEGIN
-		//    'type' type=ParameterType
+		//    'type:' type=ParameterType
 		//    ('ns:' namespace=Namespace)?
+		//    ('value:' value=ParameterValue)?
 		//    ('qos:' qos=QualityOfService)?
 		//    END
-		//'}'
 		public Group getGroup() { return cGroup; }
 		
 		//{Parameter}
@@ -988,7 +992,7 @@ public class Ros2GrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_3() { return cBEGINTerminalRuleCall_3; }
 		
-		//'type'
+		//'type:'
 		public Keyword getTypeKeyword_4() { return cTypeKeyword_4; }
 		
 		//type=ParameterType
@@ -1009,23 +1013,32 @@ public class Ros2GrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		//Namespace
 		public RuleCall getNamespaceNamespaceParserRuleCall_6_1_0() { return cNamespaceNamespaceParserRuleCall_6_1_0; }
 		
-		//('qos:' qos=QualityOfService)?
+		//('value:' value=ParameterValue)?
 		public Group getGroup_7() { return cGroup_7; }
 		
+		//'value:'
+		public Keyword getValueKeyword_7_0() { return cValueKeyword_7_0; }
+		
+		//value=ParameterValue
+		public Assignment getValueAssignment_7_1() { return cValueAssignment_7_1; }
+		
+		//ParameterValue
+		public RuleCall getValueParameterValueParserRuleCall_7_1_0() { return cValueParameterValueParserRuleCall_7_1_0; }
+		
+		//('qos:' qos=QualityOfService)?
+		public Group getGroup_8() { return cGroup_8; }
+		
 		//'qos:'
-		public Keyword getQosKeyword_7_0() { return cQosKeyword_7_0; }
+		public Keyword getQosKeyword_8_0() { return cQosKeyword_8_0; }
 		
 		//qos=QualityOfService
-		public Assignment getQosAssignment_7_1() { return cQosAssignment_7_1; }
+		public Assignment getQosAssignment_8_1() { return cQosAssignment_8_1; }
 		
 		//QualityOfService
-		public RuleCall getQosQualityOfServiceParserRuleCall_7_1_0() { return cQosQualityOfServiceParserRuleCall_7_1_0; }
+		public RuleCall getQosQualityOfServiceParserRuleCall_8_1_0() { return cQosQualityOfServiceParserRuleCall_8_1_0; }
 		
 		//END
-		public RuleCall getENDTerminalRuleCall_8() { return cENDTerminalRuleCall_8; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_9() { return cRightCurlyBracketKeyword_9; }
+		public RuleCall getENDTerminalRuleCall_9() { return cENDTerminalRuleCall_9; }
 	}
 	
 	
@@ -1271,11 +1284,12 @@ public class Ros2GrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 	//    {Parameter}
 	//        name=EString':'
 	//        BEGIN
-	//        'type' type=ParameterType
+	//        'type:' type=ParameterType
 	//        ('ns:' namespace=Namespace)?
+	//        ('value:' value=ParameterValue)?
 	//        ('qos:' qos=QualityOfService)?
 	//        END
-	//    '}';
+	//        ;
 	public ParameterElements getParameterAccess() {
 		return pParameter;
 	}
@@ -1361,7 +1375,6 @@ public class Ros2GrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 	
 	//Node returns Node:
 	//    'node:' name=RosNames
-	//     BEGIN
 	//        (
 	//        ('publishers:'
 	//            BEGIN
@@ -1398,7 +1411,7 @@ public class Ros2GrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 	//            parameter+=Parameter*
 	//            END
 	//        )
-	//        )*END
+	//        )*
 	//    ;
 	public RosGrammarAccess.NodeElements getNodeAccess() {
 		return gaRos.getNodeAccess();
@@ -1423,9 +1436,9 @@ public class Ros2GrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 	
 	//TopicSpec returns TopicSpec:
 	//    {TopicSpec}
-	//    'msg:'name=(EString|'Header'|'String')
+	//    PreListElement 'msg:' name=(EString|'Header'|'String')
 	//    BEGIN
-	//        'message:' (BEGIN message=MessageDefinition END)?
+	//        'message:'(BEGIN message=MessageDefinition END)?
 	//    END
 	//    ;
 	public RosGrammarAccess.TopicSpecElements getTopicSpecAccess() {
@@ -1438,7 +1451,7 @@ public class Ros2GrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 	
 	//ServiceSpec returns ServiceSpec:
 	//    {ServiceSpec}
-	//    'srv:'name=EString
+	//    PreListElement 'srv:'name=EString
 	//    BEGIN
 	//        'request:' (BEGIN request=MessageDefinition END)?
 	//        'response:' (BEGIN response=MessageDefinition END)?
@@ -1453,7 +1466,7 @@ public class Ros2GrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 	
 	//ActionSpec returns ActionSpec:
 	//    {ActionSpec}
-	//    'action:'name=EString
+	//    PreListElement 'action:'name=EString
 	//    BEGIN
 	//        'goal:' (BEGIN goal=MessageDefinition END)?
 	//        'result:' (BEGIN result=MessageDefinition END)?
@@ -1976,8 +1989,7 @@ public class Ros2GrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 	////MESSAGE PRIMITIVES DEFINITION
 	/////////////////////
 	//MessagePart returns primitives::MessagePart:
-	//    Type = AbstractType
-	//    Data =(KEYWORD | MESSAGE_ASIGMENT | EString)
+	//    Data =(KEYWORD | MESSAGE_ASIGMENT | EString) ":" Type = AbstractType
 	//;
 	public BasicsGrammarAccess.MessagePartElements getMessagePartAccess() {
 		return gaBasics.getMessagePartAccess();
@@ -2354,7 +2366,7 @@ public class Ros2GrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		return getHeaderAccess().getRule();
 	}
 	
-	//TopicSpecRef returns primitives::TopicSpecRef:
+	//TopicSpecRef returns TopicSpecRef:
 	//    TopicSpec=[TopicSpec|EString]
 	//;
 	public BasicsGrammarAccess.TopicSpecRefElements getTopicSpecRefAccess() {
@@ -2365,7 +2377,7 @@ public class Ros2GrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		return getTopicSpecRefAccess().getRule();
 	}
 	
-	//ArrayTopicSpecRef returns primitives::ArrayTopicSpecRef:
+	//ArrayTopicSpecRef returns ArrayTopicSpecRef:
 	//    TopicSpec=[TopicSpec|EString]'[]'
 	//;
 	public BasicsGrammarAccess.ArrayTopicSpecRefElements getArrayTopicSpecRefAccess() {
@@ -2438,6 +2450,16 @@ public class Ros2GrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 	//    ( ('/' STRING ) | ( STRING '/' ) | ('~' STRING ) )* ;
 	public TerminalRule getROS_CONVENTION_PARAMRule() {
 		return gaBasics.getROS_CONVENTION_PARAMRule();
+	}
+	
+	//PreListElement hidden(SL_COMMENT):
+	//  '-';
+	public BasicsGrammarAccess.PreListElementElements getPreListElementAccess() {
+		return gaBasics.getPreListElementAccess();
+	}
+	
+	public ParserRule getPreListElementRule() {
+		return getPreListElementAccess().getRule();
 	}
 	
 	//terminal ID: '^'?('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;

@@ -13,12 +13,10 @@ import org.eclipse.xtext.Action;
 import org.eclipse.xtext.Parameter;
 import org.eclipse.xtext.ParserRule;
 import org.eclipse.xtext.serializer.ISerializationContext;
-import primitives.ArrayTopicSpecRef;
 import primitives.ByteArray;
 import primitives.Header;
 import primitives.MessagePart;
 import primitives.PrimitivesPackage;
-import primitives.TopicSpecRef;
 import primitives.bool;
 import primitives.boolArray;
 import primitives.duration;
@@ -49,6 +47,7 @@ import ros.ActionClient;
 import ros.ActionServer;
 import ros.ActionSpec;
 import ros.AmentPackage;
+import ros.ArrayTopicSpecRef;
 import ros.Artifact;
 import ros.ExternalDependency;
 import ros.GlobalNamespace;
@@ -87,6 +86,7 @@ import ros.ServiceServer;
 import ros.ServiceSpec;
 import ros.Subscriber;
 import ros.TopicSpec;
+import ros.TopicSpecRef;
 
 @SuppressWarnings("all")
 public class Ros2SemanticSequencer extends RosSemanticSequencer {
@@ -102,9 +102,6 @@ public class Ros2SemanticSequencer extends RosSemanticSequencer {
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == PrimitivesPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
-			case PrimitivesPackage.ARRAY_TOPIC_SPEC_REF:
-				sequence_ArrayTopicSpecRef(context, (ArrayTopicSpecRef) semanticObject); 
-				return; 
 			case PrimitivesPackage.BYTE:
 				sequence_byte(context, (primitives.Byte) semanticObject); 
 				return; 
@@ -116,9 +113,6 @@ public class Ros2SemanticSequencer extends RosSemanticSequencer {
 				return; 
 			case PrimitivesPackage.MESSAGE_PART:
 				sequence_MessagePart(context, (MessagePart) semanticObject); 
-				return; 
-			case PrimitivesPackage.TOPIC_SPEC_REF:
-				sequence_TopicSpecRef(context, (TopicSpecRef) semanticObject); 
 				return; 
 			case PrimitivesPackage.BOOL:
 				sequence_bool(context, (bool) semanticObject); 
@@ -212,6 +206,9 @@ public class Ros2SemanticSequencer extends RosSemanticSequencer {
 				return; 
 			case RosPackage.AMENT_PACKAGE:
 				sequence_AmentPackage(context, (AmentPackage) semanticObject); 
+				return; 
+			case RosPackage.ARRAY_TOPIC_SPEC_REF:
+				sequence_ArrayTopicSpecRef(context, (ArrayTopicSpecRef) semanticObject); 
 				return; 
 			case RosPackage.ARTIFACT:
 				sequence_Artifact(context, (Artifact) semanticObject); 
@@ -330,6 +327,9 @@ public class Ros2SemanticSequencer extends RosSemanticSequencer {
 			case RosPackage.TOPIC_SPEC:
 				sequence_TopicSpec(context, (TopicSpec) semanticObject); 
 				return; 
+			case RosPackage.TOPIC_SPEC_REF:
+				sequence_TopicSpecRef(context, (TopicSpecRef) semanticObject); 
+				return; 
 			}
 		if (errorAcceptor != null)
 			errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
@@ -384,7 +384,7 @@ public class Ros2SemanticSequencer extends RosSemanticSequencer {
 	 *     Parameter returns Parameter
 	 *
 	 * Constraint:
-	 *     (name=EString type=ParameterType namespace=Namespace? qos=QualityOfService?)
+	 *     (name=EString type=ParameterType namespace=Namespace? value=ParameterValue? qos=QualityOfService?)
 	 * </pre>
 	 */
 	protected void sequence_Parameter(ISerializationContext context, ros.Parameter semanticObject) {

@@ -95,6 +95,29 @@ public class RossystemItemProviderAdapterFactory extends RossystemAdapterFactory
     }
 
     /**
+     * This keeps track of the one adapter used for all {@link system.RosSystem} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected RosSystemItemProvider rosSystemItemProvider;
+
+    /**
+     * This creates an adapter for a {@link system.RosSystem}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createRosSystemAdapter() {
+        if (rosSystemItemProvider == null) {
+            rosSystemItemProvider = new RosSystemItemProvider(this);
+        }
+
+        return rosSystemItemProvider;
+    }
+
+    /**
      * This keeps track of the one adapter used for all {@link system.Process} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -394,6 +417,52 @@ public class RossystemItemProviderAdapterFactory extends RossystemAdapterFactory
     }
 
     /**
+     * This keeps track of the one adapter used for all {@link system.SystemRef} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected SystemRefItemProvider systemRefItemProvider;
+
+    /**
+     * This creates an adapter for a {@link system.SystemRef}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createSystemRefAdapter() {
+        if (systemRefItemProvider == null) {
+            systemRefItemProvider = new SystemRefItemProvider(this);
+        }
+
+        return systemRefItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all {@link system.RosNodeRef} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected RosNodeRefItemProvider rosNodeRefItemProvider;
+
+    /**
+     * This creates an adapter for a {@link system.RosNodeRef}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createRosNodeRefAdapter() {
+        if (rosNodeRefItemProvider == null) {
+            rosNodeRefItemProvider = new RosNodeRefItemProvider(this);
+        }
+
+        return rosNodeRefItemProvider;
+    }
+
+    /**
      * This returns the root adapter factory that contains this factory.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -499,6 +568,7 @@ public class RossystemItemProviderAdapterFactory extends RossystemAdapterFactory
     @Override
     public void dispose() {
         if (systemItemProvider != null) systemItemProvider.dispose();
+        if (rosSystemItemProvider != null) rosSystemItemProvider.dispose();
         if (processItemProvider != null) processItemProvider.dispose();
         if (rosNodeItemProvider != null) rosNodeItemProvider.dispose();
         if (rosInterfaceItemProvider != null) rosInterfaceItemProvider.dispose();
@@ -512,6 +582,8 @@ public class RossystemItemProviderAdapterFactory extends RossystemAdapterFactory
         if (rosParameterReferenceItemProvider != null) rosParameterReferenceItemProvider.dispose();
         if (rosParameterItemProvider != null) rosParameterItemProvider.dispose();
         if (rosConnectionItemProvider != null) rosConnectionItemProvider.dispose();
+        if (systemRefItemProvider != null) systemRefItemProvider.dispose();
+        if (rosNodeRefItemProvider != null) rosNodeRefItemProvider.dispose();
     }
 
 }

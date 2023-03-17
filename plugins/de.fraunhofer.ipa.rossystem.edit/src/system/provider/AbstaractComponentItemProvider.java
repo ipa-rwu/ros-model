@@ -9,25 +9,37 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.common.util.ResourceLocator;
 
-import system.RossystemPackage;
+import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.IItemPropertySource;
+import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
+import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 
 /**
- * This is the item provider adapter for a {@link system.RosServerClientReference} object.
+ * This is the item provider adapter for a {@link system.AbstaractComponent} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class RosServerClientReferenceItemProvider extends InterfaceReferenceItemProvider {
+public class AbstaractComponentItemProvider
+    extends ItemProviderAdapter
+    implements
+        IEditingDomainItemProvider,
+        IStructuredItemContentProvider,
+        ITreeItemContentProvider,
+        IItemLabelProvider,
+        IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    public RosServerClientReferenceItemProvider(AdapterFactory adapterFactory) {
+    public AbstaractComponentItemProvider(AdapterFactory adapterFactory) {
         super(adapterFactory);
     }
 
@@ -42,42 +54,8 @@ public class RosServerClientReferenceItemProvider extends InterfaceReferenceItem
         if (itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
 
-            addFromPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
-    }
-
-    /**
-     * This adds a property descriptor for the From feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected void addFromPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_RosServerClientReference_from_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_RosServerClientReference_from_feature", "_UI_RosServerClientReference_type"),
-                 RossystemPackage.Literals.ROS_SERVER_CLIENT_REFERENCE__FROM,
-                 true,
-                 false,
-                 true,
-                 null,
-                 null,
-                 null));
-    }
-
-    /**
-     * This returns RosServerClientReference.gif.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/RosServerClientReference"));
     }
 
     /**
@@ -88,7 +66,7 @@ public class RosServerClientReferenceItemProvider extends InterfaceReferenceItem
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_RosServerClientReference_type");
+        return getString("_UI_AbstaractComponent_type");
     }
 
 
@@ -115,6 +93,17 @@ public class RosServerClientReferenceItemProvider extends InterfaceReferenceItem
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
+    }
+
+    /**
+     * Return the resource locator for this item provider's resources.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public ResourceLocator getResourceLocator() {
+        return RossystemEditPlugin.INSTANCE;
     }
 
 }

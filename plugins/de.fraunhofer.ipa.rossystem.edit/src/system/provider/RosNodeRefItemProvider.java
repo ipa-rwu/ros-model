@@ -15,19 +15,19 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import system.RossystemPackage;
 
 /**
- * This is the item provider adapter for a {@link system.RosServerClientReference} object.
+ * This is the item provider adapter for a {@link system.RosNodeRef} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class RosServerClientReferenceItemProvider extends InterfaceReferenceItemProvider {
+public class RosNodeRefItemProvider extends AbstaractComponentItemProvider {
     /**
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    public RosServerClientReferenceItemProvider(AdapterFactory adapterFactory) {
+    public RosNodeRefItemProvider(AdapterFactory adapterFactory) {
         super(adapterFactory);
     }
 
@@ -42,25 +42,25 @@ public class RosServerClientReferenceItemProvider extends InterfaceReferenceItem
         if (itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
 
-            addFromPropertyDescriptor(object);
+            addRosNodeRefPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
 
     /**
-     * This adds a property descriptor for the From feature.
+     * This adds a property descriptor for the Ros Node Ref feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    protected void addFromPropertyDescriptor(Object object) {
+    protected void addRosNodeRefPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add
             (createItemPropertyDescriptor
                 (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
                  getResourceLocator(),
-                 getString("_UI_RosServerClientReference_from_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_RosServerClientReference_from_feature", "_UI_RosServerClientReference_type"),
-                 RossystemPackage.Literals.ROS_SERVER_CLIENT_REFERENCE__FROM,
+                 getString("_UI_RosNodeRef_rosNodeRef_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_RosNodeRef_rosNodeRef_feature", "_UI_RosNodeRef_type"),
+                 RossystemPackage.Literals.ROS_NODE_REF__ROS_NODE_REF,
                  true,
                  false,
                  true,
@@ -70,14 +70,14 @@ public class RosServerClientReferenceItemProvider extends InterfaceReferenceItem
     }
 
     /**
-     * This returns RosServerClientReference.gif.
+     * This returns RosNodeRef.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/RosServerClientReference"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/RosNodeRef"));
     }
 
     /**
@@ -88,7 +88,7 @@ public class RosServerClientReferenceItemProvider extends InterfaceReferenceItem
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_RosServerClientReference_type");
+        return getString("_UI_RosNodeRef_type");
     }
 
 

@@ -80,8 +80,8 @@ public class SystemItemProvider
             (createItemPropertyDescriptor
                 (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
                  getResourceLocator(),
-                 getString("_UI_System_Name_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_System_Name_feature", "_UI_System_type"),
+                 getString("_UI_System_name_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_System_name_feature", "_UI_System_type"),
                  RossystemPackage.Literals.SYSTEM__NAME,
                  true,
                  false,

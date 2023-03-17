@@ -2,8 +2,6 @@
  */
 package primitives.impl;
 
-import java.lang.String;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 

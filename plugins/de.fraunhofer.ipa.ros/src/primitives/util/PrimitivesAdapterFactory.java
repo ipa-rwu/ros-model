@@ -242,6 +242,34 @@ public class PrimitivesAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
+	 * Creates a new adapter for an object of class '{@link primitives.AbstractType <em>Abstract Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see primitives.AbstractType
+	 * @generated
+	 */
+	public Adapter createAbstractTypeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link primitives.MessagePart <em>Message Part</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see primitives.MessagePart
+	 * @generated
+	 */
+	public Adapter createMessagePartAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link primitives.bool <em>bool</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -392,20 +420,6 @@ public class PrimitivesAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createfloat64Adapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link primitives.AbstractType <em>Abstract Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see primitives.AbstractType
-	 * @generated
-	 */
-	public Adapter createAbstractTypeAdapter() {
 		return null;
 	}
 
@@ -658,20 +672,6 @@ public class PrimitivesAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createByteArrayAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link primitives.MessagePart <em>Message Part</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see primitives.MessagePart
-	 * @generated
-	 */
-	public Adapter createMessagePartAdapter() {
 		return null;
 	}
 

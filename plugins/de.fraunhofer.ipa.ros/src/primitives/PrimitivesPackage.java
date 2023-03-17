@@ -2,8 +2,6 @@
  */
 package primitives;
 
-import java.lang.String;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -87,156 +85,6 @@ public interface PrimitivesPackage extends EPackage {
 	int ABSTRACT_TYPE_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link primitives.impl.boolImpl <em>bool</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see primitives.impl.boolImpl
-	 * @see primitives.impl.PrimitivesPackageImpl#getbool()
-	 * @generated
-	 */
-	int BOOL = 2;
-
-	/**
-	 * The meta object id for the '{@link primitives.impl.int8Impl <em>int8</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see primitives.impl.int8Impl
-	 * @see primitives.impl.PrimitivesPackageImpl#getint8()
-	 * @generated
-	 */
-	int INT8 = 3;
-
-	/**
-	 * The meta object id for the '{@link primitives.impl.uint8Impl <em>uint8</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see primitives.impl.uint8Impl
-	 * @see primitives.impl.PrimitivesPackageImpl#getuint8()
-	 * @generated
-	 */
-	int UINT8 = 4;
-
-	/**
-	 * The meta object id for the '{@link primitives.impl.int16Impl <em>int16</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see primitives.impl.int16Impl
-	 * @see primitives.impl.PrimitivesPackageImpl#getint16()
-	 * @generated
-	 */
-	int INT16 = 5;
-
-	/**
-	 * The meta object id for the '{@link primitives.impl.uint16Impl <em>uint16</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see primitives.impl.uint16Impl
-	 * @see primitives.impl.PrimitivesPackageImpl#getuint16()
-	 * @generated
-	 */
-	int UINT16 = 6;
-
-	/**
-	 * The meta object id for the '{@link primitives.impl.int32Impl <em>int32</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see primitives.impl.int32Impl
-	 * @see primitives.impl.PrimitivesPackageImpl#getint32()
-	 * @generated
-	 */
-	int INT32 = 7;
-
-	/**
-	 * The meta object id for the '{@link primitives.impl.uint32Impl <em>uint32</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see primitives.impl.uint32Impl
-	 * @see primitives.impl.PrimitivesPackageImpl#getuint32()
-	 * @generated
-	 */
-	int UINT32 = 8;
-
-	/**
-	 * The meta object id for the '{@link primitives.impl.int64Impl <em>int64</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see primitives.impl.int64Impl
-	 * @see primitives.impl.PrimitivesPackageImpl#getint64()
-	 * @generated
-	 */
-	int INT64 = 9;
-
-	/**
-	 * The meta object id for the '{@link primitives.impl.uint64Impl <em>uint64</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see primitives.impl.uint64Impl
-	 * @see primitives.impl.PrimitivesPackageImpl#getuint64()
-	 * @generated
-	 */
-	int UINT64 = 10;
-
-	/**
-	 * The meta object id for the '{@link primitives.impl.float32Impl <em>float32</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see primitives.impl.float32Impl
-	 * @see primitives.impl.PrimitivesPackageImpl#getfloat32()
-	 * @generated
-	 */
-	int FLOAT32 = 11;
-
-	/**
-	 * The meta object id for the '{@link primitives.impl.float64Impl <em>float64</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see primitives.impl.float64Impl
-	 * @see primitives.impl.PrimitivesPackageImpl#getfloat64()
-	 * @generated
-	 */
-	int FLOAT64 = 12;
-
-	/**
-	 * The meta object id for the '{@link primitives.impl.stringImpl <em>string</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see primitives.impl.stringImpl
-	 * @see primitives.impl.PrimitivesPackageImpl#getstring()
-	 * @generated
-	 */
-	int STRING = 13;
-
-	/**
-	 * The meta object id for the '{@link primitives.impl.timeImpl <em>time</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see primitives.impl.timeImpl
-	 * @see primitives.impl.PrimitivesPackageImpl#gettime()
-	 * @generated
-	 */
-	int TIME = 14;
-
-	/**
-	 * The meta object id for the '{@link primitives.impl.durationImpl <em>duration</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see primitives.impl.durationImpl
-	 * @see primitives.impl.PrimitivesPackageImpl#getduration()
-	 * @generated
-	 */
-	int DURATION = 15;
-
-	/**
-	 * The meta object id for the '{@link primitives.impl.boolArrayImpl <em>bool Array</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see primitives.impl.boolArrayImpl
-	 * @see primitives.impl.PrimitivesPackageImpl#getboolArray()
-	 * @generated
-	 */
-	int BOOL_ARRAY = 16;
-
-	/**
 	 * The meta object id for the '{@link primitives.impl.MessagePartImpl <em>Message Part</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -283,6 +131,16 @@ public interface PrimitivesPackage extends EPackage {
 	int MESSAGE_PART_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link primitives.impl.boolImpl <em>bool</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see primitives.impl.boolImpl
+	 * @see primitives.impl.PrimitivesPackageImpl#getbool()
+	 * @generated
+	 */
+	int BOOL = 2;
+
+	/**
 	 * The number of structural features of the '<em>bool</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -299,6 +157,16 @@ public interface PrimitivesPackage extends EPackage {
 	 * @ordered
 	 */
 	int BOOL_OPERATION_COUNT = ABSTRACT_TYPE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link primitives.impl.int8Impl <em>int8</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see primitives.impl.int8Impl
+	 * @see primitives.impl.PrimitivesPackageImpl#getint8()
+	 * @generated
+	 */
+	int INT8 = 3;
 
 	/**
 	 * The number of structural features of the '<em>int8</em>' class.
@@ -319,6 +187,16 @@ public interface PrimitivesPackage extends EPackage {
 	int INT8_OPERATION_COUNT = ABSTRACT_TYPE_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link primitives.impl.uint8Impl <em>uint8</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see primitives.impl.uint8Impl
+	 * @see primitives.impl.PrimitivesPackageImpl#getuint8()
+	 * @generated
+	 */
+	int UINT8 = 4;
+
+	/**
 	 * The number of structural features of the '<em>uint8</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -335,6 +213,16 @@ public interface PrimitivesPackage extends EPackage {
 	 * @ordered
 	 */
 	int UINT8_OPERATION_COUNT = ABSTRACT_TYPE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link primitives.impl.int16Impl <em>int16</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see primitives.impl.int16Impl
+	 * @see primitives.impl.PrimitivesPackageImpl#getint16()
+	 * @generated
+	 */
+	int INT16 = 5;
 
 	/**
 	 * The number of structural features of the '<em>int16</em>' class.
@@ -355,6 +243,16 @@ public interface PrimitivesPackage extends EPackage {
 	int INT16_OPERATION_COUNT = ABSTRACT_TYPE_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link primitives.impl.uint16Impl <em>uint16</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see primitives.impl.uint16Impl
+	 * @see primitives.impl.PrimitivesPackageImpl#getuint16()
+	 * @generated
+	 */
+	int UINT16 = 6;
+
+	/**
 	 * The number of structural features of the '<em>uint16</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -371,6 +269,16 @@ public interface PrimitivesPackage extends EPackage {
 	 * @ordered
 	 */
 	int UINT16_OPERATION_COUNT = ABSTRACT_TYPE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link primitives.impl.int32Impl <em>int32</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see primitives.impl.int32Impl
+	 * @see primitives.impl.PrimitivesPackageImpl#getint32()
+	 * @generated
+	 */
+	int INT32 = 7;
 
 	/**
 	 * The number of structural features of the '<em>int32</em>' class.
@@ -391,6 +299,16 @@ public interface PrimitivesPackage extends EPackage {
 	int INT32_OPERATION_COUNT = ABSTRACT_TYPE_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link primitives.impl.uint32Impl <em>uint32</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see primitives.impl.uint32Impl
+	 * @see primitives.impl.PrimitivesPackageImpl#getuint32()
+	 * @generated
+	 */
+	int UINT32 = 8;
+
+	/**
 	 * The number of structural features of the '<em>uint32</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -407,6 +325,16 @@ public interface PrimitivesPackage extends EPackage {
 	 * @ordered
 	 */
 	int UINT32_OPERATION_COUNT = ABSTRACT_TYPE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link primitives.impl.int64Impl <em>int64</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see primitives.impl.int64Impl
+	 * @see primitives.impl.PrimitivesPackageImpl#getint64()
+	 * @generated
+	 */
+	int INT64 = 9;
 
 	/**
 	 * The number of structural features of the '<em>int64</em>' class.
@@ -427,6 +355,16 @@ public interface PrimitivesPackage extends EPackage {
 	int INT64_OPERATION_COUNT = ABSTRACT_TYPE_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link primitives.impl.uint64Impl <em>uint64</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see primitives.impl.uint64Impl
+	 * @see primitives.impl.PrimitivesPackageImpl#getuint64()
+	 * @generated
+	 */
+	int UINT64 = 10;
+
+	/**
 	 * The number of structural features of the '<em>uint64</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -443,6 +381,16 @@ public interface PrimitivesPackage extends EPackage {
 	 * @ordered
 	 */
 	int UINT64_OPERATION_COUNT = ABSTRACT_TYPE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link primitives.impl.float32Impl <em>float32</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see primitives.impl.float32Impl
+	 * @see primitives.impl.PrimitivesPackageImpl#getfloat32()
+	 * @generated
+	 */
+	int FLOAT32 = 11;
 
 	/**
 	 * The number of structural features of the '<em>float32</em>' class.
@@ -463,6 +411,16 @@ public interface PrimitivesPackage extends EPackage {
 	int FLOAT32_OPERATION_COUNT = ABSTRACT_TYPE_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link primitives.impl.float64Impl <em>float64</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see primitives.impl.float64Impl
+	 * @see primitives.impl.PrimitivesPackageImpl#getfloat64()
+	 * @generated
+	 */
+	int FLOAT64 = 12;
+
+	/**
 	 * The number of structural features of the '<em>float64</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -479,6 +437,16 @@ public interface PrimitivesPackage extends EPackage {
 	 * @ordered
 	 */
 	int FLOAT64_OPERATION_COUNT = ABSTRACT_TYPE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link primitives.impl.stringImpl <em>string</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see primitives.impl.stringImpl
+	 * @see primitives.impl.PrimitivesPackageImpl#getstring()
+	 * @generated
+	 */
+	int STRING = 13;
 
 	/**
 	 * The number of structural features of the '<em>string</em>' class.
@@ -499,6 +467,16 @@ public interface PrimitivesPackage extends EPackage {
 	int STRING_OPERATION_COUNT = ABSTRACT_TYPE_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link primitives.impl.timeImpl <em>time</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see primitives.impl.timeImpl
+	 * @see primitives.impl.PrimitivesPackageImpl#gettime()
+	 * @generated
+	 */
+	int TIME = 14;
+
+	/**
 	 * The number of structural features of the '<em>time</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -517,6 +495,16 @@ public interface PrimitivesPackage extends EPackage {
 	int TIME_OPERATION_COUNT = ABSTRACT_TYPE_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link primitives.impl.durationImpl <em>duration</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see primitives.impl.durationImpl
+	 * @see primitives.impl.PrimitivesPackageImpl#getduration()
+	 * @generated
+	 */
+	int DURATION = 15;
+
+	/**
 	 * The number of structural features of the '<em>duration</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -533,6 +521,16 @@ public interface PrimitivesPackage extends EPackage {
 	 * @ordered
 	 */
 	int DURATION_OPERATION_COUNT = ABSTRACT_TYPE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link primitives.impl.boolArrayImpl <em>bool Array</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see primitives.impl.boolArrayImpl
+	 * @see primitives.impl.PrimitivesPackageImpl#getboolArray()
+	 * @generated
+	 */
+	int BOOL_ARRAY = 16;
 
 	/**
 	 * The number of structural features of the '<em>bool Array</em>' class.
@@ -944,6 +942,49 @@ public interface PrimitivesPackage extends EPackage {
 	 */
 	int BYTE_ARRAY_OPERATION_COUNT = ABSTRACT_TYPE_OPERATION_COUNT + 0;
 
+
+	/**
+	 * Returns the meta object for class '{@link primitives.AbstractType <em>Abstract Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Abstract Type</em>'.
+	 * @see primitives.AbstractType
+	 * @generated
+	 */
+	EClass getAbstractType();
+
+	/**
+	 * Returns the meta object for class '{@link primitives.MessagePart <em>Message Part</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Message Part</em>'.
+	 * @see primitives.MessagePart
+	 * @generated
+	 */
+	EClass getMessagePart();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link primitives.MessagePart#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Type</em>'.
+	 * @see primitives.MessagePart#getType()
+	 * @see #getMessagePart()
+	 * @generated
+	 */
+	EReference getMessagePart_Type();
+
+	/**
+	 * Returns the meta object for the attribute '{@link primitives.MessagePart#getData <em>Data</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Data</em>'.
+	 * @see primitives.MessagePart#getData()
+	 * @see #getMessagePart()
+	 * @generated
+	 */
+	EAttribute getMessagePart_Data();
+
 	/**
 	 * Returns the meta object for class '{@link primitives.bool <em>bool</em>}'.
 	 * <!-- begin-user-doc -->
@@ -1053,16 +1094,6 @@ public interface PrimitivesPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getfloat64();
-
-	/**
-	 * Returns the meta object for class '{@link primitives.AbstractType <em>Abstract Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Abstract Type</em>'.
-	 * @see primitives.AbstractType
-	 * @generated
-	 */
-	EClass getAbstractType();
 
 	/**
 	 * Returns the meta object for class '{@link primitives.string <em>string</em>}'.
@@ -1245,38 +1276,6 @@ public interface PrimitivesPackage extends EPackage {
 	EClass getByteArray();
 
 	/**
-	 * Returns the meta object for class '{@link primitives.MessagePart <em>Message Part</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Message Part</em>'.
-	 * @see primitives.MessagePart
-	 * @generated
-	 */
-	EClass getMessagePart();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link primitives.MessagePart#getType <em>Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Type</em>'.
-	 * @see primitives.MessagePart#getType()
-	 * @see #getMessagePart()
-	 * @generated
-	 */
-	EReference getMessagePart_Type();
-
-	/**
-	 * Returns the meta object for the attribute '{@link primitives.MessagePart#getData <em>Data</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Data</em>'.
-	 * @see primitives.MessagePart#getData()
-	 * @see #getMessagePart()
-	 * @generated
-	 */
-	EAttribute getMessagePart_Data();
-
-	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1299,6 +1298,42 @@ public interface PrimitivesPackage extends EPackage {
 	 * @generated
 	 */
 	interface Literals {
+		/**
+		 * The meta object literal for the '{@link primitives.impl.AbstractTypeImpl <em>Abstract Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see primitives.impl.AbstractTypeImpl
+		 * @see primitives.impl.PrimitivesPackageImpl#getAbstractType()
+		 * @generated
+		 */
+		EClass ABSTRACT_TYPE = eINSTANCE.getAbstractType();
+
+		/**
+		 * The meta object literal for the '{@link primitives.impl.MessagePartImpl <em>Message Part</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see primitives.impl.MessagePartImpl
+		 * @see primitives.impl.PrimitivesPackageImpl#getMessagePart()
+		 * @generated
+		 */
+		EClass MESSAGE_PART = eINSTANCE.getMessagePart();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MESSAGE_PART__TYPE = eINSTANCE.getMessagePart_Type();
+
+		/**
+		 * The meta object literal for the '<em><b>Data</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MESSAGE_PART__DATA = eINSTANCE.getMessagePart_Data();
+
 		/**
 		 * The meta object literal for the '{@link primitives.impl.boolImpl <em>bool</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -1408,16 +1443,6 @@ public interface PrimitivesPackage extends EPackage {
 		 * @generated
 		 */
 		EClass FLOAT64 = eINSTANCE.getfloat64();
-
-		/**
-		 * The meta object literal for the '{@link primitives.impl.AbstractTypeImpl <em>Abstract Type</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see primitives.impl.AbstractTypeImpl
-		 * @see primitives.impl.PrimitivesPackageImpl#getAbstractType()
-		 * @generated
-		 */
-		EClass ABSTRACT_TYPE = eINSTANCE.getAbstractType();
 
 		/**
 		 * The meta object literal for the '{@link primitives.impl.stringImpl <em>string</em>}' class.
@@ -1598,32 +1623,6 @@ public interface PrimitivesPackage extends EPackage {
 		 * @generated
 		 */
 		EClass BYTE_ARRAY = eINSTANCE.getByteArray();
-
-		/**
-		 * The meta object literal for the '{@link primitives.impl.MessagePartImpl <em>Message Part</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see primitives.impl.MessagePartImpl
-		 * @see primitives.impl.PrimitivesPackageImpl#getMessagePart()
-		 * @generated
-		 */
-		EClass MESSAGE_PART = eINSTANCE.getMessagePart();
-
-		/**
-		 * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference MESSAGE_PART__TYPE = eINSTANCE.getMessagePart_Type();
-
-		/**
-		 * The meta object literal for the '<em><b>Data</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute MESSAGE_PART__DATA = eINSTANCE.getMessagePart_Data();
 
 	}
 

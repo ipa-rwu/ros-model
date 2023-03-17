@@ -5,8 +5,8 @@ package primitives.impl;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.EReference;
+
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import primitives.AbstractType;
@@ -41,6 +41,7 @@ import primitives.uint64;
 import primitives.uint64Array;
 import primitives.uint8;
 import primitives.uint8Array;
+
 import ros.RosPackage;
 
 import ros.impl.RosPackageImpl;
@@ -52,6 +53,20 @@ import ros.impl.RosPackageImpl;
  * @generated
  */
 public class PrimitivesPackageImpl extends EPackageImpl implements PrimitivesPackage {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass abstractTypeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass messagePartEClass = null;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -128,13 +143,6 @@ public class PrimitivesPackageImpl extends EPackageImpl implements PrimitivesPac
 	 * @generated
 	 */
 	private EClass float64EClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass abstractTypeEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -263,13 +271,6 @@ public class PrimitivesPackageImpl extends EPackageImpl implements PrimitivesPac
 	private EClass byteArrayEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass messagePartEClass = null;
-
-	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -287,7 +288,6 @@ public class PrimitivesPackageImpl extends EPackageImpl implements PrimitivesPac
 	private PrimitivesPackageImpl() {
 		super(eNS_URI, PrimitivesFactory.eINSTANCE);
 	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -334,6 +334,46 @@ public class PrimitivesPackageImpl extends EPackageImpl implements PrimitivesPac
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(PrimitivesPackage.eNS_URI, thePrimitivesPackage);
 		return thePrimitivesPackage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getAbstractType() {
+		return abstractTypeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getMessagePart() {
+		return messagePartEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getMessagePart_Type() {
+		return (EReference)messagePartEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getMessagePart_Data() {
+		return (EAttribute)messagePartEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -444,16 +484,6 @@ public class PrimitivesPackageImpl extends EPackageImpl implements PrimitivesPac
 	@Override
 	public EClass getfloat64() {
 		return float64EClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getAbstractType() {
-		return abstractTypeEClass;
 	}
 
 	/**
@@ -634,36 +664,6 @@ public class PrimitivesPackageImpl extends EPackageImpl implements PrimitivesPac
 	@Override
 	public EClass getByteArray() {
 		return byteArrayEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getMessagePart() {
-		return messagePartEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getMessagePart_Type() {
-		return (EReference)messagePartEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getMessagePart_Data() {
-		return (EAttribute)messagePartEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**

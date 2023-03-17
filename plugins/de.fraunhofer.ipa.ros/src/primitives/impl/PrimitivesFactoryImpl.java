@@ -9,6 +9,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+
 import primitives.ByteArray;
 import primitives.Header;
 import primitives.MessagePart;
@@ -118,6 +119,17 @@ public class PrimitivesFactoryImpl extends EFactoryImpl implements PrimitivesFac
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public MessagePart createMessagePart() {
+		MessagePartImpl messagePart = new MessagePartImpl();
+		return messagePart;
 	}
 
 	/**
@@ -437,17 +449,6 @@ public class PrimitivesFactoryImpl extends EFactoryImpl implements PrimitivesFac
 	public ByteArray createByteArray() {
 		ByteArrayImpl byteArray = new ByteArrayImpl();
 		return byteArray;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public MessagePart createMessagePart() {
-		MessagePartImpl messagePart = new MessagePartImpl();
-		return messagePart;
 	}
 
 	/**

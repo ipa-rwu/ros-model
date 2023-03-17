@@ -22,6 +22,15 @@ public interface PrimitivesFactory extends EFactory {
 	PrimitivesFactory eINSTANCE = primitives.impl.PrimitivesFactoryImpl.init();
 
 	/**
+	 * Returns a new object of class '<em>Message Part</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Message Part</em>'.
+	 * @generated
+	 */
+	MessagePart createMessagePart();
+
+	/**
 	 * Returns a new object of class '<em>bool</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -281,15 +290,6 @@ public interface PrimitivesFactory extends EFactory {
 	 * @generated
 	 */
 	ByteArray createByteArray();
-
-	/**
-	 * Returns a new object of class '<em>Message Part</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Message Part</em>'.
-	 * @generated
-	 */
-	MessagePart createMessagePart();
 
 	/**
 	 * Returns the package supported by this factory.

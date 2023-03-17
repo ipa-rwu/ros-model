@@ -14,12 +14,10 @@ import org.eclipse.xtext.ParserRule;
 import org.eclipse.xtext.serializer.ISerializationContext;
 import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
-import primitives.ArrayTopicSpecRef;
 import primitives.ByteArray;
 import primitives.Header;
 import primitives.MessagePart;
 import primitives.PrimitivesPackage;
-import primitives.TopicSpecRef;
 import primitives.bool;
 import primitives.boolArray;
 import primitives.duration;
@@ -49,6 +47,7 @@ import primitives.uint8Array;
 import ros.ActionClient;
 import ros.ActionServer;
 import ros.ActionSpec;
+import ros.ArrayTopicSpecRef;
 import ros.Artifact;
 import ros.ExternalDependency;
 import ros.GlobalNamespace;
@@ -86,6 +85,7 @@ import ros.ServiceServer;
 import ros.ServiceSpec;
 import ros.Subscriber;
 import ros.TopicSpec;
+import ros.TopicSpecRef;
 
 @SuppressWarnings("all")
 public class RosSemanticSequencer extends BasicsSemanticSequencer {
@@ -101,9 +101,6 @@ public class RosSemanticSequencer extends BasicsSemanticSequencer {
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == PrimitivesPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
-			case PrimitivesPackage.ARRAY_TOPIC_SPEC_REF:
-				sequence_ArrayTopicSpecRef(context, (ArrayTopicSpecRef) semanticObject); 
-				return; 
 			case PrimitivesPackage.BYTE:
 				sequence_byte(context, (primitives.Byte) semanticObject); 
 				return; 
@@ -115,9 +112,6 @@ public class RosSemanticSequencer extends BasicsSemanticSequencer {
 				return; 
 			case PrimitivesPackage.MESSAGE_PART:
 				sequence_MessagePart(context, (MessagePart) semanticObject); 
-				return; 
-			case PrimitivesPackage.TOPIC_SPEC_REF:
-				sequence_TopicSpecRef(context, (TopicSpecRef) semanticObject); 
 				return; 
 			case PrimitivesPackage.BOOL:
 				sequence_bool(context, (bool) semanticObject); 
@@ -208,6 +202,9 @@ public class RosSemanticSequencer extends BasicsSemanticSequencer {
 				return; 
 			case RosPackage.ACTION_SPEC:
 				sequence_ActionSpec(context, (ActionSpec) semanticObject); 
+				return; 
+			case RosPackage.ARRAY_TOPIC_SPEC_REF:
+				sequence_ArrayTopicSpecRef(context, (ArrayTopicSpecRef) semanticObject); 
 				return; 
 			case RosPackage.ARTIFACT:
 				sequence_Artifact(context, (Artifact) semanticObject); 
@@ -322,6 +319,9 @@ public class RosSemanticSequencer extends BasicsSemanticSequencer {
 				return; 
 			case RosPackage.TOPIC_SPEC:
 				sequence_TopicSpec(context, (TopicSpec) semanticObject); 
+				return; 
+			case RosPackage.TOPIC_SPEC_REF:
+				sequence_TopicSpecRef(context, (TopicSpecRef) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)

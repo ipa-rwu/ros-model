@@ -1274,47 +1274,49 @@ public class BasicsGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 	public class MessagePartElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.ros.Basics.MessagePart");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cTypeAbstractTypeParserRuleCall_0_0 = (RuleCall)cTypeAssignment_0.eContents().get(0);
-		private final Assignment cDataAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final Alternatives cDataAlternatives_1_0 = (Alternatives)cDataAssignment_1.eContents().get(0);
-		private final RuleCall cDataKEYWORDParserRuleCall_1_0_0 = (RuleCall)cDataAlternatives_1_0.eContents().get(0);
-		private final RuleCall cDataMESSAGE_ASIGMENTTerminalRuleCall_1_0_1 = (RuleCall)cDataAlternatives_1_0.eContents().get(1);
-		private final RuleCall cDataEStringParserRuleCall_1_0_2 = (RuleCall)cDataAlternatives_1_0.eContents().get(2);
+		private final Assignment cDataAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final Alternatives cDataAlternatives_0_0 = (Alternatives)cDataAssignment_0.eContents().get(0);
+		private final RuleCall cDataKEYWORDParserRuleCall_0_0_0 = (RuleCall)cDataAlternatives_0_0.eContents().get(0);
+		private final RuleCall cDataMESSAGE_ASIGMENTTerminalRuleCall_0_0_1 = (RuleCall)cDataAlternatives_0_0.eContents().get(1);
+		private final RuleCall cDataEStringParserRuleCall_0_0_2 = (RuleCall)cDataAlternatives_0_0.eContents().get(2);
+		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cTypeAbstractTypeParserRuleCall_2_0 = (RuleCall)cTypeAssignment_2.eContents().get(0);
 		
 		/////////////////////
 		////MESSAGE PRIMITIVES DEFINITION
 		/////////////////////
 		//MessagePart returns primitives::MessagePart:
-		//    Type = AbstractType
-		//    Data =(KEYWORD | MESSAGE_ASIGMENT | EString)
+		//    Data =(KEYWORD | MESSAGE_ASIGMENT | EString) ":" Type = AbstractType
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//Type = AbstractType
-		//Data =(KEYWORD | MESSAGE_ASIGMENT | EString)
+		//Data =(KEYWORD | MESSAGE_ASIGMENT | EString) ":" Type = AbstractType
 		public Group getGroup() { return cGroup; }
 		
-		//Type = AbstractType
-		public Assignment getTypeAssignment_0() { return cTypeAssignment_0; }
-		
-		//AbstractType
-		public RuleCall getTypeAbstractTypeParserRuleCall_0_0() { return cTypeAbstractTypeParserRuleCall_0_0; }
-		
 		//Data =(KEYWORD | MESSAGE_ASIGMENT | EString)
-		public Assignment getDataAssignment_1() { return cDataAssignment_1; }
+		public Assignment getDataAssignment_0() { return cDataAssignment_0; }
 		
 		//(KEYWORD | MESSAGE_ASIGMENT | EString)
-		public Alternatives getDataAlternatives_1_0() { return cDataAlternatives_1_0; }
+		public Alternatives getDataAlternatives_0_0() { return cDataAlternatives_0_0; }
 		
 		//KEYWORD
-		public RuleCall getDataKEYWORDParserRuleCall_1_0_0() { return cDataKEYWORDParserRuleCall_1_0_0; }
+		public RuleCall getDataKEYWORDParserRuleCall_0_0_0() { return cDataKEYWORDParserRuleCall_0_0_0; }
 		
 		//MESSAGE_ASIGMENT
-		public RuleCall getDataMESSAGE_ASIGMENTTerminalRuleCall_1_0_1() { return cDataMESSAGE_ASIGMENTTerminalRuleCall_1_0_1; }
+		public RuleCall getDataMESSAGE_ASIGMENTTerminalRuleCall_0_0_1() { return cDataMESSAGE_ASIGMENTTerminalRuleCall_0_0_1; }
 		
 		//EString
-		public RuleCall getDataEStringParserRuleCall_1_0_2() { return cDataEStringParserRuleCall_1_0_2; }
+		public RuleCall getDataEStringParserRuleCall_0_0_2() { return cDataEStringParserRuleCall_0_0_2; }
+		
+		//":"
+		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
+		
+		//Type = AbstractType
+		public Assignment getTypeAssignment_2() { return cTypeAssignment_2; }
+		
+		//AbstractType
+		public RuleCall getTypeAbstractTypeParserRuleCall_2_0() { return cTypeAbstractTypeParserRuleCall_2_0; }
 	}
 	public class AbstractTypeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.ros.Basics.AbstractType");
@@ -2099,7 +2101,7 @@ public class BasicsGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		private final CrossReference cTopicSpecTopicSpecCrossReference_0 = (CrossReference)cTopicSpecAssignment.eContents().get(0);
 		private final RuleCall cTopicSpecTopicSpecEStringParserRuleCall_0_1 = (RuleCall)cTopicSpecTopicSpecCrossReference_0.eContents().get(1);
 		
-		//TopicSpecRef returns primitives::TopicSpecRef:
+		//TopicSpecRef returns TopicSpecRef:
 		//    TopicSpec=[TopicSpec|EString]
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -2121,7 +2123,7 @@ public class BasicsGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		private final RuleCall cTopicSpecTopicSpecEStringParserRuleCall_0_0_1 = (RuleCall)cTopicSpecTopicSpecCrossReference_0_0.eContents().get(1);
 		private final Keyword cLeftSquareBracketRightSquareBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		
-		//ArrayTopicSpecRef returns primitives::ArrayTopicSpecRef:
+		//ArrayTopicSpecRef returns ArrayTopicSpecRef:
 		//    TopicSpec=[TopicSpec|EString]'[]'
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -2241,6 +2243,17 @@ public class BasicsGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		//'node'
 		public Keyword getNodeKeyword_2() { return cNodeKeyword_2; }
 	}
+	public class PreListElementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.ros.Basics.PreListElement");
+		private final Keyword cHyphenMinusKeyword = (Keyword)rule.eContents().get(1);
+		
+		//PreListElement hidden(SL_COMMENT):
+		//  '-';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'-'
+		public Keyword getHyphenMinusKeyword() { return cHyphenMinusKeyword; }
+	}
 	
 	
 	private final NamespaceElements pNamespace;
@@ -2331,6 +2344,7 @@ public class BasicsGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 	private final RosNamesElements pRosNames;
 	private final TerminalRule tROS_CONVENTION_A;
 	private final TerminalRule tROS_CONVENTION_PARAM;
+	private final PreListElementElements pPreListElement;
 	
 	private final Grammar grammar;
 	
@@ -2429,6 +2443,7 @@ public class BasicsGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		this.pRosNames = new RosNamesElements();
 		this.tROS_CONVENTION_A = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.ros.Basics.ROS_CONVENTION_A");
 		this.tROS_CONVENTION_PARAM = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.ros.Basics.ROS_CONVENTION_PARAM");
+		this.pPreListElement = new PreListElementElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -2938,8 +2953,7 @@ public class BasicsGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 	////MESSAGE PRIMITIVES DEFINITION
 	/////////////////////
 	//MessagePart returns primitives::MessagePart:
-	//    Type = AbstractType
-	//    Data =(KEYWORD | MESSAGE_ASIGMENT | EString)
+	//    Data =(KEYWORD | MESSAGE_ASIGMENT | EString) ":" Type = AbstractType
 	//;
 	public MessagePartElements getMessagePartAccess() {
 		return pMessagePart;
@@ -3316,7 +3330,7 @@ public class BasicsGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		return getHeaderAccess().getRule();
 	}
 	
-	//TopicSpecRef returns primitives::TopicSpecRef:
+	//TopicSpecRef returns TopicSpecRef:
 	//    TopicSpec=[TopicSpec|EString]
 	//;
 	public TopicSpecRefElements getTopicSpecRefAccess() {
@@ -3327,7 +3341,7 @@ public class BasicsGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		return getTopicSpecRefAccess().getRule();
 	}
 	
-	//ArrayTopicSpecRef returns primitives::ArrayTopicSpecRef:
+	//ArrayTopicSpecRef returns ArrayTopicSpecRef:
 	//    TopicSpec=[TopicSpec|EString]'[]'
 	//;
 	public ArrayTopicSpecRefElements getArrayTopicSpecRefAccess() {
@@ -3400,6 +3414,16 @@ public class BasicsGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 	//    ( ('/' STRING ) | ( STRING '/' ) | ('~' STRING ) )* ;
 	public TerminalRule getROS_CONVENTION_PARAMRule() {
 		return tROS_CONVENTION_PARAM;
+	}
+	
+	//PreListElement hidden(SL_COMMENT):
+	//  '-';
+	public PreListElementElements getPreListElementAccess() {
+		return pPreListElement;
+	}
+	
+	public ParserRule getPreListElementRule() {
+		return getPreListElementAccess().getRule();
 	}
 	
 	//terminal ID: '^'?('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;

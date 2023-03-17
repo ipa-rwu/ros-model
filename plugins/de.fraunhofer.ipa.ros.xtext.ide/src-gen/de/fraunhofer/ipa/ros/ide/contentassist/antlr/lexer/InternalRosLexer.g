@@ -175,6 +175,8 @@ LeftSquareBracketRightSquareBracket : '[]';
 
 Comma : ',';
 
+HyphenMinus : '-';
+
 Colon : ':';
 
 LeftSquareBracket : '[';

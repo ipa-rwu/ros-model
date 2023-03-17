@@ -16,14 +16,17 @@ import system.RosActionServerReference;
 import system.RosConnection;
 import system.RosInterface;
 import system.RosNode;
+import system.RosNodeRef;
 import system.RosParameter;
 import system.RosParameterReference;
 import system.RosPublisherReference;
 import system.RosServerClientReference;
 import system.RosServiceServerReference;
 import system.RosSubscriberReference;
+import system.RosSystem;
 import system.RossystemFactory;
 import system.RossystemPackage;
+import system.SystemRef;
 
 /**
  * <!-- begin-user-doc -->
@@ -70,6 +73,7 @@ public class RossystemFactoryImpl extends EFactoryImpl implements RossystemFacto
     public EObject create(EClass eClass) {
         switch (eClass.getClassifierID()) {
             case RossystemPackage.SYSTEM: return createSystem();
+            case RossystemPackage.ROS_SYSTEM: return createRosSystem();
             case RossystemPackage.PROCESS: return createProcess();
             case RossystemPackage.ROS_NODE: return createRosNode();
             case RossystemPackage.ROS_INTERFACE: return createRosInterface();
@@ -83,6 +87,8 @@ public class RossystemFactoryImpl extends EFactoryImpl implements RossystemFacto
             case RossystemPackage.ROS_PARAMETER_REFERENCE: return createRosParameterReference();
             case RossystemPackage.ROS_PARAMETER: return createRosParameter();
             case RossystemPackage.ROS_CONNECTION: return createRosConnection();
+            case RossystemPackage.SYSTEM_REF: return createSystemRef();
+            case RossystemPackage.ROS_NODE_REF: return createRosNodeRef();
             default:
                 throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
         }
@@ -97,6 +103,17 @@ public class RossystemFactoryImpl extends EFactoryImpl implements RossystemFacto
     public system.System createSystem() {
         SystemImpl system = new SystemImpl();
         return system;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public RosSystem createRosSystem() {
+        RosSystemImpl rosSystem = new RosSystemImpl();
+        return rosSystem;
     }
 
     /**
@@ -240,6 +257,28 @@ public class RossystemFactoryImpl extends EFactoryImpl implements RossystemFacto
     public RosConnection createRosConnection() {
         RosConnectionImpl rosConnection = new RosConnectionImpl();
         return rosConnection;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public SystemRef createSystemRef() {
+        SystemRefImpl systemRef = new SystemRefImpl();
+        return systemRef;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public RosNodeRef createRosNodeRef() {
+        RosNodeRefImpl rosNodeRef = new RosNodeRefImpl();
+        return rosNodeRef;
     }
 
     /**

@@ -1,6 +1,6 @@
 /**
  */
-package rossystem.impl;
+package system.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -8,41 +8,41 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import ros.Subscriber;
 
-import rossystem.RosSubscriberReference;
-import rossystem.RossystemPackage;
+import system.RosNode;
+import system.RosNodeRef;
+import system.RossystemPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Ros Subscriber Reference</b></em>'.
+ * An implementation of the model object '<em><b>Ros Node Ref</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link rossystem.impl.RosSubscriberReferenceImpl#getFrom <em>From</em>}</li>
+ *   <li>{@link system.impl.RosNodeRefImpl#getRosNodeRef <em>Ros Node Ref</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class RosSubscriberReferenceImpl extends InterfaceReferenceImpl implements RosSubscriberReference {
+public class RosNodeRefImpl extends AbstaractComponentImpl implements RosNodeRef {
     /**
-     * The cached value of the '{@link #getFrom() <em>From</em>}' reference.
+     * The cached value of the '{@link #getRosNodeRef() <em>Ros Node Ref</em>}' reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see #getFrom()
+     * @see #getRosNodeRef()
      * @generated
      * @ordered
      */
-    protected Subscriber from;
+    protected RosNode rosNodeRef;
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    protected RosSubscriberReferenceImpl() {
+    protected RosNodeRefImpl() {
         super();
     }
 
@@ -53,7 +53,7 @@ public class RosSubscriberReferenceImpl extends InterfaceReferenceImpl implement
      */
     @Override
     protected EClass eStaticClass() {
-        return RossystemPackage.Literals.ROS_SUBSCRIBER_REFERENCE;
+        return RossystemPackage.Literals.ROS_NODE_REF;
     }
 
     /**
@@ -62,16 +62,16 @@ public class RosSubscriberReferenceImpl extends InterfaceReferenceImpl implement
      * @generated
      */
     @Override
-    public Subscriber getFrom() {
-        if (from != null && from.eIsProxy()) {
-            InternalEObject oldFrom = (InternalEObject)from;
-            from = (Subscriber)eResolveProxy(oldFrom);
-            if (from != oldFrom) {
+    public RosNode getRosNodeRef() {
+        if (rosNodeRef != null && rosNodeRef.eIsProxy()) {
+            InternalEObject oldRosNodeRef = (InternalEObject)rosNodeRef;
+            rosNodeRef = (RosNode)eResolveProxy(oldRosNodeRef);
+            if (rosNodeRef != oldRosNodeRef) {
                 if (eNotificationRequired())
-                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, RossystemPackage.ROS_SUBSCRIBER_REFERENCE__FROM, oldFrom, from));
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, RossystemPackage.ROS_NODE_REF__ROS_NODE_REF, oldRosNodeRef, rosNodeRef));
             }
         }
-        return from;
+        return rosNodeRef;
     }
 
     /**
@@ -79,8 +79,8 @@ public class RosSubscriberReferenceImpl extends InterfaceReferenceImpl implement
      * <!-- end-user-doc -->
      * @generated
      */
-    public Subscriber basicGetFrom() {
-        return from;
+    public RosNode basicGetRosNodeRef() {
+        return rosNodeRef;
     }
 
     /**
@@ -89,11 +89,11 @@ public class RosSubscriberReferenceImpl extends InterfaceReferenceImpl implement
      * @generated
      */
     @Override
-    public void setFrom(Subscriber newFrom) {
-        Subscriber oldFrom = from;
-        from = newFrom;
+    public void setRosNodeRef(RosNode newRosNodeRef) {
+        RosNode oldRosNodeRef = rosNodeRef;
+        rosNodeRef = newRosNodeRef;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, RossystemPackage.ROS_SUBSCRIBER_REFERENCE__FROM, oldFrom, from));
+            eNotify(new ENotificationImpl(this, Notification.SET, RossystemPackage.ROS_NODE_REF__ROS_NODE_REF, oldRosNodeRef, rosNodeRef));
     }
 
     /**
@@ -104,9 +104,9 @@ public class RosSubscriberReferenceImpl extends InterfaceReferenceImpl implement
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-            case RossystemPackage.ROS_SUBSCRIBER_REFERENCE__FROM:
-                if (resolve) return getFrom();
-                return basicGetFrom();
+            case RossystemPackage.ROS_NODE_REF__ROS_NODE_REF:
+                if (resolve) return getRosNodeRef();
+                return basicGetRosNodeRef();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -119,8 +119,8 @@ public class RosSubscriberReferenceImpl extends InterfaceReferenceImpl implement
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-            case RossystemPackage.ROS_SUBSCRIBER_REFERENCE__FROM:
-                setFrom((Subscriber)newValue);
+            case RossystemPackage.ROS_NODE_REF__ROS_NODE_REF:
+                setRosNodeRef((RosNode)newValue);
                 return;
         }
         super.eSet(featureID, newValue);
@@ -134,8 +134,8 @@ public class RosSubscriberReferenceImpl extends InterfaceReferenceImpl implement
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-            case RossystemPackage.ROS_SUBSCRIBER_REFERENCE__FROM:
-                setFrom((Subscriber)null);
+            case RossystemPackage.ROS_NODE_REF__ROS_NODE_REF:
+                setRosNodeRef((RosNode)null);
                 return;
         }
         super.eUnset(featureID);
@@ -149,10 +149,10 @@ public class RosSubscriberReferenceImpl extends InterfaceReferenceImpl implement
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-            case RossystemPackage.ROS_SUBSCRIBER_REFERENCE__FROM:
-                return from != null;
+            case RossystemPackage.ROS_NODE_REF__ROS_NODE_REF:
+                return rosNodeRef != null;
         }
         return super.eIsSet(featureID);
     }
 
-} //RosSubscriberReferenceImpl
+} //RosNodeRefImpl

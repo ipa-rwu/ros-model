@@ -1,28 +1,28 @@
 /**
  */
-package rossystem.impl;
+package system.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import rossystem.InterfaceReference;
-import rossystem.RossystemPackage;
+import system.AbstaractComponent;
+import system.RossystemPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Interface Reference</b></em>'.
+ * An implementation of the model object '<em><b>Abstaract Component</b></em>'.
  * <!-- end-user-doc -->
  *
  * @generated
  */
-public class InterfaceReferenceImpl extends MinimalEObjectImpl.Container implements InterfaceReference {
+public abstract class AbstaractComponentImpl extends MinimalEObjectImpl.Container implements AbstaractComponent {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    protected InterfaceReferenceImpl() {
+    protected AbstaractComponentImpl() {
         super();
     }
 
@@ -33,7 +33,7 @@ public class InterfaceReferenceImpl extends MinimalEObjectImpl.Container impleme
      */
     @Override
     protected EClass eStaticClass() {
-        return RossystemPackage.Literals.INTERFACE_REFERENCE;
+        return RossystemPackage.Literals.ABSTARACT_COMPONENT;
     }
 
-} //InterfaceReferenceImpl
+} //AbstaractComponentImpl

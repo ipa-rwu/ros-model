@@ -9,6 +9,7 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
+import system.AbstaractComponent;
 import system.Component;
 import system.Connection;
 import system.InterfaceReference;
@@ -17,13 +18,16 @@ import system.RosActionServerReference;
 import system.RosConnection;
 import system.RosInterface;
 import system.RosNode;
+import system.RosNodeRef;
 import system.RosParameter;
 import system.RosParameterReference;
 import system.RosPublisherReference;
 import system.RosServerClientReference;
 import system.RosServiceServerReference;
 import system.RosSubscriberReference;
+import system.RosSystem;
 import system.RossystemPackage;
+import system.SystemRef;
 
 /**
  * <!-- begin-user-doc -->
@@ -86,6 +90,10 @@ public class RossystemAdapterFactory extends AdapterFactoryImpl {
                 return createSystemAdapter();
             }
             @Override
+            public Adapter caseRosSystem(RosSystem object) {
+                return createRosSystemAdapter();
+            }
+            @Override
             public Adapter caseProcess(system.Process object) {
                 return createProcessAdapter();
             }
@@ -146,6 +154,18 @@ public class RossystemAdapterFactory extends AdapterFactoryImpl {
                 return createRosConnectionAdapter();
             }
             @Override
+            public Adapter caseSystemRef(SystemRef object) {
+                return createSystemRefAdapter();
+            }
+            @Override
+            public Adapter caseRosNodeRef(RosNodeRef object) {
+                return createRosNodeRefAdapter();
+            }
+            @Override
+            public Adapter caseAbstaractComponent(AbstaractComponent object) {
+                return createAbstaractComponentAdapter();
+            }
+            @Override
             public Adapter defaultCase(EObject object) {
                 return createEObjectAdapter();
             }
@@ -176,6 +196,20 @@ public class RossystemAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createSystemAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link system.RosSystem <em>Ros System</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see system.RosSystem
+     * @generated
+     */
+    public Adapter createRosSystemAdapter() {
         return null;
     }
 
@@ -386,6 +420,48 @@ public class RossystemAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createRosConnectionAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link system.SystemRef <em>System Ref</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see system.SystemRef
+     * @generated
+     */
+    public Adapter createSystemRefAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link system.RosNodeRef <em>Ros Node Ref</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see system.RosNodeRef
+     * @generated
+     */
+    public Adapter createRosNodeRefAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link system.AbstaractComponent <em>Abstaract Component</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see system.AbstaractComponent
+     * @generated
+     */
+    public Adapter createAbstaractComponentAdapter() {
         return null;
     }
 

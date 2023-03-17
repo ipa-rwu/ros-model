@@ -1,6 +1,6 @@
 /**
  */
-package rossystem.impl;
+package system.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -9,41 +9,39 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import ros.ServiceClient;
-
-import rossystem.RosServerClientReference;
-import rossystem.RossystemPackage;
+import system.RossystemPackage;
+import system.SystemRef;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Ros Server Client Reference</b></em>'.
+ * An implementation of the model object '<em><b>System Ref</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link rossystem.impl.RosServerClientReferenceImpl#getFrom <em>From</em>}</li>
+ *   <li>{@link system.impl.SystemRefImpl#getSystemRef <em>System Ref</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class RosServerClientReferenceImpl extends InterfaceReferenceImpl implements RosServerClientReference {
+public class SystemRefImpl extends AbstaractComponentImpl implements SystemRef {
     /**
-     * The cached value of the '{@link #getFrom() <em>From</em>}' reference.
+     * The cached value of the '{@link #getSystemRef() <em>System Ref</em>}' reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see #getFrom()
+     * @see #getSystemRef()
      * @generated
      * @ordered
      */
-    protected ServiceClient from;
+    protected system.System systemRef;
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    protected RosServerClientReferenceImpl() {
+    protected SystemRefImpl() {
         super();
     }
 
@@ -54,7 +52,7 @@ public class RosServerClientReferenceImpl extends InterfaceReferenceImpl impleme
      */
     @Override
     protected EClass eStaticClass() {
-        return RossystemPackage.Literals.ROS_SERVER_CLIENT_REFERENCE;
+        return RossystemPackage.Literals.SYSTEM_REF;
     }
 
     /**
@@ -63,16 +61,16 @@ public class RosServerClientReferenceImpl extends InterfaceReferenceImpl impleme
      * @generated
      */
     @Override
-    public ServiceClient getFrom() {
-        if (from != null && from.eIsProxy()) {
-            InternalEObject oldFrom = (InternalEObject)from;
-            from = (ServiceClient)eResolveProxy(oldFrom);
-            if (from != oldFrom) {
+    public system.System getSystemRef() {
+        if (systemRef != null && systemRef.eIsProxy()) {
+            InternalEObject oldSystemRef = (InternalEObject)systemRef;
+            systemRef = (system.System)eResolveProxy(oldSystemRef);
+            if (systemRef != oldSystemRef) {
                 if (eNotificationRequired())
-                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, RossystemPackage.ROS_SERVER_CLIENT_REFERENCE__FROM, oldFrom, from));
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, RossystemPackage.SYSTEM_REF__SYSTEM_REF, oldSystemRef, systemRef));
             }
         }
-        return from;
+        return systemRef;
     }
 
     /**
@@ -80,8 +78,8 @@ public class RosServerClientReferenceImpl extends InterfaceReferenceImpl impleme
      * <!-- end-user-doc -->
      * @generated
      */
-    public ServiceClient basicGetFrom() {
-        return from;
+    public system.System basicGetSystemRef() {
+        return systemRef;
     }
 
     /**
@@ -90,11 +88,11 @@ public class RosServerClientReferenceImpl extends InterfaceReferenceImpl impleme
      * @generated
      */
     @Override
-    public void setFrom(ServiceClient newFrom) {
-        ServiceClient oldFrom = from;
-        from = newFrom;
+    public void setSystemRef(system.System newSystemRef) {
+        system.System oldSystemRef = systemRef;
+        systemRef = newSystemRef;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, RossystemPackage.ROS_SERVER_CLIENT_REFERENCE__FROM, oldFrom, from));
+            eNotify(new ENotificationImpl(this, Notification.SET, RossystemPackage.SYSTEM_REF__SYSTEM_REF, oldSystemRef, systemRef));
     }
 
     /**
@@ -105,9 +103,9 @@ public class RosServerClientReferenceImpl extends InterfaceReferenceImpl impleme
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-            case RossystemPackage.ROS_SERVER_CLIENT_REFERENCE__FROM:
-                if (resolve) return getFrom();
-                return basicGetFrom();
+            case RossystemPackage.SYSTEM_REF__SYSTEM_REF:
+                if (resolve) return getSystemRef();
+                return basicGetSystemRef();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -120,8 +118,8 @@ public class RosServerClientReferenceImpl extends InterfaceReferenceImpl impleme
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-            case RossystemPackage.ROS_SERVER_CLIENT_REFERENCE__FROM:
-                setFrom((ServiceClient)newValue);
+            case RossystemPackage.SYSTEM_REF__SYSTEM_REF:
+                setSystemRef((system.System)newValue);
                 return;
         }
         super.eSet(featureID, newValue);
@@ -135,8 +133,8 @@ public class RosServerClientReferenceImpl extends InterfaceReferenceImpl impleme
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-            case RossystemPackage.ROS_SERVER_CLIENT_REFERENCE__FROM:
-                setFrom((ServiceClient)null);
+            case RossystemPackage.SYSTEM_REF__SYSTEM_REF:
+                setSystemRef((system.System)null);
                 return;
         }
         super.eUnset(featureID);
@@ -150,10 +148,10 @@ public class RosServerClientReferenceImpl extends InterfaceReferenceImpl impleme
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-            case RossystemPackage.ROS_SERVER_CLIENT_REFERENCE__FROM:
-                return from != null;
+            case RossystemPackage.SYSTEM_REF__SYSTEM_REF:
+                return systemRef != null;
         }
         return super.eIsSet(featureID);
     }
 
-} //RosServerClientReferenceImpl
+} //SystemRefImpl

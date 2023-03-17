@@ -7,6 +7,7 @@ import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 
+import system.AbstaractComponent;
 import system.Component;
 import system.Connection;
 import system.InterfaceReference;
@@ -15,13 +16,16 @@ import system.RosActionServerReference;
 import system.RosConnection;
 import system.RosInterface;
 import system.RosNode;
+import system.RosNodeRef;
 import system.RosParameter;
 import system.RosParameterReference;
 import system.RosPublisherReference;
 import system.RosServerClientReference;
 import system.RosServiceServerReference;
 import system.RosSubscriberReference;
+import system.RosSystem;
 import system.RossystemPackage;
+import system.SystemRef;
 
 /**
  * <!-- begin-user-doc -->
@@ -83,6 +87,13 @@ public class RossystemSwitch<T> extends Switch<T> {
             case RossystemPackage.SYSTEM: {
                 system.System system = (system.System)theEObject;
                 T result = caseSystem(system);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case RossystemPackage.ROS_SYSTEM: {
+                RosSystem rosSystem = (RosSystem)theEObject;
+                T result = caseRosSystem(rosSystem);
+                if (result == null) result = caseSystem(rosSystem);
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
@@ -185,6 +196,26 @@ public class RossystemSwitch<T> extends Switch<T> {
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
+            case RossystemPackage.SYSTEM_REF: {
+                SystemRef systemRef = (SystemRef)theEObject;
+                T result = caseSystemRef(systemRef);
+                if (result == null) result = caseAbstaractComponent(systemRef);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case RossystemPackage.ROS_NODE_REF: {
+                RosNodeRef rosNodeRef = (RosNodeRef)theEObject;
+                T result = caseRosNodeRef(rosNodeRef);
+                if (result == null) result = caseAbstaractComponent(rosNodeRef);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case RossystemPackage.ABSTARACT_COMPONENT: {
+                AbstaractComponent abstaractComponent = (AbstaractComponent)theEObject;
+                T result = caseAbstaractComponent(abstaractComponent);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
             default: return defaultCase(theEObject);
         }
     }
@@ -201,6 +232,21 @@ public class RossystemSwitch<T> extends Switch<T> {
      * @generated
      */
     public T caseSystem(system.System object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Ros System</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Ros System</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseRosSystem(RosSystem object) {
         return null;
     }
 
@@ -426,6 +472,51 @@ public class RossystemSwitch<T> extends Switch<T> {
      * @generated
      */
     public T caseRosConnection(RosConnection object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>System Ref</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>System Ref</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseSystemRef(SystemRef object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Ros Node Ref</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Ros Node Ref</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseRosNodeRef(RosNodeRef object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Abstaract Component</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Abstaract Component</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseAbstaractComponent(AbstaractComponent object) {
         return null;
     }
 

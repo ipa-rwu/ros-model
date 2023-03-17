@@ -34,6 +34,7 @@ public class RosSystemParser extends AbstractContentAssistParser {
 
         private static void init(ImmutableMap.Builder<AbstractElement, String> builder, RosSystemGrammarAccess grammarAccess) {
             builder.put(grammarAccess.getRosSystemAccess().getAlternatives_3(), "rule__RosSystem__Alternatives_3");
+            builder.put(grammarAccess.getAbstaractComponentAccess().getAlternatives(), "rule__AbstaractComponent__Alternatives");
             builder.put(grammarAccess.getInterfaceReferenceAccess().getAlternatives(), "rule__InterfaceReference__Alternatives");
             builder.put(grammarAccess.getNamespaceAccess().getAlternatives(), "rule__Namespace__Alternatives");
             builder.put(grammarAccess.getRosParamNamesAccess().getAlternatives(), "rule__RosParamNames__Alternatives");
@@ -49,8 +50,11 @@ public class RosSystemParser extends AbstractContentAssistParser {
             builder.put(grammarAccess.getRosSystemAccess().getGroup_3_1(), "rule__RosSystem__Group_3_1__0");
             builder.put(grammarAccess.getRosSystemAccess().getGroup_3_2(), "rule__RosSystem__Group_3_2__0");
             builder.put(grammarAccess.getRosSystemAccess().getGroup_3_3(), "rule__RosSystem__Group_3_3__0");
+            builder.put(grammarAccess.getRosSystemRefAccess().getGroup(), "rule__RosSystemRef__Group__0");
+            builder.put(grammarAccess.getRosNodeRefAccess().getGroup(), "rule__RosNodeRef__Group__0");
             builder.put(grammarAccess.getProcessAccess().getGroup(), "rule__Process__Group__0");
             builder.put(grammarAccess.getProcessAccess().getGroup_4(), "rule__Process__Group_4__0");
+            builder.put(grammarAccess.getProcessAccess().getGroup_4_4(), "rule__Process__Group_4_4__0");
             builder.put(grammarAccess.getProcessAccess().getGroup_5(), "rule__Process__Group_5__0");
             builder.put(grammarAccess.getRosNodeAccess().getGroup(), "rule__RosNode__Group__0");
             builder.put(grammarAccess.getRosNodeAccess().getGroup_6(), "rule__RosNode__Group_6__0");
@@ -141,8 +145,11 @@ public class RosSystemParser extends AbstractContentAssistParser {
             builder.put(grammarAccess.getRosSystemAccess().getComponentsAssignment_3_1_2(), "rule__RosSystem__ComponentsAssignment_3_1_2");
             builder.put(grammarAccess.getRosSystemAccess().getParameterAssignment_3_2_2(), "rule__RosSystem__ParameterAssignment_3_2_2");
             builder.put(grammarAccess.getRosSystemAccess().getConnectionsAssignment_3_3_2(), "rule__RosSystem__ConnectionsAssignment_3_3_2");
+            builder.put(grammarAccess.getRosSystemRefAccess().getSystemRefAssignment_1(), "rule__RosSystemRef__SystemRefAssignment_1");
+            builder.put(grammarAccess.getRosNodeRefAccess().getRosNodeRefAssignment_1(), "rule__RosNodeRef__RosNodeRefAssignment_1");
             builder.put(grammarAccess.getProcessAccess().getNameAssignment_1(), "rule__Process__NameAssignment_1");
-            builder.put(grammarAccess.getProcessAccess().getNodesAssignment_4_2(), "rule__Process__NodesAssignment_4_2");
+            builder.put(grammarAccess.getProcessAccess().getNodesAssignment_4_3(), "rule__Process__NodesAssignment_4_3");
+            builder.put(grammarAccess.getProcessAccess().getNodesAssignment_4_4_1(), "rule__Process__NodesAssignment_4_4_1");
             builder.put(grammarAccess.getProcessAccess().getThreadsAssignment_5_1(), "rule__Process__ThreadsAssignment_5_1");
             builder.put(grammarAccess.getRosNodeAccess().getNameAssignment_1(), "rule__RosNode__NameAssignment_1");
             builder.put(grammarAccess.getRosNodeAccess().getFromAssignment_5(), "rule__RosNode__FromAssignment_5");

@@ -33,11 +33,17 @@ public abstract class AbstractRosSystemProposalProvider extends BasicsProposalPr
     public void completeRosSystem_Connections(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
         completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
     }
+    public void completeRosSystemRef_SystemRef(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+        lookupCrossReference(((CrossReference)assignment.getTerminal()), context, acceptor);
+    }
+    public void completeRosNodeRef_RosNodeRef(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+        lookupCrossReference(((CrossReference)assignment.getTerminal()), context, acceptor);
+    }
     public void completeProcess_Name(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
         completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
     }
     public void completeProcess_Nodes(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-        lookupCrossReference(((CrossReference)assignment.getTerminal()), context, acceptor);
+        completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
     }
     public void completeProcess_Threads(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
         completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
@@ -94,7 +100,19 @@ public abstract class AbstractRosSystemProposalProvider extends BasicsProposalPr
         lookupCrossReference(((CrossReference)assignment.getTerminal()), context, acceptor);
     }
 
+    public void complete_System(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+        // subclasses may override
+    }
     public void complete_RosSystem(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+        // subclasses may override
+    }
+    public void complete_AbstaractComponent(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+        // subclasses may override
+    }
+    public void complete_RosSystemRef(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+        // subclasses may override
+    }
+    public void complete_RosNodeRef(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
         // subclasses may override
     }
     public void complete_Process(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {

@@ -72,7 +72,6 @@ Artifact returns Artifact:
 
 Node returns Node:
 	'node:' name=RosNames
-	 BEGIN
 		(
 		('publishers:' 
 			BEGIN 
@@ -109,7 +108,7 @@ Node returns Node:
 			parameter+=Parameter*
 			END
 		)
-		)*END
+		)*
 	;
 
 ///////////////////
@@ -120,15 +119,15 @@ SpecBase returns SpecBase:
 
 TopicSpec returns TopicSpec:
 	{TopicSpec}
-	'msg:'name=(EString|'Header'|'String')
-	BEGIN 
-		'message:' (BEGIN message=MessageDefinition END)?
+	PreListElement 'msg:' name=(EString|'Header'|'String')
+	BEGIN
+		'message:'(BEGIN message=MessageDefinition END)?
 	END
 	;
 
 ServiceSpec returns ServiceSpec:
 	{ServiceSpec}
-	'srv:'name=EString
+	PreListElement 'srv:'name=EString
 	BEGIN
 		'request:' (BEGIN request=MessageDefinition END)?
 		'response:' (BEGIN response=MessageDefinition END)?
@@ -136,7 +135,7 @@ ServiceSpec returns ServiceSpec:
 	
 ActionSpec returns ActionSpec:
 	{ActionSpec}
-	'action:'name=EString
+	PreListElement 'action:'name=EString
 	BEGIN
 		'goal:' (BEGIN goal=MessageDefinition END)?
 		'result:' (BEGIN result=MessageDefinition END)?

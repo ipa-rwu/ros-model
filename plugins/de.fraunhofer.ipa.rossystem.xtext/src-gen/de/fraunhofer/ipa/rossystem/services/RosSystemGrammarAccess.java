@@ -1607,8 +1607,7 @@ public class RosSystemGrammarAccess extends AbstractElementFinder.AbstractGramma
 	////MESSAGE PRIMITIVES DEFINITION
 	/////////////////////
 	//MessagePart returns primitives::MessagePart:
-	//    Type = AbstractType
-	//    Data =(KEYWORD | MESSAGE_ASIGMENT | EString)
+	//    Data =(KEYWORD | MESSAGE_ASIGMENT | EString) ":" Type = AbstractType
 	//;
 	public BasicsGrammarAccess.MessagePartElements getMessagePartAccess() {
 		return gaBasics.getMessagePartAccess();
@@ -1985,7 +1984,7 @@ public class RosSystemGrammarAccess extends AbstractElementFinder.AbstractGramma
 		return getHeaderAccess().getRule();
 	}
 	
-	//TopicSpecRef returns primitives::TopicSpecRef:
+	//TopicSpecRef returns TopicSpecRef:
 	//    TopicSpec=[TopicSpec|EString]
 	//;
 	public BasicsGrammarAccess.TopicSpecRefElements getTopicSpecRefAccess() {
@@ -1996,7 +1995,7 @@ public class RosSystemGrammarAccess extends AbstractElementFinder.AbstractGramma
 		return getTopicSpecRefAccess().getRule();
 	}
 	
-	//ArrayTopicSpecRef returns primitives::ArrayTopicSpecRef:
+	//ArrayTopicSpecRef returns ArrayTopicSpecRef:
 	//    TopicSpec=[TopicSpec|EString]'[]'
 	//;
 	public BasicsGrammarAccess.ArrayTopicSpecRefElements getArrayTopicSpecRefAccess() {
@@ -2069,6 +2068,16 @@ public class RosSystemGrammarAccess extends AbstractElementFinder.AbstractGramma
 	//    ( ('/' STRING ) | ( STRING '/' ) | ('~' STRING ) )* ;
 	public TerminalRule getROS_CONVENTION_PARAMRule() {
 		return gaBasics.getROS_CONVENTION_PARAMRule();
+	}
+	
+	//PreListElement hidden(SL_COMMENT):
+	//  '-';
+	public BasicsGrammarAccess.PreListElementElements getPreListElementAccess() {
+		return gaBasics.getPreListElementAccess();
+	}
+	
+	public ParserRule getPreListElementRule() {
+		return getPreListElementAccess().getRule();
 	}
 	
 	//terminal ID: '^'?('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;

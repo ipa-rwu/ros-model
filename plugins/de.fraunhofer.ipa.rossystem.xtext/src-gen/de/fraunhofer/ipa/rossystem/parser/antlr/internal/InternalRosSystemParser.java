@@ -21,12 +21,12 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalRosSystemParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "ParameterStructMember", "RelativeNamespace", "PrivateNamespace", "GlobalNamespace", "ParameterAny", "Connections", "Interfaces", "Parameters", "Processes", "GraphName", "Float32_1", "Float64_1", "Duration", "Feedback", "FromPub", "FromSub", "String_2", "Threads", "Uint16_1", "Uint32_1", "Uint64_1", "Boolean", "Integer", "Default", "Float32", "Float64", "FromAC", "FromAS", "FromSC", "FromSS", "Int16_1", "Int32_1", "Int64_1", "Message", "Service", "Uint8_1", "Array", "Base64", "Double", "Header", "String", "Struct", "Action", "Bool_1", "Byte_1", "Int8_1", "Nodes", "Result", "String_1", "Uint16", "Uint32", "Uint64", "Value_1", "From", "Int16", "Int32", "Int64", "Type_1", "Uint8", "Value", "Date", "List", "Bool", "Byte", "Goal", "Int8", "Name", "Node", "Time", "Type", "Any", "Ns", "HyphenMinusLeftSquareBracket", "LeftSquareBracketRightSquareBracket", "Comma", "Colon", "LeftSquareBracket", "RightSquareBracket", "RULE_DIGIT", "RULE_BINARY", "RULE_BOOLEAN", "RULE_DECINT", "RULE_DOUBLE", "RULE_DAY", "RULE_MONTH", "RULE_YEAR", "RULE_HOUR", "RULE_MIN_SEC", "RULE_DATE_TIME", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_MESSAGE_ASIGMENT", "RULE_BEGIN", "RULE_END", "RULE_SL_COMMENT", "RULE_ROS_CONVENTION_A", "RULE_ROS_CONVENTION_PARAM", "RULE_ML_COMMENT", "RULE_WS", "RULE_ANY_OTHER"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "ParameterStructMember", "RelativeNamespace", "PrivateNamespace", "GlobalNamespace", "ParameterAny", "Connections", "Interfaces", "Parameters", "Processes", "GraphName", "Float32_1", "Float64_1", "Duration", "Feedback", "FromPub", "FromSub", "String_2", "Threads", "Uint16_1", "Uint32_1", "Uint64_1", "Boolean", "Integer", "Default", "Float32", "Float64", "FromAC", "FromAS", "FromSC", "FromSS", "Int16_1", "Int32_1", "Int64_1", "Message", "Service", "Uint8_1", "Array", "Base64", "Double", "Header", "String", "Struct", "Action", "Bool_1", "Byte_1", "Int8_1", "Nodes", "Result", "String_1", "Uint16", "Uint32", "Uint64", "Value_1", "From", "Int16", "Int32", "Int64", "Type_1", "Uint8", "Value", "Date", "List", "Bool", "Byte", "Goal", "Int8", "Name", "Node", "Time", "Type", "Any", "Ns", "HyphenMinusLeftSquareBracket", "LeftSquareBracketRightSquareBracket", "Comma", "HyphenMinus", "Colon", "LeftSquareBracket", "RightSquareBracket", "RULE_DIGIT", "RULE_BINARY", "RULE_BOOLEAN", "RULE_DECINT", "RULE_DOUBLE", "RULE_DAY", "RULE_MONTH", "RULE_YEAR", "RULE_HOUR", "RULE_MIN_SEC", "RULE_DATE_TIME", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_MESSAGE_ASIGMENT", "RULE_BEGIN", "RULE_END", "RULE_SL_COMMENT", "RULE_ROS_CONVENTION_A", "RULE_ROS_CONVENTION_PARAM", "RULE_ML_COMMENT", "RULE_WS", "RULE_ANY_OTHER"
     };
     public static final int Connections=9;
     public static final int Float32_1=14;
     public static final int Node=71;
-    public static final int RULE_DATE_TIME=92;
+    public static final int RULE_DATE_TIME=93;
     public static final int Uint64_1=24;
     public static final int String=44;
     public static final int Processes=12;
@@ -39,24 +39,25 @@ public class InternalRosSystemParser extends AbstractInternalAntlrParser {
     public static final int Boolean=25;
     public static final int Uint8=62;
     public static final int Parameters=11;
-    public static final int RULE_ID=93;
-    public static final int RULE_DIGIT=82;
+    public static final int RULE_ID=94;
+    public static final int RULE_DIGIT=83;
     public static final int GlobalNamespace=7;
     public static final int Int16_1=34;
     public static final int Header=43;
-    public static final int RULE_INT=95;
+    public static final int RULE_INT=96;
     public static final int Byte=67;
-    public static final int RULE_ML_COMMENT=102;
-    public static final int LeftSquareBracket=80;
+    public static final int RULE_ML_COMMENT=103;
+    public static final int LeftSquareBracket=81;
     public static final int Base64=41;
     public static final int FromSS=33;
     public static final int Comma=78;
-    public static final int RULE_MESSAGE_ASIGMENT=96;
+    public static final int HyphenMinus=79;
+    public static final int RULE_MESSAGE_ASIGMENT=97;
     public static final int LeftSquareBracketRightSquareBracket=77;
     public static final int Int32=59;
-    public static final int RULE_DECINT=85;
+    public static final int RULE_DECINT=86;
     public static final int Uint32=54;
-    public static final int RULE_HOUR=90;
+    public static final int RULE_HOUR=91;
     public static final int Int8=69;
     public static final int Default=27;
     public static final int Int8_1=49;
@@ -65,22 +66,22 @@ public class InternalRosSystemParser extends AbstractInternalAntlrParser {
     public static final int Float64=29;
     public static final int Int32_1=35;
     public static final int FromSC=32;
-    public static final int RULE_BINARY=83;
+    public static final int RULE_BINARY=84;
     public static final int String_1=52;
     public static final int String_2=20;
     public static final int FromAC=30;
-    public static final int RULE_DAY=87;
-    public static final int RULE_BEGIN=97;
-    public static final int RULE_BOOLEAN=84;
+    public static final int RULE_DAY=88;
+    public static final int RULE_BEGIN=98;
+    public static final int RULE_BOOLEAN=85;
     public static final int RelativeNamespace=5;
-    public static final int RULE_YEAR=89;
+    public static final int RULE_YEAR=90;
     public static final int Result=51;
     public static final int Name=70;
-    public static final int RULE_MIN_SEC=91;
+    public static final int RULE_MIN_SEC=92;
     public static final int FromAS=31;
     public static final int ParameterAny=8;
     public static final int List=65;
-    public static final int RightSquareBracket=81;
+    public static final int RightSquareBracket=82;
     public static final int PrivateNamespace=6;
     public static final int GraphName=13;
     public static final int Byte_1=48;
@@ -92,31 +93,31 @@ public class InternalRosSystemParser extends AbstractInternalAntlrParser {
     public static final int Value=63;
     public static final int Uint64=55;
     public static final int Action=46;
-    public static final int RULE_END=98;
+    public static final int RULE_END=99;
     public static final int Message=37;
     public static final int Value_1=56;
     public static final int Time=72;
-    public static final int RULE_STRING=94;
+    public static final int RULE_STRING=95;
     public static final int Bool_1=47;
     public static final int Any=74;
     public static final int Struct=45;
-    public static final int RULE_SL_COMMENT=99;
+    public static final int RULE_SL_COMMENT=100;
     public static final int Uint8_1=39;
-    public static final int RULE_DOUBLE=86;
+    public static final int RULE_DOUBLE=87;
     public static final int Feedback=17;
     public static final int ParameterStructMember=4;
-    public static final int RULE_ROS_CONVENTION_A=100;
-    public static final int RULE_ROS_CONVENTION_PARAM=101;
-    public static final int Colon=79;
+    public static final int RULE_ROS_CONVENTION_A=101;
+    public static final int RULE_ROS_CONVENTION_PARAM=102;
+    public static final int Colon=80;
     public static final int EOF=-1;
     public static final int FromSub=19;
     public static final int Ns=75;
-    public static final int RULE_WS=103;
+    public static final int RULE_WS=104;
     public static final int HyphenMinusLeftSquareBracket=76;
     public static final int Int64_1=36;
     public static final int Service=38;
     public static final int From=57;
-    public static final int RULE_ANY_OTHER=104;
+    public static final int RULE_ANY_OTHER=105;
     public static final int Nodes=50;
     public static final int Date=64;
     public static final int Interfaces=10;
@@ -124,7 +125,7 @@ public class InternalRosSystemParser extends AbstractInternalAntlrParser {
     public static final int Integer=26;
     public static final int Array=40;
     public static final int Int64=60;
-    public static final int RULE_MONTH=88;
+    public static final int RULE_MONTH=89;
 
     // delegates
     // delegators
@@ -11410,11 +11411,11 @@ public class InternalRosSystemParser extends AbstractInternalAntlrParser {
     static final String dfa_1s = "\42\uffff";
     static final String dfa_2s = "\36\uffff\2\40\2\uffff";
     static final String dfa_3s = "\1\16\35\uffff\2\115\2\uffff";
-    static final String dfa_4s = "\1\136\35\uffff\2\115\2\uffff";
+    static final String dfa_4s = "\1\137\35\uffff\2\115\2\uffff";
     static final String dfa_5s = "\1\uffff\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11\1\12\1\13\1\14\1\15\1\16\1\17\1\20\1\21\1\22\1\23\1\24\1\25\1\26\1\27\1\30\1\31\1\32\1\33\1\34\1\35\2\uffff\1\36\1\37";
     static final String dfa_6s = "\42\uffff}>";
     static final String[] dfa_7s = {
-            "\1\32\1\33\1\17\3\uffff\1\34\1\uffff\1\25\1\27\1\31\3\uffff\1\12\1\13\4\uffff\1\24\1\26\1\30\2\uffff\1\23\3\uffff\1\20\3\uffff\1\21\1\35\1\22\2\uffff\1\14\1\5\1\7\1\11\2\uffff\1\4\1\6\1\10\1\uffff\1\3\3\uffff\1\1\1\15\1\uffff\1\2\2\uffff\1\16\24\uffff\1\37\1\36",
+            "\1\32\1\33\1\17\3\uffff\1\34\1\uffff\1\25\1\27\1\31\3\uffff\1\12\1\13\4\uffff\1\24\1\26\1\30\2\uffff\1\23\3\uffff\1\20\3\uffff\1\21\1\35\1\22\2\uffff\1\14\1\5\1\7\1\11\2\uffff\1\4\1\6\1\10\1\uffff\1\3\3\uffff\1\1\1\15\1\uffff\1\2\2\uffff\1\16\25\uffff\1\37\1\36",
             "",
             "",
             "",
@@ -11479,40 +11480,40 @@ public class InternalRosSystemParser extends AbstractInternalAntlrParser {
 
     public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000000000L,0x0000000000008000L});
-    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000000000L,0x0000000200000000L});
-    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0004000000001A00L,0x0000000400000000L});
-    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000000000L,0x0000000460000000L});
-    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000000000L,0x0000000400001000L});
+    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000000000L,0x0000000000010000L});
+    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000000000L,0x0000000400000000L});
+    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0004000000001A00L,0x0000000800000000L});
+    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000000000L,0x00000008C0000000L});
+    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000000000L,0x0000000800001000L});
     public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0004000000200000L});
-    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000000000L,0x0000000000010000L});
-    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000000000L,0x0000000060000000L});
-    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000000000L,0x0000000000020000L});
+    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000000000L,0x0000000000020000L});
+    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000000000L,0x00000000C0000000L});
+    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
     public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000000200000L});
-    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000000000L,0x0000000080000000L});
-    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000000000000L,0x0000000400000000L});
+    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000000000L,0x0000000100000000L});
+    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000000000000L,0x0000000800000000L});
     public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0200000000000000L});
-    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000000000C00L,0x0000000400000000L});
-    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000000000800L,0x0000000400000000L});
+    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000000000C00L,0x0000000800000000L});
+    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000000000800L,0x0000000800000000L});
     public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x00000003C00C0000L});
     public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0100000000000000L});
-    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000000000000L,0x0000000060790000L});
+    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000000000000L,0x00000000C0F20000L});
     public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000000000000L,0x0000000000004000L});
-    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000000000002L,0x0000000000010000L});
+    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000000000002L,0x0000000000020000L});
     public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0000000000000000L,0x0000000000024000L});
+    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0000000000000000L,0x0000000000044000L});
     public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x2000000000000000L,0x0000000000000800L});
     public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x00000000000000E0L});
     public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x2000000000000000L});
     public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x0000370006000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x0100000000000000L,0x0000000400000000L});
+    public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x0100000000000000L,0x0000000800000000L});
     public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x0000000008000002L});
-    public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
-    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0000000000000000L,0x0000000000400000L});
-    public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x0000000000000000L,0x0000000000100000L});
-    public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
+    public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x0000000000000000L,0x0000000000400000L});
+    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0000000000000000L,0x0000000000800000L});
+    public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
+    public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x0000000000000000L,0x0000000000100000L});
     public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_36 = new BitSet(new long[]{0x0000000008000000L,0x0000000400000000L});
+    public static final BitSet FOLLOW_36 = new BitSet(new long[]{0x0000000008000000L,0x0000000800000000L});
     public static final BitSet FOLLOW_37 = new BitSet(new long[]{0x8000000000000002L});
     public static final BitSet FOLLOW_38 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_39 = new BitSet(new long[]{0x0000000000000000L,0x0000000000002000L});

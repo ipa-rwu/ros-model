@@ -32,6 +32,7 @@ import de.fraunhofer.ipa.rossystem.services.RosSystemGrammarAccess;
 	
 	{
 		tokenNameToValue.put("Comma", "','");
+		tokenNameToValue.put("HyphenMinus", "'-'");
 		tokenNameToValue.put("Colon", "':'");
 		tokenNameToValue.put("LeftSquareBracket", "'['");
 		tokenNameToValue.put("RightSquareBracket", "']'");

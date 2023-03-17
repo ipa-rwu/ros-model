@@ -15,12 +15,10 @@ import org.eclipse.xtext.ParserRule;
 import org.eclipse.xtext.serializer.ISerializationContext;
 import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
-import primitives.ArrayTopicSpecRef;
 import primitives.ByteArray;
 import primitives.Header;
 import primitives.MessagePart;
 import primitives.PrimitivesPackage;
-import primitives.TopicSpecRef;
 import primitives.bool;
 import primitives.boolArray;
 import primitives.duration;
@@ -47,6 +45,7 @@ import primitives.uint64;
 import primitives.uint64Array;
 import primitives.uint8;
 import primitives.uint8Array;
+import ros.ArrayTopicSpecRef;
 import ros.GlobalNamespace;
 import ros.ParameterAny;
 import ros.ParameterAnyType;
@@ -72,6 +71,7 @@ import ros.ParameterStructTypeMember;
 import ros.PrivateNamespace;
 import ros.RelativeNamespace;
 import ros.RosPackage;
+import ros.TopicSpecRef;
 import system.InterfaceReference;
 import system.RosActionClientReference;
 import system.RosActionServerReference;
@@ -99,9 +99,6 @@ public class RosSystemSemanticSequencer extends BasicsSemanticSequencer {
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == PrimitivesPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
-			case PrimitivesPackage.ARRAY_TOPIC_SPEC_REF:
-				sequence_ArrayTopicSpecRef(context, (ArrayTopicSpecRef) semanticObject); 
-				return; 
 			case PrimitivesPackage.BYTE:
 				sequence_byte(context, (primitives.Byte) semanticObject); 
 				return; 
@@ -113,9 +110,6 @@ public class RosSystemSemanticSequencer extends BasicsSemanticSequencer {
 				return; 
 			case PrimitivesPackage.MESSAGE_PART:
 				sequence_MessagePart(context, (MessagePart) semanticObject); 
-				return; 
-			case PrimitivesPackage.TOPIC_SPEC_REF:
-				sequence_TopicSpecRef(context, (TopicSpecRef) semanticObject); 
 				return; 
 			case PrimitivesPackage.BOOL:
 				sequence_bool(context, (bool) semanticObject); 
@@ -198,6 +192,9 @@ public class RosSystemSemanticSequencer extends BasicsSemanticSequencer {
 			}
 		else if (epackage == RosPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
+			case RosPackage.ARRAY_TOPIC_SPEC_REF:
+				sequence_ArrayTopicSpecRef(context, (ArrayTopicSpecRef) semanticObject); 
+				return; 
 			case RosPackage.GLOBAL_NAMESPACE:
 				sequence_GlobalNamespace(context, (GlobalNamespace) semanticObject); 
 				return; 
@@ -272,6 +269,9 @@ public class RosSystemSemanticSequencer extends BasicsSemanticSequencer {
 				return; 
 			case RosPackage.RELATIVE_NAMESPACE:
 				sequence_RelativeNamespace_Impl(context, (RelativeNamespace) semanticObject); 
+				return; 
+			case RosPackage.TOPIC_SPEC_REF:
+				sequence_TopicSpecRef(context, (TopicSpecRef) semanticObject); 
 				return; 
 			}
 		else if (epackage == RossystemPackage.eINSTANCE)

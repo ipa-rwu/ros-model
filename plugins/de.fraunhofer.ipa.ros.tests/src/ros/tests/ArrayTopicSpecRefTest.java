@@ -1,11 +1,13 @@
 /**
  */
-package primitives.tests;
+package ros.tests;
 
 import junit.textui.TestRunner;
 
-import primitives.ArrayTopicSpecRef;
-import primitives.PrimitivesFactory;
+import primitives.tests.AbstractTypeTest;
+
+import ros.ArrayTopicSpecRef;
+import ros.RosFactory;
 
 /**
  * <!-- begin-user-doc -->
@@ -53,7 +55,7 @@ public class ArrayTopicSpecRefTest extends AbstractTypeTest {
      */
     @Override
     protected void setUp() throws Exception {
-        setFixture(PrimitivesFactory.eINSTANCE.createArrayTopicSpecRef());
+        setFixture(RosFactory.eINSTANCE.createArrayTopicSpecRef());
     }
 
     /**

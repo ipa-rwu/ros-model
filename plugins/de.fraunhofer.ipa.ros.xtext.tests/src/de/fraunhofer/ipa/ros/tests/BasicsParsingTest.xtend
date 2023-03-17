@@ -15,16 +15,16 @@ import ros.Namespace
 @ExtendWith(InjectionExtension)
 @InjectWith(BasicsInjectorProvider)
 class BasicsParsingTest {
-	@Inject
-	ParseHelper<Namespace> parseHelper
-	
-	@Test
-	def void loadModel() {
-		val result = parseHelper.parse('''
-			Hello Xtext!
-		''')
-		Assertions.assertNotNull(result)
-		val errors = result.eResource.errors
-		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
-	}
+    @Inject
+    ParseHelper<Namespace> parseHelper
+
+    @Test
+    def void loadModel() {
+        val result = parseHelper.parse('''
+            Hello Xtext!
+        ''')
+        Assertions.assertNotNull(result)
+        val errors = result.eResource.errors
+        Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+    }
 }

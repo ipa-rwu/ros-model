@@ -73,4 +73,3 @@ ur_msgs:
         speed_slider_fraction: float64
       response:
         success: bool
-

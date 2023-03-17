@@ -1,6 +1,6 @@
 package de.fraunhofer.ipa.ros2.ide.contentassist.antlr.lexer;
 
-// Hack: Use our own Lexer superclass by means of import. 
+// Hack: Use our own Lexer superclass by means of import.
 // Currently there is no other way to specify the superclass for the lexer.
 import org.eclipse.xtext.ide.editor.contentassist.antlr.internal.Lexer;
 
@@ -143,7 +143,7 @@ public class InternalRos2Lexer extends Lexer {
     // delegates
     // delegators
 
-    public InternalRos2Lexer() {;} 
+    public InternalRos2Lexer() {;}
     public InternalRos2Lexer(CharStream input) {
         this(input, new RecognizerSharedState());
     }
@@ -161,7 +161,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:14:23: ( 'ParameterStructMember' )
             // InternalRos2Lexer.g:14:25: 'ParameterStructMember'
             {
-            match("ParameterStructMember"); 
+            match("ParameterStructMember");
 
 
             }
@@ -182,7 +182,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:16:20: ( 'ExternalDependency' )
             // InternalRos2Lexer.g:16:22: 'ExternalDependency'
             {
-            match("ExternalDependency"); 
+            match("ExternalDependency");
 
 
             }
@@ -203,7 +203,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:18:19: ( 'RelativeNamespace' )
             // InternalRos2Lexer.g:18:21: 'RelativeNamespace'
             {
-            match("RelativeNamespace"); 
+            match("RelativeNamespace");
 
 
             }
@@ -224,7 +224,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:20:18: ( 'PrivateNamespace' )
             // InternalRos2Lexer.g:20:20: 'PrivateNamespace'
             {
-            match("PrivateNamespace"); 
+            match("PrivateNamespace");
 
 
             }
@@ -245,7 +245,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:22:17: ( 'GlobalNamespace' )
             // InternalRos2Lexer.g:22:19: 'GlobalNamespace'
             {
-            match("GlobalNamespace"); 
+            match("GlobalNamespace");
 
 
             }
@@ -266,7 +266,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:24:17: ( 'transient_local' )
             // InternalRos2Lexer.g:24:19: 'transient_local'
             {
-            match("transient_local"); 
+            match("transient_local");
 
 
             }
@@ -287,7 +287,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:26:15: ( 'serviceclient:' )
             // InternalRos2Lexer.g:26:17: 'serviceclient:'
             {
-            match("serviceclient:"); 
+            match("serviceclient:");
 
 
             }
@@ -308,7 +308,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:28:15: ( 'serviceserver:' )
             // InternalRos2Lexer.g:28:17: 'serviceserver:'
             {
-            match("serviceserver:"); 
+            match("serviceserver:");
 
 
             }
@@ -329,7 +329,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:30:14: ( 'actionclient:' )
             // InternalRos2Lexer.g:30:16: 'actionclient:'
             {
-            match("actionclient:"); 
+            match("actionclient:");
 
 
             }
@@ -350,7 +350,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:32:14: ( 'actionserver:' )
             // InternalRos2Lexer.g:32:16: 'actionserver:'
             {
-            match("actionserver:"); 
+            match("actionserver:");
 
 
             }
@@ -371,7 +371,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:34:14: ( 'dependencies:' )
             // InternalRos2Lexer.g:34:16: 'dependencies:'
             {
-            match("dependencies:"); 
+            match("dependencies:");
 
 
             }
@@ -392,7 +392,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:36:15: ( 'parameter_qos' )
             // InternalRos2Lexer.g:36:17: 'parameter_qos'
             {
-            match("parameter_qos"); 
+            match("parameter_qos");
 
 
             }
@@ -413,7 +413,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:38:14: ( 'ParameterAny' )
             // InternalRos2Lexer.g:38:16: 'ParameterAny'
             {
-            match("ParameterAny"); 
+            match("ParameterAny");
 
 
             }
@@ -434,7 +434,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:40:13: ( 'fromGitRepo:' )
             // InternalRos2Lexer.g:40:15: 'fromGitRepo:'
             {
-            match("fromGitRepo:"); 
+            match("fromGitRepo:");
 
 
             }
@@ -455,7 +455,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:42:13: ( 'reliability:' )
             // InternalRos2Lexer.g:42:15: 'reliability:'
             {
-            match("reliability:"); 
+            match("reliability:");
 
 
             }
@@ -476,7 +476,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:44:14: ( 'services_qos' )
             // InternalRos2Lexer.g:44:16: 'services_qos'
             {
-            match("services_qos"); 
+            match("services_qos");
 
 
             }
@@ -497,7 +497,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:46:13: ( 'subscribers:' )
             // InternalRos2Lexer.g:46:15: 'subscribers:'
             {
-            match("subscribers:"); 
+            match("subscribers:");
 
 
             }
@@ -518,7 +518,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:48:13: ( 'best_effort' )
             // InternalRos2Lexer.g:48:15: 'best_effort'
             {
-            match("best_effort"); 
+            match("best_effort");
 
 
             }
@@ -539,7 +539,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:50:13: ( 'default_qos' )
             // InternalRos2Lexer.g:50:15: 'default_qos'
             {
-            match("default_qos"); 
+            match("default_qos");
 
 
             }
@@ -560,7 +560,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:52:12: ( 'durability:' )
             // InternalRos2Lexer.g:52:14: 'durability:'
             {
-            match("durability:"); 
+            match("durability:");
 
 
             }
@@ -581,7 +581,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:54:12: ( 'parameters:' )
             // InternalRos2Lexer.g:54:14: 'parameters:'
             {
-            match("parameters:"); 
+            match("parameters:");
 
 
             }
@@ -602,7 +602,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:56:12: ( 'publishers:' )
             // InternalRos2Lexer.g:56:14: 'publishers:'
             {
-            match("publishers:"); 
+            match("publishers:");
 
 
             }
@@ -623,7 +623,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:58:11: ( 'artifacts:' )
             // InternalRos2Lexer.g:58:13: 'artifacts:'
             {
-            match("artifacts:"); 
+            match("artifacts:");
 
 
             }
@@ -644,7 +644,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:60:12: ( 'sensor_qos' )
             // InternalRos2Lexer.g:60:14: 'sensor_qos'
             {
-            match("sensor_qos"); 
+            match("sensor_qos");
 
 
             }
@@ -665,7 +665,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:62:11: ( 'GraphName' )
             // InternalRos2Lexer.g:62:13: 'GraphName'
             {
-            match("GraphName"); 
+            match("GraphName");
 
 
             }
@@ -686,7 +686,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:64:12: ( 'feedback:' )
             // InternalRos2Lexer.g:64:14: 'feedback:'
             {
-            match("feedback:"); 
+            match("feedback:");
 
 
             }
@@ -707,7 +707,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:66:11: ( 'float32[]' )
             // InternalRos2Lexer.g:66:13: 'float32[]'
             {
-            match("float32[]"); 
+            match("float32[]");
 
 
             }
@@ -728,7 +728,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:68:11: ( 'float64[]' )
             // InternalRos2Lexer.g:68:13: 'float64[]'
             {
-            match("float64[]"); 
+            match("float64[]");
 
 
             }
@@ -749,7 +749,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:70:11: ( 'keep_last' )
             // InternalRos2Lexer.g:70:13: 'keep_last'
             {
-            match("keep_last"); 
+            match("keep_last");
 
 
             }
@@ -770,7 +770,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:72:10: ( 'response:' )
             // InternalRos2Lexer.g:72:12: 'response:'
             {
-            match("response:"); 
+            match("response:");
 
 
             }
@@ -791,7 +791,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:74:10: ( 'duration' )
             // InternalRos2Lexer.g:74:12: 'duration'
             {
-            match("duration"); 
+            match("duration");
 
 
             }
@@ -812,7 +812,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:76:10: ( 'feedback' )
             // InternalRos2Lexer.g:76:12: 'feedback'
             {
-            match("feedback"); 
+            match("feedback");
 
 
             }
@@ -833,7 +833,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:78:9: ( 'history:' )
             // InternalRos2Lexer.g:78:11: 'history:'
             {
-            match("history:"); 
+            match("history:");
 
 
             }
@@ -854,7 +854,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:80:10: ( 'keep_all' )
             // InternalRos2Lexer.g:80:12: 'keep_all'
             {
-            match("keep_all"); 
+            match("keep_all");
 
 
             }
@@ -875,7 +875,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:82:11: ( 'message:' )
             // InternalRos2Lexer.g:82:13: 'message:'
             {
-            match("message:"); 
+            match("message:");
 
 
             }
@@ -896,7 +896,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:84:9: ( 'profile:' )
             // InternalRos2Lexer.g:84:11: 'profile:'
             {
-            match("profile:"); 
+            match("profile:");
 
 
             }
@@ -917,7 +917,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:86:10: ( 'reliable' )
             // InternalRos2Lexer.g:86:12: 'reliable'
             {
-            match("reliable"); 
+            match("reliable");
 
 
             }
@@ -938,7 +938,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:88:9: ( 'request:' )
             // InternalRos2Lexer.g:88:11: 'request:'
             {
-            match("request:"); 
+            match("request:");
 
 
             }
@@ -959,7 +959,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:90:10: ( 'string[]' )
             // InternalRos2Lexer.g:90:12: 'string[]'
             {
-            match("string[]"); 
+            match("string[]");
 
 
             }
@@ -980,7 +980,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:92:10: ( 'uint16[]' )
             // InternalRos2Lexer.g:92:12: 'uint16[]'
             {
-            match("uint16[]"); 
+            match("uint16[]");
 
 
             }
@@ -1001,7 +1001,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:94:10: ( 'uint32[]' )
             // InternalRos2Lexer.g:94:12: 'uint32[]'
             {
-            match("uint32[]"); 
+            match("uint32[]");
 
 
             }
@@ -1022,7 +1022,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:96:10: ( 'uint64[]' )
             // InternalRos2Lexer.g:96:12: 'uint64[]'
             {
-            match("uint64[]"); 
+            match("uint64[]");
 
 
             }
@@ -1043,7 +1043,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:98:10: ( 'volatile' )
             // InternalRos2Lexer.g:98:12: 'volatile'
             {
-            match("volatile"); 
+            match("volatile");
 
 
             }
@@ -1064,7 +1064,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:100:9: ( 'Boolean' )
             // InternalRos2Lexer.g:100:11: 'Boolean'
             {
-            match("Boolean"); 
+            match("Boolean");
 
 
             }
@@ -1085,7 +1085,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:102:9: ( 'Integer' )
             // InternalRos2Lexer.g:102:11: 'Integer'
             {
-            match("Integer"); 
+            match("Integer");
 
 
             }
@@ -1106,7 +1106,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:104:10: ( 'action:' )
             // InternalRos2Lexer.g:104:12: 'action:'
             {
-            match("action:"); 
+            match("action:");
 
 
             }
@@ -1127,7 +1127,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:106:9: ( 'default' )
             // InternalRos2Lexer.g:106:11: 'default'
             {
-            match("default"); 
+            match("default");
 
 
             }
@@ -1148,7 +1148,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:108:9: ( 'float32' )
             // InternalRos2Lexer.g:108:11: 'float32'
             {
-            match("float32"); 
+            match("float32");
 
 
             }
@@ -1169,7 +1169,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:110:9: ( 'float64' )
             // InternalRos2Lexer.g:110:11: 'float64'
             {
-            match("float64"); 
+            match("float64");
 
 
             }
@@ -1190,7 +1190,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:112:9: ( 'int16[]' )
             // InternalRos2Lexer.g:112:11: 'int16[]'
             {
-            match("int16[]"); 
+            match("int16[]");
 
 
             }
@@ -1211,7 +1211,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:114:9: ( 'int32[]' )
             // InternalRos2Lexer.g:114:11: 'int32[]'
             {
-            match("int32[]"); 
+            match("int32[]");
 
 
             }
@@ -1232,7 +1232,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:116:9: ( 'int64[]' )
             // InternalRos2Lexer.g:116:11: 'int64[]'
             {
-            match("int64[]"); 
+            match("int64[]");
 
 
             }
@@ -1253,7 +1253,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:118:9: ( 'message' )
             // InternalRos2Lexer.g:118:11: 'message'
             {
-            match("message"); 
+            match("message");
 
 
             }
@@ -1274,7 +1274,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:120:10: ( 'result:' )
             // InternalRos2Lexer.g:120:12: 'result:'
             {
-            match("result:"); 
+            match("result:");
 
 
             }
@@ -1295,7 +1295,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:122:9: ( 'service' )
             // InternalRos2Lexer.g:122:11: 'service'
             {
-            match("service"); 
+            match("service");
 
 
             }
@@ -1316,7 +1316,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:124:9: ( 'uint8[]' )
             // InternalRos2Lexer.g:124:11: 'uint8[]'
             {
-            match("uint8[]"); 
+            match("uint8[]");
 
 
             }
@@ -1337,7 +1337,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:126:7: ( 'Array:' )
             // InternalRos2Lexer.g:126:9: 'Array:'
             {
-            match("Array:"); 
+            match("Array:");
 
 
             }
@@ -1358,7 +1358,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:128:8: ( 'Base64' )
             // InternalRos2Lexer.g:128:10: 'Base64'
             {
-            match("Base64"); 
+            match("Base64");
 
 
             }
@@ -1379,7 +1379,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:130:8: ( 'Double' )
             // InternalRos2Lexer.g:130:10: 'Double'
             {
-            match("Double"); 
+            match("Double");
 
 
             }
@@ -1400,7 +1400,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:132:8: ( 'Header' )
             // InternalRos2Lexer.g:132:10: 'Header'
             {
-            match("Header"); 
+            match("Header");
 
 
             }
@@ -1421,7 +1421,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:134:8: ( 'String' )
             // InternalRos2Lexer.g:134:10: 'String'
             {
-            match("String"); 
+            match("String");
 
 
             }
@@ -1442,7 +1442,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:136:8: ( 'Struct' )
             // InternalRos2Lexer.g:136:10: 'Struct'
             {
-            match("Struct"); 
+            match("Struct");
 
 
             }
@@ -1463,7 +1463,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:138:8: ( 'action' )
             // InternalRos2Lexer.g:138:10: 'action'
             {
-            match("action"); 
+            match("action");
 
 
             }
@@ -1484,7 +1484,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:140:8: ( 'bool[]' )
             // InternalRos2Lexer.g:140:10: 'bool[]'
             {
-            match("bool[]"); 
+            match("bool[]");
 
 
             }
@@ -1505,7 +1505,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:142:8: ( 'byte[]' )
             // InternalRos2Lexer.g:142:10: 'byte[]'
             {
-            match("byte[]"); 
+            match("byte[]");
 
 
             }
@@ -1526,7 +1526,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:144:7: ( 'depth:' )
             // InternalRos2Lexer.g:144:9: 'depth:'
             {
-            match("depth:"); 
+            match("depth:");
 
 
             }
@@ -1547,7 +1547,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:146:8: ( 'int8[]' )
             // InternalRos2Lexer.g:146:10: 'int8[]'
             {
-            match("int8[]"); 
+            match("int8[]");
 
 
             }
@@ -1568,7 +1568,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:148:8: ( 'result' )
             // InternalRos2Lexer.g:148:10: 'result'
             {
-            match("result"); 
+            match("result");
 
 
             }
@@ -1589,7 +1589,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:150:7: ( 'specs:' )
             // InternalRos2Lexer.g:150:9: 'specs:'
             {
-            match("specs:"); 
+            match("specs:");
 
 
             }
@@ -1610,7 +1610,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:152:10: ( 'string' )
             // InternalRos2Lexer.g:152:12: 'string'
             {
-            match("string"); 
+            match("string");
 
 
             }
@@ -1631,7 +1631,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:154:8: ( 'uint16' )
             // InternalRos2Lexer.g:154:10: 'uint16'
             {
-            match("uint16"); 
+            match("uint16");
 
 
             }
@@ -1652,7 +1652,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:156:8: ( 'uint32' )
             // InternalRos2Lexer.g:156:10: 'uint32'
             {
-            match("uint32"); 
+            match("uint32");
 
 
             }
@@ -1673,7 +1673,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:158:8: ( 'uint64' )
             // InternalRos2Lexer.g:158:10: 'uint64'
             {
-            match("uint64"); 
+            match("uint64");
 
 
             }
@@ -1694,7 +1694,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:160:9: ( 'value:' )
             // InternalRos2Lexer.g:160:11: 'value:'
             {
-            match("value:"); 
+            match("value:");
 
 
             }
@@ -1715,7 +1715,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:162:8: ( 'goal:' )
             // InternalRos2Lexer.g:162:10: 'goal:'
             {
-            match("goal:"); 
+            match("goal:");
 
 
             }
@@ -1736,7 +1736,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:164:7: ( 'int16' )
             // InternalRos2Lexer.g:164:9: 'int16'
             {
-            match("int16"); 
+            match("int16");
 
 
             }
@@ -1757,7 +1757,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:166:7: ( 'int32' )
             // InternalRos2Lexer.g:166:9: 'int32'
             {
-            match("int32"); 
+            match("int32");
 
 
             }
@@ -1778,7 +1778,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:168:7: ( 'int64' )
             // InternalRos2Lexer.g:168:9: 'int64'
             {
-            match("int64"); 
+            match("int64");
 
 
             }
@@ -1799,7 +1799,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:170:8: ( 'node:' )
             // InternalRos2Lexer.g:170:10: 'node:'
             {
-            match("node:"); 
+            match("node:");
 
 
             }
@@ -1820,7 +1820,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:172:8: ( 'type:' )
             // InternalRos2Lexer.g:172:10: 'type:'
             {
-            match("type:"); 
+            match("type:");
 
 
             }
@@ -1841,7 +1841,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:174:7: ( 'uint8' )
             // InternalRos2Lexer.g:174:9: 'uint8'
             {
-            match("uint8"); 
+            match("uint8");
 
 
             }
@@ -1862,7 +1862,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:176:7: ( 'value' )
             // InternalRos2Lexer.g:176:9: 'value'
             {
-            match("value"); 
+            match("value");
 
 
             }
@@ -1883,7 +1883,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:178:6: ( 'Date' )
             // InternalRos2Lexer.g:178:8: 'Date'
             {
-            match("Date"); 
+            match("Date");
 
 
             }
@@ -1904,7 +1904,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:180:6: ( 'List' )
             // InternalRos2Lexer.g:180:8: 'List'
             {
-            match("List"); 
+            match("List");
 
 
             }
@@ -1925,7 +1925,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:182:6: ( 'bool' )
             // InternalRos2Lexer.g:182:8: 'bool'
             {
-            match("bool"); 
+            match("bool");
 
 
             }
@@ -1946,7 +1946,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:184:6: ( 'byte' )
             // InternalRos2Lexer.g:184:8: 'byte'
             {
-            match("byte"); 
+            match("byte");
 
 
             }
@@ -1967,7 +1967,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:186:6: ( 'goal' )
             // InternalRos2Lexer.g:186:8: 'goal'
             {
-            match("goal"); 
+            match("goal");
 
 
             }
@@ -1988,7 +1988,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:188:6: ( 'int8' )
             // InternalRos2Lexer.g:188:8: 'int8'
             {
-            match("int8"); 
+            match("int8");
 
 
             }
@@ -2009,7 +2009,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:190:5: ( 'msg:' )
             // InternalRos2Lexer.g:190:7: 'msg:'
             {
-            match("msg:"); 
+            match("msg:");
 
 
             }
@@ -2030,7 +2030,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:192:6: ( 'name' )
             // InternalRos2Lexer.g:192:8: 'name'
             {
-            match("name"); 
+            match("name");
 
 
             }
@@ -2051,7 +2051,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:194:6: ( 'node' )
             // InternalRos2Lexer.g:194:8: 'node'
             {
-            match("node"); 
+            match("node");
 
 
             }
@@ -2072,7 +2072,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:196:5: ( 'qos:' )
             // InternalRos2Lexer.g:196:7: 'qos:'
             {
-            match("qos:"); 
+            match("qos:");
 
 
             }
@@ -2093,7 +2093,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:198:5: ( 'srv:' )
             // InternalRos2Lexer.g:198:7: 'srv:'
             {
-            match("srv:"); 
+            match("srv:");
 
 
             }
@@ -2114,7 +2114,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:200:6: ( 'time' )
             // InternalRos2Lexer.g:200:8: 'time'
             {
-            match("time"); 
+            match("time");
 
 
             }
@@ -2135,7 +2135,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:202:6: ( 'type' )
             // InternalRos2Lexer.g:202:8: 'type'
             {
-            match("type"); 
+            match("type");
 
 
             }
@@ -2156,7 +2156,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:204:5: ( 'Any' )
             // InternalRos2Lexer.g:204:7: 'Any'
             {
-            match("Any"); 
+            match("Any");
 
 
             }
@@ -2177,7 +2177,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:206:4: ( 'ns:' )
             // InternalRos2Lexer.g:206:6: 'ns:'
             {
-            match("ns:"); 
+            match("ns:");
 
 
             }
@@ -2198,7 +2198,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:208:37: ( '[]' )
             // InternalRos2Lexer.g:208:39: '[]'
             {
-            match("[]"); 
+            match("[]");
 
 
             }
@@ -2219,7 +2219,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:210:7: ( ',' )
             // InternalRos2Lexer.g:210:9: ','
             {
-            match(','); 
+            match(',');
 
             }
 
@@ -2239,7 +2239,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:212:13: ( '-' )
             // InternalRos2Lexer.g:212:15: '-'
             {
-            match('-'); 
+            match('-');
 
             }
 
@@ -2259,7 +2259,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:214:7: ( ':' )
             // InternalRos2Lexer.g:214:9: ':'
             {
-            match(':'); 
+            match(':');
 
             }
 
@@ -2279,7 +2279,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:216:19: ( '[' )
             // InternalRos2Lexer.g:216:21: '['
             {
-            match('['); 
+            match('[');
 
             }
 
@@ -2299,7 +2299,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:218:20: ( ']' )
             // InternalRos2Lexer.g:218:22: ']'
             {
-            match(']'); 
+            match(']');
 
             }
 
@@ -2317,7 +2317,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:220:21: ( '0' .. '9' )
             // InternalRos2Lexer.g:220:23: '0' .. '9'
             {
-            matchRange('0','9'); 
+            matchRange('0','9');
 
             }
 
@@ -2365,7 +2365,7 @@ public class InternalRos2Lexer extends Lexer {
                 case 1 :
                     // InternalRos2Lexer.g:222:16: '0b'
                     {
-                    match("0b"); 
+                    match("0b");
 
 
                     }
@@ -2373,7 +2373,7 @@ public class InternalRos2Lexer extends Lexer {
                 case 2 :
                     // InternalRos2Lexer.g:222:21: '0B'
                     {
-                    match("0B"); 
+                    match("0B");
 
 
                     }
@@ -2394,24 +2394,24 @@ public class InternalRos2Lexer extends Lexer {
 
 
                 switch (alt2) {
-            	case 1 :
-            	    // InternalRos2Lexer.g:
-            	    {
-            	    if ( (input.LA(1)>='0' && input.LA(1)<='1') ) {
-            	        input.consume();
+                case 1 :
+                    // InternalRos2Lexer.g:
+                    {
+                    if ( (input.LA(1)>='0' && input.LA(1)<='1') ) {
+                        input.consume();
 
-            	    }
-            	    else {
-            	        MismatchedSetException mse = new MismatchedSetException(null,input);
-            	        recover(mse);
-            	        throw mse;}
+                    }
+                    else {
+                        MismatchedSetException mse = new MismatchedSetException(null,input);
+                        recover(mse);
+                        throw mse;}
 
 
-            	    }
-            	    break;
+                    }
+                    break;
 
-            	default :
-            	    if ( cnt2 >= 1 ) break loop2;
+                default :
+                    if ( cnt2 >= 1 ) break loop2;
                         EarlyExitException eee =
                             new EarlyExitException(2, input);
                         throw eee;
@@ -2458,7 +2458,7 @@ public class InternalRos2Lexer extends Lexer {
                 case 1 :
                     // InternalRos2Lexer.g:224:17: 'true'
                     {
-                    match("true"); 
+                    match("true");
 
 
                     }
@@ -2466,7 +2466,7 @@ public class InternalRos2Lexer extends Lexer {
                 case 2 :
                     // InternalRos2Lexer.g:224:24: 'false'
                     {
-                    match("false"); 
+                    match("false");
 
 
                     }
@@ -2493,7 +2493,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:226:13: ( RULE_DIGIT ( '.' ( RULE_DECINT )* | ( '.' ( RULE_DIGIT )* )? ( 'E' | 'e' ) ( '-' | '+' )? RULE_DIGIT ) )
             // InternalRos2Lexer.g:226:15: RULE_DIGIT ( '.' ( RULE_DECINT )* | ( '.' ( RULE_DIGIT )* )? ( 'E' | 'e' ) ( '-' | '+' )? RULE_DIGIT )
             {
-            mRULE_DIGIT(); 
+            mRULE_DIGIT();
             // InternalRos2Lexer.g:226:26: ( '.' ( RULE_DECINT )* | ( '.' ( RULE_DIGIT )* )? ( 'E' | 'e' ) ( '-' | '+' )? RULE_DIGIT )
             int alt8=2;
             alt8 = dfa8.predict(input);
@@ -2501,7 +2501,7 @@ public class InternalRos2Lexer extends Lexer {
                 case 1 :
                     // InternalRos2Lexer.g:226:27: '.' ( RULE_DECINT )*
                     {
-                    match('.'); 
+                    match('.');
                     // InternalRos2Lexer.g:226:31: ( RULE_DECINT )*
                     loop4:
                     do {
@@ -2514,16 +2514,16 @@ public class InternalRos2Lexer extends Lexer {
 
 
                         switch (alt4) {
-                    	case 1 :
-                    	    // InternalRos2Lexer.g:226:31: RULE_DECINT
-                    	    {
-                    	    mRULE_DECINT(); 
+                        case 1 :
+                            // InternalRos2Lexer.g:226:31: RULE_DECINT
+                            {
+                            mRULE_DECINT();
 
-                    	    }
-                    	    break;
+                            }
+                            break;
 
-                    	default :
-                    	    break loop4;
+                        default :
+                            break loop4;
                         }
                     } while (true);
 
@@ -2544,7 +2544,7 @@ public class InternalRos2Lexer extends Lexer {
                         case 1 :
                             // InternalRos2Lexer.g:226:45: '.' ( RULE_DIGIT )*
                             {
-                            match('.'); 
+                            match('.');
                             // InternalRos2Lexer.g:226:49: ( RULE_DIGIT )*
                             loop5:
                             do {
@@ -2557,16 +2557,16 @@ public class InternalRos2Lexer extends Lexer {
 
 
                                 switch (alt5) {
-                            	case 1 :
-                            	    // InternalRos2Lexer.g:226:49: RULE_DIGIT
-                            	    {
-                            	    mRULE_DIGIT(); 
+                                case 1 :
+                                    // InternalRos2Lexer.g:226:49: RULE_DIGIT
+                                    {
+                                    mRULE_DIGIT();
 
-                            	    }
-                            	    break;
+                                    }
+                                    break;
 
-                            	default :
-                            	    break loop5;
+                                default :
+                                    break loop5;
                                 }
                             } while (true);
 
@@ -2611,7 +2611,7 @@ public class InternalRos2Lexer extends Lexer {
 
                     }
 
-                    mRULE_DIGIT(); 
+                    mRULE_DIGIT();
 
                     }
                     break;
@@ -2674,14 +2674,14 @@ public class InternalRos2Lexer extends Lexer {
                 case 1 :
                     // InternalRos2Lexer.g:228:16: '0'
                     {
-                    match('0'); 
+                    match('0');
 
                     }
                     break;
                 case 2 :
                     // InternalRos2Lexer.g:228:20: '1' .. '9' ( RULE_DIGIT )*
                     {
-                    matchRange('1','9'); 
+                    matchRange('1','9');
                     // InternalRos2Lexer.g:228:29: ( RULE_DIGIT )*
                     loop9:
                     do {
@@ -2694,16 +2694,16 @@ public class InternalRos2Lexer extends Lexer {
 
 
                         switch (alt9) {
-                    	case 1 :
-                    	    // InternalRos2Lexer.g:228:29: RULE_DIGIT
-                    	    {
-                    	    mRULE_DIGIT(); 
+                        case 1 :
+                            // InternalRos2Lexer.g:228:29: RULE_DIGIT
+                            {
+                            mRULE_DIGIT();
 
-                    	    }
-                    	    break;
+                            }
+                            break;
 
-                    	default :
-                    	    break loop9;
+                        default :
+                            break loop9;
                         }
                     } while (true);
 
@@ -2713,8 +2713,8 @@ public class InternalRos2Lexer extends Lexer {
                 case 3 :
                     // InternalRos2Lexer.g:228:41: '-' '0' .. '9' ( RULE_DIGIT )*
                     {
-                    match('-'); 
-                    matchRange('0','9'); 
+                    match('-');
+                    matchRange('0','9');
                     // InternalRos2Lexer.g:228:54: ( RULE_DIGIT )*
                     loop10:
                     do {
@@ -2727,16 +2727,16 @@ public class InternalRos2Lexer extends Lexer {
 
 
                         switch (alt10) {
-                    	case 1 :
-                    	    // InternalRos2Lexer.g:228:54: RULE_DIGIT
-                    	    {
-                    	    mRULE_DIGIT(); 
+                        case 1 :
+                            // InternalRos2Lexer.g:228:54: RULE_DIGIT
+                            {
+                            mRULE_DIGIT();
 
-                    	    }
-                    	    break;
+                            }
+                            break;
 
-                    	default :
-                    	    break loop10;
+                        default :
+                            break loop10;
                         }
                     } while (true);
 
@@ -2789,15 +2789,15 @@ public class InternalRos2Lexer extends Lexer {
                 case 1 :
                     // InternalRos2Lexer.g:230:22: '1' .. '9'
                     {
-                    matchRange('1','9'); 
+                    matchRange('1','9');
 
                     }
                     break;
                 case 2 :
                     // InternalRos2Lexer.g:230:31: '1' .. '3' '0' .. '9'
                     {
-                    matchRange('1','3'); 
-                    matchRange('0','9'); 
+                    matchRange('1','3');
+                    matchRange('0','9');
 
                     }
                     break;
@@ -2845,15 +2845,15 @@ public class InternalRos2Lexer extends Lexer {
                 case 1 :
                     // InternalRos2Lexer.g:232:24: '1' .. '9'
                     {
-                    matchRange('1','9'); 
+                    matchRange('1','9');
 
                     }
                     break;
                 case 2 :
                     // InternalRos2Lexer.g:232:33: '1' '0' .. '2'
                     {
-                    match('1'); 
-                    matchRange('0','2'); 
+                    match('1');
+                    matchRange('0','2');
 
                     }
                     break;
@@ -2875,10 +2875,10 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:234:20: ( '0' .. '2' '0' .. '9' '0' .. '9' '0' .. '9' )
             // InternalRos2Lexer.g:234:22: '0' .. '2' '0' .. '9' '0' .. '9' '0' .. '9'
             {
-            matchRange('0','2'); 
-            matchRange('0','9'); 
-            matchRange('0','9'); 
-            matchRange('0','9'); 
+            matchRange('0','2');
+            matchRange('0','9');
+            matchRange('0','9');
+            matchRange('0','9');
 
             }
 
@@ -2914,16 +2914,16 @@ public class InternalRos2Lexer extends Lexer {
                 case 1 :
                     // InternalRos2Lexer.g:236:23: '0' .. '1' '0' .. '9'
                     {
-                    matchRange('0','1'); 
-                    matchRange('0','9'); 
+                    matchRange('0','1');
+                    matchRange('0','9');
 
                     }
                     break;
                 case 2 :
                     // InternalRos2Lexer.g:236:41: '2' '0' .. '3'
                     {
-                    match('2'); 
-                    matchRange('0','3'); 
+                    match('2');
+                    matchRange('0','3');
 
                     }
                     break;
@@ -2945,8 +2945,8 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:238:23: ( '0' .. '5' '0' .. '9' )
             // InternalRos2Lexer.g:238:25: '0' .. '5' '0' .. '9'
             {
-            matchRange('0','5'); 
-            matchRange('0','9'); 
+            matchRange('0','5');
+            matchRange('0','9');
 
             }
 
@@ -2964,17 +2964,17 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:240:16: ( RULE_YEAR '-' RULE_MONTH '-' RULE_DAY 'T' RULE_HOUR ':' RULE_MIN_SEC ':' RULE_MIN_SEC )
             // InternalRos2Lexer.g:240:18: RULE_YEAR '-' RULE_MONTH '-' RULE_DAY 'T' RULE_HOUR ':' RULE_MIN_SEC ':' RULE_MIN_SEC
             {
-            mRULE_YEAR(); 
-            match('-'); 
-            mRULE_MONTH(); 
-            match('-'); 
-            mRULE_DAY(); 
-            match('T'); 
-            mRULE_HOUR(); 
-            match(':'); 
-            mRULE_MIN_SEC(); 
-            match(':'); 
-            mRULE_MIN_SEC(); 
+            mRULE_YEAR();
+            match('-');
+            mRULE_MONTH();
+            match('-');
+            mRULE_DAY();
+            match('T');
+            mRULE_HOUR();
+            match(':');
+            mRULE_MIN_SEC();
+            match(':');
+            mRULE_MIN_SEC();
 
             }
 
@@ -3014,21 +3014,21 @@ public class InternalRos2Lexer extends Lexer {
                 case 1 :
                     // InternalRos2Lexer.g:242:26: RULE_ID
                     {
-                    mRULE_ID(); 
+                    mRULE_ID();
 
                     }
                     break;
                 case 2 :
                     // InternalRos2Lexer.g:242:34: RULE_STRING
                     {
-                    mRULE_STRING(); 
+                    mRULE_STRING();
 
                     }
                     break;
 
             }
 
-            match('='); 
+            match('=');
             // InternalRos2Lexer.g:242:51: ( RULE_ID | RULE_STRING | RULE_INT | '-' RULE_INT )
             int alt16=4;
             switch ( input.LA(1) ) {
@@ -3126,29 +3126,29 @@ public class InternalRos2Lexer extends Lexer {
                 case 1 :
                     // InternalRos2Lexer.g:242:52: RULE_ID
                     {
-                    mRULE_ID(); 
+                    mRULE_ID();
 
                     }
                     break;
                 case 2 :
                     // InternalRos2Lexer.g:242:60: RULE_STRING
                     {
-                    mRULE_STRING(); 
+                    mRULE_STRING();
 
                     }
                     break;
                 case 3 :
                     // InternalRos2Lexer.g:242:72: RULE_INT
                     {
-                    mRULE_INT(); 
+                    mRULE_INT();
 
                     }
                     break;
                 case 4 :
                     // InternalRos2Lexer.g:242:81: '-' RULE_INT
                     {
-                    match('-'); 
-                    mRULE_INT(); 
+                    match('-');
+                    mRULE_INT();
 
                     }
                     break;
@@ -3170,7 +3170,7 @@ public class InternalRos2Lexer extends Lexer {
     public final void mRULE_BEGIN() throws RecognitionException {
         try {
             // InternalRos2Lexer.g:244:21: ()
-            // InternalRos2Lexer.g:244:23: 
+            // InternalRos2Lexer.g:244:23:
             {
             }
 
@@ -3184,7 +3184,7 @@ public class InternalRos2Lexer extends Lexer {
     public final void mRULE_END() throws RecognitionException {
         try {
             // InternalRos2Lexer.g:246:19: ()
-            // InternalRos2Lexer.g:246:21: 
+            // InternalRos2Lexer.g:246:21:
             {
             }
 
@@ -3202,7 +3202,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:248:17: ( '#' (~ ( ( '\\n' | '\\r' ) ) )* )
             // InternalRos2Lexer.g:248:19: '#' (~ ( ( '\\n' | '\\r' ) ) )*
             {
-            match('#'); 
+            match('#');
             // InternalRos2Lexer.g:248:23: (~ ( ( '\\n' | '\\r' ) ) )*
             loop17:
             do {
@@ -3215,24 +3215,24 @@ public class InternalRos2Lexer extends Lexer {
 
 
                 switch (alt17) {
-            	case 1 :
-            	    // InternalRos2Lexer.g:248:23: ~ ( ( '\\n' | '\\r' ) )
-            	    {
-            	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
-            	        input.consume();
+                case 1 :
+                    // InternalRos2Lexer.g:248:23: ~ ( ( '\\n' | '\\r' ) )
+                    {
+                    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
+                        input.consume();
 
-            	    }
-            	    else {
-            	        MismatchedSetException mse = new MismatchedSetException(null,input);
-            	        recover(mse);
-            	        throw mse;}
+                    }
+                    else {
+                        MismatchedSetException mse = new MismatchedSetException(null,input);
+                        recover(mse);
+                        throw mse;}
 
 
-            	    }
-            	    break;
+                    }
+                    break;
 
-            	default :
-            	    break loop17;
+                default :
+                    break loop17;
                 }
             } while (true);
 
@@ -3270,25 +3270,25 @@ public class InternalRos2Lexer extends Lexer {
 
 
                 switch (alt18) {
-            	case 1 :
-            	    // InternalRos2Lexer.g:250:26: '/' RULE_ID
-            	    {
-            	    match('/'); 
-            	    mRULE_ID(); 
+                case 1 :
+                    // InternalRos2Lexer.g:250:26: '/' RULE_ID
+                    {
+                    match('/');
+                    mRULE_ID();
 
-            	    }
-            	    break;
-            	case 2 :
-            	    // InternalRos2Lexer.g:250:38: RULE_ID '/'
-            	    {
-            	    mRULE_ID(); 
-            	    match('/'); 
+                    }
+                    break;
+                case 2 :
+                    // InternalRos2Lexer.g:250:38: RULE_ID '/'
+                    {
+                    mRULE_ID();
+                    match('/');
 
-            	    }
-            	    break;
+                    }
+                    break;
 
-            	default :
-            	    break loop18;
+                default :
+                    break loop18;
                 }
             } while (true);
 
@@ -3336,33 +3336,33 @@ public class InternalRos2Lexer extends Lexer {
                 }
 
                 switch (alt19) {
-            	case 1 :
-            	    // InternalRos2Lexer.g:252:30: '/' RULE_STRING
-            	    {
-            	    match('/'); 
-            	    mRULE_STRING(); 
+                case 1 :
+                    // InternalRos2Lexer.g:252:30: '/' RULE_STRING
+                    {
+                    match('/');
+                    mRULE_STRING();
 
-            	    }
-            	    break;
-            	case 2 :
-            	    // InternalRos2Lexer.g:252:46: RULE_STRING '/'
-            	    {
-            	    mRULE_STRING(); 
-            	    match('/'); 
+                    }
+                    break;
+                case 2 :
+                    // InternalRos2Lexer.g:252:46: RULE_STRING '/'
+                    {
+                    mRULE_STRING();
+                    match('/');
 
-            	    }
-            	    break;
-            	case 3 :
-            	    // InternalRos2Lexer.g:252:62: '~' RULE_STRING
-            	    {
-            	    match('~'); 
-            	    mRULE_STRING(); 
+                    }
+                    break;
+                case 3 :
+                    // InternalRos2Lexer.g:252:62: '~' RULE_STRING
+                    {
+                    match('~');
+                    mRULE_STRING();
 
-            	    }
-            	    break;
+                    }
+                    break;
 
-            	default :
-            	    break loop19;
+                default :
+                    break loop19;
                 }
             } while (true);
 
@@ -3396,7 +3396,7 @@ public class InternalRos2Lexer extends Lexer {
                 case 1 :
                     // InternalRos2Lexer.g:254:11: '^'
                     {
-                    match('^'); 
+                    match('^');
 
                     }
                     break;
@@ -3424,24 +3424,24 @@ public class InternalRos2Lexer extends Lexer {
 
 
                 switch (alt21) {
-            	case 1 :
-            	    // InternalRos2Lexer.g:
-            	    {
-            	    if ( (input.LA(1)>='0' && input.LA(1)<='9')||(input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='z') ) {
-            	        input.consume();
+                case 1 :
+                    // InternalRos2Lexer.g:
+                    {
+                    if ( (input.LA(1)>='0' && input.LA(1)<='9')||(input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='z') ) {
+                        input.consume();
 
-            	    }
-            	    else {
-            	        MismatchedSetException mse = new MismatchedSetException(null,input);
-            	        recover(mse);
-            	        throw mse;}
+                    }
+                    else {
+                        MismatchedSetException mse = new MismatchedSetException(null,input);
+                        recover(mse);
+                        throw mse;}
 
 
-            	    }
-            	    break;
+                    }
+                    break;
 
-            	default :
-            	    break loop21;
+                default :
+                    break loop21;
                 }
             } while (true);
 
@@ -3475,16 +3475,16 @@ public class InternalRos2Lexer extends Lexer {
 
 
                 switch (alt22) {
-            	case 1 :
-            	    // InternalRos2Lexer.g:256:22: '0' .. '9'
-            	    {
-            	    matchRange('0','9'); 
+                case 1 :
+                    // InternalRos2Lexer.g:256:22: '0' .. '9'
+                    {
+                    matchRange('0','9');
 
-            	    }
-            	    break;
+                    }
+                    break;
 
-            	default :
-            	    if ( cnt22 >= 1 ) break loop22;
+                default :
+                    if ( cnt22 >= 1 ) break loop22;
                         EarlyExitException eee =
                             new EarlyExitException(22, input);
                         throw eee;
@@ -3529,7 +3529,7 @@ public class InternalRos2Lexer extends Lexer {
                 case 1 :
                     // InternalRos2Lexer.g:258:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
-                    match('\"'); 
+                    match('\"');
                     // InternalRos2Lexer.g:258:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop23:
                     do {
@@ -3545,43 +3545,43 @@ public class InternalRos2Lexer extends Lexer {
 
 
                         switch (alt23) {
-                    	case 1 :
-                    	    // InternalRos2Lexer.g:258:21: '\\\\' .
-                    	    {
-                    	    match('\\'); 
-                    	    matchAny(); 
+                        case 1 :
+                            // InternalRos2Lexer.g:258:21: '\\\\' .
+                            {
+                            match('\\');
+                            matchAny();
 
-                    	    }
-                    	    break;
-                    	case 2 :
-                    	    // InternalRos2Lexer.g:258:28: ~ ( ( '\\\\' | '\"' ) )
-                    	    {
-                    	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
-                    	        input.consume();
+                            }
+                            break;
+                        case 2 :
+                            // InternalRos2Lexer.g:258:28: ~ ( ( '\\\\' | '\"' ) )
+                            {
+                            if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
+                                input.consume();
 
-                    	    }
-                    	    else {
-                    	        MismatchedSetException mse = new MismatchedSetException(null,input);
-                    	        recover(mse);
-                    	        throw mse;}
+                            }
+                            else {
+                                MismatchedSetException mse = new MismatchedSetException(null,input);
+                                recover(mse);
+                                throw mse;}
 
 
-                    	    }
-                    	    break;
+                            }
+                            break;
 
-                    	default :
-                    	    break loop23;
+                        default :
+                            break loop23;
                         }
                     } while (true);
 
-                    match('\"'); 
+                    match('\"');
 
                     }
                     break;
                 case 2 :
                     // InternalRos2Lexer.g:258:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
-                    match('\''); 
+                    match('\'');
                     // InternalRos2Lexer.g:258:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop24:
                     do {
@@ -3597,36 +3597,36 @@ public class InternalRos2Lexer extends Lexer {
 
 
                         switch (alt24) {
-                    	case 1 :
-                    	    // InternalRos2Lexer.g:258:54: '\\\\' .
-                    	    {
-                    	    match('\\'); 
-                    	    matchAny(); 
+                        case 1 :
+                            // InternalRos2Lexer.g:258:54: '\\\\' .
+                            {
+                            match('\\');
+                            matchAny();
 
-                    	    }
-                    	    break;
-                    	case 2 :
-                    	    // InternalRos2Lexer.g:258:61: ~ ( ( '\\\\' | '\\'' ) )
-                    	    {
-                    	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
-                    	        input.consume();
+                            }
+                            break;
+                        case 2 :
+                            // InternalRos2Lexer.g:258:61: ~ ( ( '\\\\' | '\\'' ) )
+                            {
+                            if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
+                                input.consume();
 
-                    	    }
-                    	    else {
-                    	        MismatchedSetException mse = new MismatchedSetException(null,input);
-                    	        recover(mse);
-                    	        throw mse;}
+                            }
+                            else {
+                                MismatchedSetException mse = new MismatchedSetException(null,input);
+                                recover(mse);
+                                throw mse;}
 
 
-                    	    }
-                    	    break;
+                            }
+                            break;
 
-                    	default :
-                    	    break loop24;
+                        default :
+                            break loop24;
                         }
                     } while (true);
 
-                    match('\''); 
+                    match('\'');
 
                     }
                     break;
@@ -3652,7 +3652,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:260:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
             // InternalRos2Lexer.g:260:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
-            match("/*"); 
+            match("/*");
 
             // InternalRos2Lexer.g:260:24: ( options {greedy=false; } : . )*
             loop26:
@@ -3678,20 +3678,20 @@ public class InternalRos2Lexer extends Lexer {
 
 
                 switch (alt26) {
-            	case 1 :
-            	    // InternalRos2Lexer.g:260:52: .
-            	    {
-            	    matchAny(); 
+                case 1 :
+                    // InternalRos2Lexer.g:260:52: .
+                    {
+                    matchAny();
 
-            	    }
-            	    break;
+                    }
+                    break;
 
-            	default :
-            	    break loop26;
+                default :
+                    break loop26;
                 }
             } while (true);
 
-            match("*/"); 
+            match("*/");
 
 
             }
@@ -3725,24 +3725,24 @@ public class InternalRos2Lexer extends Lexer {
 
 
                 switch (alt27) {
-            	case 1 :
-            	    // InternalRos2Lexer.g:
-            	    {
-            	    if ( (input.LA(1)>='\t' && input.LA(1)<='\n')||input.LA(1)=='\r'||input.LA(1)==' ' ) {
-            	        input.consume();
+                case 1 :
+                    // InternalRos2Lexer.g:
+                    {
+                    if ( (input.LA(1)>='\t' && input.LA(1)<='\n')||input.LA(1)=='\r'||input.LA(1)==' ' ) {
+                        input.consume();
 
-            	    }
-            	    else {
-            	        MismatchedSetException mse = new MismatchedSetException(null,input);
-            	        recover(mse);
-            	        throw mse;}
+                    }
+                    else {
+                        MismatchedSetException mse = new MismatchedSetException(null,input);
+                        recover(mse);
+                        throw mse;}
 
 
-            	    }
-            	    break;
+                    }
+                    break;
 
-            	default :
-            	    if ( cnt27 >= 1 ) break loop27;
+                default :
+                    if ( cnt27 >= 1 ) break loop27;
                         EarlyExitException eee =
                             new EarlyExitException(27, input);
                         throw eee;
@@ -3769,7 +3769,7 @@ public class InternalRos2Lexer extends Lexer {
             // InternalRos2Lexer.g:264:16: ( . )
             // InternalRos2Lexer.g:264:18: .
             {
-            matchAny(); 
+            matchAny();
 
             }
 
@@ -3789,819 +3789,819 @@ public class InternalRos2Lexer extends Lexer {
             case 1 :
                 // InternalRos2Lexer.g:1:10: ParameterStructMember
                 {
-                mParameterStructMember(); 
+                mParameterStructMember();
 
                 }
                 break;
             case 2 :
                 // InternalRos2Lexer.g:1:32: ExternalDependency
                 {
-                mExternalDependency(); 
+                mExternalDependency();
 
                 }
                 break;
             case 3 :
                 // InternalRos2Lexer.g:1:51: RelativeNamespace
                 {
-                mRelativeNamespace(); 
+                mRelativeNamespace();
 
                 }
                 break;
             case 4 :
                 // InternalRos2Lexer.g:1:69: PrivateNamespace
                 {
-                mPrivateNamespace(); 
+                mPrivateNamespace();
 
                 }
                 break;
             case 5 :
                 // InternalRos2Lexer.g:1:86: GlobalNamespace
                 {
-                mGlobalNamespace(); 
+                mGlobalNamespace();
 
                 }
                 break;
             case 6 :
                 // InternalRos2Lexer.g:1:102: Transient_local
                 {
-                mTransient_local(); 
+                mTransient_local();
 
                 }
                 break;
             case 7 :
                 // InternalRos2Lexer.g:1:118: Serviceclient
                 {
-                mServiceclient(); 
+                mServiceclient();
 
                 }
                 break;
             case 8 :
                 // InternalRos2Lexer.g:1:132: Serviceserver
                 {
-                mServiceserver(); 
+                mServiceserver();
 
                 }
                 break;
             case 9 :
                 // InternalRos2Lexer.g:1:146: Actionclient
                 {
-                mActionclient(); 
+                mActionclient();
 
                 }
                 break;
             case 10 :
                 // InternalRos2Lexer.g:1:159: Actionserver
                 {
-                mActionserver(); 
+                mActionserver();
 
                 }
                 break;
             case 11 :
                 // InternalRos2Lexer.g:1:172: Dependencies
                 {
-                mDependencies(); 
+                mDependencies();
 
                 }
                 break;
             case 12 :
                 // InternalRos2Lexer.g:1:185: Parameter_qos
                 {
-                mParameter_qos(); 
+                mParameter_qos();
 
                 }
                 break;
             case 13 :
                 // InternalRos2Lexer.g:1:199: ParameterAny
                 {
-                mParameterAny(); 
+                mParameterAny();
 
                 }
                 break;
             case 14 :
                 // InternalRos2Lexer.g:1:212: FromGitRepo
                 {
-                mFromGitRepo(); 
+                mFromGitRepo();
 
                 }
                 break;
             case 15 :
                 // InternalRos2Lexer.g:1:224: Reliability
                 {
-                mReliability(); 
+                mReliability();
 
                 }
                 break;
             case 16 :
                 // InternalRos2Lexer.g:1:236: Services_qos
                 {
-                mServices_qos(); 
+                mServices_qos();
 
                 }
                 break;
             case 17 :
                 // InternalRos2Lexer.g:1:249: Subscribers
                 {
-                mSubscribers(); 
+                mSubscribers();
 
                 }
                 break;
             case 18 :
                 // InternalRos2Lexer.g:1:261: Best_effort
                 {
-                mBest_effort(); 
+                mBest_effort();
 
                 }
                 break;
             case 19 :
                 // InternalRos2Lexer.g:1:273: Default_qos
                 {
-                mDefault_qos(); 
+                mDefault_qos();
 
                 }
                 break;
             case 20 :
                 // InternalRos2Lexer.g:1:285: Durability
                 {
-                mDurability(); 
+                mDurability();
 
                 }
                 break;
             case 21 :
                 // InternalRos2Lexer.g:1:296: Parameters
                 {
-                mParameters(); 
+                mParameters();
 
                 }
                 break;
             case 22 :
                 // InternalRos2Lexer.g:1:307: Publishers
                 {
-                mPublishers(); 
+                mPublishers();
 
                 }
                 break;
             case 23 :
                 // InternalRos2Lexer.g:1:318: Artifacts
                 {
-                mArtifacts(); 
+                mArtifacts();
 
                 }
                 break;
             case 24 :
                 // InternalRos2Lexer.g:1:328: Sensor_qos
                 {
-                mSensor_qos(); 
+                mSensor_qos();
 
                 }
                 break;
             case 25 :
                 // InternalRos2Lexer.g:1:339: GraphName
                 {
-                mGraphName(); 
+                mGraphName();
 
                 }
                 break;
             case 26 :
                 // InternalRos2Lexer.g:1:349: Feedback_1
                 {
-                mFeedback_1(); 
+                mFeedback_1();
 
                 }
                 break;
             case 27 :
                 // InternalRos2Lexer.g:1:360: Float32_1
                 {
-                mFloat32_1(); 
+                mFloat32_1();
 
                 }
                 break;
             case 28 :
                 // InternalRos2Lexer.g:1:370: Float64_1
                 {
-                mFloat64_1(); 
+                mFloat64_1();
 
                 }
                 break;
             case 29 :
                 // InternalRos2Lexer.g:1:380: Keep_last
                 {
-                mKeep_last(); 
+                mKeep_last();
 
                 }
                 break;
             case 30 :
                 // InternalRos2Lexer.g:1:390: Response
                 {
-                mResponse(); 
+                mResponse();
 
                 }
                 break;
             case 31 :
                 // InternalRos2Lexer.g:1:399: Duration
                 {
-                mDuration(); 
+                mDuration();
 
                 }
                 break;
             case 32 :
                 // InternalRos2Lexer.g:1:408: Feedback
                 {
-                mFeedback(); 
+                mFeedback();
 
                 }
                 break;
             case 33 :
                 // InternalRos2Lexer.g:1:417: History
                 {
-                mHistory(); 
+                mHistory();
 
                 }
                 break;
             case 34 :
                 // InternalRos2Lexer.g:1:425: Keep_all
                 {
-                mKeep_all(); 
+                mKeep_all();
 
                 }
                 break;
             case 35 :
                 // InternalRos2Lexer.g:1:434: Message_1
                 {
-                mMessage_1(); 
+                mMessage_1();
 
                 }
                 break;
             case 36 :
                 // InternalRos2Lexer.g:1:444: Profile
                 {
-                mProfile(); 
+                mProfile();
 
                 }
                 break;
             case 37 :
                 // InternalRos2Lexer.g:1:452: Reliable
                 {
-                mReliable(); 
+                mReliable();
 
                 }
                 break;
             case 38 :
                 // InternalRos2Lexer.g:1:461: Request
                 {
-                mRequest(); 
+                mRequest();
 
                 }
                 break;
             case 39 :
                 // InternalRos2Lexer.g:1:469: String_2
                 {
-                mString_2(); 
+                mString_2();
 
                 }
                 break;
             case 40 :
                 // InternalRos2Lexer.g:1:478: Uint16_1
                 {
-                mUint16_1(); 
+                mUint16_1();
 
                 }
                 break;
             case 41 :
                 // InternalRos2Lexer.g:1:487: Uint32_1
                 {
-                mUint32_1(); 
+                mUint32_1();
 
                 }
                 break;
             case 42 :
                 // InternalRos2Lexer.g:1:496: Uint64_1
                 {
-                mUint64_1(); 
+                mUint64_1();
 
                 }
                 break;
             case 43 :
                 // InternalRos2Lexer.g:1:505: Volatile
                 {
-                mVolatile(); 
+                mVolatile();
 
                 }
                 break;
             case 44 :
                 // InternalRos2Lexer.g:1:514: Boolean
                 {
-                mBoolean(); 
+                mBoolean();
 
                 }
                 break;
             case 45 :
                 // InternalRos2Lexer.g:1:522: Integer
                 {
-                mInteger(); 
+                mInteger();
 
                 }
                 break;
             case 46 :
                 // InternalRos2Lexer.g:1:530: Action_1
                 {
-                mAction_1(); 
+                mAction_1();
 
                 }
                 break;
             case 47 :
                 // InternalRos2Lexer.g:1:539: Default
                 {
-                mDefault(); 
+                mDefault();
 
                 }
                 break;
             case 48 :
                 // InternalRos2Lexer.g:1:547: Float32
                 {
-                mFloat32(); 
+                mFloat32();
 
                 }
                 break;
             case 49 :
                 // InternalRos2Lexer.g:1:555: Float64
                 {
-                mFloat64(); 
+                mFloat64();
 
                 }
                 break;
             case 50 :
                 // InternalRos2Lexer.g:1:563: Int16_1
                 {
-                mInt16_1(); 
+                mInt16_1();
 
                 }
                 break;
             case 51 :
                 // InternalRos2Lexer.g:1:571: Int32_1
                 {
-                mInt32_1(); 
+                mInt32_1();
 
                 }
                 break;
             case 52 :
                 // InternalRos2Lexer.g:1:579: Int64_1
                 {
-                mInt64_1(); 
+                mInt64_1();
 
                 }
                 break;
             case 53 :
                 // InternalRos2Lexer.g:1:587: Message
                 {
-                mMessage(); 
+                mMessage();
 
                 }
                 break;
             case 54 :
                 // InternalRos2Lexer.g:1:595: Result_1
                 {
-                mResult_1(); 
+                mResult_1();
 
                 }
                 break;
             case 55 :
                 // InternalRos2Lexer.g:1:604: Service
                 {
-                mService(); 
+                mService();
 
                 }
                 break;
             case 56 :
                 // InternalRos2Lexer.g:1:612: Uint8_1
                 {
-                mUint8_1(); 
+                mUint8_1();
 
                 }
                 break;
             case 57 :
                 // InternalRos2Lexer.g:1:620: Array
                 {
-                mArray(); 
+                mArray();
 
                 }
                 break;
             case 58 :
                 // InternalRos2Lexer.g:1:626: Base64
                 {
-                mBase64(); 
+                mBase64();
 
                 }
                 break;
             case 59 :
                 // InternalRos2Lexer.g:1:633: Double
                 {
-                mDouble(); 
+                mDouble();
 
                 }
                 break;
             case 60 :
                 // InternalRos2Lexer.g:1:640: Header
                 {
-                mHeader(); 
+                mHeader();
 
                 }
                 break;
             case 61 :
                 // InternalRos2Lexer.g:1:647: String
                 {
-                mString(); 
+                mString();
 
                 }
                 break;
             case 62 :
                 // InternalRos2Lexer.g:1:654: Struct
                 {
-                mStruct(); 
+                mStruct();
 
                 }
                 break;
             case 63 :
                 // InternalRos2Lexer.g:1:661: Action
                 {
-                mAction(); 
+                mAction();
 
                 }
                 break;
             case 64 :
                 // InternalRos2Lexer.g:1:668: Bool_1
                 {
-                mBool_1(); 
+                mBool_1();
 
                 }
                 break;
             case 65 :
                 // InternalRos2Lexer.g:1:675: Byte_1
                 {
-                mByte_1(); 
+                mByte_1();
 
                 }
                 break;
             case 66 :
                 // InternalRos2Lexer.g:1:682: Depth
                 {
-                mDepth(); 
+                mDepth();
 
                 }
                 break;
             case 67 :
                 // InternalRos2Lexer.g:1:688: Int8_1
                 {
-                mInt8_1(); 
+                mInt8_1();
 
                 }
                 break;
             case 68 :
                 // InternalRos2Lexer.g:1:695: Result
                 {
-                mResult(); 
+                mResult();
 
                 }
                 break;
             case 69 :
                 // InternalRos2Lexer.g:1:702: Specs
                 {
-                mSpecs(); 
+                mSpecs();
 
                 }
                 break;
             case 70 :
                 // InternalRos2Lexer.g:1:708: String_1
                 {
-                mString_1(); 
+                mString_1();
 
                 }
                 break;
             case 71 :
                 // InternalRos2Lexer.g:1:717: Uint16
                 {
-                mUint16(); 
+                mUint16();
 
                 }
                 break;
             case 72 :
                 // InternalRos2Lexer.g:1:724: Uint32
                 {
-                mUint32(); 
+                mUint32();
 
                 }
                 break;
             case 73 :
                 // InternalRos2Lexer.g:1:731: Uint64
                 {
-                mUint64(); 
+                mUint64();
 
                 }
                 break;
             case 74 :
                 // InternalRos2Lexer.g:1:738: Value_1
                 {
-                mValue_1(); 
+                mValue_1();
 
                 }
                 break;
             case 75 :
                 // InternalRos2Lexer.g:1:746: Goal_1
                 {
-                mGoal_1(); 
+                mGoal_1();
 
                 }
                 break;
             case 76 :
                 // InternalRos2Lexer.g:1:753: Int16
                 {
-                mInt16(); 
+                mInt16();
 
                 }
                 break;
             case 77 :
                 // InternalRos2Lexer.g:1:759: Int32
                 {
-                mInt32(); 
+                mInt32();
 
                 }
                 break;
             case 78 :
                 // InternalRos2Lexer.g:1:765: Int64
                 {
-                mInt64(); 
+                mInt64();
 
                 }
                 break;
             case 79 :
                 // InternalRos2Lexer.g:1:771: Node_1
                 {
-                mNode_1(); 
+                mNode_1();
 
                 }
                 break;
             case 80 :
                 // InternalRos2Lexer.g:1:778: Type_1
                 {
-                mType_1(); 
+                mType_1();
 
                 }
                 break;
             case 81 :
                 // InternalRos2Lexer.g:1:785: Uint8
                 {
-                mUint8(); 
+                mUint8();
 
                 }
                 break;
             case 82 :
                 // InternalRos2Lexer.g:1:791: Value
                 {
-                mValue(); 
+                mValue();
 
                 }
                 break;
             case 83 :
                 // InternalRos2Lexer.g:1:797: Date
                 {
-                mDate(); 
+                mDate();
 
                 }
                 break;
             case 84 :
                 // InternalRos2Lexer.g:1:802: List
                 {
-                mList(); 
+                mList();
 
                 }
                 break;
             case 85 :
                 // InternalRos2Lexer.g:1:807: Bool
                 {
-                mBool(); 
+                mBool();
 
                 }
                 break;
             case 86 :
                 // InternalRos2Lexer.g:1:812: Byte
                 {
-                mByte(); 
+                mByte();
 
                 }
                 break;
             case 87 :
                 // InternalRos2Lexer.g:1:817: Goal
                 {
-                mGoal(); 
+                mGoal();
 
                 }
                 break;
             case 88 :
                 // InternalRos2Lexer.g:1:822: Int8
                 {
-                mInt8(); 
+                mInt8();
 
                 }
                 break;
             case 89 :
                 // InternalRos2Lexer.g:1:827: Msg
                 {
-                mMsg(); 
+                mMsg();
 
                 }
                 break;
             case 90 :
                 // InternalRos2Lexer.g:1:831: Name
                 {
-                mName(); 
+                mName();
 
                 }
                 break;
             case 91 :
                 // InternalRos2Lexer.g:1:836: Node
                 {
-                mNode(); 
+                mNode();
 
                 }
                 break;
             case 92 :
                 // InternalRos2Lexer.g:1:841: Qos
                 {
-                mQos(); 
+                mQos();
 
                 }
                 break;
             case 93 :
                 // InternalRos2Lexer.g:1:845: Srv
                 {
-                mSrv(); 
+                mSrv();
 
                 }
                 break;
             case 94 :
                 // InternalRos2Lexer.g:1:849: Time
                 {
-                mTime(); 
+                mTime();
 
                 }
                 break;
             case 95 :
                 // InternalRos2Lexer.g:1:854: Type
                 {
-                mType(); 
+                mType();
 
                 }
                 break;
             case 96 :
                 // InternalRos2Lexer.g:1:859: Any
                 {
-                mAny(); 
+                mAny();
 
                 }
                 break;
             case 97 :
                 // InternalRos2Lexer.g:1:863: Ns
                 {
-                mNs(); 
+                mNs();
 
                 }
                 break;
             case 98 :
                 // InternalRos2Lexer.g:1:866: LeftSquareBracketRightSquareBracket
                 {
-                mLeftSquareBracketRightSquareBracket(); 
+                mLeftSquareBracketRightSquareBracket();
 
                 }
                 break;
             case 99 :
                 // InternalRos2Lexer.g:1:902: Comma
                 {
-                mComma(); 
+                mComma();
 
                 }
                 break;
             case 100 :
                 // InternalRos2Lexer.g:1:908: HyphenMinus
                 {
-                mHyphenMinus(); 
+                mHyphenMinus();
 
                 }
                 break;
             case 101 :
                 // InternalRos2Lexer.g:1:920: Colon
                 {
-                mColon(); 
+                mColon();
 
                 }
                 break;
             case 102 :
                 // InternalRos2Lexer.g:1:926: LeftSquareBracket
                 {
-                mLeftSquareBracket(); 
+                mLeftSquareBracket();
 
                 }
                 break;
             case 103 :
                 // InternalRos2Lexer.g:1:944: RightSquareBracket
                 {
-                mRightSquareBracket(); 
+                mRightSquareBracket();
 
                 }
                 break;
             case 104 :
                 // InternalRos2Lexer.g:1:963: RULE_BINARY
                 {
-                mRULE_BINARY(); 
+                mRULE_BINARY();
 
                 }
                 break;
             case 105 :
                 // InternalRos2Lexer.g:1:975: RULE_BOOLEAN
                 {
-                mRULE_BOOLEAN(); 
+                mRULE_BOOLEAN();
 
                 }
                 break;
             case 106 :
                 // InternalRos2Lexer.g:1:988: RULE_DOUBLE
                 {
-                mRULE_DOUBLE(); 
+                mRULE_DOUBLE();
 
                 }
                 break;
             case 107 :
                 // InternalRos2Lexer.g:1:1000: RULE_DECINT
                 {
-                mRULE_DECINT(); 
+                mRULE_DECINT();
 
                 }
                 break;
             case 108 :
                 // InternalRos2Lexer.g:1:1012: RULE_DATE_TIME
                 {
-                mRULE_DATE_TIME(); 
+                mRULE_DATE_TIME();
 
                 }
                 break;
             case 109 :
                 // InternalRos2Lexer.g:1:1027: RULE_MESSAGE_ASIGMENT
                 {
-                mRULE_MESSAGE_ASIGMENT(); 
+                mRULE_MESSAGE_ASIGMENT();
 
                 }
                 break;
             case 110 :
                 // InternalRos2Lexer.g:1:1049: RULE_SL_COMMENT
                 {
-                mRULE_SL_COMMENT(); 
+                mRULE_SL_COMMENT();
 
                 }
                 break;
             case 111 :
                 // InternalRos2Lexer.g:1:1065: RULE_ROS_CONVENTION_A
                 {
-                mRULE_ROS_CONVENTION_A(); 
+                mRULE_ROS_CONVENTION_A();
 
                 }
                 break;
             case 112 :
                 // InternalRos2Lexer.g:1:1087: RULE_ROS_CONVENTION_PARAM
                 {
-                mRULE_ROS_CONVENTION_PARAM(); 
+                mRULE_ROS_CONVENTION_PARAM();
 
                 }
                 break;
             case 113 :
                 // InternalRos2Lexer.g:1:1113: RULE_ID
                 {
-                mRULE_ID(); 
+                mRULE_ID();
 
                 }
                 break;
             case 114 :
                 // InternalRos2Lexer.g:1:1121: RULE_STRING
                 {
-                mRULE_STRING(); 
+                mRULE_STRING();
 
                 }
                 break;
             case 115 :
                 // InternalRos2Lexer.g:1:1133: RULE_ML_COMMENT
                 {
-                mRULE_ML_COMMENT(); 
+                mRULE_ML_COMMENT();
 
                 }
                 break;
             case 116 :
                 // InternalRos2Lexer.g:1:1149: RULE_WS
                 {
-                mRULE_WS(); 
+                mRULE_WS();
 
                 }
                 break;
             case 117 :
                 // InternalRos2Lexer.g:1:1157: RULE_ANY_OTHER
                 {
-                mRULE_ANY_OTHER(); 
+                mRULE_ANY_OTHER();
 
                 }
                 break;
@@ -5332,9 +5332,9 @@ public class InternalRos2Lexer extends Lexer {
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             IntStream input = _input;
-        	int _s = s;
+            int _s = s;
             switch ( s ) {
-                    case 0 : 
+                    case 0 :
                         int LA28_39 = input.LA(1);
 
                         s = -1;
@@ -5348,7 +5348,7 @@ public class InternalRos2Lexer extends Lexer {
 
                         if ( s>=0 ) return s;
                         break;
-                    case 1 : 
+                    case 1 :
                         int LA28_182 = input.LA(1);
 
                         s = -1;
@@ -5360,7 +5360,7 @@ public class InternalRos2Lexer extends Lexer {
 
                         if ( s>=0 ) return s;
                         break;
-                    case 2 : 
+                    case 2 :
                         int LA28_115 = input.LA(1);
 
                         s = -1;
@@ -5372,7 +5372,7 @@ public class InternalRos2Lexer extends Lexer {
 
                         if ( s>=0 ) return s;
                         break;
-                    case 3 : 
+                    case 3 :
                         int LA28_0 = input.LA(1);
 
                         s = -1;
@@ -5470,7 +5470,7 @@ public class InternalRos2Lexer extends Lexer {
 
                         if ( s>=0 ) return s;
                         break;
-                    case 4 : 
+                    case 4 :
                         int LA28_40 = input.LA(1);
 
                         s = -1;
@@ -5484,7 +5484,7 @@ public class InternalRos2Lexer extends Lexer {
 
                         if ( s>=0 ) return s;
                         break;
-                    case 5 : 
+                    case 5 :
                         int LA28_184 = input.LA(1);
 
                         s = -1;
@@ -5496,7 +5496,7 @@ public class InternalRos2Lexer extends Lexer {
 
                         if ( s>=0 ) return s;
                         break;
-                    case 6 : 
+                    case 6 :
                         int LA28_118 = input.LA(1);
 
                         s = -1;
@@ -5508,7 +5508,7 @@ public class InternalRos2Lexer extends Lexer {
 
                         if ( s>=0 ) return s;
                         break;
-                    case 7 : 
+                    case 7 :
                         int LA28_114 = input.LA(1);
 
                         s = -1;
@@ -5516,7 +5516,7 @@ public class InternalRos2Lexer extends Lexer {
 
                         if ( s>=0 ) return s;
                         break;
-                    case 8 : 
+                    case 8 :
                         int LA28_117 = input.LA(1);
 
                         s = -1;
@@ -5531,6 +5531,6 @@ public class InternalRos2Lexer extends Lexer {
             throw nvae;
         }
     }
- 
+
 
 }

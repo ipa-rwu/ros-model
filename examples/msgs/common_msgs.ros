@@ -1,5 +1,5 @@
 geometry_msgs:
-  specs:Vector3
+  specs:
     - msg: Accel
       message:
         linear: Vector3

@@ -1,7 +1,8 @@
-ur5e_moveit:
+ur5e_driver:
     nodes:
-        ur5e_driver:
+        ur_driver:
             from: "ur_robot_driver.ur_robot_driver_node.ur_robot_driver_node"
     processes:
-        start:
-            - ur5e_driver
+        start_driver:
+            nodes:
+                - ur_driver

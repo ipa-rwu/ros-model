@@ -302,31 +302,31 @@ public class Ros1GrammarAccess extends AbstractElementFinder.AbstractGrammarElem
     }
 
     ////CatkinPackage returns CatkinPackage:
-    ////    {CatkinPackage}
-    ////    name=RosNames':'
-    ////    BEGIN
-    ////        ('fromGitRepo:' fromGitRepo=EString)?
-    ////        ('artifacts:'
-    ////            BEGIN
-    ////            artifact+=Artifact*
-    ////            END
-    ////        )?
-    ////        ('dependencies:' '[' dependency+=Dependency (',' dependency+=Dependency)* ']' )?
-    ////    END;
+    ////  {CatkinPackage}
+    ////  name=RosNames':'
+    ////  BEGIN
+    ////      ('fromGitRepo:' fromGitRepo=EString)?
+    ////      ('artifacts:'
+    ////          BEGIN
+    ////          artifact+=Artifact*
+    ////          END
+    ////      )?
+    ////      ('dependencies:' '[' dependency+=Dependency (',' dependency+=Dependency)* ']' )?
+    ////  END;
     ////
     ////AmentPackage returns AmentPackage:
-    ////    {AmentPackage}
-    ////    'AmentPackage'
-    ////    name=RosNames':'
-    ////    BEGIN
-    ////        ('fromGitRepo:' fromGitRepo=EString)?
-    ////        ('artifacts:'
-    ////            BEGIN
-    ////            artifact+=Artifact*
-    ////            END
-    ////        )?
-    ////        ('dependencies:' '[' dependency+=Dependency (',' dependency+=Dependency)* ']' )?
-    ////    END;
+    ////  {AmentPackage}
+    ////  'AmentPackage'
+    ////  name=RosNames':'
+    ////  BEGIN
+    ////      ('fromGitRepo:' fromGitRepo=EString)?
+    ////      ('artifacts:'
+    ////          BEGIN
+    ////          artifact+=Artifact*
+    ////          END
+    ////      )?
+    ////      ('dependencies:' '[' dependency+=Dependency (',' dependency+=Dependency)* ']' )?
+    ////  END;
     /////////////////////
     ////ARTIFACT AND NODE
     /////////////////////
@@ -346,7 +346,6 @@ public class Ros1GrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 
     //Node returns Node:
     //    'node:' name=RosNames
-    //     BEGIN
     //        (
     //        ('publishers:'
     //            BEGIN
@@ -383,7 +382,7 @@ public class Ros1GrammarAccess extends AbstractElementFinder.AbstractGrammarElem
     //            parameter+=Parameter*
     //            END
     //        )
-    //        )*END
+    //        )*
     //    ;
     public RosGrammarAccess.NodeElements getNodeAccess() {
         return gaRos.getNodeAccess();
@@ -408,9 +407,9 @@ public class Ros1GrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 
     //TopicSpec returns TopicSpec:
     //    {TopicSpec}
-    //    'msg:'name=(EString|'Header'|'String')
+    //    PreListElement 'msg:' name=(EString|'Header'|'String')
     //    BEGIN
-    //        'message:' (BEGIN message=MessageDefinition END)?
+    //        'message:'(BEGIN message=MessageDefinition END)?
     //    END
     //    ;
     public RosGrammarAccess.TopicSpecElements getTopicSpecAccess() {
@@ -423,7 +422,7 @@ public class Ros1GrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 
     //ServiceSpec returns ServiceSpec:
     //    {ServiceSpec}
-    //    'srv:'name=EString
+    //    PreListElement 'srv:'name=EString
     //    BEGIN
     //        'request:' (BEGIN request=MessageDefinition END)?
     //        'response:' (BEGIN response=MessageDefinition END)?
@@ -438,7 +437,7 @@ public class Ros1GrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 
     //ActionSpec returns ActionSpec:
     //    {ActionSpec}
-    //    'action:'name=EString
+    //    PreListElement 'action:'name=EString
     //    BEGIN
     //        'goal:' (BEGIN goal=MessageDefinition END)?
     //        'result:' (BEGIN result=MessageDefinition END)?
@@ -837,7 +836,7 @@ public class Ros1GrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 
     //ParameterList returns ParameterSequence:
     //    {ParameterSequence}
-    //        '['    value+=ParameterValue ( ',' value+=ParameterValue )* ']'
+    //        '[' value+=ParameterValue ( ',' value+=ParameterValue )* ']'
     //;
     public BasicsGrammarAccess.ParameterListElements getParameterListAccess() {
         return gaBasics.getParameterListAccess();
@@ -1077,8 +1076,7 @@ public class Ros1GrammarAccess extends AbstractElementFinder.AbstractGrammarElem
     ////MESSAGE PRIMITIVES DEFINITION
     /////////////////////
     //MessagePart returns primitives::MessagePart:
-    //    Type = AbstractType
-    //    Data =(KEYWORD | MESSAGE_ASIGMENT | EString)
+    //    Data =(KEYWORD | MESSAGE_ASIGMENT | EString) ":" Type = AbstractType
     //;
     public BasicsGrammarAccess.MessagePartElements getMessagePartAccess() {
         return gaBasics.getMessagePartAccess();
@@ -1455,7 +1453,7 @@ public class Ros1GrammarAccess extends AbstractElementFinder.AbstractGrammarElem
         return getHeaderAccess().getRule();
     }
 
-    //TopicSpecRef returns primitives::TopicSpecRef:
+    //TopicSpecRef returns TopicSpecRef:
     //    TopicSpec=[TopicSpec|EString]
     //;
     public BasicsGrammarAccess.TopicSpecRefElements getTopicSpecRefAccess() {
@@ -1466,7 +1464,7 @@ public class Ros1GrammarAccess extends AbstractElementFinder.AbstractGrammarElem
         return getTopicSpecRefAccess().getRule();
     }
 
-    //ArrayTopicSpecRef returns primitives::ArrayTopicSpecRef:
+    //ArrayTopicSpecRef returns ArrayTopicSpecRef:
     //    TopicSpec=[TopicSpec|EString]'[]'
     //;
     public BasicsGrammarAccess.ArrayTopicSpecRefElements getArrayTopicSpecRefAccess() {
@@ -1539,6 +1537,16 @@ public class Ros1GrammarAccess extends AbstractElementFinder.AbstractGrammarElem
     //    ( ('/' STRING ) | ( STRING '/' ) | ('~' STRING ) )* ;
     public TerminalRule getROS_CONVENTION_PARAMRule() {
         return gaBasics.getROS_CONVENTION_PARAMRule();
+    }
+
+    //PreListElement hidden(SL_COMMENT):
+    //  '-';
+    public BasicsGrammarAccess.PreListElementElements getPreListElementAccess() {
+        return gaBasics.getPreListElementAccess();
+    }
+
+    public ParserRule getPreListElementRule() {
+        return getPreListElementAccess().getRule();
     }
 
     //terminal ID: '^'?('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;

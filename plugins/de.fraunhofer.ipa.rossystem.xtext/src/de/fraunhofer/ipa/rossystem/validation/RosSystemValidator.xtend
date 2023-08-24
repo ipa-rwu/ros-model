@@ -3,26 +3,21 @@
  */
 package de.fraunhofer.ipa.rossystem.validation
 
-import org.eclipse.xtext.validation.Check
-import system.Process
-import system.System
-import system.RosNode
-import system.Component
-import system.impl.RosNodeImpl
-import system.Connection
-import system.RosInterface
-import system.impl.ConnectionImpl
-import system.RosConnection
-import system.RosSystemConnection
-import system.impl.RosSystemConnectionImpl
 import java.util.List
-import system.RosPublisherReference
-import system.RosServiceServerReference
-import system.RosServiceClientReference
-import system.RosActionServerReference
-import system.RosSubscriberReference
+import org.eclipse.xtext.validation.Check
+import system.Component
+import system.Connection
+import system.Process
 import system.RosActionClientReference
-import system.InterfaceReference
+import system.RosActionServerReference
+import system.RosInterface
+import system.RosNode
+import system.RosPublisherReference
+import system.RosServiceClientReference
+import system.RosServiceServerReference
+import system.RosSubscriberReference
+import system.System
+import system.impl.RosSystemConnectionImpl
 
 /**
  * This class contains custom validation rules.
@@ -45,8 +40,18 @@ class RosSystemValidator extends AbstractRosSystemValidator {
   public static val NOT_IN_THE_SYSTEM = "The element is not part of the system"
   public static val NOT_VALID_PATTERN = "The element has not a valid type"
   public static val TYPE_NOT_MATCH = "The ports have different types"
+  public static val INFO_LAUNCH_FILE = "Information to build the launch file path"
   Object from_type
   Object to_type
+
+
+  @Check
+  def InfoToValidFile(System system){
+      if (!system.fromFile.empty){
+        info('This attribute expects the path of the launch file from the package, for example: PackageName/launch/fileName.launch.py'
+                  ,null,INFO_LAUNCH_FILE)
+      }
+  }
 
   @Check
   def checkIfNodeInSystem(Process process) {
@@ -72,9 +77,11 @@ class RosSystemValidator extends AbstractRosSystemValidator {
       var List<RosInterface> AllInterfaces = newArrayList
 
       for (Component node : system.components){
-          var rosnode = node as RosNode
-          for(RosInterface interface : rosnode.rosinterfaces){
-            AllInterfaces.add(interface)
+          if (node.eClass.name=='RosNode') {
+              var rosnode = node as RosNode
+              for(RosInterface interface : rosnode.rosinterfaces){
+                AllInterfaces.add(interface)
+              }
           }
       }
       if (!AllInterfaces.contains(from_connection)){

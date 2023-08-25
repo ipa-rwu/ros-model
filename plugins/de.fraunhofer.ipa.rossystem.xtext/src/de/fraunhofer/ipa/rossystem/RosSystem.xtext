@@ -39,6 +39,12 @@ RosSystem returns System:
             BEGIN
             connections+=Connection*
             END
+        )|
+        ('refSubsystem:'
+                BEGIN
+                components+=ReferenceSystem*
+                END
+
         )
         )*
     END;
@@ -68,6 +74,11 @@ RosNode returns RosNode:
     END
 ;
 
+ReferenceSystem returns ReferenceSystem:
+        {ReferenceSystem}
+        '-' ref=[System|EString]
+;
+
 RosInterface returns RosInterface:
     '-'name=EString':' (reference=InterfaceReference)
 ;
@@ -78,7 +89,8 @@ InterfaceReference returns InterfaceReference:
     RosServiceServerReference |
     RosServerClientReference |
     RosActionServerReference |
-    RosActionClientReference;
+    RosActionClientReference |
+    RosParameterReference;
 
 
 RosPublisherReference returns RosPublisherReference:
@@ -106,10 +118,14 @@ RosActionClientReference returns RosActionClientReference:
 ;
 
 RosParameter returns RosParameter:
-    name=EString':' from=[ros::Parameter|EString]
+    '-'name=EString':' from=[ros::Parameter|EString]
     BEGIN
     'value:'value=ParameterValue
     END
+;
+
+RosParameterReference returns RosParameterReference:
+    'param->' from=[ros::Parameter|EString]
 ;
 
 //By default the grammar will parser RosSystemConnection, i.e., connections of ports

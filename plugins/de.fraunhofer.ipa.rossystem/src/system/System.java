@@ -4,8 +4,6 @@ package system;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>System</b></em>'.
@@ -20,13 +18,14 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link system.System#getComponents <em>Components</em>}</li>
  *   <li>{@link system.System#getConnections <em>Connections</em>}</li>
  *   <li>{@link system.System#getParameter <em>Parameter</em>}</li>
+ *   <li>{@link system.System#getFromFile <em>From File</em>}</li>
  * </ul>
  *
  * @see system.RossystemPackage#getSystem()
  * @model
  * @generated
  */
-public interface System extends EObject {
+public interface System extends Component {
     /**
      * Returns the value of the '<em><b>Name</b></em>' attribute.
      * <!-- begin-user-doc -->
@@ -96,5 +95,27 @@ public interface System extends EObject {
      * @generated
      */
     EList<RosParameter> getParameter();
+
+                /**
+     * Returns the value of the '<em><b>From File</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>From File</em>' attribute.
+     * @see #setFromFile(String)
+     * @see system.RossystemPackage#getSystem_FromFile()
+     * @model
+     * @generated
+     */
+    String getFromFile();
+
+                /**
+     * Sets the value of the '{@link system.System#getFromFile <em>From File</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>From File</em>' attribute.
+     * @see #getFromFile()
+     * @generated
+     */
+    void setFromFile(String value);
 
 } // System

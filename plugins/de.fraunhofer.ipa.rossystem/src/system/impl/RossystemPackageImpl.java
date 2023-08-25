@@ -18,6 +18,7 @@ import ros.RosPackage;
 import system.Component;
 import system.Connection;
 import system.InterfaceReference;
+import system.ReferenceSystem;
 import system.RosActionClientReference;
 import system.RosActionConnection;
 import system.RosActionServerReference;
@@ -192,6 +193,13 @@ public class RossystemPackageImpl extends EPackageImpl implements RossystemPacka
     private EClass rosActionConnectionEClass = null;
 
                 /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass referenceSystemEClass = null;
+
+                                                                /**
      * Creates an instance of the model <b>Package</b>, registered with
      * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
      * package URI value.
@@ -317,6 +325,16 @@ public class RossystemPackageImpl extends EPackageImpl implements RossystemPacka
     }
 
     /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public EAttribute getSystem_FromFile() {
+        return (EAttribute)systemEClass.getEStructuralFeatures().get(5);
+    }
+
+                /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -792,6 +810,26 @@ public class RossystemPackageImpl extends EPackageImpl implements RossystemPacka
      * @generated
      */
     @Override
+    public EClass getReferenceSystem() {
+        return referenceSystemEClass;
+    }
+
+                                                                /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public EReference getReferenceSystem_Ref() {
+        return (EReference)referenceSystemEClass.getEStructuralFeatures().get(0);
+    }
+
+                                                                /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
     public RossystemFactory getRossystemFactory() {
         return (RossystemFactory)getEFactoryInstance();
     }
@@ -821,6 +859,7 @@ public class RossystemPackageImpl extends EPackageImpl implements RossystemPacka
         createEReference(systemEClass, SYSTEM__COMPONENTS);
         createEReference(systemEClass, SYSTEM__CONNECTIONS);
         createEReference(systemEClass, SYSTEM__PARAMETER);
+        createEAttribute(systemEClass, SYSTEM__FROM_FILE);
 
         rossystemEClass = createEClass(ROSSYSTEM);
 
@@ -888,6 +927,9 @@ public class RossystemPackageImpl extends EPackageImpl implements RossystemPacka
         rosActionConnectionEClass = createEClass(ROS_ACTION_CONNECTION);
         createEReference(rosActionConnectionEClass, ROS_ACTION_CONNECTION__FROM);
         createEReference(rosActionConnectionEClass, ROS_ACTION_CONNECTION__TO);
+
+        referenceSystemEClass = createEClass(REFERENCE_SYSTEM);
+        createEReference(referenceSystemEClass, REFERENCE_SYSTEM__REF);
     }
 
     /**
@@ -922,6 +964,7 @@ public class RossystemPackageImpl extends EPackageImpl implements RossystemPacka
         // Set bounds for type parameters
 
         // Add supertypes to classes
+        systemEClass.getESuperTypes().add(this.getComponent());
         rossystemEClass.getESuperTypes().add(this.getSystem());
         rosNodeEClass.getESuperTypes().add(this.getComponent());
         rosPublisherReferenceEClass.getESuperTypes().add(this.getInterfaceReference());
@@ -936,6 +979,7 @@ public class RossystemPackageImpl extends EPackageImpl implements RossystemPacka
         rosTopicConnectionEClass.getESuperTypes().add(this.getRosConnection());
         rosServiceConnectionEClass.getESuperTypes().add(this.getRosConnection());
         rosActionConnectionEClass.getESuperTypes().add(this.getRosConnection());
+        referenceSystemEClass.getESuperTypes().add(this.getComponent());
 
         // Initialize classes, features, and operations; add parameters
         initEClass(systemEClass, system.System.class, "System", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -944,6 +988,7 @@ public class RossystemPackageImpl extends EPackageImpl implements RossystemPacka
         initEReference(getSystem_Components(), this.getComponent(), null, "components", null, 0, -1, system.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getSystem_Connections(), this.getConnection(), null, "connections", null, 0, -1, system.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getSystem_Parameter(), this.getRosParameter(), null, "parameter", null, 0, -1, system.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+        initEAttribute(getSystem_FromFile(), ecorePackage.getEString(), "fromFile", null, 0, 1, system.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(rossystemEClass, Rossystem.class, "Rossystem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1011,6 +1056,9 @@ public class RossystemPackageImpl extends EPackageImpl implements RossystemPacka
         initEClass(rosActionConnectionEClass, RosActionConnection.class, "RosActionConnection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEReference(getRosActionConnection_From(), theRosPackage.getActionServer(), null, "from", null, 1, 1, RosActionConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getRosActionConnection_To(), theRosPackage.getActionClient(), null, "to", null, 1, 1, RosActionConnection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+        initEClass(referenceSystemEClass, ReferenceSystem.class, "ReferenceSystem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getReferenceSystem_Ref(), this.getSystem(), null, "ref", null, 1, 1, ReferenceSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         // Create resource
         createResource(eNS_URI);

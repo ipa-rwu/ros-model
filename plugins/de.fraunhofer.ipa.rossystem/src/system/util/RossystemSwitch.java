@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.util.Switch;
 import system.Component;
 import system.Connection;
 import system.InterfaceReference;
+import system.ReferenceSystem;
 import system.RosActionClientReference;
 import system.RosActionConnection;
 import system.RosActionServerReference;
@@ -88,6 +89,7 @@ public class RossystemSwitch<T> extends Switch<T> {
             case RossystemPackage.SYSTEM: {
                 system.System system = (system.System)theEObject;
                 T result = caseSystem(system);
+                if (result == null) result = caseComponent(system);
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
@@ -95,6 +97,7 @@ public class RossystemSwitch<T> extends Switch<T> {
                 Rossystem rossystem = (Rossystem)theEObject;
                 T result = caseRossystem(rossystem);
                 if (result == null) result = caseSystem(rossystem);
+                if (result == null) result = caseComponent(rossystem);
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
@@ -225,6 +228,13 @@ public class RossystemSwitch<T> extends Switch<T> {
                 T result = caseRosActionConnection(rosActionConnection);
                 if (result == null) result = caseRosConnection(rosActionConnection);
                 if (result == null) result = caseConnection(rosActionConnection);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case RossystemPackage.REFERENCE_SYSTEM: {
+                ReferenceSystem referenceSystem = (ReferenceSystem)theEObject;
+                T result = caseReferenceSystem(referenceSystem);
+                if (result == null) result = caseComponent(referenceSystem);
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
@@ -548,6 +558,21 @@ public class RossystemSwitch<T> extends Switch<T> {
     }
 
                 /**
+     * Returns the result of interpreting the object as an instance of '<em>Reference System</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Reference System</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseReferenceSystem(ReferenceSystem object) {
+        return null;
+    }
+
+                                                                /**
      * Returns the result of interpreting the object as an instance of '<em>EObject</em>'.
      * <!-- begin-user-doc -->
      * This implementation returns null;

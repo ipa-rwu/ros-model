@@ -33,7 +33,7 @@ public class RosSystemParser extends AbstractContentAssistParser {
 		}
 		
 		private static void init(ImmutableMap.Builder<AbstractElement, String> builder, RosSystemGrammarAccess grammarAccess) {
-			builder.put(grammarAccess.getRosSystemAccess().getAlternatives_3(), "rule__RosSystem__Alternatives_3");
+			builder.put(grammarAccess.getRosSystemAccess().getAlternatives_4(), "rule__RosSystem__Alternatives_4");
 			builder.put(grammarAccess.getInterfaceReferenceAccess().getAlternatives(), "rule__InterfaceReference__Alternatives");
 			builder.put(grammarAccess.getConnectionAccess().getAlternatives(), "rule__Connection__Alternatives");
 			builder.put(grammarAccess.getRosConnectionAccess().getAlternatives(), "rule__RosConnection__Alternatives");
@@ -47,10 +47,13 @@ public class RosSystemParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getEStringAccess().getAlternatives(), "rule__EString__Alternatives");
 			builder.put(grammarAccess.getRosNamesAccess().getAlternatives(), "rule__RosNames__Alternatives");
 			builder.put(grammarAccess.getRosSystemAccess().getGroup(), "rule__RosSystem__Group__0");
-			builder.put(grammarAccess.getRosSystemAccess().getGroup_3_0(), "rule__RosSystem__Group_3_0__0");
-			builder.put(grammarAccess.getRosSystemAccess().getGroup_3_1(), "rule__RosSystem__Group_3_1__0");
-			builder.put(grammarAccess.getRosSystemAccess().getGroup_3_2(), "rule__RosSystem__Group_3_2__0");
-			builder.put(grammarAccess.getRosSystemAccess().getGroup_3_3(), "rule__RosSystem__Group_3_3__0");
+			builder.put(grammarAccess.getRosSystemAccess().getGroup_3(), "rule__RosSystem__Group_3__0");
+			builder.put(grammarAccess.getRosSystemAccess().getGroup_4_0(), "rule__RosSystem__Group_4_0__0");
+			builder.put(grammarAccess.getRosSystemAccess().getGroup_4_1(), "rule__RosSystem__Group_4_1__0");
+			builder.put(grammarAccess.getRosSystemAccess().getGroup_4_2(), "rule__RosSystem__Group_4_2__0");
+			builder.put(grammarAccess.getRosSystemAccess().getGroup_4_3(), "rule__RosSystem__Group_4_3__0");
+			builder.put(grammarAccess.getRosSystemAccess().getGroup_4_4(), "rule__RosSystem__Group_4_4__0");
+			builder.put(grammarAccess.getRosSystemAccess().getGroup_4_5(), "rule__RosSystem__Group_4_5__0");
 			builder.put(grammarAccess.getProcessAccess().getGroup(), "rule__Process__Group__0");
 			builder.put(grammarAccess.getProcessAccess().getGroup_4(), "rule__Process__Group_4__0");
 			builder.put(grammarAccess.getProcessAccess().getGroup_4_3(), "rule__Process__Group_4_3__0");
@@ -58,6 +61,7 @@ public class RosSystemParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getRosNodeAccess().getGroup(), "rule__RosNode__Group__0");
 			builder.put(grammarAccess.getRosNodeAccess().getGroup_6(), "rule__RosNode__Group_6__0");
 			builder.put(grammarAccess.getRosNodeAccess().getGroup_7(), "rule__RosNode__Group_7__0");
+			builder.put(grammarAccess.getReferenceSystemAccess().getGroup(), "rule__ReferenceSystem__Group__0");
 			builder.put(grammarAccess.getRosInterfaceAccess().getGroup(), "rule__RosInterface__Group__0");
 			builder.put(grammarAccess.getRosPublisherReferenceAccess().getGroup(), "rule__RosPublisherReference__Group__0");
 			builder.put(grammarAccess.getRosSubscriberReferenceAccess().getGroup(), "rule__RosSubscriberReference__Group__0");
@@ -66,6 +70,7 @@ public class RosSystemParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getRosActionServerReferenceAccess().getGroup(), "rule__RosActionServerReference__Group__0");
 			builder.put(grammarAccess.getRosActionClientReferenceAccess().getGroup(), "rule__RosActionClientReference__Group__0");
 			builder.put(grammarAccess.getRosParameterAccess().getGroup(), "rule__RosParameter__Group__0");
+			builder.put(grammarAccess.getRosParameterReferenceAccess().getGroup(), "rule__RosParameterReference__Group__0");
 			builder.put(grammarAccess.getRosSystemConnectionAccess().getGroup(), "rule__RosSystemConnection__Group__0");
 			builder.put(grammarAccess.getRosTopicConnectionAccess().getGroup(), "rule__RosTopicConnection__Group__0");
 			builder.put(grammarAccess.getRosServiceConnectionAccess().getGroup(), "rule__RosServiceConnection__Group__0");
@@ -145,10 +150,13 @@ public class RosSystemParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getHeaderAccess().getGroup(), "rule__Header__Group__0");
 			builder.put(grammarAccess.getArraySpecRefAccess().getGroup(), "rule__ArraySpecRef__Group__0");
 			builder.put(grammarAccess.getRosSystemAccess().getNameAssignment_0(), "rule__RosSystem__NameAssignment_0");
-			builder.put(grammarAccess.getRosSystemAccess().getProcessesAssignment_3_0_2(), "rule__RosSystem__ProcessesAssignment_3_0_2");
-			builder.put(grammarAccess.getRosSystemAccess().getComponentsAssignment_3_1_2(), "rule__RosSystem__ComponentsAssignment_3_1_2");
-			builder.put(grammarAccess.getRosSystemAccess().getParameterAssignment_3_2_2(), "rule__RosSystem__ParameterAssignment_3_2_2");
-			builder.put(grammarAccess.getRosSystemAccess().getConnectionsAssignment_3_3_2(), "rule__RosSystem__ConnectionsAssignment_3_3_2");
+			builder.put(grammarAccess.getRosSystemAccess().getFromFileAssignment_3_1(), "rule__RosSystem__FromFileAssignment_3_1");
+			builder.put(grammarAccess.getRosSystemAccess().getProcessesAssignment_4_0_2(), "rule__RosSystem__ProcessesAssignment_4_0_2");
+			builder.put(grammarAccess.getRosSystemAccess().getComponentsAssignment_4_1_2(), "rule__RosSystem__ComponentsAssignment_4_1_2");
+			builder.put(grammarAccess.getRosSystemAccess().getComponentsAssignment_4_2_2(), "rule__RosSystem__ComponentsAssignment_4_2_2");
+			builder.put(grammarAccess.getRosSystemAccess().getParameterAssignment_4_3_2(), "rule__RosSystem__ParameterAssignment_4_3_2");
+			builder.put(grammarAccess.getRosSystemAccess().getConnectionsAssignment_4_4_2(), "rule__RosSystem__ConnectionsAssignment_4_4_2");
+			builder.put(grammarAccess.getRosSystemAccess().getComponentsAssignment_4_5_2(), "rule__RosSystem__ComponentsAssignment_4_5_2");
 			builder.put(grammarAccess.getProcessAccess().getNameAssignment_1(), "rule__Process__NameAssignment_1");
 			builder.put(grammarAccess.getProcessAccess().getComponentsAssignment_4_2(), "rule__Process__ComponentsAssignment_4_2");
 			builder.put(grammarAccess.getProcessAccess().getComponentsAssignment_4_3_1(), "rule__Process__ComponentsAssignment_4_3_1");
@@ -157,6 +165,7 @@ public class RosSystemParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getRosNodeAccess().getFromAssignment_5(), "rule__RosNode__FromAssignment_5");
 			builder.put(grammarAccess.getRosNodeAccess().getRosinterfacesAssignment_6_2(), "rule__RosNode__RosinterfacesAssignment_6_2");
 			builder.put(grammarAccess.getRosNodeAccess().getRosparametersAssignment_7_2(), "rule__RosNode__RosparametersAssignment_7_2");
+			builder.put(grammarAccess.getReferenceSystemAccess().getRefAssignment_2(), "rule__ReferenceSystem__RefAssignment_2");
 			builder.put(grammarAccess.getRosInterfaceAccess().getNameAssignment_1(), "rule__RosInterface__NameAssignment_1");
 			builder.put(grammarAccess.getRosInterfaceAccess().getReferenceAssignment_3(), "rule__RosInterface__ReferenceAssignment_3");
 			builder.put(grammarAccess.getRosPublisherReferenceAccess().getFromAssignment_2(), "rule__RosPublisherReference__FromAssignment_2");
@@ -165,9 +174,10 @@ public class RosSystemParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getRosServerClientReferenceAccess().getFromAssignment_2(), "rule__RosServerClientReference__FromAssignment_2");
 			builder.put(grammarAccess.getRosActionServerReferenceAccess().getFromAssignment_2(), "rule__RosActionServerReference__FromAssignment_2");
 			builder.put(grammarAccess.getRosActionClientReferenceAccess().getFromAssignment_2(), "rule__RosActionClientReference__FromAssignment_2");
-			builder.put(grammarAccess.getRosParameterAccess().getNameAssignment_0(), "rule__RosParameter__NameAssignment_0");
-			builder.put(grammarAccess.getRosParameterAccess().getFromAssignment_2(), "rule__RosParameter__FromAssignment_2");
-			builder.put(grammarAccess.getRosParameterAccess().getValueAssignment_5(), "rule__RosParameter__ValueAssignment_5");
+			builder.put(grammarAccess.getRosParameterAccess().getNameAssignment_1(), "rule__RosParameter__NameAssignment_1");
+			builder.put(grammarAccess.getRosParameterAccess().getFromAssignment_3(), "rule__RosParameter__FromAssignment_3");
+			builder.put(grammarAccess.getRosParameterAccess().getValueAssignment_6(), "rule__RosParameter__ValueAssignment_6");
+			builder.put(grammarAccess.getRosParameterReferenceAccess().getFromAssignment_1(), "rule__RosParameterReference__FromAssignment_1");
 			builder.put(grammarAccess.getRosSystemConnectionAccess().getFromAssignment_1(), "rule__RosSystemConnection__FromAssignment_1");
 			builder.put(grammarAccess.getRosSystemConnectionAccess().getToAssignment_3(), "rule__RosSystemConnection__ToAssignment_3");
 			builder.put(grammarAccess.getRosTopicConnectionAccess().getFromAssignment_1(), "rule__RosTopicConnection__FromAssignment_1");

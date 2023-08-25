@@ -17,6 +17,8 @@ PrivateNamespace : 'PrivateNamespace';
 
 GlobalNamespace : 'GlobalNamespace';
 
+RefSubsystem : 'refSubsystem:';
+
 ParameterAny : 'ParameterAny';
 
 Connections : 'connections:';
@@ -27,11 +29,15 @@ Parameters : 'parameters:';
 
 Processes : 'processes:';
 
+SubSystem : 'subSystem:';
+
 GraphName : 'GraphName';
 
 Float32_1 : 'float32[]';
 
 Float64_1 : 'float64[]';
+
+FromFile : 'fromFile:';
 
 Default : 'default:';
 
@@ -64,6 +70,8 @@ Int32_1 : 'int32[]';
 Int64_1 : 'int64[]';
 
 Message : 'message';
+
+Param : 'param->';
 
 Service : 'service';
 

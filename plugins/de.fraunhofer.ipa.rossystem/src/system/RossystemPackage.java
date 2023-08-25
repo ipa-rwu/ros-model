@@ -67,69 +67,6 @@ public interface RossystemPackage extends EPackage {
     int SYSTEM = 0;
 
     /**
-     * The feature id for the '<em><b>Name</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int SYSTEM__NAME = 0;
-
-    /**
-     * The feature id for the '<em><b>Processes</b></em>' containment reference list.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int SYSTEM__PROCESSES = 1;
-
-    /**
-     * The feature id for the '<em><b>Components</b></em>' containment reference list.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int SYSTEM__COMPONENTS = 2;
-
-    /**
-     * The feature id for the '<em><b>Connections</b></em>' containment reference list.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int SYSTEM__CONNECTIONS = 3;
-
-    /**
-     * The feature id for the '<em><b>Parameter</b></em>' containment reference list.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int SYSTEM__PARAMETER = 4;
-
-    /**
-     * The number of structural features of the '<em>System</em>' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int SYSTEM_FEATURE_COUNT = 5;
-
-    /**
-     * The number of operations of the '<em>System</em>' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int SYSTEM_OPERATION_COUNT = 0;
-
-    /**
      * The meta object id for the '{@link system.impl.RossystemImpl <em>Rossystem</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -140,69 +77,6 @@ public interface RossystemPackage extends EPackage {
     int ROSSYSTEM = 1;
 
                 /**
-     * The feature id for the '<em><b>Name</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int ROSSYSTEM__NAME = SYSTEM__NAME;
-
-                /**
-     * The feature id for the '<em><b>Processes</b></em>' containment reference list.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int ROSSYSTEM__PROCESSES = SYSTEM__PROCESSES;
-
-                /**
-     * The feature id for the '<em><b>Components</b></em>' containment reference list.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int ROSSYSTEM__COMPONENTS = SYSTEM__COMPONENTS;
-
-                /**
-     * The feature id for the '<em><b>Connections</b></em>' containment reference list.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int ROSSYSTEM__CONNECTIONS = SYSTEM__CONNECTIONS;
-
-                /**
-     * The feature id for the '<em><b>Parameter</b></em>' containment reference list.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int ROSSYSTEM__PARAMETER = SYSTEM__PARAMETER;
-
-                /**
-     * The number of structural features of the '<em>Rossystem</em>' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int ROSSYSTEM_FEATURE_COUNT = SYSTEM_FEATURE_COUNT + 0;
-
-                /**
-     * The number of operations of the '<em>Rossystem</em>' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int ROSSYSTEM_OPERATION_COUNT = SYSTEM_OPERATION_COUNT + 0;
-
-                /**
      * The meta object id for the '{@link system.impl.ProcessImpl <em>Process</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -211,51 +85,6 @@ public interface RossystemPackage extends EPackage {
      * @generated
      */
     int PROCESS = 2;
-
-    /**
-     * The feature id for the '<em><b>Name</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int PROCESS__NAME = 0;
-
-    /**
-     * The feature id for the '<em><b>Threads</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int PROCESS__THREADS = 1;
-
-    /**
-     * The feature id for the '<em><b>Components</b></em>' reference list.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int PROCESS__COMPONENTS = 2;
-
-                /**
-     * The number of structural features of the '<em>Process</em>' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int PROCESS_FEATURE_COUNT = 3;
-
-    /**
-     * The number of operations of the '<em>Process</em>' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int PROCESS_OPERATION_COUNT = 0;
 
     /**
      * The meta object id for the '{@link system.impl.ComponentImpl <em>Component</em>}' class.
@@ -284,6 +113,195 @@ public interface RossystemPackage extends EPackage {
      * @ordered
      */
     int COMPONENT_OPERATION_COUNT = 0;
+
+                /**
+     * The feature id for the '<em><b>Name</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SYSTEM__NAME = COMPONENT_FEATURE_COUNT + 0;
+
+                /**
+     * The feature id for the '<em><b>Processes</b></em>' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SYSTEM__PROCESSES = COMPONENT_FEATURE_COUNT + 1;
+
+                /**
+     * The feature id for the '<em><b>Components</b></em>' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SYSTEM__COMPONENTS = COMPONENT_FEATURE_COUNT + 2;
+
+                /**
+     * The feature id for the '<em><b>Connections</b></em>' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SYSTEM__CONNECTIONS = COMPONENT_FEATURE_COUNT + 3;
+
+                /**
+     * The feature id for the '<em><b>Parameter</b></em>' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SYSTEM__PARAMETER = COMPONENT_FEATURE_COUNT + 4;
+
+                /**
+     * The feature id for the '<em><b>From File</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SYSTEM__FROM_FILE = COMPONENT_FEATURE_COUNT + 5;
+
+                /**
+     * The number of structural features of the '<em>System</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SYSTEM_FEATURE_COUNT = COMPONENT_FEATURE_COUNT + 6;
+
+                /**
+     * The number of operations of the '<em>System</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SYSTEM_OPERATION_COUNT = COMPONENT_OPERATION_COUNT + 0;
+
+                /**
+     * The feature id for the '<em><b>Name</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+int ROSSYSTEM__NAME = SYSTEM__NAME;
+
+                /**
+     * The feature id for the '<em><b>Processes</b></em>' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+int ROSSYSTEM__PROCESSES = SYSTEM__PROCESSES;
+
+                /**
+     * The feature id for the '<em><b>Components</b></em>' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+int ROSSYSTEM__COMPONENTS = SYSTEM__COMPONENTS;
+
+                /**
+     * The feature id for the '<em><b>Connections</b></em>' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+int ROSSYSTEM__CONNECTIONS = SYSTEM__CONNECTIONS;
+
+                /**
+     * The feature id for the '<em><b>Parameter</b></em>' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+int ROSSYSTEM__PARAMETER = SYSTEM__PARAMETER;
+
+                /**
+     * The feature id for the '<em><b>From File</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int ROSSYSTEM__FROM_FILE = SYSTEM__FROM_FILE;
+
+                /**
+     * The number of structural features of the '<em>Rossystem</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+int ROSSYSTEM_FEATURE_COUNT = SYSTEM_FEATURE_COUNT + 0;
+
+                /**
+     * The number of operations of the '<em>Rossystem</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+int ROSSYSTEM_OPERATION_COUNT = SYSTEM_OPERATION_COUNT + 0;
+
+                /**
+     * The feature id for the '<em><b>Name</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int PROCESS__NAME = 0;
+
+                /**
+     * The feature id for the '<em><b>Threads</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int PROCESS__THREADS = 1;
+
+                /**
+     * The feature id for the '<em><b>Components</b></em>' reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int PROCESS__COMPONENTS = 2;
+
+                /**
+     * The number of structural features of the '<em>Process</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+int PROCESS_FEATURE_COUNT = 3;
+
+                /**
+     * The number of operations of the '<em>Process</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int PROCESS_OPERATION_COUNT = 0;
 
     /**
      * The meta object id for the '{@link system.impl.ConnectionImpl <em>Connection</em>}' class.
@@ -582,7 +600,7 @@ public interface RossystemPackage extends EPackage {
     int ROS_SERVICE_CLIENT_REFERENCE__FROM = INTERFACE_REFERENCE_FEATURE_COUNT + 0;
 
     /**
-     * The number of structural features of the '<em>Ros Server Client Reference</em>' class.
+     * The number of structural features of the '<em>Ros Service Client Reference</em>' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -980,6 +998,44 @@ public interface RossystemPackage extends EPackage {
 
 
                 /**
+     * The meta object id for the '{@link system.impl.ReferenceSystemImpl <em>Reference System</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see system.impl.ReferenceSystemImpl
+     * @see system.impl.RossystemPackageImpl#getReferenceSystem()
+     * @generated
+     */
+    int REFERENCE_SYSTEM = 21;
+
+                                                                /**
+     * The feature id for the '<em><b>Ref</b></em>' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int REFERENCE_SYSTEM__REF = COMPONENT_FEATURE_COUNT + 0;
+
+                                                                /**
+     * The number of structural features of the '<em>Reference System</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int REFERENCE_SYSTEM_FEATURE_COUNT = COMPONENT_FEATURE_COUNT + 1;
+
+                                                                /**
+     * The number of operations of the '<em>Reference System</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int REFERENCE_SYSTEM_OPERATION_COUNT = COMPONENT_OPERATION_COUNT + 0;
+
+
+                                                                /**
      * Returns the meta object for class '{@link system.System <em>System</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1045,6 +1101,17 @@ public interface RossystemPackage extends EPackage {
     EReference getSystem_Parameter();
 
     /**
+     * Returns the meta object for the attribute '{@link system.System#getFromFile <em>From File</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>From File</em>'.
+     * @see system.System#getFromFile()
+     * @see #getSystem()
+     * @generated
+     */
+    EAttribute getSystem_FromFile();
+
+                /**
      * Returns the meta object for class '{@link system.Rossystem <em>Rossystem</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1542,6 +1609,27 @@ public interface RossystemPackage extends EPackage {
     EReference getRosActionConnection_To();
 
                 /**
+     * Returns the meta object for class '{@link system.ReferenceSystem <em>Reference System</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>Reference System</em>'.
+     * @see system.ReferenceSystem
+     * @generated
+     */
+    EClass getReferenceSystem();
+
+                                                                /**
+     * Returns the meta object for the reference '{@link system.ReferenceSystem#getRef <em>Ref</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the reference '<em>Ref</em>'.
+     * @see system.ReferenceSystem#getRef()
+     * @see #getReferenceSystem()
+     * @generated
+     */
+    EReference getReferenceSystem_Ref();
+
+                                                                /**
      * Returns the factory that creates the instances of the model.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1615,6 +1703,14 @@ public interface RossystemPackage extends EPackage {
         EReference SYSTEM__PARAMETER = eINSTANCE.getSystem_Parameter();
 
         /**
+         * The meta object literal for the '<em><b>From File</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute SYSTEM__FROM_FILE = eINSTANCE.getSystem_FromFile();
+
+                                /**
          * The meta object literal for the '{@link system.impl.RossystemImpl <em>Rossystem</em>}' class.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -2029,6 +2125,24 @@ public interface RossystemPackage extends EPackage {
          * @generated
          */
         EReference ROS_ACTION_CONNECTION__TO = eINSTANCE.getRosActionConnection_To();
+
+                                                                                                                                /**
+         * The meta object literal for the '{@link system.impl.ReferenceSystemImpl <em>Reference System</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see system.impl.ReferenceSystemImpl
+         * @see system.impl.RossystemPackageImpl#getReferenceSystem()
+         * @generated
+         */
+        EClass REFERENCE_SYSTEM = eINSTANCE.getReferenceSystem();
+
+                                                                                                                                /**
+         * The meta object literal for the '<em><b>Ref</b></em>' reference feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference REFERENCE_SYSTEM__REF = eINSTANCE.getReferenceSystem_Ref();
 
     }
 

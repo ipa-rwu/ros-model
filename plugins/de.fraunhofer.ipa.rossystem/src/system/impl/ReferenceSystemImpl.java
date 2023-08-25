@@ -8,41 +8,40 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import ros.Parameter;
 
-import system.RosParameterReference;
+import system.ReferenceSystem;
 import system.RossystemPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Ros Parameter Reference</b></em>'.
+ * An implementation of the model object '<em><b>Reference System</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link system.impl.RosParameterReferenceImpl#getFrom <em>From</em>}</li>
+ *   <li>{@link system.impl.ReferenceSystemImpl#getRef <em>Ref</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class RosParameterReferenceImpl extends InterfaceReferenceImpl implements RosParameterReference {
+public class ReferenceSystemImpl extends ComponentImpl implements ReferenceSystem {
     /**
-     * The cached value of the '{@link #getFrom() <em>From</em>}' reference.
+     * The cached value of the '{@link #getRef() <em>Ref</em>}' reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see #getFrom()
+     * @see #getRef()
      * @generated
      * @ordered
      */
-    protected Parameter from;
+    protected system.System ref;
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    protected RosParameterReferenceImpl() {
+    protected ReferenceSystemImpl() {
         super();
     }
 
@@ -53,7 +52,7 @@ public class RosParameterReferenceImpl extends InterfaceReferenceImpl implements
      */
     @Override
     protected EClass eStaticClass() {
-        return RossystemPackage.Literals.ROS_PARAMETER_REFERENCE;
+        return RossystemPackage.Literals.REFERENCE_SYSTEM;
     }
 
     /**
@@ -62,16 +61,16 @@ public class RosParameterReferenceImpl extends InterfaceReferenceImpl implements
      * @generated
      */
     @Override
-    public Parameter getFrom() {
-        if (from != null && from.eIsProxy()) {
-            InternalEObject oldFrom = (InternalEObject)from;
-            from = (Parameter)eResolveProxy(oldFrom);
-            if (from != oldFrom) {
+    public system.System getRef() {
+        if (ref != null && ref.eIsProxy()) {
+            InternalEObject oldRef = (InternalEObject)ref;
+            ref = (system.System)eResolveProxy(oldRef);
+            if (ref != oldRef) {
                 if (eNotificationRequired())
-                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, RossystemPackage.ROS_PARAMETER_REFERENCE__FROM, oldFrom, from));
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, RossystemPackage.REFERENCE_SYSTEM__REF, oldRef, ref));
             }
         }
-        return from;
+        return ref;
     }
 
     /**
@@ -79,8 +78,8 @@ public class RosParameterReferenceImpl extends InterfaceReferenceImpl implements
      * <!-- end-user-doc -->
      * @generated
      */
-    public Parameter basicGetFrom() {
-        return from;
+    public system.System basicGetRef() {
+        return ref;
     }
 
     /**
@@ -89,11 +88,11 @@ public class RosParameterReferenceImpl extends InterfaceReferenceImpl implements
      * @generated
      */
     @Override
-    public void setFrom(Parameter newFrom) {
-        Parameter oldFrom = from;
-        from = newFrom;
+    public void setRef(system.System newRef) {
+        system.System oldRef = ref;
+        ref = newRef;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, RossystemPackage.ROS_PARAMETER_REFERENCE__FROM, oldFrom, from));
+            eNotify(new ENotificationImpl(this, Notification.SET, RossystemPackage.REFERENCE_SYSTEM__REF, oldRef, ref));
     }
 
     /**
@@ -104,9 +103,9 @@ public class RosParameterReferenceImpl extends InterfaceReferenceImpl implements
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-            case RossystemPackage.ROS_PARAMETER_REFERENCE__FROM:
-                if (resolve) return getFrom();
-                return basicGetFrom();
+            case RossystemPackage.REFERENCE_SYSTEM__REF:
+                if (resolve) return getRef();
+                return basicGetRef();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -119,8 +118,8 @@ public class RosParameterReferenceImpl extends InterfaceReferenceImpl implements
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-            case RossystemPackage.ROS_PARAMETER_REFERENCE__FROM:
-                setFrom((Parameter)newValue);
+            case RossystemPackage.REFERENCE_SYSTEM__REF:
+                setRef((system.System)newValue);
                 return;
         }
         super.eSet(featureID, newValue);
@@ -134,8 +133,8 @@ public class RosParameterReferenceImpl extends InterfaceReferenceImpl implements
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-            case RossystemPackage.ROS_PARAMETER_REFERENCE__FROM:
-                setFrom((Parameter)null);
+            case RossystemPackage.REFERENCE_SYSTEM__REF:
+                setRef((system.System)null);
                 return;
         }
         super.eUnset(featureID);
@@ -149,10 +148,10 @@ public class RosParameterReferenceImpl extends InterfaceReferenceImpl implements
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-            case RossystemPackage.ROS_PARAMETER_REFERENCE__FROM:
-                return from != null;
+            case RossystemPackage.REFERENCE_SYSTEM__REF:
+                return ref != null;
         }
         return super.eIsSet(featureID);
     }
 
-} //RosParameterReferenceImpl
+} //ReferenceSystemImpl

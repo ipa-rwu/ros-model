@@ -13,8 +13,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import system.Component;
@@ -35,11 +33,12 @@ import system.RossystemPackage;
  *   <li>{@link system.impl.SystemImpl#getComponents <em>Components</em>}</li>
  *   <li>{@link system.impl.SystemImpl#getConnections <em>Connections</em>}</li>
  *   <li>{@link system.impl.SystemImpl#getParameter <em>Parameter</em>}</li>
+ *   <li>{@link system.impl.SystemImpl#getFromFile <em>From File</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class SystemImpl extends MinimalEObjectImpl.Container implements system.System {
+public class SystemImpl extends ComponentImpl implements system.System {
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc -->
@@ -101,6 +100,26 @@ public class SystemImpl extends MinimalEObjectImpl.Container implements system.S
     protected EList<RosParameter> parameter;
 
     /**
+     * The default value of the '{@link #getFromFile() <em>From File</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getFromFile()
+     * @generated
+     * @ordered
+     */
+    protected static final String FROM_FILE_EDEFAULT = null;
+
+                /**
+     * The cached value of the '{@link #getFromFile() <em>From File</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getFromFile()
+     * @generated
+     * @ordered
+     */
+    protected String fromFile = FROM_FILE_EDEFAULT;
+
+                /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -200,6 +219,29 @@ public class SystemImpl extends MinimalEObjectImpl.Container implements system.S
      * @generated
      */
     @Override
+    public String getFromFile() {
+        return fromFile;
+    }
+
+                /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public void setFromFile(String newFromFile) {
+        String oldFromFile = fromFile;
+        fromFile = newFromFile;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, RossystemPackage.SYSTEM__FROM_FILE, oldFromFile, fromFile));
+    }
+
+                /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case RossystemPackage.SYSTEM__PROCESSES:
@@ -232,6 +274,8 @@ public class SystemImpl extends MinimalEObjectImpl.Container implements system.S
                 return getConnections();
             case RossystemPackage.SYSTEM__PARAMETER:
                 return getParameter();
+            case RossystemPackage.SYSTEM__FROM_FILE:
+                return getFromFile();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -264,6 +308,9 @@ public class SystemImpl extends MinimalEObjectImpl.Container implements system.S
                 getParameter().clear();
                 getParameter().addAll((Collection<? extends RosParameter>)newValue);
                 return;
+            case RossystemPackage.SYSTEM__FROM_FILE:
+                setFromFile((String)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -291,6 +338,9 @@ public class SystemImpl extends MinimalEObjectImpl.Container implements system.S
             case RossystemPackage.SYSTEM__PARAMETER:
                 getParameter().clear();
                 return;
+            case RossystemPackage.SYSTEM__FROM_FILE:
+                setFromFile(FROM_FILE_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -313,6 +363,8 @@ public class SystemImpl extends MinimalEObjectImpl.Container implements system.S
                 return connections != null && !connections.isEmpty();
             case RossystemPackage.SYSTEM__PARAMETER:
                 return parameter != null && !parameter.isEmpty();
+            case RossystemPackage.SYSTEM__FROM_FILE:
+                return FROM_FILE_EDEFAULT == null ? fromFile != null : !FROM_FILE_EDEFAULT.equals(fromFile);
         }
         return super.eIsSet(featureID);
     }
@@ -329,6 +381,8 @@ public class SystemImpl extends MinimalEObjectImpl.Container implements system.S
         StringBuilder result = new StringBuilder(super.toString());
         result.append(" (name: ");
         result.append(name);
+        result.append(", fromFile: ");
+        result.append(fromFile);
         result.append(')');
         return result.toString();
     }

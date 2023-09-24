@@ -3,6 +3,7 @@
 package system;
 
 import org.eclipse.emf.common.util.EList;
+import ros.Parameter;
 
 /**
  * <!-- begin-user-doc -->
@@ -86,7 +87,7 @@ public interface System extends Component {
 
     /**
      * Returns the value of the '<em><b>Parameter</b></em>' containment reference list.
-     * The list contents are of type {@link system.RosParameter}.
+     * The list contents are of type {@link ros.Parameter}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @return the value of the '<em>Parameter</em>' containment reference list.
@@ -94,28 +95,28 @@ public interface System extends Component {
      * @model containment="true" derived="true"
      * @generated
      */
-    EList<RosParameter> getParameter();
+    EList<Parameter> getParameter();
 
                 /**
-     * Returns the value of the '<em><b>From File</b></em>' attribute.
+     * Returns the value of the '<em><b>From File</b></em>' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @return the value of the '<em>From File</em>' attribute.
-     * @see #setFromFile(String)
+     * @return the value of the '<em>From File</em>' containment reference.
+     * @see #setFromFile(LaunchFile)
      * @see system.RossystemPackage#getSystem_FromFile()
-     * @model
+     * @model containment="true"
      * @generated
      */
-    String getFromFile();
+    LaunchFile getFromFile();
 
                 /**
-     * Sets the value of the '{@link system.System#getFromFile <em>From File</em>}' attribute.
+     * Sets the value of the '{@link system.System#getFromFile <em>From File</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @param value the new value of the '<em>From File</em>' attribute.
+     * @param value the new value of the '<em>From File</em>' containment reference.
      * @see #getFromFile()
      * @generated
      */
-    void setFromFile(String value);
+    void setFromFile(LaunchFile value);
 
 } // System

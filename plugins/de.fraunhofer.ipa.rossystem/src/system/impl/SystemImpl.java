@@ -15,9 +15,10 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import ros.Parameter;
 import system.Component;
 import system.Connection;
-import system.RosParameter;
+import system.LaunchFile;
 import system.RossystemPackage;
 
 /**
@@ -97,27 +98,17 @@ public class SystemImpl extends ComponentImpl implements system.System {
      * @generated
      * @ordered
      */
-    protected EList<RosParameter> parameter;
+    protected EList<Parameter> parameter;
 
     /**
-     * The default value of the '{@link #getFromFile() <em>From File</em>}' attribute.
+     * The cached value of the '{@link #getFromFile() <em>From File</em>}' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @see #getFromFile()
      * @generated
      * @ordered
      */
-    protected static final String FROM_FILE_EDEFAULT = null;
-
-                /**
-     * The cached value of the '{@link #getFromFile() <em>From File</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #getFromFile()
-     * @generated
-     * @ordered
-     */
-    protected String fromFile = FROM_FILE_EDEFAULT;
+    protected LaunchFile fromFile;
 
                 /**
      * <!-- begin-user-doc -->
@@ -206,9 +197,9 @@ public class SystemImpl extends ComponentImpl implements system.System {
      * @generated
      */
     @Override
-    public EList<RosParameter> getParameter() {
+    public EList<Parameter> getParameter() {
         if (parameter == null) {
-            parameter = new EObjectContainmentEList<RosParameter>(RosParameter.class, this, RossystemPackage.SYSTEM__PARAMETER);
+            parameter = new EObjectContainmentEList<Parameter>(Parameter.class, this, RossystemPackage.SYSTEM__PARAMETER);
         }
         return parameter;
     }
@@ -219,7 +210,7 @@ public class SystemImpl extends ComponentImpl implements system.System {
      * @generated
      */
     @Override
-    public String getFromFile() {
+    public LaunchFile getFromFile() {
         return fromFile;
     }
 
@@ -228,15 +219,37 @@ public class SystemImpl extends ComponentImpl implements system.System {
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
-    public void setFromFile(String newFromFile) {
-        String oldFromFile = fromFile;
+    public NotificationChain basicSetFromFile(LaunchFile newFromFile, NotificationChain msgs) {
+        LaunchFile oldFromFile = fromFile;
         fromFile = newFromFile;
-        if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, RossystemPackage.SYSTEM__FROM_FILE, oldFromFile, fromFile));
+        if (eNotificationRequired()) {
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RossystemPackage.SYSTEM__FROM_FILE, oldFromFile, newFromFile);
+            if (msgs == null) msgs = notification; else msgs.add(notification);
+        }
+        return msgs;
     }
 
                 /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public void setFromFile(LaunchFile newFromFile) {
+        if (newFromFile != fromFile) {
+            NotificationChain msgs = null;
+            if (fromFile != null)
+                msgs = ((InternalEObject)fromFile).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RossystemPackage.SYSTEM__FROM_FILE, null, msgs);
+            if (newFromFile != null)
+                msgs = ((InternalEObject)newFromFile).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - RossystemPackage.SYSTEM__FROM_FILE, null, msgs);
+            msgs = basicSetFromFile(newFromFile, msgs);
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, RossystemPackage.SYSTEM__FROM_FILE, newFromFile, newFromFile));
+    }
+
+                                                                /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -252,6 +265,8 @@ public class SystemImpl extends ComponentImpl implements system.System {
                 return ((InternalEList<?>)getConnections()).basicRemove(otherEnd, msgs);
             case RossystemPackage.SYSTEM__PARAMETER:
                 return ((InternalEList<?>)getParameter()).basicRemove(otherEnd, msgs);
+            case RossystemPackage.SYSTEM__FROM_FILE:
+                return basicSetFromFile(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -306,10 +321,10 @@ public class SystemImpl extends ComponentImpl implements system.System {
                 return;
             case RossystemPackage.SYSTEM__PARAMETER:
                 getParameter().clear();
-                getParameter().addAll((Collection<? extends RosParameter>)newValue);
+                getParameter().addAll((Collection<? extends Parameter>)newValue);
                 return;
             case RossystemPackage.SYSTEM__FROM_FILE:
-                setFromFile((String)newValue);
+                setFromFile((LaunchFile)newValue);
                 return;
         }
         super.eSet(featureID, newValue);
@@ -339,7 +354,7 @@ public class SystemImpl extends ComponentImpl implements system.System {
                 getParameter().clear();
                 return;
             case RossystemPackage.SYSTEM__FROM_FILE:
-                setFromFile(FROM_FILE_EDEFAULT);
+                setFromFile((LaunchFile)null);
                 return;
         }
         super.eUnset(featureID);
@@ -364,7 +379,7 @@ public class SystemImpl extends ComponentImpl implements system.System {
             case RossystemPackage.SYSTEM__PARAMETER:
                 return parameter != null && !parameter.isEmpty();
             case RossystemPackage.SYSTEM__FROM_FILE:
-                return FROM_FILE_EDEFAULT == null ? fromFile != null : !FROM_FILE_EDEFAULT.equals(fromFile);
+                return fromFile != null;
         }
         return super.eIsSet(featureID);
     }
@@ -381,8 +396,6 @@ public class SystemImpl extends ComponentImpl implements system.System {
         StringBuilder result = new StringBuilder(super.toString());
         result.append(" (name: ");
         result.append(name);
-        result.append(", fromFile: ");
-        result.append(fromFile);
         result.append(')');
         return result.toString();
     }

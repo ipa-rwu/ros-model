@@ -452,6 +452,14 @@ public class RosSystemSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     (
+	 *         fromFile=LaunchFile 
+	 *         (('nodes:' BEGIN END) | ('subSystem:' BEGIN END) | ('parameters:' BEGIN END) | ('connections:' BEGIN END) | ('refSubsystem:' BEGIN END))* 
+	 *         'processes:' 
+	 *         BEGIN 
+	 *         (ambiguity) 
+	 *         processes+=Process
+	 *     )
+	 *     (
 	 *         name=EString 
 	 *         ':' 
 	 *         BEGIN 
@@ -461,7 +469,6 @@ public class RosSystemSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *         (ambiguity) 
 	 *         processes+=Process
 	 *     )
-	 *     fromFile=EString (('nodes:' BEGIN END) | ('subSystem:' BEGIN END) | ('parameters:' BEGIN END) | ('connections:' BEGIN END) | ('refSubsystem:' BEGIN END))* 'processes:' BEGIN (ambiguity) processes+=Process
 	 *     processes+=Process (ambiguity) processes+=Process
 	 
 	 * </pre>
@@ -536,7 +543,7 @@ public class RosSystemSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     (
-	 *         parameter+=RosParameter 
+	 *         parameter+=Parameter 
 	 *         END 
 	 *         ((('nodes:' BEGIN END) | ('subSystem:' BEGIN END) | ('connections:' BEGIN END) | ('refSubsystem:' BEGIN END))? ('parameters:' BEGIN END)?)+ 
 	 *         'processes:' 
@@ -617,6 +624,14 @@ public class RosSystemSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     (
+	 *         fromFile=LaunchFile 
+	 *         (('processes:' BEGIN END) | ('subSystem:' BEGIN END) | ('parameters:' BEGIN END) | ('connections:' BEGIN END) | ('refSubsystem:' BEGIN END))* 
+	 *         'nodes:' 
+	 *         BEGIN 
+	 *         (ambiguity) 
+	 *         components+=RosNode
+	 *     )
+	 *     (
 	 *         name=EString 
 	 *         ':' 
 	 *         BEGIN 
@@ -627,7 +642,6 @@ public class RosSystemSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *         components+=RosNode
 	 *     )
 	 *     components+=RosNode (ambiguity) components+=RosNode
-	 *     fromFile=EString (('processes:' BEGIN END) | ('subSystem:' BEGIN END) | ('parameters:' BEGIN END) | ('connections:' BEGIN END) | ('refSubsystem:' BEGIN END))* 'nodes:' BEGIN (ambiguity) components+=RosNode
 	 
 	 * </pre>
 	 */
@@ -728,7 +742,7 @@ public class RosSystemSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     (
-	 *         parameter+=RosParameter 
+	 *         parameter+=Parameter 
 	 *         END 
 	 *         ((('processes:' BEGIN END) | ('subSystem:' BEGIN END) | ('connections:' BEGIN END) | ('refSubsystem:' BEGIN END))? ('parameters:' BEGIN END)?)+ 
 	 *         'nodes:' 
@@ -782,7 +796,7 @@ public class RosSystemSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     (
-	 *         fromFile=EString 
+	 *         fromFile=LaunchFile 
 	 *         (('processes:' BEGIN END) | ('nodes:' BEGIN END) | ('parameters:' BEGIN END) | ('connections:' BEGIN END) | ('refSubsystem:' BEGIN END))* 
 	 *         'subSystem:' 
 	 *         BEGIN 
@@ -873,7 +887,7 @@ public class RosSystemSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     (
-	 *         parameter+=RosParameter 
+	 *         parameter+=Parameter 
 	 *         END 
 	 *         ((('processes:' BEGIN END) | ('nodes:' BEGIN END) | ('connections:' BEGIN END) | ('refSubsystem:' BEGIN END))? ('parameters:' BEGIN END)?)+ 
 	 *         'subSystem:' 
@@ -954,12 +968,12 @@ public class RosSystemSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     (
-	 *         fromFile=EString 
+	 *         fromFile=LaunchFile 
 	 *         (('processes:' BEGIN END) | ('nodes:' BEGIN END) | ('subSystem:' BEGIN END) | ('connections:' BEGIN END) | ('refSubsystem:' BEGIN END))* 
 	 *         'parameters:' 
 	 *         BEGIN 
 	 *         (ambiguity) 
-	 *         parameter+=RosParameter
+	 *         parameter+=Parameter
 	 *     )
 	 *     (
 	 *         name=EString 
@@ -969,9 +983,9 @@ public class RosSystemSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *         'parameters:' 
 	 *         BEGIN 
 	 *         (ambiguity) 
-	 *         parameter+=RosParameter
+	 *         parameter+=Parameter
 	 *     )
-	 *     parameter+=RosParameter (ambiguity) parameter+=RosParameter
+	 *     parameter+=Parameter (ambiguity) parameter+=Parameter
 	 
 	 * </pre>
 	 */
@@ -997,7 +1011,7 @@ public class RosSystemSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *         'parameters:' 
 	 *         BEGIN 
 	 *         (ambiguity) 
-	 *         parameter+=RosParameter
+	 *         parameter+=Parameter
 	 *     )
 	 
 	 * </pre>
@@ -1024,7 +1038,7 @@ public class RosSystemSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *         'parameters:' 
 	 *         BEGIN 
 	 *         (ambiguity) 
-	 *         parameter+=RosParameter
+	 *         parameter+=Parameter
 	 *     )
 	 
 	 * </pre>
@@ -1051,7 +1065,7 @@ public class RosSystemSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *         'parameters:' 
 	 *         BEGIN 
 	 *         (ambiguity) 
-	 *         parameter+=RosParameter
+	 *         parameter+=Parameter
 	 *     )
 	 
 	 * </pre>
@@ -1078,7 +1092,7 @@ public class RosSystemSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *         'parameters:' 
 	 *         BEGIN 
 	 *         (ambiguity) 
-	 *         parameter+=RosParameter
+	 *         parameter+=Parameter
 	 *     )
 	 
 	 * </pre>
@@ -1105,7 +1119,7 @@ public class RosSystemSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *         'parameters:' 
 	 *         BEGIN 
 	 *         (ambiguity) 
-	 *         parameter+=RosParameter
+	 *         parameter+=Parameter
 	 *     )
 	 
 	 * </pre>
@@ -1126,7 +1140,7 @@ public class RosSystemSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     (
-	 *         fromFile=EString 
+	 *         fromFile=LaunchFile 
 	 *         (('processes:' BEGIN END) | ('nodes:' BEGIN END) | ('subSystem:' BEGIN END) | ('parameters:' BEGIN END) | ('refSubsystem:' BEGIN END))* 
 	 *         'connections:' 
 	 *         BEGIN 
@@ -1244,7 +1258,7 @@ public class RosSystemSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     (
-	 *         parameter+=RosParameter 
+	 *         parameter+=Parameter 
 	 *         END 
 	 *         ((('processes:' BEGIN END) | ('nodes:' BEGIN END) | ('subSystem:' BEGIN END) | ('refSubsystem:' BEGIN END))? ('parameters:' BEGIN END)?)+ 
 	 *         'connections:' 
@@ -1298,7 +1312,7 @@ public class RosSystemSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     (
-	 *         fromFile=EString 
+	 *         fromFile=LaunchFile 
 	 *         (('processes:' BEGIN END) | ('nodes:' BEGIN END) | ('subSystem:' BEGIN END) | ('parameters:' BEGIN END) | ('connections:' BEGIN END))* 
 	 *         'refSubsystem:' 
 	 *         BEGIN 
@@ -1389,7 +1403,7 @@ public class RosSystemSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     (
-	 *         parameter+=RosParameter 
+	 *         parameter+=Parameter 
 	 *         END 
 	 *         ((('processes:' BEGIN END) | ('nodes:' BEGIN END) | ('subSystem:' BEGIN END) | ('connections:' BEGIN END))? ('parameters:' BEGIN END)?)+ 
 	 *         'refSubsystem:' 
@@ -1488,7 +1502,7 @@ public class RosSystemSyntacticSequencer extends AbstractSyntacticSequencer {
 	  *     )*
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     parameter+=RosParameter END (('processes:' BEGIN END) | ('nodes:' BEGIN END) | ('subSystem:' BEGIN END) | ('connections:' BEGIN END) | ('refSubsystem:' BEGIN END))* (ambiguity) END (rule end)
+	 *     parameter+=Parameter END (('processes:' BEGIN END) | ('nodes:' BEGIN END) | ('subSystem:' BEGIN END) | ('connections:' BEGIN END) | ('refSubsystem:' BEGIN END))* (ambiguity) END (rule end)
 	 
 	 * </pre>
 	 */
@@ -1560,7 +1574,7 @@ public class RosSystemSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     components+=RosSystem END (ambiguity) ('subSystem:' BEGIN END (ambiguity))* END (rule end)
-	 *     fromFile=EString (ambiguity) 'subSystem:' BEGIN (END (ambiguity) 'subSystem:' BEGIN)* components+=RosSystem
+	 *     fromFile=LaunchFile (ambiguity) 'subSystem:' BEGIN (END (ambiguity) 'subSystem:' BEGIN)* components+=RosSystem
 	 *     name=EString ':' BEGIN (ambiguity) 'subSystem:' BEGIN (END (ambiguity) 'subSystem:' BEGIN)* components+=RosSystem
 	 
 	 * </pre>
@@ -1582,7 +1596,7 @@ public class RosSystemSyntacticSequencer extends AbstractSyntacticSequencer {
 	  *     )*
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     fromFile=EString (ambiguity) END (rule end)
+	 *     fromFile=LaunchFile (ambiguity) END (rule end)
 	 *     name=EString ':' BEGIN (ambiguity) END (rule end)
 	 
 	 * </pre>
@@ -1598,7 +1612,7 @@ public class RosSystemSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     components+=ReferenceSystem END (ambiguity) ('refSubsystem:' BEGIN END (ambiguity))* END (rule end)
-	 *     fromFile=EString (ambiguity) 'refSubsystem:' BEGIN (END (ambiguity) 'refSubsystem:' BEGIN)* components+=ReferenceSystem
+	 *     fromFile=LaunchFile (ambiguity) 'refSubsystem:' BEGIN (END (ambiguity) 'refSubsystem:' BEGIN)* components+=ReferenceSystem
 	 *     name=EString ':' BEGIN (ambiguity) 'refSubsystem:' BEGIN (END (ambiguity) 'refSubsystem:' BEGIN)* components+=ReferenceSystem
 	 
 	 * </pre>
@@ -1613,7 +1627,7 @@ public class RosSystemSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (('nodes:' BEGIN END) | ('subSystem:' BEGIN END) | ('parameters:' BEGIN END) | ('connections:' BEGIN END) | ('refSubsystem:' BEGIN END))*
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     fromFile=EString (ambiguity) 'processes:' BEGIN (END (ambiguity) 'processes:' BEGIN)* processes+=Process
+	 *     fromFile=LaunchFile (ambiguity) 'processes:' BEGIN (END (ambiguity) 'processes:' BEGIN)* processes+=Process
 	 *     name=EString ':' BEGIN (ambiguity) 'processes:' BEGIN (END (ambiguity) 'processes:' BEGIN)* processes+=Process
 	 *     processes+=Process END (ambiguity) ('processes:' BEGIN END (ambiguity))* END (rule end)
 	 
@@ -1629,9 +1643,9 @@ public class RosSystemSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (('processes:' BEGIN END) | ('nodes:' BEGIN END) | ('subSystem:' BEGIN END) | ('connections:' BEGIN END) | ('refSubsystem:' BEGIN END))*
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     fromFile=EString (ambiguity) 'parameters:' BEGIN (END (ambiguity) 'parameters:' BEGIN)* parameter+=RosParameter
-	 *     name=EString ':' BEGIN (ambiguity) 'parameters:' BEGIN (END (ambiguity) 'parameters:' BEGIN)* parameter+=RosParameter
-	 *     parameter+=RosParameter END (ambiguity) ('parameters:' BEGIN END (ambiguity))* END (rule end)
+	 *     fromFile=LaunchFile (ambiguity) 'parameters:' BEGIN (END (ambiguity) 'parameters:' BEGIN)* parameter+=Parameter
+	 *     name=EString ':' BEGIN (ambiguity) 'parameters:' BEGIN (END (ambiguity) 'parameters:' BEGIN)* parameter+=Parameter
+	 *     parameter+=Parameter END (ambiguity) ('parameters:' BEGIN END (ambiguity))* END (rule end)
 	 
 	 * </pre>
 	 */
@@ -1646,7 +1660,7 @@ public class RosSystemSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     components+=RosNode END (ambiguity) ('nodes:' BEGIN END (ambiguity))* END (rule end)
-	 *     fromFile=EString (ambiguity) 'nodes:' BEGIN (END (ambiguity) 'nodes:' BEGIN)* components+=RosNode
+	 *     fromFile=LaunchFile (ambiguity) 'nodes:' BEGIN (END (ambiguity) 'nodes:' BEGIN)* components+=RosNode
 	 *     name=EString ':' BEGIN (ambiguity) 'nodes:' BEGIN (END (ambiguity) 'nodes:' BEGIN)* components+=RosNode
 	 
 	 * </pre>
@@ -1662,7 +1676,7 @@ public class RosSystemSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     connections+=Connection END (ambiguity) ('connections:' BEGIN END (ambiguity))* END (rule end)
-	 *     fromFile=EString (ambiguity) 'connections:' BEGIN (END (ambiguity) 'connections:' BEGIN)* connections+=Connection
+	 *     fromFile=LaunchFile (ambiguity) 'connections:' BEGIN (END (ambiguity) 'connections:' BEGIN)* connections+=Connection
 	 *     name=EString ':' BEGIN (ambiguity) 'connections:' BEGIN (END (ambiguity) 'connections:' BEGIN)* connections+=Connection
 	 
 	 * </pre>
@@ -1761,7 +1775,7 @@ public class RosSystemSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     ((('processes:' BEGIN END) | ('nodes:' BEGIN END) | ('connections:' BEGIN END) | ('refSubsystem:' BEGIN END))? ('parameters:' BEGIN END)?)+
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     parameter+=RosParameter END (ambiguity) 'subSystem:' BEGIN (END (ambiguity) 'subSystem:' BEGIN)* components+=RosSystem
+	 *     parameter+=Parameter END (ambiguity) 'subSystem:' BEGIN (END (ambiguity) 'subSystem:' BEGIN)* components+=RosSystem
 	 
 	 * </pre>
 	 */
@@ -1775,7 +1789,7 @@ public class RosSystemSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     ((('processes:' BEGIN END) | ('nodes:' BEGIN END) | ('connections:' BEGIN END) | ('refSubsystem:' BEGIN END))? ('subSystem:' BEGIN END)?)+
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     components+=RosSystem END (ambiguity) 'parameters:' BEGIN (END (ambiguity) 'parameters:' BEGIN)* parameter+=RosParameter
+	 *     components+=RosSystem END (ambiguity) 'parameters:' BEGIN (END (ambiguity) 'parameters:' BEGIN)* parameter+=Parameter
 	 
 	 * </pre>
 	 */
@@ -1789,7 +1803,7 @@ public class RosSystemSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     ((('processes:' BEGIN END) | ('nodes:' BEGIN END) | ('subSystem:' BEGIN END) | ('connections:' BEGIN END))? ('parameters:' BEGIN END)?)+
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     parameter+=RosParameter END (ambiguity) 'refSubsystem:' BEGIN (END (ambiguity) 'refSubsystem:' BEGIN)* components+=ReferenceSystem
+	 *     parameter+=Parameter END (ambiguity) 'refSubsystem:' BEGIN (END (ambiguity) 'refSubsystem:' BEGIN)* components+=ReferenceSystem
 	 
 	 * </pre>
 	 */
@@ -1803,7 +1817,7 @@ public class RosSystemSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     ((('processes:' BEGIN END) | ('nodes:' BEGIN END) | ('subSystem:' BEGIN END) | ('connections:' BEGIN END))? ('refSubsystem:' BEGIN END)?)+
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     components+=ReferenceSystem END (ambiguity) 'parameters:' BEGIN (END (ambiguity) 'parameters:' BEGIN)* parameter+=RosParameter
+	 *     components+=ReferenceSystem END (ambiguity) 'parameters:' BEGIN (END (ambiguity) 'parameters:' BEGIN)* parameter+=Parameter
 	 
 	 * </pre>
 	 */
@@ -1817,7 +1831,7 @@ public class RosSystemSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     ((('nodes:' BEGIN END) | ('subSystem:' BEGIN END) | ('connections:' BEGIN END) | ('refSubsystem:' BEGIN END))? ('parameters:' BEGIN END)?)+
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     parameter+=RosParameter END (ambiguity) 'processes:' BEGIN (END (ambiguity) 'processes:' BEGIN)* processes+=Process
+	 *     parameter+=Parameter END (ambiguity) 'processes:' BEGIN (END (ambiguity) 'processes:' BEGIN)* processes+=Process
 	 
 	 * </pre>
 	 */
@@ -1831,7 +1845,7 @@ public class RosSystemSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     ((('nodes:' BEGIN END) | ('subSystem:' BEGIN END) | ('connections:' BEGIN END) | ('refSubsystem:' BEGIN END))? ('processes:' BEGIN END)?)+
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     processes+=Process END (ambiguity) 'parameters:' BEGIN (END (ambiguity) 'parameters:' BEGIN)* parameter+=RosParameter
+	 *     processes+=Process END (ambiguity) 'parameters:' BEGIN (END (ambiguity) 'parameters:' BEGIN)* parameter+=Parameter
 	 
 	 * </pre>
 	 */
@@ -1929,7 +1943,7 @@ public class RosSystemSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     ((('processes:' BEGIN END) | ('subSystem:' BEGIN END) | ('connections:' BEGIN END) | ('refSubsystem:' BEGIN END))? ('nodes:' BEGIN END)?)+
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     components+=RosNode END (ambiguity) 'parameters:' BEGIN (END (ambiguity) 'parameters:' BEGIN)* parameter+=RosParameter
+	 *     components+=RosNode END (ambiguity) 'parameters:' BEGIN (END (ambiguity) 'parameters:' BEGIN)* parameter+=Parameter
 	 
 	 * </pre>
 	 */
@@ -1943,7 +1957,7 @@ public class RosSystemSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     ((('processes:' BEGIN END) | ('subSystem:' BEGIN END) | ('connections:' BEGIN END) | ('refSubsystem:' BEGIN END))? ('parameters:' BEGIN END)?)+
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     parameter+=RosParameter END (ambiguity) 'nodes:' BEGIN (END (ambiguity) 'nodes:' BEGIN)* components+=RosNode
+	 *     parameter+=Parameter END (ambiguity) 'nodes:' BEGIN (END (ambiguity) 'nodes:' BEGIN)* components+=RosNode
 	 
 	 * </pre>
 	 */
@@ -2041,7 +2055,7 @@ public class RosSystemSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     ((('processes:' BEGIN END) | ('nodes:' BEGIN END) | ('subSystem:' BEGIN END) | ('refSubsystem:' BEGIN END))? ('connections:' BEGIN END)?)+
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     connections+=Connection END (ambiguity) 'parameters:' BEGIN (END (ambiguity) 'parameters:' BEGIN)* parameter+=RosParameter
+	 *     connections+=Connection END (ambiguity) 'parameters:' BEGIN (END (ambiguity) 'parameters:' BEGIN)* parameter+=Parameter
 	 
 	 * </pre>
 	 */
@@ -2055,7 +2069,7 @@ public class RosSystemSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     ((('processes:' BEGIN END) | ('nodes:' BEGIN END) | ('subSystem:' BEGIN END) | ('refSubsystem:' BEGIN END))? ('parameters:' BEGIN END)?)+
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     parameter+=RosParameter END (ambiguity) 'connections:' BEGIN (END (ambiguity) 'connections:' BEGIN)* connections+=Connection
+	 *     parameter+=Parameter END (ambiguity) 'connections:' BEGIN (END (ambiguity) 'connections:' BEGIN)* connections+=Connection
 	 
 	 * </pre>
 	 */

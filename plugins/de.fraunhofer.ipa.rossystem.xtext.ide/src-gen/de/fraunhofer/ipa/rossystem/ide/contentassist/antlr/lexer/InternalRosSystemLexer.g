@@ -23,6 +23,8 @@ ParameterAny : 'ParameterAny';
 
 Connections : 'connections:';
 
+FromGitRepo : 'fromGitRepo:';
+
 Interfaces : 'interfaces:';
 
 Parameters : 'parameters:';

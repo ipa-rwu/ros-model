@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause) [![ros-model CI](https://github.com/ipa320/ros-model/actions/workflows/build.yml/badge.svg)](https://github.com/ipa320/ros-model/actions/workflows/build.yml)
 
-The main purpose of this effort is to combine the advantages of [ROS](http://wiki.ros.org/) and Model-Driven-Engineering techniques. This repository holds a family of metamodels defined as Ecore models and their corresponding Xtext-based DSLs (Domain Specific Language) implementation. 
+The main purpose of this effort is to combine the advantages of [ROS](http://wiki.ros.org/) and Model-Driven-Engineering techniques. This repository holds a family of metamodels defined as Ecore models and their corresponding Xtext-based DSLs (Domain Specific Language) implementation.
 The resulted models allow the description of ROS and ROS2 concepts and properties, like packages, artifacts, nodes, interfaces types, parameters... Moreover a complete system as composition of ROS components can be also modelled.
 
 The models have associated tools, the following are some examples:

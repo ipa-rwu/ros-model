@@ -160,7 +160,7 @@ public interface RossystemPackage extends EPackage {
     int SYSTEM__PARAMETER = COMPONENT_FEATURE_COUNT + 4;
 
                 /**
-     * The feature id for the '<em><b>From File</b></em>' attribute.
+     * The feature id for the '<em><b>From File</b></em>' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -232,7 +232,7 @@ int ROSSYSTEM__CONNECTIONS = SYSTEM__CONNECTIONS;
 int ROSSYSTEM__PARAMETER = SYSTEM__PARAMETER;
 
                 /**
-     * The feature id for the '<em><b>From File</b></em>' attribute.
+     * The feature id for the '<em><b>From File</b></em>' containment reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1036,6 +1036,53 @@ int PROCESS_FEATURE_COUNT = 3;
 
 
                                                                 /**
+     * The meta object id for the '{@link system.impl.LaunchFileImpl <em>Launch File</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see system.impl.LaunchFileImpl
+     * @see system.impl.RossystemPackageImpl#getLaunchFile()
+     * @generated
+     */
+    int LAUNCH_FILE = 22;
+
+                                                                                                                                                                                                                                                                /**
+     * The feature id for the '<em><b>Name</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int LAUNCH_FILE__NAME = 0;
+
+                                                                                                                                                                                                                                                                /**
+     * The feature id for the '<em><b>From Git Repo</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int LAUNCH_FILE__FROM_GIT_REPO = 1;
+
+                                                                                                                                                                                                                                                                /**
+     * The number of structural features of the '<em>Launch File</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int LAUNCH_FILE_FEATURE_COUNT = 2;
+
+                                                                                                                                                                                                                                                                /**
+     * The number of operations of the '<em>Launch File</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int LAUNCH_FILE_OPERATION_COUNT = 0;
+
+
+                                                                                                                                                                                                                                                                /**
      * Returns the meta object for class '{@link system.System <em>System</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1101,15 +1148,15 @@ int PROCESS_FEATURE_COUNT = 3;
     EReference getSystem_Parameter();
 
     /**
-     * Returns the meta object for the attribute '{@link system.System#getFromFile <em>From File</em>}'.
+     * Returns the meta object for the containment reference '{@link system.System#getFromFile <em>From File</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @return the meta object for the attribute '<em>From File</em>'.
+     * @return the meta object for the containment reference '<em>From File</em>'.
      * @see system.System#getFromFile()
      * @see #getSystem()
      * @generated
      */
-    EAttribute getSystem_FromFile();
+    EReference getSystem_FromFile();
 
                 /**
      * Returns the meta object for class '{@link system.Rossystem <em>Rossystem</em>}'.
@@ -1630,6 +1677,38 @@ int PROCESS_FEATURE_COUNT = 3;
     EReference getReferenceSystem_Ref();
 
                                                                 /**
+     * Returns the meta object for class '{@link system.LaunchFile <em>Launch File</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>Launch File</em>'.
+     * @see system.LaunchFile
+     * @generated
+     */
+    EClass getLaunchFile();
+
+                                                                                                                                                                                                                                                                /**
+     * Returns the meta object for the attribute '{@link system.LaunchFile#getName <em>Name</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Name</em>'.
+     * @see system.LaunchFile#getName()
+     * @see #getLaunchFile()
+     * @generated
+     */
+    EAttribute getLaunchFile_Name();
+
+                                                                                                                                                                                                                                                                /**
+     * Returns the meta object for the attribute '{@link system.LaunchFile#getFromGitRepo <em>From Git Repo</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>From Git Repo</em>'.
+     * @see system.LaunchFile#getFromGitRepo()
+     * @see #getLaunchFile()
+     * @generated
+     */
+    EAttribute getLaunchFile_FromGitRepo();
+
+                                                                                                                                                                                                                                                                /**
      * Returns the factory that creates the instances of the model.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1703,12 +1782,12 @@ int PROCESS_FEATURE_COUNT = 3;
         EReference SYSTEM__PARAMETER = eINSTANCE.getSystem_Parameter();
 
         /**
-         * The meta object literal for the '<em><b>From File</b></em>' attribute feature.
+         * The meta object literal for the '<em><b>From File</b></em>' containment reference feature.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          */
-        EAttribute SYSTEM__FROM_FILE = eINSTANCE.getSystem_FromFile();
+        EReference SYSTEM__FROM_FILE = eINSTANCE.getSystem_FromFile();
 
                                 /**
          * The meta object literal for the '{@link system.impl.RossystemImpl <em>Rossystem</em>}' class.
@@ -2143,6 +2222,32 @@ int PROCESS_FEATURE_COUNT = 3;
          * @generated
          */
         EReference REFERENCE_SYSTEM__REF = eINSTANCE.getReferenceSystem_Ref();
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                /**
+         * The meta object literal for the '{@link system.impl.LaunchFileImpl <em>Launch File</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see system.impl.LaunchFileImpl
+         * @see system.impl.RossystemPackageImpl#getLaunchFile()
+         * @generated
+         */
+        EClass LAUNCH_FILE = eINSTANCE.getLaunchFile();
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                /**
+         * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute LAUNCH_FILE__NAME = eINSTANCE.getLaunchFile_Name();
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                /**
+         * The meta object literal for the '<em><b>From Git Repo</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute LAUNCH_FILE__FROM_GIT_REPO = eINSTANCE.getLaunchFile_FromGitRepo();
 
     }
 

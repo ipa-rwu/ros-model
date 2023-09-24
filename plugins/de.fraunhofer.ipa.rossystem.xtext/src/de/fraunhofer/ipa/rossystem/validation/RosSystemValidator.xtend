@@ -45,13 +45,13 @@ class RosSystemValidator extends AbstractRosSystemValidator {
   Object to_type
 
 
-  @Check
-  def InfoToValidFile(System system){
-      if (!system.fromFile.empty){
-        info('This attribute expects the path of the launch file from the package, for example: PackageName/launch/fileName.launch.py'
-                  ,null,INFO_LAUNCH_FILE)
-      }
-  }
+//  @Check
+//  def InfoToValidFile(System system){
+//      if (!system.fromFile.empty){
+//        info('This attribute expects the path of the launch file from the package, for example: PackageName/launch/fileName.launch.py'
+//                  ,null,INFO_LAUNCH_FILE)
+//      }
+//  }
 
   @Check
   def checkIfNodeInSystem(Process process) {

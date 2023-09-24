@@ -47,7 +47,7 @@ public class RosSystemGrammarAccess extends AbstractElementFinder.AbstractGramma
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
 		private final Keyword cFromFileKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
 		private final Assignment cFromFileAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final RuleCall cFromFileEStringParserRuleCall_3_1_0 = (RuleCall)cFromFileAssignment_3_1.eContents().get(0);
+		private final RuleCall cFromFileLaunchFileParserRuleCall_3_1_0 = (RuleCall)cFromFileAssignment_3_1.eContents().get(0);
 		private final Alternatives cAlternatives_4 = (Alternatives)cGroup.eContents().get(4);
 		private final Group cGroup_4_0 = (Group)cAlternatives_4.eContents().get(0);
 		private final Keyword cProcessesKeyword_4_0_0 = (Keyword)cGroup_4_0.eContents().get(0);
@@ -71,7 +71,7 @@ public class RosSystemGrammarAccess extends AbstractElementFinder.AbstractGramma
 		private final Keyword cParametersKeyword_4_3_0 = (Keyword)cGroup_4_3.eContents().get(0);
 		private final RuleCall cBEGINTerminalRuleCall_4_3_1 = (RuleCall)cGroup_4_3.eContents().get(1);
 		private final Assignment cParameterAssignment_4_3_2 = (Assignment)cGroup_4_3.eContents().get(2);
-		private final RuleCall cParameterRosParameterParserRuleCall_4_3_2_0 = (RuleCall)cParameterAssignment_4_3_2.eContents().get(0);
+		private final RuleCall cParameterParameterParserRuleCall_4_3_2_0 = (RuleCall)cParameterAssignment_4_3_2.eContents().get(0);
 		private final RuleCall cENDTerminalRuleCall_4_3_3 = (RuleCall)cGroup_4_3.eContents().get(3);
 		private final Group cGroup_4_4 = (Group)cAlternatives_4.eContents().get(4);
 		private final Keyword cConnectionsKeyword_4_4_0 = (Keyword)cGroup_4_4.eContents().get(0);
@@ -90,7 +90,7 @@ public class RosSystemGrammarAccess extends AbstractElementFinder.AbstractGramma
 		//RosSystem returns System:
 		//    name=EString':'
 		//    BEGIN
-		//        ('fromFile:' fromFile=EString)?
+		//        ('fromFile:' fromFile=LaunchFile)?
 		//        (
 		//        ('processes:'
 		//            BEGIN
@@ -109,7 +109,7 @@ public class RosSystemGrammarAccess extends AbstractElementFinder.AbstractGramma
 		//        ) |
 		//        ('parameters:'
 		//            BEGIN
-		//            parameter+=RosParameter*
+		//            parameter+=Parameter*
 		//            END
 		//        ) |
 		//        ('connections:'
@@ -128,7 +128,7 @@ public class RosSystemGrammarAccess extends AbstractElementFinder.AbstractGramma
 		
 		//name=EString':'
 		//BEGIN
-		//    ('fromFile:' fromFile=EString)?
+		//    ('fromFile:' fromFile=LaunchFile)?
 		//    (
 		//    ('processes:'
 		//        BEGIN
@@ -147,7 +147,7 @@ public class RosSystemGrammarAccess extends AbstractElementFinder.AbstractGramma
 		//    ) |
 		//    ('parameters:'
 		//        BEGIN
-		//        parameter+=RosParameter*
+		//        parameter+=Parameter*
 		//        END
 		//    ) |
 		//    ('connections:'
@@ -176,17 +176,17 @@ public class RosSystemGrammarAccess extends AbstractElementFinder.AbstractGramma
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_2() { return cBEGINTerminalRuleCall_2; }
 		
-		//('fromFile:' fromFile=EString)?
+		//('fromFile:' fromFile=LaunchFile)?
 		public Group getGroup_3() { return cGroup_3; }
 		
 		//'fromFile:'
 		public Keyword getFromFileKeyword_3_0() { return cFromFileKeyword_3_0; }
 		
-		//fromFile=EString
+		//fromFile=LaunchFile
 		public Assignment getFromFileAssignment_3_1() { return cFromFileAssignment_3_1; }
 		
-		//EString
-		public RuleCall getFromFileEStringParserRuleCall_3_1_0() { return cFromFileEStringParserRuleCall_3_1_0; }
+		//LaunchFile
+		public RuleCall getFromFileLaunchFileParserRuleCall_3_1_0() { return cFromFileLaunchFileParserRuleCall_3_1_0; }
 		
 		//(
 		//('processes:'
@@ -206,7 +206,7 @@ public class RosSystemGrammarAccess extends AbstractElementFinder.AbstractGramma
 		//) |
 		//('parameters:'
 		//    BEGIN
-		//    parameter+=RosParameter*
+		//    parameter+=Parameter*
 		//    END
 		//) |
 		//('connections:'
@@ -290,7 +290,7 @@ public class RosSystemGrammarAccess extends AbstractElementFinder.AbstractGramma
 		
 		//('parameters:'
 		//    BEGIN
-		//    parameter+=RosParameter*
+		//    parameter+=Parameter*
 		//    END
 		//)
 		public Group getGroup_4_3() { return cGroup_4_3; }
@@ -301,11 +301,11 @@ public class RosSystemGrammarAccess extends AbstractElementFinder.AbstractGramma
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_4_3_1() { return cBEGINTerminalRuleCall_4_3_1; }
 		
-		//parameter+=RosParameter*
+		//parameter+=Parameter*
 		public Assignment getParameterAssignment_4_3_2() { return cParameterAssignment_4_3_2; }
 		
-		//RosParameter
-		public RuleCall getParameterRosParameterParserRuleCall_4_3_2_0() { return cParameterRosParameterParserRuleCall_4_3_2_0; }
+		//Parameter
+		public RuleCall getParameterParameterParserRuleCall_4_3_2_0() { return cParameterParameterParserRuleCall_4_3_2_0; }
 		
 		//END
 		public RuleCall getENDTerminalRuleCall_4_3_3() { return cENDTerminalRuleCall_4_3_3; }
@@ -1242,6 +1242,44 @@ public class RosSystemGrammarAccess extends AbstractElementFinder.AbstractGramma
 		//']'
 		public Keyword getRightSquareBracketKeyword_4() { return cRightSquareBracketKeyword_4; }
 	}
+	public class LaunchFileElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.fraunhofer.ipa.rossystem.RosSystem.LaunchFile");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cNameEStringParserRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cFromGitRepoKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cFromGitRepoAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cFromGitRepoEStringParserRuleCall_1_1_0 = (RuleCall)cFromGitRepoAssignment_1_1.eContents().get(0);
+		
+		//LaunchFile returns LaunchFile:
+		//     name=EString
+		//     ('fromGitRepo:' fromGitRepo=EString)?
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//name=EString
+		//('fromGitRepo:' fromGitRepo=EString)?
+		public Group getGroup() { return cGroup; }
+		
+		//name=EString
+		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		
+		//EString
+		public RuleCall getNameEStringParserRuleCall_0_0() { return cNameEStringParserRuleCall_0_0; }
+		
+		//('fromGitRepo:' fromGitRepo=EString)?
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//'fromGitRepo:'
+		public Keyword getFromGitRepoKeyword_1_0() { return cFromGitRepoKeyword_1_0; }
+		
+		//fromGitRepo=EString
+		public Assignment getFromGitRepoAssignment_1_1() { return cFromGitRepoAssignment_1_1; }
+		
+		//EString
+		public RuleCall getFromGitRepoEStringParserRuleCall_1_1_0() { return cFromGitRepoEStringParserRuleCall_1_1_0; }
+	}
 	
 	
 	private final SystemElements pSystem;
@@ -1265,6 +1303,7 @@ public class RosSystemGrammarAccess extends AbstractElementFinder.AbstractGramma
 	private final RosTopicConnectionElements pRosTopicConnection;
 	private final RosServiceConnectionElements pRosServiceConnection;
 	private final RosActionConnectionElements pRosActionConnection;
+	private final LaunchFileElements pLaunchFile;
 	
 	private final Grammar grammar;
 	
@@ -1300,6 +1339,7 @@ public class RosSystemGrammarAccess extends AbstractElementFinder.AbstractGramma
 		this.pRosTopicConnection = new RosTopicConnectionElements();
 		this.pRosServiceConnection = new RosServiceConnectionElements();
 		this.pRosActionConnection = new RosActionConnectionElements();
+		this.pLaunchFile = new LaunchFileElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -1347,7 +1387,7 @@ public class RosSystemGrammarAccess extends AbstractElementFinder.AbstractGramma
 	//RosSystem returns System:
 	//    name=EString':'
 	//    BEGIN
-	//        ('fromFile:' fromFile=EString)?
+	//        ('fromFile:' fromFile=LaunchFile)?
 	//        (
 	//        ('processes:'
 	//            BEGIN
@@ -1366,7 +1406,7 @@ public class RosSystemGrammarAccess extends AbstractElementFinder.AbstractGramma
 	//        ) |
 	//        ('parameters:'
 	//            BEGIN
-	//            parameter+=RosParameter*
+	//            parameter+=Parameter*
 	//            END
 	//        ) |
 	//        ('connections:'
@@ -1624,6 +1664,18 @@ public class RosSystemGrammarAccess extends AbstractElementFinder.AbstractGramma
 	
 	public ParserRule getRosActionConnectionRule() {
 		return getRosActionConnectionAccess().getRule();
+	}
+	
+	//LaunchFile returns LaunchFile:
+	//     name=EString
+	//     ('fromGitRepo:' fromGitRepo=EString)?
+	//;
+	public LaunchFileElements getLaunchFileAccess() {
+		return pLaunchFile;
+	}
+	
+	public ParserRule getLaunchFileRule() {
+		return getLaunchFileAccess().getRule();
 	}
 	
 	/////////////////////

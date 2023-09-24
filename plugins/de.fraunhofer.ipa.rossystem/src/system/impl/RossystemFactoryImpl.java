@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 import system.InterfaceReference;
+import system.LaunchFile;
 import system.ReferenceSystem;
 import system.RosActionClientReference;
 import system.RosActionConnection;
@@ -95,6 +96,7 @@ public class RossystemFactoryImpl extends EFactoryImpl implements RossystemFacto
             case RossystemPackage.ROS_SERVICE_CONNECTION: return createRosServiceConnection();
             case RossystemPackage.ROS_ACTION_CONNECTION: return createRosActionConnection();
             case RossystemPackage.REFERENCE_SYSTEM: return createReferenceSystem();
+            case RossystemPackage.LAUNCH_FILE: return createLaunchFile();
             default:
                 throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
         }
@@ -321,6 +323,17 @@ public class RossystemFactoryImpl extends EFactoryImpl implements RossystemFacto
     }
 
                                                                 /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public LaunchFile createLaunchFile() {
+        LaunchFileImpl launchFile = new LaunchFileImpl();
+        return launchFile;
+    }
+
+                                                                                                                                                                                                                                                                /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated

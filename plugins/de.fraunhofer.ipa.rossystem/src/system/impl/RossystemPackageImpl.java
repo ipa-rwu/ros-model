@@ -18,6 +18,7 @@ import ros.RosPackage;
 import system.Component;
 import system.Connection;
 import system.InterfaceReference;
+import system.LaunchFile;
 import system.ReferenceSystem;
 import system.RosActionClientReference;
 import system.RosActionConnection;
@@ -200,6 +201,13 @@ public class RossystemPackageImpl extends EPackageImpl implements RossystemPacka
     private EClass referenceSystemEClass = null;
 
                                                                 /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass launchFileEClass = null;
+
+                                                                                                                                                                                                                                                                /**
      * Creates an instance of the model <b>Package</b>, registered with
      * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
      * package URI value.
@@ -330,8 +338,8 @@ public class RossystemPackageImpl extends EPackageImpl implements RossystemPacka
      * @generated
      */
     @Override
-    public EAttribute getSystem_FromFile() {
-        return (EAttribute)systemEClass.getEStructuralFeatures().get(5);
+    public EReference getSystem_FromFile() {
+        return (EReference)systemEClass.getEStructuralFeatures().get(5);
     }
 
                 /**
@@ -830,6 +838,36 @@ public class RossystemPackageImpl extends EPackageImpl implements RossystemPacka
      * @generated
      */
     @Override
+    public EClass getLaunchFile() {
+        return launchFileEClass;
+    }
+
+                                                                                                                                                                                                                                                                /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public EAttribute getLaunchFile_Name() {
+        return (EAttribute)launchFileEClass.getEStructuralFeatures().get(0);
+    }
+
+                                                                                                                                                                                                                                                                /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public EAttribute getLaunchFile_FromGitRepo() {
+        return (EAttribute)launchFileEClass.getEStructuralFeatures().get(1);
+    }
+
+                                                                                                                                                                                                                                                                /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
     public RossystemFactory getRossystemFactory() {
         return (RossystemFactory)getEFactoryInstance();
     }
@@ -859,7 +897,7 @@ public class RossystemPackageImpl extends EPackageImpl implements RossystemPacka
         createEReference(systemEClass, SYSTEM__COMPONENTS);
         createEReference(systemEClass, SYSTEM__CONNECTIONS);
         createEReference(systemEClass, SYSTEM__PARAMETER);
-        createEAttribute(systemEClass, SYSTEM__FROM_FILE);
+        createEReference(systemEClass, SYSTEM__FROM_FILE);
 
         rossystemEClass = createEClass(ROSSYSTEM);
 
@@ -930,6 +968,10 @@ public class RossystemPackageImpl extends EPackageImpl implements RossystemPacka
 
         referenceSystemEClass = createEClass(REFERENCE_SYSTEM);
         createEReference(referenceSystemEClass, REFERENCE_SYSTEM__REF);
+
+        launchFileEClass = createEClass(LAUNCH_FILE);
+        createEAttribute(launchFileEClass, LAUNCH_FILE__NAME);
+        createEAttribute(launchFileEClass, LAUNCH_FILE__FROM_GIT_REPO);
     }
 
     /**
@@ -956,8 +998,8 @@ public class RossystemPackageImpl extends EPackageImpl implements RossystemPacka
         setNsURI(eNS_URI);
 
         // Obtain other dependent packages
-        XMLTypePackage theXMLTypePackage = (XMLTypePackage)EPackage.Registry.INSTANCE.getEPackage(XMLTypePackage.eNS_URI);
         RosPackage theRosPackage = (RosPackage)EPackage.Registry.INSTANCE.getEPackage(RosPackage.eNS_URI);
+        XMLTypePackage theXMLTypePackage = (XMLTypePackage)EPackage.Registry.INSTANCE.getEPackage(XMLTypePackage.eNS_URI);
 
         // Create type parameters
 
@@ -987,8 +1029,8 @@ public class RossystemPackageImpl extends EPackageImpl implements RossystemPacka
         initEReference(getSystem_Processes(), this.getProcess(), null, "processes", null, 0, -1, system.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getSystem_Components(), this.getComponent(), null, "components", null, 0, -1, system.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getSystem_Connections(), this.getConnection(), null, "connections", null, 0, -1, system.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getSystem_Parameter(), this.getRosParameter(), null, "parameter", null, 0, -1, system.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-        initEAttribute(getSystem_FromFile(), ecorePackage.getEString(), "fromFile", null, 0, 1, system.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getSystem_Parameter(), theRosPackage.getParameter(), null, "parameter", null, 0, -1, system.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+        initEReference(getSystem_FromFile(), this.getLaunchFile(), null, "fromFile", null, 0, 1, system.System.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(rossystemEClass, Rossystem.class, "Rossystem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1059,6 +1101,10 @@ public class RossystemPackageImpl extends EPackageImpl implements RossystemPacka
 
         initEClass(referenceSystemEClass, ReferenceSystem.class, "ReferenceSystem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEReference(getReferenceSystem_Ref(), this.getSystem(), null, "ref", null, 1, 1, ReferenceSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+        initEClass(launchFileEClass, LaunchFile.class, "LaunchFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getLaunchFile_Name(), ecorePackage.getEString(), "name", null, 1, 1, LaunchFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getLaunchFile_FromGitRepo(), ecorePackage.getEString(), "fromGitRepo", null, 0, 1, LaunchFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         // Create resource
         createResource(eNS_URI);

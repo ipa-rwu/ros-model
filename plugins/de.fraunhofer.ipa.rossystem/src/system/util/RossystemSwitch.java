@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.util.Switch;
 import system.Component;
 import system.Connection;
 import system.InterfaceReference;
+import system.LaunchFile;
 import system.ReferenceSystem;
 import system.RosActionClientReference;
 import system.RosActionConnection;
@@ -235,6 +236,12 @@ public class RossystemSwitch<T> extends Switch<T> {
                 ReferenceSystem referenceSystem = (ReferenceSystem)theEObject;
                 T result = caseReferenceSystem(referenceSystem);
                 if (result == null) result = caseComponent(referenceSystem);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case RossystemPackage.LAUNCH_FILE: {
+                LaunchFile launchFile = (LaunchFile)theEObject;
+                T result = caseLaunchFile(launchFile);
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
@@ -573,6 +580,21 @@ public class RossystemSwitch<T> extends Switch<T> {
     }
 
                                                                 /**
+     * Returns the result of interpreting the object as an instance of '<em>Launch File</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Launch File</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseLaunchFile(LaunchFile object) {
+        return null;
+    }
+
+                                                                                                                                                                                                                                                                /**
      * Returns the result of interpreting the object as an instance of '<em>EObject</em>'.
      * <!-- begin-user-doc -->
      * This implementation returns null;

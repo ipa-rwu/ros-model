@@ -74,6 +74,7 @@ import ros.PrivateNamespace;
 import ros.RelativeNamespace;
 import ros.RosPackage;
 import ros.TopicSpecMsgRef;
+import system.LaunchFile;
 import system.ReferenceSystem;
 import system.RosActionClientReference;
 import system.RosActionConnection;
@@ -288,6 +289,9 @@ public class RosSystemSemanticSequencer extends BasicsSemanticSequencer {
 			}
 		else if (epackage == RossystemPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
+			case RossystemPackage.LAUNCH_FILE:
+				sequence_LaunchFile(context, (LaunchFile) semanticObject); 
+				return; 
 			case RossystemPackage.PROCESS:
 				sequence_Process(context, (system.Process) semanticObject); 
 				return; 
@@ -343,6 +347,20 @@ public class RosSystemSemanticSequencer extends BasicsSemanticSequencer {
 		if (errorAcceptor != null)
 			errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
 	}
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     LaunchFile returns LaunchFile
+	 *
+	 * Constraint:
+	 *     (name=EString fromGitRepo=EString?)
+	 * </pre>
+	 */
+	protected void sequence_LaunchFile(ISerializationContext context, LaunchFile semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
 	
 	/**
 	 * <pre>
@@ -671,12 +689,12 @@ public class RosSystemSemanticSequencer extends BasicsSemanticSequencer {
 	 * Constraint:
 	 *     (
 	 *         name=EString 
-	 *         fromFile=EString? 
+	 *         fromFile=LaunchFile? 
 	 *         (
 	 *             processes+=Process | 
 	 *             components+=RosNode | 
 	 *             components+=RosSystem | 
-	 *             parameter+=RosParameter | 
+	 *             parameter+=Parameter | 
 	 *             connections+=Connection | 
 	 *             components+=ReferenceSystem
 	 *         )*

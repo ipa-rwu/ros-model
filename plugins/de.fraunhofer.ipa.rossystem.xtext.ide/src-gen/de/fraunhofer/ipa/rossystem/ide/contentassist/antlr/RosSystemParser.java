@@ -75,6 +75,8 @@ public class RosSystemParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getRosTopicConnectionAccess().getGroup(), "rule__RosTopicConnection__Group__0");
 			builder.put(grammarAccess.getRosServiceConnectionAccess().getGroup(), "rule__RosServiceConnection__Group__0");
 			builder.put(grammarAccess.getRosActionConnectionAccess().getGroup(), "rule__RosActionConnection__Group__0");
+			builder.put(grammarAccess.getLaunchFileAccess().getGroup(), "rule__LaunchFile__Group__0");
+			builder.put(grammarAccess.getLaunchFileAccess().getGroup_1(), "rule__LaunchFile__Group_1__0");
 			builder.put(grammarAccess.getGlobalNamespaceAccess().getGroup(), "rule__GlobalNamespace__Group__0");
 			builder.put(grammarAccess.getGlobalNamespaceAccess().getGroup_2(), "rule__GlobalNamespace__Group_2__0");
 			builder.put(grammarAccess.getGlobalNamespaceAccess().getGroup_2_2(), "rule__GlobalNamespace__Group_2_2__0");
@@ -186,6 +188,8 @@ public class RosSystemParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getRosServiceConnectionAccess().getToAssignment_3(), "rule__RosServiceConnection__ToAssignment_3");
 			builder.put(grammarAccess.getRosActionConnectionAccess().getFromAssignment_1(), "rule__RosActionConnection__FromAssignment_1");
 			builder.put(grammarAccess.getRosActionConnectionAccess().getToAssignment_3(), "rule__RosActionConnection__ToAssignment_3");
+			builder.put(grammarAccess.getLaunchFileAccess().getNameAssignment_0(), "rule__LaunchFile__NameAssignment_0");
+			builder.put(grammarAccess.getLaunchFileAccess().getFromGitRepoAssignment_1_1(), "rule__LaunchFile__FromGitRepoAssignment_1_1");
 			builder.put(grammarAccess.getGlobalNamespaceAccess().getPartsAssignment_2_1(), "rule__GlobalNamespace__PartsAssignment_2_1");
 			builder.put(grammarAccess.getGlobalNamespaceAccess().getPartsAssignment_2_2_1(), "rule__GlobalNamespace__PartsAssignment_2_2_1");
 			builder.put(grammarAccess.getRelativeNamespace_ImplAccess().getPartsAssignment_2_1(), "rule__RelativeNamespace_Impl__PartsAssignment_2_1");

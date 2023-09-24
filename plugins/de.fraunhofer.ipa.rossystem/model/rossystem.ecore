@@ -10,8 +10,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="connections" upperBound="-1"
         eType="#//Connection" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" upperBound="-1"
-        eType="#//RosParameter" derived="true" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fromFile" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        eType="ecore:EClass ../../de.fraunhofer.ipa.ros/model/ros.ecore#//Parameter"
+        derived="true" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fromFile" eType="#//LaunchFile"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Rossystem" eSuperTypes="#//System"/>
   <eClassifiers xsi:type="ecore:EClass" name="Process">
@@ -82,5 +84,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ReferenceSystem" eSuperTypes="#//Component">
     <eStructuralFeatures xsi:type="ecore:EReference" name="ref" lowerBound="1" eType="#//System"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LaunchFile">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fromGitRepo" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

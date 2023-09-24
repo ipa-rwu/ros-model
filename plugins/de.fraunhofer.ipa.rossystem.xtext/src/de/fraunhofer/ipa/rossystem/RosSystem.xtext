@@ -13,7 +13,7 @@ System returns System:
 RosSystem returns System:
     name=EString':'
     BEGIN
-        ('fromFile:' fromFile=EString)?
+        ('fromFile:' fromFile=LaunchFile)?
         (
         ('processes:'
             BEGIN
@@ -32,7 +32,7 @@ RosSystem returns System:
         ) |
         ('parameters:'
             BEGIN
-            parameter+=RosParameter*
+            parameter+=Parameter*
             END
         ) |
         ('connections:'
@@ -152,6 +152,11 @@ RosServiceConnection returns RosServiceConnection:
 
 RosActionConnection returns RosActionConnection:
     '-['from=[ros::ActionServer|EString]','to=[ros::ActionClient|EString]']'
+;
+
+LaunchFile returns LaunchFile:
+     name=EString
+     ('fromGitRepo:' fromGitRepo=EString)?
 ;
 
 

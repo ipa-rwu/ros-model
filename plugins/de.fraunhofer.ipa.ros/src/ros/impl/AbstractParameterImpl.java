@@ -17,23 +17,23 @@ import ros.RosPackage;
  * @generated
  */
 public abstract class AbstractParameterImpl extends MinimalEObjectImpl.Container implements AbstractParameter {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected AbstractParameterImpl() {
-		super();
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected AbstractParameterImpl() {
+        super();
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return RosPackage.Literals.ABSTRACT_PARAMETER;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    protected EClass eStaticClass() {
+        return RosPackage.Literals.ABSTRACT_PARAMETER;
+    }
 
 } //AbstractParameterImpl

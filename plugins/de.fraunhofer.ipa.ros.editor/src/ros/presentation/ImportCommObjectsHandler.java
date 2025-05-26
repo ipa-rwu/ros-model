@@ -2,7 +2,6 @@ package ros.presentation;
 
 import java.io.File;
 import java.io.FileFilter;
-import java.io.FilenameFilter;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URI;
 
@@ -41,7 +40,7 @@ public class ImportCommObjectsHandler extends AbstractHandler {
                 } finally {
                     try {
                         Git.cloneRepository()
-                        .setURI("https://github.com/ipa320/RosCommonObjects.git")
+                        .setURI("https://gitlab.cc-asp.fraunhofer.de/ipa326/densoit/nextgen/nextgen_library/software_common_library.git")
                         .setDirectory(git_file)
                         .call();
                     } catch (InvalidRemoteException e) {
